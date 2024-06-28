@@ -1,15 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace PawMates.net.Dtos.Pet
 {
     public class UpdatePetRequest
     {
-         public string Name { get; set; }
-    public string Type { get; set; }
-    public int Age { get; set; }
-    public string Description { get; set; }
+        [MaxLength(100)]
+        public string Name { get; set; }
+
+        public string Type { get; set; } // E.g., Dog, Cat
+
+        [Range(0, 30)]
+        public int Age { get; set; }
+
+        [MaxLength(500)]
+        public string Description { get; set; }
     }
 }

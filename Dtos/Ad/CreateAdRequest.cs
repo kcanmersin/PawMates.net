@@ -1,15 +1,21 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace PawMates.net.Dtos.Ad
 {
     public class CreateAdRequest
     {
-          public int PetId { get; set; }
-    public DateTime DatePosted { get; set; }
-    public string Title { get; set; }
-    public string Location { get; set; }
+        [Required]
+        public int PetId { get; set; }
+
+        [Required]
+        public DateTime DatePosted { get; set; }
+
+        [Required]
+        [MaxLength(200)]
+        public string Title { get; set; }
+
+        [MaxLength(300)]
+        public string Location { get; set; }
     }
 }

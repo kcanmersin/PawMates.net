@@ -8,8 +8,10 @@ namespace PawMates.net.Dtos.Ad
     public class UpdateLostAdRequest: UpdateAdRequest
     {
         
-        public string LostLocation { get; set; }
-        public DateTime LostDate { get; set; }
-        public string LostDescription { get; set; }
+        public string LastSeenLocation { get; set; }
+
+        public DateTime DateLost { get; set; }
+
+        public string MicrochipId { get; set; }
     }
 }

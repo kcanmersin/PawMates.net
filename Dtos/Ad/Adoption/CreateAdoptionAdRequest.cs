@@ -1,13 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace PawMates.net.Dtos.Ad.Adoption
 {
-   public class CreateAdoptionAdRequest : CreateAdRequest
-{
-    public string Conditions { get; set; }  // Requirements for adoption
-}
+    public class CreateAdoptionAdRequest : CreateAdRequest
+    {
+        [Required]
+        public bool IsVaccinated { get; set; }
 
+        [Required]
+        [DataType(DataType.Currency)]
+        public decimal AdoptionFee { get; set; }
+    }
 }

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace PawMates.net.Models
 {
-       [Table("AdoptionAds")]
     public class AdoptionAd : Ad
     {
         public override string AdType => "Adoption";

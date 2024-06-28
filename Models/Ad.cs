@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PawMates.net.Models
 {
-    [Table("Ads")]
     public abstract class Ad
     {
         [Key]
@@ -19,6 +18,9 @@ namespace PawMates.net.Models
 
         [Required]
         public string Title { get; set; }
+
+        [Required]
+        public string Description { get; set; }
 
         public string Location { get; set; }
 

@@ -1,14 +1,24 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace PawMates.net.Dtos.Ad.Job
 {
-   public class UpdateJobAdRequest : UpdateAdRequest
-{
-    public string JobDescription { get; set; }
-    public bool IsFullTime { get; set; }
-}
+    public class UpdateJobAdRequest : UpdateAdRequest
+    {
+        // [MaxLength(100)]
+        // public string JobType { get; set; }
 
+        // [MaxLength(500)]
+        // public string JobDescription { get; set; }
+
+        [MaxLength(100)]
+        public string Salary { get; set; } 
+
+        [MaxLength(100)]
+        public string JobTitle { get; set; }
+
+        public int WorkingHour { get; set; }
+        
+        
+        
+           }
 }

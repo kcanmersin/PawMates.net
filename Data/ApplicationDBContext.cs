@@ -12,6 +12,10 @@ public class ApplicationDbContext : IdentityDbContext<AppUser>
     public DbSet<Pet> Pets { get; set; }
     public DbSet<Ad> Ads { get; set; }
 
+    public DbSet<LostAd> LostAds { get; set; }
+    public DbSet<AdoptionAd> AdoptionAds { get; set; }
+    public DbSet<JobAd> JobAds { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -41,14 +45,13 @@ public class ApplicationDbContext : IdentityDbContext<AppUser>
 
             // Define discriminator for different types of ads
             entity.HasDiscriminator<string>("AdType")
-                  .HasValue<LostAd>("LostAd")
-                  .HasValue<AdoptionAd>("AdoptionAd")
+                  .HasValue<LostAd>("LostPet")
+                  .HasValue<AdoptionAd>("Adoption")
                   .HasValue<JobAd>("JobAd");
         });
 
         builder.Entity<AppUser>(entity =>
         {
         });
-
     }
 }
