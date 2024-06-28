@@ -1,18 +1,32 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PawMates.Models
+namespace PawMates.net.Models
 {
     [Table("Pets")]
     public class Pet
     {
-        public int Id { get; set; }
+        [Key]
+        public int PetId { get; set; }
+
+        [Required]
         public string Name { get; set; }
-        public string Type { get; set; } // Dog, Cat, Bird, etc.
-        public string Breed { get; set; }
+
+        public string Type { get; set; } // Dog, Cat, etc.
+
         public int Age { get; set; }
-        public string Gender { get; set; } // Male, Female
-        public string Description { get; set; } // Additional details about the pet
-        //public string PhotoUrl { get; set; } // URL to a photo of the pet
+
+        [MaxLength(500)]
+        public string Description { get; set; }
+
+        public virtual ICollection<Ad> Ads { get; set; } = new List<Ad>();
+
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
+        public virtual AppUser User { get; set; }
     }
 }
