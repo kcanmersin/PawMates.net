@@ -16,7 +16,6 @@ namespace PawMates.net.Dtos.Ad.Job
         public string JobTitle { get; set; }
         
         [Required]
-        [MaxLength(100)]
         //working hour
         public int WorkingHour { get; set; }
 

@@ -11,14 +11,16 @@ namespace PawMates.net.Repository
 {
     public class JobAdRepository : IJobAdRepository
     {
-        private readonly ApplicationDbContext _context;
-        private readonly IMapper _mapper;
+ private readonly ApplicationDbContext _context;
+    private readonly IMapper _mapper;
+    private readonly IImageStorageService _imageStorageService;
 
-        public JobAdRepository(ApplicationDbContext context, IMapper mapper)
-        {
-            _context = context;
-            _mapper = mapper;
-        }
+    public JobAdRepository(ApplicationDbContext context, IMapper mapper, IImageStorageService imageStorageService)
+    {
+        _context = context;
+        _mapper = mapper;
+        _imageStorageService = imageStorageService;
+    }
 
         public async Task<List<JobAdResponse>> GetAllAsync()
         {
@@ -33,13 +35,28 @@ namespace PawMates.net.Repository
             return _mapper.Map<JobAdResponse>(jobAd);
         }
 
-        public async Task<JobAdResponse> CreateAsync(CreateJobAdRequest jobAdDto)
+    public async Task<JobAdResponse> CreateAsync(CreateJobAdRequest jobAdDto)
+    {
+        var jobAd = _mapper.Map<JobAd>(jobAdDto);
+
+        if (jobAdDto.PetDetails != null && jobAdDto.PetDetails.ImageFiles != null)
         {
-            var jobAd = _mapper.Map<JobAd>(jobAdDto);
-            _context.JobAds.Add(jobAd);
+            var pet = _mapper.Map<Pet>(jobAdDto.PetDetails);
+            foreach (var file in jobAdDto.PetDetails.ImageFiles)
+            {
+                var imageUrl = await _imageStorageService.SaveImageAsync(file);
+                pet.ImageUrls.Add(imageUrl);
+            }
+            _context.Pets.Add(pet);
             await _context.SaveChangesAsync();
-            return _mapper.Map<JobAdResponse>(jobAd);
+            jobAd.Pets.Add(pet);
         }
+
+        _context.JobAds.Add(jobAd);
+        await _context.SaveChangesAsync();
+        return _mapper.Map<JobAdResponse>(jobAd);
+    }
+
 
         public async Task<JobAdResponse?> UpdateAsync(int id, UpdateJobAdRequest jobAdDto)
         {

@@ -1,9 +1,10 @@
 using AutoMapper;
-using PawMates.net.Models;
 using PawMates.net.Dtos.Ad;
-using PawMates.net.Dtos.Pet;
-using PawMates.net.Dtos.Ad.Job;
 using PawMates.net.Dtos.Ad.Adoption;
+using PawMates.net.Dtos.Ad.Job;
+using PawMates.net.Dtos.Pet;
+using PawMates.net.Models;
+using System.Linq;
 
 public class ApplicationMappingProfile : Profile
 {
@@ -14,24 +15,38 @@ public class ApplicationMappingProfile : Profile
         CreateMap<CreatePetRequest, Pet>();
         CreateMap<UpdatePetRequest, Pet>();
 
-        // Ad base mappings
+        // Generic Ad mappings
         CreateMap<Ad, AdResponse>();
-        CreateMap<CreateAdRequest, Ad>();
+        CreateMap<CreateAdRequest, Ad>()
+            .ForMember(dest => dest.DatePosted, opt => opt.MapFrom(src => DateTime.UtcNow)); // Assuming ads have a DatePosted property
         CreateMap<UpdateAdRequest, Ad>();
 
-        // JobAd mappings
+        // Specific Ad Type Mappings
+        // Adoption Ads
+        CreateMap<AdoptionAd, AdoptionAdResponse>();
+        CreateMap<CreateAdoptionAdRequest, AdoptionAd>();
+        CreateMap<UpdateAdoptionAdRequest, AdoptionAd>();
+
+        // Job Ads
         CreateMap<JobAd, JobAdResponse>();
         CreateMap<CreateJobAdRequest, JobAd>();
         CreateMap<UpdateJobAdRequest, JobAd>();
 
-        // LostAd mappings
+        // Lost Ads
         CreateMap<LostAd, LostAdResponse>();
         CreateMap<CreateLostAdRequest, LostAd>();
         CreateMap<UpdateLostAdRequest, LostAd>();
 
-        // AdoptionAd mappings
-        CreateMap<AdoptionAd, AdoptionAdResponse>();
-        CreateMap<CreateAdoptionAdRequest, AdoptionAd>();
-        CreateMap<UpdateAdoptionAdRequest, AdoptionAd>();
+        // for creating pet and ad at the same time
+        CreateMap<CreateAdRequest, Ad>()
+            .ForMember(dest => dest.DatePosted, opt => opt.MapFrom(src => DateTime.UtcNow))
+            .ForMember(dest => dest.Pets, opt => opt.MapFrom(src => src.PetDetails));
+
+        // User Mappings (if applicable)
+        // CreateMap<AppUser, UserDTO>();  // Assuming a UserDTO exists
+        // CreateMap<RegisterDTO, AppUser>(); // Assuming a RegisterDTO exists for registration purposes
+        // CreateMap<LoginDTO, AppUser>(); // Assuming a LoginDTO exists for login purposes
+
+        // You can continue adding mappings for other models as necessary
     }
 }

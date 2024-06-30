@@ -13,5 +13,6 @@ namespace PawMates.net.Dtos.Ad
         public DateTime DateLost { get; set; }
 
         public string MicrochipId { get; set; }
+        
 }
 }

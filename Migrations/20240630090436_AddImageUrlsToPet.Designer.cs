@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace PawMates.net.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240628145720_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240630090436_AddImageUrlsToPet")]
+    partial class AddImageUrlsToPet
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,6 +49,20 @@ namespace PawMates.net.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "8923131c-71f1-4813-a984-81ea16ea6bc5",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "dc137c6f-5652-472e-baa0-110082db20ad",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -167,8 +181,12 @@ namespace PawMates.net.Migrations
 
                     b.Property<string>("AdType")
                         .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("DatePosted")
                         .ValueGeneratedOnAdd()
@@ -184,23 +202,14 @@ namespace PawMates.net.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("PetId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("AdId");
 
-                    b.HasIndex("PetId");
-
-                    b.HasIndex("UserId");
+                    b.HasIndex("AppUserId");
 
                     b.ToTable("Ads");
 
@@ -216,6 +225,11 @@ namespace PawMates.net.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("BackgroundPictureUrl")
+                        .IsRequired()
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -251,6 +265,11 @@ namespace PawMates.net.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("ProfilePictureUrl")
+                        .IsRequired()
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -282,6 +301,9 @@ namespace PawMates.net.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PetId"));
 
+                    b.Property<int?>("AdId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
@@ -289,6 +311,10 @@ namespace PawMates.net.Migrations
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("ImageUrls")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -299,13 +325,9 @@ namespace PawMates.net.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("PetId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("AdId");
 
                     b.ToTable("Pets");
                 });
@@ -320,7 +342,7 @@ namespace PawMates.net.Migrations
                     b.Property<bool>("IsVaccinated")
                         .HasColumnType("bit");
 
-                    b.HasDiscriminator().HasValue("Adoption");
+                    b.HasDiscriminator().HasValue("AdoptionAd");
                 });
 
             modelBuilder.Entity("PawMates.net.Models.JobAd", b =>
@@ -356,7 +378,7 @@ namespace PawMates.net.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue("LostPet");
+                    b.HasDiscriminator().HasValue("LostAd");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -412,42 +434,29 @@ namespace PawMates.net.Migrations
 
             modelBuilder.Entity("PawMates.net.Models.Ad", b =>
                 {
-                    b.HasOne("PawMates.net.Models.Pet", "Pet")
+                    b.HasOne("PawMates.net.Models.AppUser", "AppUser")
                         .WithMany("Ads")
-                        .HasForeignKey("PetId")
+                        .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PawMates.net.Models.AppUser", "User")
-                        .WithMany("Ads")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Pet");
-
-                    b.Navigation("User");
+                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("PawMates.net.Models.Pet", b =>
                 {
-                    b.HasOne("PawMates.net.Models.AppUser", "User")
+                    b.HasOne("PawMates.net.Models.Ad", null)
                         .WithMany("Pets")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
+                        .HasForeignKey("AdId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("PawMates.net.Models.AppUser", b =>
+            modelBuilder.Entity("PawMates.net.Models.Ad", b =>
                 {
-                    b.Navigation("Ads");
-
                     b.Navigation("Pets");
                 });
 
-            modelBuilder.Entity("PawMates.net.Models.Pet", b =>
+            modelBuilder.Entity("PawMates.net.Models.AppUser", b =>
                 {
                     b.Navigation("Ads");
                 });

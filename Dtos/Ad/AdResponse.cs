@@ -10,6 +10,6 @@ namespace PawMates.net.Dtos.Ad
         public string Title { get; set; }
         public string Location { get; set; }
         public DateTime DatePosted { get; set; }
-        public PetResponse Pet { get; set; }
+        public PetResponse PetDetails { get; set; }
     }
 }

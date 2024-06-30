@@ -33,6 +33,7 @@ namespace PawMates.net.Repository
 
         public async Task<PetResponse> CreateAsync(CreatePetRequest petDto)
         {
+            System.Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             var pet = _mapper.Map<Pet>(petDto);
             _context.Pets.Add(pet);
             await _context.SaveChangesAsync();

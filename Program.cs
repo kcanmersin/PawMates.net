@@ -9,6 +9,13 @@ using Microsoft.IdentityModel.Tokens;
 using PawMates.net.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using PawMates.net.Interfaces;
+using PawMates.net.Repository;
+using api.Service;
+using api.Interfaces;
+using PawMates.net.Service;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using PawMates.net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,20 +23,20 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-// Swagger Configuration
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo { Title = "PawMates API", Version = "v1" });
+
+    // Add security definition if you're using JWT
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        In = ParameterLocation.Header,
-        Description = "Please enter a valid token",
+        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
         Name = "Authorization",
-        Type = SecuritySchemeType.Http,
-        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
         Scheme = "Bearer"
     });
+
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -37,14 +44,22 @@ builder.Services.AddSwaggerGen(options =>
             {
                 Reference = new OpenApiReference
                 {
-                    Type=ReferenceType.SecurityScheme,
-                    Id="Bearer"
-                }
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                },
+                Scheme = "oauth2",
+                Name = "Bearer",
+                In = ParameterLocation.Header,
             },
-            new string[]{}
+            new List<string>()
         }
     });
+
+    // Configure Swagger to use file upload
+    options.OperationFilter<SwaggerFileUploadOperationFilter>();
 });
+
+
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
 {
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -57,11 +72,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Identity Configuration
 builder.Services.AddIdentity<AppUser, IdentityRole>(opts =>
 {
-    opts.Password.RequireDigit = true;
-    opts.Password.RequireLowercase = true;
-    opts.Password.RequireUppercase = true;
-    opts.Password.RequireNonAlphanumeric = true;
-    opts.Password.RequiredLength = 6;
+    opts.Password.RequireDigit = false;
+    opts.Password.RequireLowercase = false;
+    opts.Password.RequireUppercase = false;
+    opts.Password.RequireNonAlphanumeric = false;
+    opts.Password.RequiredLength = 4;
 })
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -88,7 +103,16 @@ builder.Services.AddAuthentication(options =>
 // AutoMapper Configuration
 builder.Services.AddAutoMapper(typeof(ApplicationMappingProfile));
 
-// Application Services
+// Register application services
+builder.Services.AddScoped<IPetRepository, PetRepository>();
+builder.Services.AddScoped<IAdRepository, AdRepository>();
+builder.Services.AddScoped<IJobAdRepository, JobAdRepository>();
+builder.Services.AddScoped<ILostAdRepository, LostAdRepository>();
+builder.Services.AddScoped<IAdoptionAdRepository, AdoptionAdRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IImageStorageService, LocalImageStorageService>();
+
+
 
 var app = builder.Build();
 
@@ -114,5 +138,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseStaticFiles();
 
 app.Run();

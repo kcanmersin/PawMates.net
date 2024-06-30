@@ -23,10 +23,8 @@ namespace PawMates.net.Models
         [MaxLength(500)]
         public string Description { get; set; }
 
-        public virtual ICollection<Ad> Ads { get; set; } = new List<Ad>();
 
-        public string UserId { get; set; }
-        [ForeignKey("UserId")]
-        public virtual AppUser User { get; set; }
+        public List<string> ImageUrls { get; set; } = new List<string>();
+
     }
 }

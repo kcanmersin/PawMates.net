@@ -16,5 +16,8 @@ namespace PawMates.net.Dtos.Pet
 
         [MaxLength(500)]
         public string Description { get; set; }
+
+        // public List<string> ImageUrls { get; set; } = new List<string>();
+          public IFormFileCollection ImageFiles { get; set; }
     }
 }
