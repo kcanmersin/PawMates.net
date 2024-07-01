@@ -1,0 +1,93 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\231b83ef-74f5-4374-a099-31471836cdf6.png",
+      "PackagePath": "staticwebassets\\images\\231b83ef-74f5-4374-a099-31471836cdf6.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\2e34d4c2-535d-48f8-b51b-29a9bee40abb.png",
+      "PackagePath": "staticwebassets\\images\\2e34d4c2-535d-48f8-b51b-29a9bee40abb.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\3d041265-703f-4928-a3d1-fb1dc2444616.png",
+      "PackagePath": "staticwebassets\\images\\3d041265-703f-4928-a3d1-fb1dc2444616.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\461335fb-71c2-4088-8b4f-2dce52f72249.png",
+      "PackagePath": "staticwebassets\\images\\461335fb-71c2-4088-8b4f-2dce52f72249.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\4e9754ef-6332-47e1-9d4e-fa2b3cbcd6db.png",
+      "PackagePath": "staticwebassets\\images\\4e9754ef-6332-47e1-9d4e-fa2b3cbcd6db.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\53356d77-6535-49b5-b99f-017627a75369.png",
+      "PackagePath": "staticwebassets\\images\\53356d77-6535-49b5-b99f-017627a75369.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\5779a3f3-6728-4944-ab0f-ccecccbc67aa.png",
+      "PackagePath": "staticwebassets\\images\\5779a3f3-6728-4944-ab0f-ccecccbc67aa.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\70212acd-5549-46bd-b9d8-3b26567d3aec.png",
+      "PackagePath": "staticwebassets\\images\\70212acd-5549-46bd-b9d8-3b26567d3aec.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\7c8e9780-ad0c-4559-bf7f-9c360fba33f9.png",
+      "PackagePath": "staticwebassets\\images\\7c8e9780-ad0c-4559-bf7f-9c360fba33f9.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\88a42c76-6ab8-438d-8f2d-1cae782a2a4c.png",
+      "PackagePath": "staticwebassets\\images\\88a42c76-6ab8-438d-8f2d-1cae782a2a4c.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\95785e15-304d-45f7-8f10-bddbbfd0ebfc.png",
+      "PackagePath": "staticwebassets\\images\\95785e15-304d-45f7-8f10-bddbbfd0ebfc.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\c32d6e86-74f4-4ad0-bec6-34faa9dd8c70.png",
+      "PackagePath": "staticwebassets\\images\\c32d6e86-74f4-4ad0-bec6-34faa9dd8c70.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\c3f24927-2af2-4db8-8c61-ebb3acb984ee.png",
+      "PackagePath": "staticwebassets\\images\\c3f24927-2af2-4db8-8c61-ebb3acb984ee.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\c86b2fef-90cb-47f8-a4f7-f60ba5abc016.png",
+      "PackagePath": "staticwebassets\\images\\c86b2fef-90cb-47f8-a4f7-f60ba5abc016.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\ce596d22-0824-4614-9984-6208a705fdde.png",
+      "PackagePath": "staticwebassets\\images\\ce596d22-0824-4614-9984-6208a705fdde.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\e21036bd-95ea-4a94-9498-c86881263245.png",
+      "PackagePath": "staticwebassets\\images\\e21036bd-95ea-4a94-9498-c86881263245.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\efbb6c04-e549-44a1-8b78-46f2f4533984.png",
+      "PackagePath": "staticwebassets\\images\\efbb6c04-e549-44a1-8b78-46f2f4533984.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\wwwroot\\images\\f0c54059-fbf1-449d-b27b-135b36e9d8ca.png",
+      "PackagePath": "staticwebassets\\images\\f0c54059-fbf1-449d-b27b-135b36e9d8ca.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.PawMates.net.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.PawMates.net.props",
+      "PackagePath": "build\\PawMates.net.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.PawMates.net.props",
+      "PackagePath": "buildMultiTargeting\\PawMates.net.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.PawMates.net.props",
+      "PackagePath": "buildTransitive\\PawMates.net.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

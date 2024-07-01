@@ -16,15 +16,14 @@ namespace PawMates.net.Models
         [Required]
         public string Name { get; set; }
 
-        public string Type { get; set; } // Dog, Cat, etc.
+        // public string Type { get; set; } // Dog, Cat, etc.
 
-        public int Age { get; set; }
+        // public int Age { get; set; }
 
-        [MaxLength(500)]
-        public string Description { get; set; }
+        // [MaxLength(500)]
+        // public string Description { get; set; }
 
 
-        public List<string> ImageUrls { get; set; } = new List<string>();
 
     }
 }

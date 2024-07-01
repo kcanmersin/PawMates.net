@@ -7,7 +7,5 @@ namespace PawMates.net.Models
     {
            public virtual ICollection<Ad> Ads { get; set; } = new HashSet<Ad>();
 
-                    public string ProfilePictureUrl { get; set; }
-        public string BackgroundPictureUrl { get; set; }
     }
 }

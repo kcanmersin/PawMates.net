@@ -11,16 +11,14 @@ namespace PawMates.net.Dtos.Ad.Job
         // [MaxLength(500)]
         // public string JobDescription { get; set; }
 
-        [Required]
-        [MaxLength(100)]
-        public string JobTitle { get; set; }
+      //  [Required]
+       // public string JobTitle { get; set; }
         
-        [Required]
+       // [Required]
         //working hour
-        public int WorkingHour { get; set; }
+       // public int WorkingHour { get; set; }
 
 
-        [MaxLength(100)]
-        public string Salary { get; set; }
+       // public string Salary { get; set; }
     }
 }

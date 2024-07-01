@@ -5,14 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using PawMates.Data;
 
 #nullable disable
 
 namespace PawMates.net.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240630090436_AddImageUrlsToPet")]
-    partial class AddImageUrlsToPet
+    [Migration("20240701180434_AddImageUrlsToPet11")]
+    partial class AddImageUrlsToPet11
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,13 +54,13 @@ namespace PawMates.net.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8923131c-71f1-4813-a984-81ea16ea6bc5",
+                            Id = "388ae59e-275c-4f1d-993b-39d29dbe8edb",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "dc137c6f-5652-472e-baa0-110082db20ad",
+                            Id = "6ea5b5c7-33ff-4dff-9968-de69a3cc5d88",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -179,41 +180,27 @@ namespace PawMates.net.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdId"));
 
-                    b.Property<string>("AdType")
-                        .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("nvarchar(13)");
-
                     b.Property<string>("AppUserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("DatePosted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
-
-                    b.Property<string>("Description")
+                    b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
 
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                    b.Property<int>("PetId")
+                        .HasColumnType("int");
 
                     b.HasKey("AdId");
 
                     b.HasIndex("AppUserId");
 
+                    b.HasIndex("PetId");
+
                     b.ToTable("Ads");
 
-                    b.HasDiscriminator<string>("AdType").HasValue("Ad");
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Ad");
 
                     b.UseTphMappingStrategy();
                 });
@@ -225,11 +212,6 @@ namespace PawMates.net.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
-
-                    b.Property<string>("BackgroundPictureUrl")
-                        .IsRequired()
-                        .HasMaxLength(2048)
-                        .HasColumnType("nvarchar(2048)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -265,11 +247,6 @@ namespace PawMates.net.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("ProfilePictureUrl")
-                        .IsRequired()
-                        .HasMaxLength(2048)
-                        .HasColumnType("nvarchar(2048)");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -293,6 +270,28 @@ namespace PawMates.net.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("PawMates.net.Models.Image", b =>
+                {
+                    b.Property<int>("ImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ImageId"));
+
+                    b.Property<int>("AdId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ImageId");
+
+                    b.HasIndex("AdId");
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("PawMates.net.Models.Pet", b =>
                 {
                     b.Property<int>("PetId")
@@ -301,33 +300,11 @@ namespace PawMates.net.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PetId"));
 
-                    b.Property<int?>("AdId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("ImageUrls")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.HasKey("PetId");
-
-                    b.HasIndex("AdId");
 
                     b.ToTable("Pets");
                 });
@@ -348,17 +325,6 @@ namespace PawMates.net.Migrations
             modelBuilder.Entity("PawMates.net.Models.JobAd", b =>
                 {
                     b.HasBaseType("PawMates.net.Models.Ad");
-
-                    b.Property<string>("JobTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Salary")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("WorkingHour")
-                        .HasColumnType("int");
 
                     b.HasDiscriminator().HasValue("JobAd");
                 });
@@ -440,20 +406,31 @@ namespace PawMates.net.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PawMates.net.Models.Pet", "Pet")
+                        .WithMany()
+                        .HasForeignKey("PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("AppUser");
+
+                    b.Navigation("Pet");
                 });
 
-            modelBuilder.Entity("PawMates.net.Models.Pet", b =>
+            modelBuilder.Entity("PawMates.net.Models.Image", b =>
                 {
-                    b.HasOne("PawMates.net.Models.Ad", null)
-                        .WithMany("Pets")
+                    b.HasOne("PawMates.net.Models.Ad", "Ad")
+                        .WithMany("Images")
                         .HasForeignKey("AdId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ad");
                 });
 
             modelBuilder.Entity("PawMates.net.Models.Ad", b =>
                 {
-                    b.Navigation("Pets");
+                    b.Navigation("Images");
                 });
 
             modelBuilder.Entity("PawMates.net.Models.AppUser", b =>

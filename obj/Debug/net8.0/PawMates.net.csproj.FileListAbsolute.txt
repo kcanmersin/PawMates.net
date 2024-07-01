@@ -144,3 +144,4 @@ C:\Users\KC\Desktop\kod\.nets\PawMates.net\obj\Debug\net8.0\PawMates.net.genrunt
 C:\Users\KC\Desktop\kod\.nets\PawMates.net\obj\Debug\net8.0\ref\PawMates.net.dll
 C:\Users\KC\Desktop\kod\.nets\PawMates.net\bin\Debug\net8.0\AutoMapper.dll
 C:\Users\KC\Desktop\kod\.nets\PawMates.net\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\KC\Desktop\kod\.nets\PawMates.net\bin\Debug\net8.0\PawMates.net.staticwebassets.runtime.json

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using PawMates.Data;
 using PawMates.net.Dtos.Ad;
 using PawMates.net.Interfaces;
 using PawMates.net.Models;

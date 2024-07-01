@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PawMates.net.Migrations
 {
     /// <inheritdoc />
-    public partial class AdjustCascadeDelete111122 : Migration
+    public partial class AddImageUrlsToPet11 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,6 +53,19 @@ namespace PawMates.net.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Pets",
+                columns: table => new
+                {
+                    PetId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pets", x => x.PetId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -69,38 +82,6 @@ namespace PawMates.net.Migrations
                         name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Ads",
-                columns: table => new
-                {
-                    AdId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DatePosted = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
-                    Title = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Location = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    AdType = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
-                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    IsVaccinated = table.Column<bool>(type: "bit", nullable: true),
-                    AdoptionFee = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    JobTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    WorkingHour = table.Column<int>(type: "int", nullable: true),
-                    Salary = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastSeenLocation = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateLost = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    MicrochipId = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Ads", x => x.AdId);
-                    table.ForeignKey(
-                        name: "FK_Ads_AspNetUsers_AppUserId",
-                        column: x => x.AppUserId,
-                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -191,22 +172,51 @@ namespace PawMates.net.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Pets",
+                name: "Ads",
                 columns: table => new
                 {
-                    PetId = table.Column<int>(type: "int", nullable: false)
+                    AdId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Age = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    AdId = table.Column<int>(type: "int", nullable: true)
+                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    PetId = table.Column<int>(type: "int", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
+                    IsVaccinated = table.Column<bool>(type: "bit", nullable: true),
+                    AdoptionFee = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    LastSeenLocation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateLost = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    MicrochipId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pets", x => x.PetId);
+                    table.PrimaryKey("PK_Ads", x => x.AdId);
                     table.ForeignKey(
-                        name: "FK_Pets_Ads_AdId",
+                        name: "FK_Ads_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Ads_Pets_PetId",
+                        column: x => x.PetId,
+                        principalTable: "Pets",
+                        principalColumn: "PetId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Images",
+                columns: table => new
+                {
+                    ImageId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FilePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AdId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Images", x => x.ImageId);
+                    table.ForeignKey(
+                        name: "FK_Images_Ads_AdId",
                         column: x => x.AdId,
                         principalTable: "Ads",
                         principalColumn: "AdId",
@@ -218,14 +228,19 @@ namespace PawMates.net.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "b92b3baf-eeb8-4cd6-a79b-760bb76ba5b4", null, "User", "USER" },
-                    { "f57bfc51-d6af-4310-b469-69e932d8b127", null, "Admin", "ADMIN" }
+                    { "388ae59e-275c-4f1d-993b-39d29dbe8edb", null, "Admin", "ADMIN" },
+                    { "6ea5b5c7-33ff-4dff-9968-de69a3cc5d88", null, "User", "USER" }
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ads_AppUserId",
                 table: "Ads",
                 column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ads_PetId",
+                table: "Ads",
+                column: "PetId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -267,8 +282,8 @@ namespace PawMates.net.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pets_AdId",
-                table: "Pets",
+                name: "IX_Images_AdId",
+                table: "Images",
                 column: "AdId");
         }
 
@@ -291,7 +306,7 @@ namespace PawMates.net.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Pets");
+                name: "Images");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -301,6 +316,9 @@ namespace PawMates.net.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Pets");
         }
     }
 }

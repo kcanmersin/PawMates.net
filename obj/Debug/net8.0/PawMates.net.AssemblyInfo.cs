@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PawMates.net")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89b5add4eb86da23ea743000594d52447e4fc9dd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f6b0fec6ccac22b3b243c99666cdc325b23050b")]
 [assembly: System.Reflection.AssemblyProductAttribute("PawMates.net")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PawMates.net")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

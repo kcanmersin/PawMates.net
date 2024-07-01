@@ -16,6 +16,7 @@ using api.Interfaces;
 using PawMates.net.Service;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using PawMates.net;
+using PawMates.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

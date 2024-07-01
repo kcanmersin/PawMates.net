@@ -1,10 +1,12 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using PawMates.net.Dtos;
 using PawMates.net.Dtos.Ad;
 using PawMates.net.Dtos.Ad.Adoption;
 using PawMates.net.Dtos.Ad.Job;
 using PawMates.net.Dtos.Pet;
 using PawMates.net.Models;
-using System.Linq;
+using System;
 
 public class ApplicationMappingProfile : Profile
 {
@@ -15,38 +17,50 @@ public class ApplicationMappingProfile : Profile
         CreateMap<CreatePetRequest, Pet>();
         CreateMap<UpdatePetRequest, Pet>();
 
-        // Generic Ad mappings
-        CreateMap<Ad, AdResponse>();
+        // Ad mappings
         CreateMap<CreateAdRequest, Ad>()
-            .ForMember(dest => dest.DatePosted, opt => opt.MapFrom(src => DateTime.UtcNow)); // Assuming ads have a DatePosted property
-        CreateMap<UpdateAdRequest, Ad>();
+            //.ForMember(dest => dest.DatePosted, opt => opt.MapFrom(src => DateTime.UtcNow))
+            .ForMember(dest => dest.Pet, opt => opt.MapFrom(src => src.PetDetails))
+            .ForMember(dest => dest.Images, opt => opt.Ignore()); // Handle images outside of AutoMapper
 
-        // Specific Ad Type Mappings
-        // Adoption Ads
+        CreateMap<UpdateAdRequest, Ad>()
+            .ForMember(dest => dest.Pet, opt => opt.MapFrom(src => src.PetDetails))
+            .ForMember(dest => dest.Images, opt => opt.Ignore()); // Handle images outside of AutoMapper
+
+        // Job Ad mappings
+        CreateMap<CreateJobAdRequest, JobAd>()
+            .IncludeBase<CreateAdRequest, Ad>();
+
+        CreateMap<UpdateJobAdRequest, JobAd>()
+            .IncludeBase<UpdateAdRequest, Ad>();
+
+        // Adoption Ad mappings
         CreateMap<AdoptionAd, AdoptionAdResponse>();
-        CreateMap<CreateAdoptionAdRequest, AdoptionAd>();
-        CreateMap<UpdateAdoptionAdRequest, AdoptionAd>();
+        CreateMap<CreateAdoptionAdRequest, AdoptionAd>()
+            .IncludeBase<CreateAdRequest, Ad>();
+        CreateMap<UpdateAdoptionAdRequest, AdoptionAd>()
+            .IncludeBase<UpdateAdRequest, Ad>();
 
-        // Job Ads
-        CreateMap<JobAd, JobAdResponse>();
-        CreateMap<CreateJobAdRequest, JobAd>();
-        CreateMap<UpdateJobAdRequest, JobAd>();
-
-        // Lost Ads
+        // Lost Ad mappings
         CreateMap<LostAd, LostAdResponse>();
-        CreateMap<CreateLostAdRequest, LostAd>();
-        CreateMap<UpdateLostAdRequest, LostAd>();
+        CreateMap<CreateLostAdRequest, LostAd>()
+            .IncludeBase<CreateAdRequest, Ad>();
+        CreateMap<UpdateLostAdRequest, LostAd>()
+            .IncludeBase<UpdateAdRequest, Ad>();
 
-        // for creating pet and ad at the same time
-        CreateMap<CreateAdRequest, Ad>()
-            .ForMember(dest => dest.DatePosted, opt => opt.MapFrom(src => DateTime.UtcNow))
-            .ForMember(dest => dest.Pets, opt => opt.MapFrom(src => src.PetDetails));
+        // Additional Ad mappings for responses
+        CreateMap<Ad, AdResponse>()
+            .ForMember(dest => dest.PetDetails, opt => opt.MapFrom(src => src.Pet));
 
-        // User Mappings (if applicable)
-        // CreateMap<AppUser, UserDTO>();  // Assuming a UserDTO exists
-        // CreateMap<RegisterDTO, AppUser>(); // Assuming a RegisterDTO exists for registration purposes
-        // CreateMap<LoginDTO, AppUser>(); // Assuming a LoginDTO exists for login purposes
+        // Job Ad specific mappings for responses
+        CreateMap<JobAd, JobAdResponse>();
 
-        // You can continue adding mappings for other models as necessary
+        // Image mappings (assuming handling is done prior)
+        // CreateMap<Image, ImageDto>(); // Assuming an ImageDto exists for transferring image data
+
+        // User mappings (if applicable)
+        // CreateMap<AppUser, UserDTO>(); // Assuming a UserDTO exists
+        // CreateMap<RegisterDTO, AppUser>(); // For user registration
+        // CreateMap<LoginDTO, AppUser>(); // For user login
     }
 }

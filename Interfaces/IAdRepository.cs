@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using PawMates.net.Dtos;
 using PawMates.net.Dtos.Ad;
 
 namespace PawMates.net.Interfaces

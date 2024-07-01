@@ -9,23 +9,25 @@ namespace PawMates.net.Models
         [Key]
         public int AdId { get; set; }
 
-        public DateTime DatePosted { get; set; }
+        // public DateTime DatePosted { get; set; }
 
-        // [Required]
-        public string Title { get; set; }
+        // // [Required]
+        // public string Title { get; set; }
 
-        // [Required]
-        public string Description { get; set; }
+        // // [Required]
+        // public string Description { get; set; }
 
-        public string Location { get; set; }
+        // public string Location { get; set; }
 
         public virtual string AdType { get; }
 
 
-    [ForeignKey("AppUser")]
+        [ForeignKey("AppUser")]
         public string AppUserId { get; set; }
         public virtual AppUser AppUser { get; set; }
 
-        public virtual ICollection<Pet> Pets { get; set; } = new List<Pet>();
+        // public virtual ICollection<Pet> Pets { get; set; } = new List<Pet>();
+        public virtual Pet Pet { get; set; }
+         public virtual ICollection<Image> Images { get; set; } = new List<Image>();
     }
 }

@@ -10,10 +10,10 @@ namespace PawMates.net.Dtos.Ad.Job
         // [MaxLength(500)]
         // public string JobDescription { get; set; }
 
-        [MaxLength(100)]
+      //  [MaxLength(100)]
         public string Salary { get; set; } 
 
-        [MaxLength(100)]
+       // [MaxLength(100)]
         public string JobTitle { get; set; }
 
         public int WorkingHour { get; set; }
