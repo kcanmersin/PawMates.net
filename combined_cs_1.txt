@@ -1,0 +1,3240 @@
+Content of Program.cs:
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.OpenApi.Models;
+using Microsoft.IdentityModel.Tokens;
+using PawMates.net.Models;
+using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using PawMates.net.Interfaces;
+using PawMates.net.Repository;
+using api.Service;
+using api.Interfaces;
+using PawMates.net.Service;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using PawMates.net;
+using PawMates.Data;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "PawMates API", Version = "v1" });
+
+    // Add security definition if you're using JWT
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                },
+                Scheme = "oauth2",
+                Name = "Bearer",
+                In = ParameterLocation.Header,
+            },
+            new List<string>()
+        }
+    });
+
+    // Configure Swagger to use file upload
+    options.OperationFilter<SwaggerFileUploadOperationFilter>();
+});
+
+
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+{
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+});
+
+// Database context
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Identity Configuration
+builder.Services.AddIdentity<AppUser, IdentityRole>(opts =>
+{
+    opts.Password.RequireDigit = false;
+    opts.Password.RequireLowercase = false;
+    opts.Password.RequireUppercase = false;
+    opts.Password.RequireNonAlphanumeric = false;
+    opts.Password.RequiredLength = 4;
+})
+.AddEntityFrameworkStores<ApplicationDbContext>();
+
+// JWT Authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidIssuer = builder.Configuration["JWT:Issuer"],
+        ValidateAudience = true,
+        ValidAudience = builder.Configuration["JWT:Audience"],
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(
+            System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:SigningKey"])
+        )
+    };
+});
+
+// AutoMapper Configuration
+builder.Services.AddAutoMapper(typeof(ApplicationMappingProfile));
+
+// Register application services
+builder.Services.AddScoped<IPetRepository, PetRepository>();
+builder.Services.AddScoped<IAdRepository, AdRepository>();
+builder.Services.AddScoped<IJobAdRepository, JobAdRepository>();
+builder.Services.AddScoped<ILostAdRepository, LostAdRepository>();
+builder.Services.AddScoped<IAdoptionAdRepository, AdoptionAdRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IImageStorageService, LocalImageStorageService>();
+
+
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "PawMates API V1");
+    });
+}
+
+app.UseHttpsRedirection();
+
+app.UseCors(builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.UseStaticFiles();
+
+app.Run();
+
+========================================
+Content of SwaggerFileUploadOperationFilter.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
+
+namespace PawMates.net
+{
+  
+public class SwaggerFileUploadOperationFilter : IOperationFilter
+{
+    public void Apply(OpenApiOperation operation, OperationFilterContext context)
+    {
+        if (operation.Parameters == null)
+            return;
+
+        foreach (var parameter in operation.Parameters)
+        {
+            var description = context.ApiDescription.ParameterDescriptions.First(p => p.Name == parameter.Name);
+            var routeInfo = description.RouteInfo;
+
+            if (parameter.Description == "File to upload")
+            {
+                operation.Parameters.Remove(parameter);
+                operation.RequestBody = new OpenApiRequestBody
+                {
+                    Content = {
+                        ["multipart/form-data"] = new OpenApiMediaType
+                        {
+                            Schema = new OpenApiSchema
+                            {
+                                Type = "object",
+                                Properties = {
+                                    ["file"] = new OpenApiSchema
+                                    {
+                                        Description = "Upload File",
+                                        Type = "file",
+                                        Format = "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+                break;
+            }
+        }
+    }
+}
+
+}
+========================================
+Content of Controllers\AccountController.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using api.Dtos.Account;
+using api.Interfaces;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using PawMates.net.Models;
+
+namespace api.Controllers
+{
+    [Route("api/account")]
+    [ApiController]
+    public class AccountController : ControllerBase
+    {
+        private readonly UserManager<AppUser> _userManager;
+        private readonly ITokenService _tokenService;
+        private readonly SignInManager<AppUser> _signinManager;
+        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager)
+        {
+            _userManager = userManager;
+            _tokenService = tokenService;
+            _signinManager = signInManager;
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginDto loginDto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower());
+
+            if (user == null) return Unauthorized("Invalid username!");
+
+            var result = await _signinManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
+
+            if (!result.Succeeded) return Unauthorized("Username not found and/or password incorrect");
+
+            return Ok(
+                new NewUserDto
+                {
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    Token = _tokenService.CreateToken(user)
+                }
+            );
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var appUser = new AppUser
+                {
+                    UserName = registerDto.Username,
+                    Email = registerDto.Email
+                };
+
+                var createdUser = await _userManager.CreateAsync(appUser, registerDto.Password);
+
+                if (createdUser.Succeeded)
+                {
+                    var roleResult = await _userManager.AddToRoleAsync(appUser, "User");
+                    if (roleResult.Succeeded)
+                    {
+                        return Ok(
+                            new NewUserDto
+                            {
+                                UserName = appUser.UserName,
+                                Email = appUser.Email,
+                                Token = _tokenService.CreateToken(appUser)
+                            }
+                        );
+                    }
+                    else
+                    {
+                        return StatusCode(500, roleResult.Errors);
+                    }
+                }
+                else
+                {
+                    return StatusCode(500, createdUser.Errors);
+                }
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e);
+            }
+        }
+    }
+}
+========================================
+Content of Controllers\AdoptionAdController.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using PawMates.net.Dtos.Ad.Adoption;
+using PawMates.net.Interfaces;
+using PawMates.net.Models;
+
+namespace PawMates.net.Controllers
+{
+    [Route("api/adoptionad")]
+    [ApiController]
+    public class AdoptionAdController : ControllerBase
+    {
+        private readonly IAdoptionAdRepository _adoptionAdRepo;
+        private readonly IMapper _mapper;
+        
+        public AdoptionAdController(IAdoptionAdRepository adoptionAdRepo, IMapper mapper)
+        {
+            _adoptionAdRepo = adoptionAdRepo;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var adoptionAds = await _adoptionAdRepo.GetAllAsync();
+            var adoptionAdDtos = _mapper.Map<List<AdoptionAdResponse>>(adoptionAds);
+            return Ok(adoptionAdDtos);
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var adoptionAd = await _adoptionAdRepo.GetByIdAsync(id);
+            if (adoptionAd == null) return NotFound();
+            var adoptionAdDto = _mapper.Map<AdoptionAdResponse>(adoptionAd);
+            return Ok(adoptionAdDto);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateAdoptionAdRequest adoptionAdDto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var adoptionAd = await _adoptionAdRepo.CreateAsync(adoptionAdDto);
+            var createdAdoptionAdDto = _mapper.Map<AdoptionAdResponse>(adoptionAd);
+            return CreatedAtAction(nameof(GetById), new { id = adoptionAd.AdId }, createdAdoptionAdDto);
+        }
+
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, [FromBody] UpdateAdoptionAdRequest adoptionAdDto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var updatedAdoptionAd = await _adoptionAdRepo.UpdateAsync(id, adoptionAdDto);
+            if (updatedAdoptionAd == null) return NotFound();
+            var updatedAdoptionAdDto = _mapper.Map<AdoptionAdResponse>(updatedAdoptionAd);
+            return Ok(updatedAdoptionAdDto);
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var adoptionAd = await _adoptionAdRepo.DeleteAsync(id);
+            if (adoptionAd == null) return NotFound();
+            return NoContent();
+        }
+    }
+}
+
+========================================
+Content of Controllers\FileUploadController.cs:
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using System.Threading.Tasks;
+using PawMates.net.Models;
+using PawMates.net.Interfaces;
+
+public class FileUploadController : Controller
+{
+
+private readonly IImageStorageService _imageStorageService;
+
+public FileUploadController(IImageStorageService imageStorageService)
+{
+    _imageStorageService = imageStorageService;
+}
+
+
+
+    [HttpPost("upload")]
+public async Task<IActionResult> UploadImage([FromForm] IFormFile image)
+{
+    if (image == null || image.Length == 0)
+        return BadRequest("No file uploaded.");
+
+    var filePath = await _imageStorageService.SaveImageAsync(image);
+    return Ok(new { Path = filePath });
+}
+
+}
+
+========================================
+Content of Controllers\JobAdController.cs:
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
+using PawMates.net.Dtos.Ad.Job;
+using PawMates.net.Interfaces;
+using Microsoft.AspNetCore.Identity;
+using PawMates.net.Models;
+
+namespace PawMates.net.Controllers
+{
+    [Route("api/jobad")]
+    [ApiController]
+    // [Authorize]
+    public class JobAdController : ControllerBase
+    {
+        string AdminId = "bc4ed45f-b25e-4e00-9a5d-0a52409dc97c";
+        private readonly IJobAdRepository _jobAdRepo;
+        private readonly IMapper _mapper;
+        private readonly UserManager<AppUser> _userManager;
+
+        private readonly IImageStorageService _imageStorageService;
+        public JobAdController(IJobAdRepository jobAdRepo, IMapper mapper, UserManager<AppUser> userManager, IImageStorageService imageStorageService)
+        {
+            _jobAdRepo = jobAdRepo;
+            _mapper = mapper;
+            _userManager = userManager; // Correctly initialize _userManager
+            _imageStorageService = imageStorageService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var jobAds = await _jobAdRepo.GetAllAsync();
+            return Ok(jobAds);
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var jobAd = await _jobAdRepo.GetByIdAsync(id);
+            if (jobAd == null)
+                return NotFound();
+
+            return Ok(jobAd);
+        }
+[HttpPost]
+public async Task<IActionResult> Create([FromForm] CreateJobAdRequest jobAdDto)
+{
+    if (!ModelState.IsValid)
+    {
+        return BadRequest(ModelState);
+    }
+    System.Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXX");
+    System.Console.WriteLine(jobAdDto.PetDetails.Name);
+    System.Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXX");
+
+  
+
+    jobAdDto.AppUserId = AdminId;
+
+
+  
+
+    var createdJobAd = await _jobAdRepo.CreateAsync(jobAdDto);
+    if (createdJobAd == null)
+    {
+        return StatusCode(500, "Failed to create job ad");
+    }
+
+    // Assuming `GetById` is an existing method that can retrieve the job ad details
+    return CreatedAtAction(nameof(GetById), new { id = createdJobAd.AdId }, createdJobAd);
+}
+
+
+
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, [FromBody] UpdateJobAdRequest jobAdDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var updatedJobAd = await _jobAdRepo.UpdateAsync(id, jobAdDto);
+            if (updatedJobAd == null)
+            {
+                return NotFound("Job ad not found.");
+            }
+
+            return Ok(updatedJobAd);
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var result = await _jobAdRepo.DeleteAsync(id);
+            if (result == null)
+            {
+                return NotFound("Job ad not found or error deleting.");
+            }
+
+            return NoContent();
+        }
+    }
+}
+
+========================================
+Content of Controllers\LostAdController.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using PawMates.net.Dtos.Ad;
+using PawMates.net.Interfaces;
+using PawMates.net.Models;
+
+namespace PawMates.net.Controllers
+{
+    [Route("api/lostad")]
+    [ApiController]
+    public class LostAdController : ControllerBase
+    {
+        private readonly ILostAdRepository _lostAdRepo;
+        private readonly IMapper _mapper;
+        
+        public LostAdController(ILostAdRepository lostAdRepo, IMapper mapper)
+        {
+            _lostAdRepo = lostAdRepo;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var lostAds = await _lostAdRepo.GetAllAsync();
+            var lostAdDtos = _mapper.Map<List<LostAdResponse>>(lostAds);
+            return Ok(lostAdDtos);
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var lostAd = await _lostAdRepo.GetByIdAsync(id);
+            if (lostAd == null) return NotFound();
+            var lostAdDto = _mapper.Map<LostAdResponse>(lostAd);
+            return Ok(lostAdDto);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateLostAdRequest lostAdDto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var lostAd = await _lostAdRepo.CreateAsync(lostAdDto);
+            
+
+            var createdLostAdDto = _mapper.Map<LostAdResponse>(lostAd);
+            return CreatedAtAction(nameof(GetById), new { id = lostAd.AdId }, createdLostAdDto);
+        }
+
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, [FromBody] UpdateLostAdRequest lostAdDto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var updatedLostAd = await _lostAdRepo.UpdateAsync(id, lostAdDto);
+            if (updatedLostAd == null) return NotFound();
+            var updatedLostAdDto = _mapper.Map<LostAdResponse>(updatedLostAd);
+            return Ok(updatedLostAdDto);
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var lostAd = await _lostAdRepo.DeleteAsync(id);
+            if (lostAd == null) return NotFound();
+            return NoContent();
+        }
+    }
+}
+
+========================================
+Content of Controllers\PetController.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using PawMates.net.Dtos.Pet;
+using PawMates.net.Interfaces;
+using PawMates.net.Models;
+
+namespace PawMates.net.Controllers
+{
+    [Route("api/pet")]
+    [ApiController]
+    public class PetController : ControllerBase
+    {
+        private readonly IPetRepository _petRepo;
+        private readonly IMapper _mapper;
+        
+        public PetController(IPetRepository petRepo, IMapper mapper)
+        {
+            _petRepo = petRepo;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var pets = await _petRepo.GetAllAsync();
+            var petDtos = _mapper.Map<List<PetResponse>>(pets);
+            return Ok(petDtos);
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var pet = await _petRepo.GetByIdAsync(id);
+            if (pet == null) return NotFound();
+            var petDto = _mapper.Map<PetResponse>(pet);
+            return Ok(petDto);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreatePetRequest petDto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var pet = await _petRepo.CreateAsync(petDto);
+
+            
+         
+            var createdPetDto = _mapper.Map<PetResponse>(pet);
+            return CreatedAtAction(nameof(GetById), new { id = pet.PetId }, createdPetDto);
+        }
+
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, [FromBody] UpdatePetRequest petDto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var updatedPet = await _petRepo.UpdateAsync(id, petDto);
+            if (updatedPet == null) return NotFound();
+            var updatedPetDto = _mapper.Map<PetResponse>(updatedPet);
+            return Ok(updatedPetDto);
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var pet = await _petRepo.DeleteAsync(id);
+            if (pet == null) return NotFound();
+            return NoContent();
+        }
+    }
+}
+
+========================================
+Content of Data\ApplicationDBContext.cs:
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using PawMates.net.Models;
+
+namespace PawMates.Data
+{
+    public class ApplicationDbContext : IdentityDbContext<AppUser>
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<Ad> Ads { get; set; }
+        public DbSet<AdoptionAd> AdoptionAds { get; set; }
+        public DbSet<JobAd> JobAds { get; set; }
+        public DbSet<LostAd> LostAds { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<Pet> Pets { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Configure domain-specific constraints here
+            modelBuilder.Entity<Ad>()
+                .HasOne(a => a.AppUser)
+                .WithMany(u => u.Ads)
+                .HasForeignKey(a => a.AppUserId);
+
+            modelBuilder.Entity<Ad>()
+                .HasMany(a => a.Images)
+                .WithOne(i => i.Ad)
+                .HasForeignKey(i => i.AdId);
+
+            modelBuilder.Entity<Image>()
+                .HasOne(i => i.Ad)
+                .WithMany(a => a.Images)
+                .HasForeignKey(i => i.AdId);
+
+            // Configure any other relationships if needed
+              modelBuilder.Entity<IdentityRole>().HasData(
+            new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" },
+            new IdentityRole { Name = "User", NormalizedName = "USER" }
+        );
+        }
+    }
+}
+
+========================================
+Content of Dtos\Account\LoginDto.cs:
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace api.Dtos.Account
+{
+    public class LoginDto
+    {
+        [Required]
+        public string Username { get; set; }
+        [Required]
+        public string Password { get; set; }
+    }
+}
+========================================
+Content of Dtos\Account\NewUserDto.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace api.Dtos.Account
+{
+    public class NewUserDto
+    {
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string Token { get; set; }
+    }
+}
+========================================
+Content of Dtos\Account\RegisterDto.cs:
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace api.Dtos.Account
+{
+    public class RegisterDto
+    {
+        [Required]
+        public string? Username { get; set; }
+        [Required]
+        [EmailAddress]
+        public string? Email { get; set; }
+        [Required]
+        public string? Password { get; set; }
+    }
+}
+========================================
+Content of Dtos\Ad\AdResponse.cs:
+using System;
+using PawMates.net.Dtos.Pet;
+
+namespace PawMates.net.Dtos.Ad
+{
+    public class AdResponse
+    {
+        public int AdId { get; set; }
+        public int PetId { get; set; }
+        public string Title { get; set; }
+        public string Location { get; set; }
+        public DateTime DatePosted { get; set; }
+        public PetResponse PetDetails { get; set; }
+    }
+}
+
+========================================
+Content of Dtos\Ad\CreateAdRequest.cs:
+using Microsoft.AspNetCore.Http;
+using PawMates.net.Dtos.Pet;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace PawMates.net.Dtos
+{
+    public class CreateAdRequest
+    {
+        // public DateTime DatePosted { get; set; }
+
+        // [MaxLength(200)]
+        // public string Title { get; set; }
+
+        // [MaxLength(500)]
+        // public string Description { get; set; }
+
+        // [MaxLength(300)]
+        // public string Location { get; set; }
+
+       public string AppUserId { get; set; }
+
+        // Assuming you want to handle image uploads directly in the DTO
+        public List<IFormFile> Images { get; set; } = new List<IFormFile>();
+
+        // public List<CreatePetRequest> PetDetails { get; set; } = new List<CreatePetRequest>();
+    
+        public CreatePetRequest PetDetails { get; set; }
+    }
+}
+
+========================================
+Content of Dtos\Ad\UpdateAdRequest.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using PawMates.net.Dtos.Pet;
+
+namespace PawMates.net.Dtos.Ad
+{
+    public class UpdateAdRequest
+    {
+        
+        public string Title { get; set; }
+        public string Location { get; set; }
+
+        //pet detail
+        public List<UpdatePetRequest> PetDetails { get; set; }
+    }
+}
+========================================
+Content of Dtos\Ad\Adoption\AdoptionAdResponse.cs:
+namespace PawMates.net.Dtos.Ad.Adoption
+{
+    public class AdoptionAdResponse : AdResponse
+    {
+        public bool IsVaccinated { get; set; }
+        public decimal AdoptionFee { get; set; }
+    }
+}
+
+========================================
+Content of Dtos\Ad\Adoption\CreateAdoptionAdRequest.cs:
+using System.ComponentModel.DataAnnotations;
+
+namespace PawMates.net.Dtos.Ad.Adoption
+{
+    public class CreateAdoptionAdRequest : CreateAdRequest
+    {
+        [Required]
+        public bool IsVaccinated { get; set; }
+
+        [Required]
+        [DataType(DataType.Currency)]
+        public decimal AdoptionFee { get; set; }
+    }
+}
+
+========================================
+Content of Dtos\Ad\Adoption\UpdateAdoptionAdRequest.cs:
+using System.ComponentModel.DataAnnotations;
+
+namespace PawMates.net.Dtos.Ad.Adoption
+{
+    public class UpdateAdoptionAdRequest : UpdateAdRequest
+    {
+        public bool IsVaccinated { get; set; }
+        [DataType(DataType.Currency)]
+        public decimal AdoptionFee { get; set; }
+    }
+}
+
+========================================
+Content of Dtos\Ad\Job\CreateJobAdRequest.cs:
+using System.ComponentModel.DataAnnotations;
+
+namespace PawMates.net.Dtos.Ad.Job
+{
+    public class CreateJobAdRequest : CreateAdRequest
+    {
+        // [Required]
+        // public string JobType { get; set; }
+
+        // [Required]
+        // [MaxLength(500)]
+        // public string JobDescription { get; set; }
+
+      //  [Required]
+       // public string JobTitle { get; set; }
+        
+       // [Required]
+        //working hour
+       // public int WorkingHour { get; set; }
+
+
+       // public string Salary { get; set; }
+    }
+}
+
+========================================
+Content of Dtos\Ad\Job\JobAdResponse.cs:
+namespace PawMates.net.Dtos.Ad.Job
+{
+    public class JobAdResponse : AdResponse
+    {
+        // public string JobType { get; set; }
+        // public string JobDescription { get; set; }
+        public string Salary { get; set; }
+        public string JobTitle { get; set; }
+
+        public int WorkingHour { get; set; }
+    }
+}
+
+========================================
+Content of Dtos\Ad\Job\UpdateJobAdRequest.cs:
+using System.ComponentModel.DataAnnotations;
+
+namespace PawMates.net.Dtos.Ad.Job
+{
+    public class UpdateJobAdRequest : UpdateAdRequest
+    {
+        // [MaxLength(100)]
+        // public string JobType { get; set; }
+
+        // [MaxLength(500)]
+        // public string JobDescription { get; set; }
+
+      //  [MaxLength(100)]
+        public string Salary { get; set; } 
+
+       // [MaxLength(100)]
+        public string JobTitle { get; set; }
+
+        public int WorkingHour { get; set; }
+        
+        
+        
+           }
+}
+
+========================================
+Content of Dtos\Ad\Lost\CreateLostAdRequest.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace PawMates.net.Dtos.Ad
+{
+    public class CreateLostAdRequest : CreateAdRequest
+{
+  
+        public string LastSeenLocation { get; set; }
+
+        public DateTime DateLost { get; set; }
+
+        public string MicrochipId { get; set; }
+        
+}
+}
+========================================
+Content of Dtos\Ad\Lost\LostAdResponse.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace PawMates.net.Dtos.Ad
+{
+    public class LostAdResponse : AdResponse
+    {
+        
+        public string LastSeenLocation { get; set; }
+
+        public DateTime DateLost { get; set; }
+
+        public string MicrochipId { get; set; }
+    }
+}
+========================================
+Content of Dtos\Ad\Lost\UpdateLostAdRequest.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using PawMates.net.Dtos.Pet;
+
+namespace PawMates.net.Dtos.Ad
+{
+    public class UpdateLostAdRequest: UpdateAdRequest
+    {
+        
+        public UpdatePetRequest PetDetails { get; set; }
+        public string LastSeenLocation { get; set; }
+
+        public DateTime DateLost { get; set; }
+
+        public string MicrochipId { get; set; }
+    }
+}
+========================================
+Content of Dtos\Pet\CreatePetRequest.cs:
+using System.ComponentModel.DataAnnotations;
+
+namespace PawMates.net.Dtos.Pet
+{
+    public class CreatePetRequest
+    {
+       // [Required]
+        [MaxLength(100)]
+        public string Name { get; set; }
+
+      //  // [Required]
+      //   public string Type { get; set; } // E.g., Dog, Cat
+
+      //   [Range(0, 30)]
+      //   public int Age { get; set; }
+
+      //   [MaxLength(500)]
+      //   public string Description { get; set; }
+
+        // public List<string> ImageUrls { get; set; } = new List<string>();
+      //    public IFormFileCollection ImageFiles { get; set; }
+    }
+}
+
+========================================
+Content of Dtos\Pet\PetResponse.cs:
+namespace PawMates.net.Dtos.Pet
+{
+    public class PetResponse
+    {
+        public int PetId { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public int Age { get; set; }
+        public string Description { get; set; }
+    }
+}
+
+========================================
+Content of Dtos\Pet\UpdatePetRequest.cs:
+using System.ComponentModel.DataAnnotations;
+
+namespace PawMates.net.Dtos.Pet
+{
+    public class UpdatePetRequest
+    {
+        [MaxLength(100)]
+        public string Name { get; set; }
+
+        public string Type { get; set; } // E.g., Dog, Cat
+
+        [Range(0, 30)]
+        public int Age { get; set; }
+
+        [MaxLength(500)]
+        public string Description { get; set; }
+    }
+}
+
+========================================
+Content of Extensions\ClaimsExtensions.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+
+namespace api.Extensions
+{
+    public static class ClaimsExtensions
+    {
+        public static string GetUsername(this ClaimsPrincipal user)
+        {
+            return user.Claims.SingleOrDefault(x => x.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname")).Value;
+        }
+    }
+}
+========================================
+Content of Interfaces\IAdoptionAdRepository.cs:
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using PawMates.net.Dtos.Ad.Adoption;
+
+namespace PawMates.net.Interfaces
+{
+    public interface IAdoptionAdRepository
+    {
+        Task<List<AdoptionAdResponse>> GetAllAsync();
+        Task<AdoptionAdResponse?> GetByIdAsync(int id);
+        Task<AdoptionAdResponse> CreateAsync(CreateAdoptionAdRequest adoptionAdDto);
+        Task<AdoptionAdResponse?> UpdateAsync(int id, UpdateAdoptionAdRequest adoptionAdDto);
+        Task<AdoptionAdResponse?> DeleteAsync(int id);
+    }
+}
+
+========================================
+Content of Interfaces\IAdRepository.cs:
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using PawMates.net.Dtos;
+using PawMates.net.Dtos.Ad;
+
+namespace PawMates.net.Interfaces
+{
+    public interface IAdRepository
+    {
+        Task<List<AdResponse>> GetAllAsync();
+        Task<AdResponse?> GetByIdAsync(int id);
+        Task<AdResponse> CreateAsync(CreateAdRequest adDto);
+        Task<AdResponse?> UpdateAsync(int id, UpdateAdRequest adDto);
+        Task<AdResponse?> DeleteAsync(int id);
+    }
+}
+
+========================================
+Content of Interfaces\IImageStorageService.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace PawMates.net.Interfaces
+{
+    public interface IImageStorageService
+    {
+          Task<string> SaveImageAsync(IFormFile file);
+    }
+}
+========================================
+Content of Interfaces\IJobAdRepository.cs:
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using PawMates.net.Dtos.Ad.Job;
+
+namespace PawMates.net.Interfaces
+{
+    public interface IJobAdRepository
+    {
+        Task<List<JobAdResponse>> GetAllAsync();
+        Task<JobAdResponse?> GetByIdAsync(int id);
+        Task<JobAdResponse> CreateAsync(CreateJobAdRequest jobAdDto);
+        Task<JobAdResponse?> UpdateAsync(int id, UpdateJobAdRequest jobAdDto);
+        Task<JobAdResponse?> DeleteAsync(int id);
+    }
+}
+
+========================================
+Content of Interfaces\ILostAdRepository.cs:
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using PawMates.net.Dtos.Ad;
+
+namespace PawMates.net.Interfaces
+{
+    public interface ILostAdRepository
+    {
+        Task<List<LostAdResponse>> GetAllAsync();
+        Task<LostAdResponse?> GetByIdAsync(int id);
+        Task<LostAdResponse> CreateAsync(CreateLostAdRequest lostAdDto);
+        Task<LostAdResponse?> UpdateAsync(int id, UpdateLostAdRequest lostAdDto);
+        Task<LostAdResponse?> DeleteAsync(int id);
+    }
+}
+
+========================================
+Content of Interfaces\IPetRepository.cs:
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using PawMates.net.Dtos.Pet;
+
+namespace PawMates.net.Interfaces
+{
+    public interface IPetRepository
+    {
+        Task<List<PetResponse>> GetAllAsync();
+        Task<PetResponse?> GetByIdAsync(int id);
+        Task<PetResponse> CreateAsync(CreatePetRequest petDto);
+        Task<PetResponse?> UpdateAsync(int id, UpdatePetRequest petDto);
+        Task<PetResponse?> DeleteAsync(int id);
+    }
+}
+
+========================================
+Content of Interfaces\ITokenService.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using PawMates.net.Models;
+
+namespace api.Interfaces
+{
+    public interface ITokenService
+    {
+        string CreateToken(AppUser user);
+    }
+}
+========================================
+Content of Mappers\ApplicationMappingProfile.cs:
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using PawMates.net.Dtos;
+using PawMates.net.Dtos.Ad;
+using PawMates.net.Dtos.Ad.Adoption;
+using PawMates.net.Dtos.Ad.Job;
+using PawMates.net.Dtos.Pet;
+using PawMates.net.Models;
+using System;
+
+public class ApplicationMappingProfile : Profile
+{
+    public ApplicationMappingProfile()
+    {
+        // Pet mappings
+        CreateMap<Pet, PetResponse>();
+        CreateMap<CreatePetRequest, Pet>();
+        CreateMap<UpdatePetRequest, Pet>();
+
+        // Ad mappings
+        CreateMap<CreateAdRequest, Ad>()
+            //.ForMember(dest => dest.DatePosted, opt => opt.MapFrom(src => DateTime.UtcNow))
+            .ForMember(dest => dest.Pet, opt => opt.MapFrom(src => src.PetDetails))
+            .ForMember(dest => dest.Images, opt => opt.Ignore()); // Handle images outside of AutoMapper
+
+        CreateMap<UpdateAdRequest, Ad>()
+            .ForMember(dest => dest.Pet, opt => opt.MapFrom(src => src.PetDetails))
+            .ForMember(dest => dest.Images, opt => opt.Ignore()); // Handle images outside of AutoMapper
+
+        // Job Ad mappings
+        CreateMap<CreateJobAdRequest, JobAd>()
+            .IncludeBase<CreateAdRequest, Ad>();
+
+        CreateMap<UpdateJobAdRequest, JobAd>()
+            .IncludeBase<UpdateAdRequest, Ad>();
+
+        // Adoption Ad mappings
+        CreateMap<AdoptionAd, AdoptionAdResponse>();
+        CreateMap<CreateAdoptionAdRequest, AdoptionAd>()
+            .IncludeBase<CreateAdRequest, Ad>();
+        CreateMap<UpdateAdoptionAdRequest, AdoptionAd>()
+            .IncludeBase<UpdateAdRequest, Ad>();
+
+        // Lost Ad mappings
+        CreateMap<LostAd, LostAdResponse>();
+        CreateMap<CreateLostAdRequest, LostAd>()
+            .IncludeBase<CreateAdRequest, Ad>();
+        CreateMap<UpdateLostAdRequest, LostAd>()
+            .IncludeBase<UpdateAdRequest, Ad>();
+
+        // Additional Ad mappings for responses
+        CreateMap<Ad, AdResponse>()
+            .ForMember(dest => dest.PetDetails, opt => opt.MapFrom(src => src.Pet));
+
+        // Job Ad specific mappings for responses
+        CreateMap<JobAd, JobAdResponse>();
+
+        // Image mappings (assuming handling is done prior)
+        // CreateMap<Image, ImageDto>(); // Assuming an ImageDto exists for transferring image data
+
+        // User mappings (if applicable)
+        // CreateMap<AppUser, UserDTO>(); // Assuming a UserDTO exists
+        // CreateMap<RegisterDTO, AppUser>(); // For user registration
+        // CreateMap<LoginDTO, AppUser>(); // For user login
+    }
+}
+
+========================================
+Content of Migrations\20240701180434_AddImageUrlsToPet11.cs:
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
+namespace PawMates.net.Migrations
+{
+    /// <inheritdoc />
+    public partial class AddImageUrlsToPet11 : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "AspNetRoles",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Pets",
+                columns: table => new
+                {
+                    PetId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pets", x => x.PetId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetRoleClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserClaims_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserLogins",
+                columns: table => new
+                {
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserLogins_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserRoles",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserRoles_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserTokens",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserTokens_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Ads",
+                columns: table => new
+                {
+                    AdId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    PetId = table.Column<int>(type: "int", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
+                    IsVaccinated = table.Column<bool>(type: "bit", nullable: true),
+                    AdoptionFee = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    LastSeenLocation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateLost = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    MicrochipId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ads", x => x.AdId);
+                    table.ForeignKey(
+                        name: "FK_Ads_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Ads_Pets_PetId",
+                        column: x => x.PetId,
+                        principalTable: "Pets",
+                        principalColumn: "PetId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Images",
+                columns: table => new
+                {
+                    ImageId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FilePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AdId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Images", x => x.ImageId);
+                    table.ForeignKey(
+                        name: "FK_Images_Ads_AdId",
+                        column: x => x.AdId,
+                        principalTable: "Ads",
+                        principalColumn: "AdId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "388ae59e-275c-4f1d-993b-39d29dbe8edb", null, "Admin", "ADMIN" },
+                    { "6ea5b5c7-33ff-4dff-9968-de69a3cc5d88", null, "User", "USER" }
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ads_AppUserId",
+                table: "Ads",
+                column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ads_PetId",
+                table: "Ads",
+                column: "PetId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetRoleClaims_RoleId",
+                table: "AspNetRoleClaims",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "RoleNameIndex",
+                table: "AspNetRoles",
+                column: "NormalizedName",
+                unique: true,
+                filter: "[NormalizedName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserClaims_UserId",
+                table: "AspNetUserClaims",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserLogins_UserId",
+                table: "AspNetUserLogins",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserRoles_RoleId",
+                table: "AspNetUserRoles",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "EmailIndex",
+                table: "AspNetUsers",
+                column: "NormalizedEmail");
+
+            migrationBuilder.CreateIndex(
+                name: "UserNameIndex",
+                table: "AspNetUsers",
+                column: "NormalizedUserName",
+                unique: true,
+                filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Images_AdId",
+                table: "Images",
+                column: "AdId");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "AspNetRoleClaims");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserClaims");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserLogins");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserRoles");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Images");
+
+            migrationBuilder.DropTable(
+                name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Ads");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Pets");
+        }
+    }
+}
+
+========================================
+Content of Migrations\20240701180434_AddImageUrlsToPet11.Designer.cs:
+﻿// <auto-generated />
+using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using PawMates.Data;
+
+#nullable disable
+
+namespace PawMates.net.Migrations
+{
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20240701180434_AddImageUrlsToPet11")]
+    partial class AddImageUrlsToPet11
+    {
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "388ae59e-275c-4f1d-993b-39d29dbe8edb",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "6ea5b5c7-33ff-4dff-9968-de69a3cc5d88",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.Ad", b =>
+                {
+                    b.Property<int>("AdId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdId"));
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
+                    b.Property<int>("PetId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AdId");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("PetId");
+
+                    b.ToTable("Ads");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Ad");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.AppUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.Image", b =>
+                {
+                    b.Property<int>("ImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ImageId"));
+
+                    b.Property<int>("AdId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ImageId");
+
+                    b.HasIndex("AdId");
+
+                    b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.Pet", b =>
+                {
+                    b.Property<int>("PetId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PetId"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PetId");
+
+                    b.ToTable("Pets");
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.AdoptionAd", b =>
+                {
+                    b.HasBaseType("PawMates.net.Models.Ad");
+
+                    b.Property<decimal>("AdoptionFee")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<bool>("IsVaccinated")
+                        .HasColumnType("bit");
+
+                    b.HasDiscriminator().HasValue("AdoptionAd");
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.JobAd", b =>
+                {
+                    b.HasBaseType("PawMates.net.Models.Ad");
+
+                    b.HasDiscriminator().HasValue("JobAd");
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.LostAd", b =>
+                {
+                    b.HasBaseType("PawMates.net.Models.Ad");
+
+                    b.Property<DateTime>("DateLost")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastSeenLocation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MicrochipId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("LostAd");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("PawMates.net.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("PawMates.net.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PawMates.net.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("PawMates.net.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.Ad", b =>
+                {
+                    b.HasOne("PawMates.net.Models.AppUser", "AppUser")
+                        .WithMany("Ads")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PawMates.net.Models.Pet", "Pet")
+                        .WithMany()
+                        .HasForeignKey("PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Pet");
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.Image", b =>
+                {
+                    b.HasOne("PawMates.net.Models.Ad", "Ad")
+                        .WithMany("Images")
+                        .HasForeignKey("AdId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ad");
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.Ad", b =>
+                {
+                    b.Navigation("Images");
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.AppUser", b =>
+                {
+                    b.Navigation("Ads");
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+========================================
+Content of Migrations\ApplicationDbContextModelSnapshot.cs:
+﻿// <auto-generated />
+using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using PawMates.Data;
+
+#nullable disable
+
+namespace PawMates.net.Migrations
+{
+    [DbContext(typeof(ApplicationDbContext))]
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    {
+        protected override void BuildModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "388ae59e-275c-4f1d-993b-39d29dbe8edb",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "6ea5b5c7-33ff-4dff-9968-de69a3cc5d88",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.Ad", b =>
+                {
+                    b.Property<int>("AdId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdId"));
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
+                    b.Property<int>("PetId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AdId");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("PetId");
+
+                    b.ToTable("Ads");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Ad");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.AppUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.Image", b =>
+                {
+                    b.Property<int>("ImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ImageId"));
+
+                    b.Property<int>("AdId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ImageId");
+
+                    b.HasIndex("AdId");
+
+                    b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.Pet", b =>
+                {
+                    b.Property<int>("PetId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PetId"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PetId");
+
+                    b.ToTable("Pets");
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.AdoptionAd", b =>
+                {
+                    b.HasBaseType("PawMates.net.Models.Ad");
+
+                    b.Property<decimal>("AdoptionFee")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<bool>("IsVaccinated")
+                        .HasColumnType("bit");
+
+                    b.HasDiscriminator().HasValue("AdoptionAd");
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.JobAd", b =>
+                {
+                    b.HasBaseType("PawMates.net.Models.Ad");
+
+                    b.HasDiscriminator().HasValue("JobAd");
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.LostAd", b =>
+                {
+                    b.HasBaseType("PawMates.net.Models.Ad");
+
+                    b.Property<DateTime>("DateLost")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastSeenLocation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MicrochipId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("LostAd");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("PawMates.net.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("PawMates.net.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PawMates.net.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("PawMates.net.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.Ad", b =>
+                {
+                    b.HasOne("PawMates.net.Models.AppUser", "AppUser")
+                        .WithMany("Ads")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PawMates.net.Models.Pet", "Pet")
+                        .WithMany()
+                        .HasForeignKey("PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Pet");
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.Image", b =>
+                {
+                    b.HasOne("PawMates.net.Models.Ad", "Ad")
+                        .WithMany("Images")
+                        .HasForeignKey("AdId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ad");
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.Ad", b =>
+                {
+                    b.Navigation("Images");
+                });
+
+            modelBuilder.Entity("PawMates.net.Models.AppUser", b =>
+                {
+                    b.Navigation("Ads");
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+========================================
+Content of Models\Ad.cs:
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PawMates.net.Models
+{
+    public abstract class Ad
+    {
+        [Key]
+        public int AdId { get; set; }
+
+        // public DateTime DatePosted { get; set; }
+
+        // // [Required]
+        // public string Title { get; set; }
+
+        // // [Required]
+        // public string Description { get; set; }
+
+        // public string Location { get; set; }
+
+        public virtual string AdType { get; }
+
+
+        [ForeignKey("AppUser")]
+        public string AppUserId { get; set; }
+        public virtual AppUser AppUser { get; set; }
+
+        // public virtual ICollection<Pet> Pets { get; set; } = new List<Pet>();
+        public virtual Pet Pet { get; set; }
+         public virtual ICollection<Image> Images { get; set; } = new List<Image>();
+    }
+}
+
+========================================
+Content of Models\AdoptionAd.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+namespace PawMates.net.Models
+{
+    public class AdoptionAd : Ad
+    {
+        public override string AdType => "Adoption";
+
+        public bool IsVaccinated { get; set; }
+
+        public decimal AdoptionFee { get; set; }
+
+        
+    }
+}
+========================================
+Content of Models\AppUser.cs:
+using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
+
+namespace PawMates.net.Models
+{
+    public class AppUser : IdentityUser
+    {
+           public virtual ICollection<Ad> Ads { get; set; } = new HashSet<Ad>();
+
+    }
+}
+
+========================================
+Content of Models\FileUpload.cs:
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace PawMates.net.Models
+{
+    public class FileUpload
+    {
+         [Required]
+    [Display(Name = "File")]
+    public IFormFile UploadedFile { get; set; }
+    }
+}
+========================================
+Content of Models\Image.cs:
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PawMates.net.Models
+{
+    [Table("Images")]
+    public class Image
+    {
+        [Key]
+        public int ImageId { get; set; }
+
+        [Required]
+        public string FilePath { get; set; }
+
+        [ForeignKey("Ad")]
+        public int AdId { get; set; }
+        public virtual Ad Ad { get; set; }
+    }
+}
+
+========================================
+Content of Models\JobAd.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+namespace PawMates.net.Models
+{
+    public class JobAd : Ad
+    {
+        public override string AdType => "JobAd";
+
+        // public string JobTitle { get; set; }
+
+        // //working hour
+        // public int WorkingHour { get; set; }
+
+        // public string Salary { get; set; }
+
+
+
+
+    }
+}
+========================================
+Content of Models\LostAd.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PawMates.net.Models
+{ 
+    public class LostAd : Ad
+    {
+        public override string AdType => "LostPet";
+
+        public string LastSeenLocation { get; set; }
+
+        public DateTime DateLost { get; set; }
+
+        public string MicrochipId { get; set; }
+    }
+}
+========================================
+Content of Models\Pet.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PawMates.net.Models
+{
+    [Table("Pets")]
+    public class Pet
+    {
+        [Key]
+        public int PetId { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
+        // public string Type { get; set; } // Dog, Cat, etc.
+
+        // public int Age { get; set; }
+
+        // [MaxLength(500)]
+        // public string Description { get; set; }
+
+
+
+    }
+}
+========================================
+Content of obj\Debug\net8.0\PawMates.net.AssemblyInfo.cs:
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+using System;
+using System.Reflection;
+
+[assembly: System.Reflection.AssemblyCompanyAttribute("PawMates.net")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f6b0fec6ccac22b3b243c99666cdc325b23050b")]
+[assembly: System.Reflection.AssemblyProductAttribute("PawMates.net")]
+[assembly: System.Reflection.AssemblyTitleAttribute("PawMates.net")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+
+// MSBuild WriteCodeFragment sınıfı tarafından oluşturuldu.
+
+
+========================================
+Content of obj\Debug\net8.0\PawMates.net.GlobalUsings.g.cs:
+// <auto-generated/>
+global using global::Microsoft.AspNetCore.Builder;
+global using global::Microsoft.AspNetCore.Hosting;
+global using global::Microsoft.AspNetCore.Http;
+global using global::Microsoft.AspNetCore.Routing;
+global using global::Microsoft.Extensions.Configuration;
+global using global::Microsoft.Extensions.DependencyInjection;
+global using global::Microsoft.Extensions.Hosting;
+global using global::Microsoft.Extensions.Logging;
+global using global::System;
+global using global::System.Collections.Generic;
+global using global::System.IO;
+global using global::System.Linq;
+global using global::System.Net.Http;
+global using global::System.Net.Http.Json;
+global using global::System.Threading;
+global using global::System.Threading.Tasks;
+
+========================================
+Content of obj\Debug\net8.0\PawMates.net.MvcApplicationPartsAssemblyInfo.cs:
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+using System;
+using System.Reflection;
+
+[assembly: Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartAttribute("Microsoft.AspNetCore.OpenApi")]
+[assembly: Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartAttribute("Swashbuckle.AspNetCore.SwaggerGen")]
+
+// MSBuild WriteCodeFragment sınıfı tarafından oluşturuldu.
+
+
+========================================
+Content of Repository\AdoptionAdRepository.cs:
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using PawMates.Data;
+using PawMates.net.Dtos.Ad.Adoption;
+using PawMates.net.Interfaces;
+using PawMates.net.Models;
+
+namespace PawMates.net.Repository
+{
+    public class AdoptionAdRepository : IAdoptionAdRepository
+    {
+        private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
+
+        public AdoptionAdRepository(ApplicationDbContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        public async Task<List<AdoptionAdResponse>> GetAllAsync()
+        {
+            var adoptionAds = await _context.AdoptionAds.ToListAsync();
+            return _mapper.Map<List<AdoptionAdResponse>>(adoptionAds);
+        }
+
+        public async Task<AdoptionAdResponse?> GetByIdAsync(int id)
+        {
+            var adoptionAd = await _context.AdoptionAds.FindAsync(id);
+            if (adoptionAd == null) return null;
+            return _mapper.Map<AdoptionAdResponse>(adoptionAd);
+        }
+
+        public async Task<AdoptionAdResponse> CreateAsync(CreateAdoptionAdRequest adoptionAdDto)
+        {
+            var adoptionAd = _mapper.Map<AdoptionAd>(adoptionAdDto);
+            _context.AdoptionAds.Add(adoptionAd);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<AdoptionAdResponse>(adoptionAd);
+        }
+
+        public async Task<AdoptionAdResponse?> UpdateAsync(int id, UpdateAdoptionAdRequest adoptionAdDto)
+        {
+            var existingAdoptionAd = await _context.AdoptionAds.FindAsync(id);
+            if (existingAdoptionAd == null) return null;
+
+            _mapper.Map(adoptionAdDto, existingAdoptionAd);
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<AdoptionAdResponse>(existingAdoptionAd);
+        }
+
+        public async Task<AdoptionAdResponse?> DeleteAsync(int id)
+        {
+            var adoptionAd = await _context.AdoptionAds.FindAsync(id);
+            if (adoptionAd == null) return null;
+
+            _context.AdoptionAds.Remove(adoptionAd);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<AdoptionAdResponse>(adoptionAd);
+        }
+    }
+}
+
+========================================
+Content of Repository\AdRepository.cs:
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using PawMates.Data;
+using PawMates.net.Dtos;
+using PawMates.net.Dtos.Ad;
+using PawMates.net.Interfaces;
+using PawMates.net.Models;
+
+namespace PawMates.net.Repository
+{
+    public class AdRepository : IAdRepository
+    {
+        private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
+
+        public AdRepository(ApplicationDbContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        public async Task<List<AdResponse>> GetAllAsync()
+        {
+            var ads = await _context.Ads.ToListAsync();
+            return _mapper.Map<List<AdResponse>>(ads);
+        }
+
+        public async Task<AdResponse?> GetByIdAsync(int id)
+        {
+            var ad = await _context.Ads.FindAsync(id);
+            if (ad == null) return null;
+            return _mapper.Map<AdResponse>(ad);
+        }
+
+        public async Task<AdResponse> CreateAsync(CreateAdRequest adDto)
+        {
+            var ad = _mapper.Map<Ad>(adDto);
+            _context.Ads.Add(ad);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<AdResponse>(ad);
+        }
+
+        public async Task<AdResponse?> UpdateAsync(int id, UpdateAdRequest adDto)
+        {
+            var existingAd = await _context.Ads.FindAsync(id);
+            if (existingAd == null) return null;
+
+            _mapper.Map(adDto, existingAd);
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<AdResponse>(existingAd);
+        }
+
+        public async Task<AdResponse?> DeleteAsync(int id)
+        {
+            var ad = await _context.Ads.FindAsync(id);
+            if (ad == null) return null;
+
+            _context.Ads.Remove(ad);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<AdResponse>(ad);
+        }
+    }
+}
+
+========================================
+Content of Repository\JobAdRepository.cs:
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using PawMates.Data;
+using PawMates.net.Dtos.Ad.Job;
+using PawMates.net.Interfaces;
+using PawMates.net.Models;
+
+namespace PawMates.net.Repository
+{
+    public class JobAdRepository : IJobAdRepository
+    {
+ private readonly ApplicationDbContext _context;
+    private readonly IMapper _mapper;
+    private readonly IImageStorageService _imageStorageService;
+
+    public JobAdRepository(ApplicationDbContext context, IMapper mapper, IImageStorageService imageStorageService)
+    {
+        _context = context;
+        _mapper = mapper;
+        _imageStorageService = imageStorageService;
+    }
+
+        public async Task<List<JobAdResponse>> GetAllAsync()
+        {
+            var jobAds = await _context.JobAds.ToListAsync();
+            return _mapper.Map<List<JobAdResponse>>(jobAds);
+        }
+
+        public async Task<JobAdResponse?> GetByIdAsync(int id)
+        {
+            var jobAd = await _context.JobAds.FindAsync(id);
+            if (jobAd == null) return null;
+            return _mapper.Map<JobAdResponse>(jobAd);
+        }
+
+public async Task<JobAdResponse> CreateAsync(CreateJobAdRequest dto)
+{
+       var userExists = _context.Users.Any(u => u.Id == dto.AppUserId);
+    if (!userExists)
+    {
+        System.Console.WriteLine("XXXXXXXXXXXXXXXXXXXUser does not exist");
+        // Handle the situation, possibly by creating the user or selecting a different user ID
+    }else
+    {
+        System.Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXUser exist");
+    }
+
+    var jobAd = _mapper.Map<JobAd>(dto); // Map DTO to JobAd entity
+
+    //log detail of pet
+
+    //log all pets name
+     userExists = _context.Users.Any(u => u.Id == dto.AppUserId);
+    if (!userExists)
+    {
+        System.Console.WriteLine("User does not exist");
+        // Handle the situation, possibly by creating the user or selecting a different user ID
+    }else
+    {
+        System.Console.WriteLine("User exist");
+    }
+
+    
+
+    if (dto.Images != null && dto.Images.Count > 0)
+    {
+        foreach (var file in dto.Images)
+        {
+            if (file.Length > 0)
+            {
+                var filePath = await _imageStorageService.SaveImageAsync(file); // Save each file
+                jobAd.Images.Add(new Image { FilePath = filePath }); // Create Image entity and add to JobAd
+            }
+        }
+    }
+
+    _context.JobAds.Add(jobAd);
+    await _context.SaveChangesAsync();
+
+    // Map the newly created JobAd entity back to JobAdResponse to return
+    return _mapper.Map<JobAdResponse>(jobAd);
+}
+
+
+
+        public async Task<JobAdResponse?> UpdateAsync(int id, UpdateJobAdRequest jobAdDto)
+        {
+            var existingJobAd = await _context.JobAds.FindAsync(id);
+            if (existingJobAd == null) return null;
+
+            _mapper.Map(jobAdDto, existingJobAd);
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<JobAdResponse>(existingJobAd);
+        }
+
+        public async Task<JobAdResponse?> DeleteAsync(int id)
+        {
+            var jobAd = await _context.JobAds.FindAsync(id);
+            if (jobAd == null) return null;
+
+            _context.JobAds.Remove(jobAd);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<JobAdResponse>(jobAd);
+        }
+    }
+}
+
+========================================
+Content of Repository\LostAdRepository.cs:
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using PawMates.Data;
+using PawMates.net.Dtos.Ad;
+using PawMates.net.Interfaces;
+using PawMates.net.Models;
+
+namespace PawMates.net.Repository
+{
+    public class LostAdRepository : ILostAdRepository
+    {
+        private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
+
+        public LostAdRepository(ApplicationDbContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        public async Task<List<LostAdResponse>> GetAllAsync()
+        {
+            var lostAds = await _context.LostAds.ToListAsync();
+            return _mapper.Map<List<LostAdResponse>>(lostAds);
+        }
+
+        public async Task<LostAdResponse?> GetByIdAsync(int id)
+        {
+            var lostAd = await _context.LostAds.FindAsync(id);
+            if (lostAd == null) return null;
+            return _mapper.Map<LostAdResponse>(lostAd);
+        }
+
+        public async Task<LostAdResponse> CreateAsync(CreateLostAdRequest lostAdDto)
+        {
+            var lostAd = _mapper.Map<LostAd>(lostAdDto);
+            _context.LostAds.Add(lostAd);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<LostAdResponse>(lostAd);
+        }
+
+        public async Task<LostAdResponse?> UpdateAsync(int id, UpdateLostAdRequest lostAdDto)
+        {
+            var existingLostAd = await _context.LostAds.FindAsync(id);
+            if (existingLostAd == null) return null;
+
+            _mapper.Map(lostAdDto, existingLostAd);
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<LostAdResponse>(existingLostAd);
+        }
+
+        public async Task<LostAdResponse?> DeleteAsync(int id)
+        {
+            var lostAd = await _context.LostAds.FindAsync(id);
+            if (lostAd == null) return null;
+
+            _context.LostAds.Remove(lostAd);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<LostAdResponse>(lostAd);
+        }
+    }
+}
+
+========================================
+Content of Repository\PetRepository.cs:
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using PawMates.Data;
+using PawMates.net.Dtos.Pet;
+using PawMates.net.Interfaces;
+using PawMates.net.Models;
+
+namespace PawMates.net.Repository
+{
+    public class PetRepository : IPetRepository
+    {
+        private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
+
+        public PetRepository(ApplicationDbContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        public async Task<List<PetResponse>> GetAllAsync()
+        {
+            var pets = await _context.Pets.ToListAsync();
+            return _mapper.Map<List<PetResponse>>(pets);
+        }
+
+        public async Task<PetResponse?> GetByIdAsync(int id)
+        {
+            var pet = await _context.Pets.FindAsync(id);
+            return _mapper.Map<PetResponse>(pet);
+        }
+
+        public async Task<PetResponse> CreateAsync(CreatePetRequest petDto)
+        {
+            System.Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            var pet = _mapper.Map<Pet>(petDto);
+            _context.Pets.Add(pet);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<PetResponse>(pet);
+        }
+
+        public async Task<PetResponse?> UpdateAsync(int id, UpdatePetRequest petDto)
+        {
+            var pet = await _context.Pets.FindAsync(id);
+            if (pet == null)
+            {
+                return null;
+            }
+
+            _mapper.Map(petDto, pet);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<PetResponse>(pet);
+        }
+
+        public async Task<PetResponse?> DeleteAsync(int id)
+        {
+            var pet = await _context.Pets.FindAsync(id);
+            if (pet == null)
+            {
+                return null;
+            }
+
+            _context.Pets.Remove(pet);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<PetResponse>(pet);
+        }
+    }
+}
+
+========================================
+Content of Service\LocalImageStorageService.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using PawMates.net.Interfaces;
+
+namespace PawMates.net.Service
+{
+   public class LocalImageStorageService : IImageStorageService
+{
+    private readonly string _storagePath;
+
+    public LocalImageStorageService(IConfiguration configuration)
+    {
+        _storagePath = Path.Combine(Directory.GetCurrentDirectory(), configuration["StorageSettings:ImagePath"]);
+        if (!Directory.Exists(_storagePath))
+            Directory.CreateDirectory(_storagePath);
+    }
+
+    public async Task<string> SaveImageAsync(IFormFile file)
+    {
+        var filePath = Path.Combine(_storagePath, Guid.NewGuid().ToString() + Path.GetExtension(file.FileName));
+        using (var stream = new FileStream(filePath, FileMode.Create))
+        {
+            await file.CopyToAsync(stream);
+        }
+        return filePath;
+    }
+}
+
+}
+========================================
+Content of Service\TokenService.cs:
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
+using api.Interfaces;
+using Microsoft.IdentityModel.Tokens;
+using PawMates.net.Models;
+
+namespace api.Service
+{
+    public class TokenService : ITokenService
+    {
+        private readonly IConfiguration _config;
+        private readonly SymmetricSecurityKey _key;
+
+        public TokenService(IConfiguration config)
+        {
+            _config = config;
+            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:SigningKey"]));
+        }
+        public string CreateToken(AppUser user)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(JwtRegisteredClaimNames.GivenName, user.UserName)
+            };
+
+            var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(7),
+                SigningCredentials = creds,
+                Issuer = _config["JWT:Issuer"],
+                Audience = _config["JWT:Audience"]
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            return tokenHandler.WriteToken(token);
+        }
+    }
+}
+========================================

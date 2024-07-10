@@ -6,140 +6,169 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
 using Microsoft.IdentityModel.Tokens;
-using PawMates.net.Models;
-using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using AutoMapper;
+using PawMates.net.Models;
 using PawMates.net.Interfaces;
 using PawMates.net.Repository;
+using PawMates.net.Service;
 using api.Service;
 using api.Interfaces;
-using PawMates.net.Service;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using PawMates.net;
 using PawMates.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddSwaggerGen(options =>
-{
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "PawMates API", Version = "v1" });
+// Basic MVC and API Services
+ConfigureBasicServices(builder.Services);
 
-    // Add security definition if you're using JWT
-    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-        Name = "Authorization",
-        In = ParameterLocation.Header,
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer"
-    });
+// Swagger and API Documentation
+ConfigureSwaggerServices(builder.Services);
 
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                },
-                Scheme = "oauth2",
-                Name = "Bearer",
-                In = ParameterLocation.Header,
-            },
-            new List<string>()
-        }
-    });
+// Entity Framework and Identity Configuration
+ConfigureEntityFrameworkServices(builder.Services, builder.Configuration);
 
-    // Configure Swagger to use file upload
-    options.OperationFilter<SwaggerFileUploadOperationFilter>();
-});
+// Authentication and Authorization
+ConfigureAuthenticationServices(builder.Services, builder.Configuration);
 
-
-builder.Services.AddControllers().AddNewtonsoftJson(options =>
-{
-    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-});
-
-// Database context
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-// Identity Configuration
-builder.Services.AddIdentity<AppUser, IdentityRole>(opts =>
-{
-    opts.Password.RequireDigit = false;
-    opts.Password.RequireLowercase = false;
-    opts.Password.RequireUppercase = false;
-    opts.Password.RequireNonAlphanumeric = false;
-    opts.Password.RequiredLength = 4;
-})
-.AddEntityFrameworkStores<ApplicationDbContext>();
-
-// JWT Authentication
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidIssuer = builder.Configuration["JWT:Issuer"],
-        ValidateAudience = true,
-        ValidAudience = builder.Configuration["JWT:Audience"],
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(
-            System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:SigningKey"])
-        )
-    };
-});
+// Application Services
+ConfigureApplicationServices(builder.Services);
 
 // AutoMapper Configuration
-builder.Services.AddAutoMapper(typeof(ApplicationMappingProfile));
-
-// Register application services
-builder.Services.AddScoped<IPetRepository, PetRepository>();
-builder.Services.AddScoped<IAdRepository, AdRepository>();
-builder.Services.AddScoped<IJobAdRepository, JobAdRepository>();
-builder.Services.AddScoped<ILostAdRepository, LostAdRepository>();
-builder.Services.AddScoped<IAdoptionAdRepository, AdoptionAdRepository>();
-builder.Services.AddScoped<ITokenService, TokenService>();
-builder.Services.AddScoped<IImageStorageService, LocalImageStorageService>();
-
-
+ConfigureAutoMapper(builder.Services);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// Application Middleware Configuration
+ConfigureMiddleware(app);
+
+app.Run();
+
+void ConfigureBasicServices(IServiceCollection services)
 {
-    app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
+    services.AddControllers();
+    services.AddEndpointsApiExplorer();
+     services.AddSignalR();
+    services.AddControllers().AddNewtonsoftJson(options =>
     {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "PawMates API V1");
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
     });
 }
 
-app.UseHttpsRedirection();
+void ConfigureSwaggerServices(IServiceCollection services)
+{
+    services.AddSwaggerGen(options =>
+    {
+        options.SwaggerDoc("v1", new OpenApiInfo { Title = "PawMates API", Version = "v1" });
 
-app.UseCors(builder => builder
-    .AllowAnyOrigin()
-    .AllowAnyMethod()
-    .AllowAnyHeader());
+        options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+            Name = "Authorization",
+            In = ParameterLocation.Header,
+            Type = SecuritySchemeType.ApiKey,
+            Scheme = "Bearer"
+        });
 
-app.UseAuthentication();
-app.UseAuthorization();
+        options.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    },
+                    Scheme = "oauth2",
+                    Name = "Bearer",
+                    In = ParameterLocation.Header,
+                },
+                new List<string>()
+            }
+        });
 
-app.MapControllers();
+        options.OperationFilter<SwaggerFileUploadOperationFilter>();
+    });
+}
 
-app.UseStaticFiles();
+void ConfigureEntityFrameworkServices(IServiceCollection services, IConfiguration configuration)
+{
+    services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-app.Run();
+    services.AddIdentity<AppUser, IdentityRole>(opts =>
+    {
+        opts.Password.RequireDigit = false;
+        opts.Password.RequireLowercase = false;
+        opts.Password.RequireUppercase = false;
+        opts.Password.RequireNonAlphanumeric = false;
+        opts.Password.RequiredLength = 4;
+    })
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+}
+
+void ConfigureAuthenticationServices(IServiceCollection services, IConfiguration configuration)
+{
+    services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    }).AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidIssuer = configuration["JWT:Issuer"],
+            ValidateAudience = true,
+            ValidAudience = configuration["JWT:Audience"],
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(
+                System.Text.Encoding.UTF8.GetBytes(configuration["JWT:SigningKey"])
+            )
+        };
+    });
+}
+
+void ConfigureApplicationServices(IServiceCollection services)
+{
+    services.AddScoped<IPetRepository, PetRepository>();
+    services.AddScoped<IAdRepository, AdRepository>();
+    services.AddScoped<IJobAdRepository, JobAdRepository>();
+    services.AddScoped<ILostAdRepository, LostAdRepository>();
+    services.AddScoped<IAdoptionAdRepository, AdoptionAdRepository>();
+    services.AddScoped<ITokenService, TokenService>();
+    services.AddScoped<IImageStorageService, LocalImageStorageService>();
+}
+
+void ConfigureAutoMapper(IServiceCollection services)
+{
+    services.AddAutoMapper(typeof(ApplicationMappingProfile));
+}
+
+void ConfigureMiddleware(WebApplication app)
+{
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+        app.UseSwagger();
+        app.UseSwaggerUI(options =>
+        {
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "PawMates API V1");
+        });
+    }
+
+    app.UseHttpsRedirection();
+    app.UseCors(builder => builder
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
+
+    app.UseAuthentication();
+    app.UseAuthorization();
+
+    app.MapControllers();
+    app.UseStaticFiles();
+    app.MapHub<NotificationHub>("/notifications");  // Map the SignalR Hub to a path
+}
