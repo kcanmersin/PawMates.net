@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4B1370BB-BCEF-46A6-9E19-17072B755476}|Presantation\\PawMates.API\\PawMates.API.csproj|c:\\users\\kc\\desktop\\kod\\.nets\\pawmates.net\\presantation\\pawmates.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B1370BB-BCEF-46A6-9E19-17072B755476}|Presantation\\PawMates.API\\PawMates.API.csproj|solutionrelative:presantation\\pawmates.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B1370BB-BCEF-46A6-9E19-17072B755476}|Presantation\\PawMates.API\\PawMates.API.csproj|c:\\users\\kc\\desktop\\kod\\.nets\\pawmates.net\\presantation\\pawmates.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4B1370BB-BCEF-46A6-9E19-17072B755476}|Presantation\\PawMates.API\\PawMates.API.csproj|solutionrelative:presantation\\pawmates.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +18,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Presantation\\PawMates.API\\Program.cs",
+              "RelativeDocumentMoniker": "Presantation\\PawMates.API\\Program.cs",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Presantation\\PawMates.API\\Program.cs",
+              "RelativeToolTip": "Presantation\\PawMates.API\\Program.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-23T13:21:22.532Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Presantation\\PawMates.API\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "Presantation\\PawMates.API\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Presantation\\PawMates.API\\appsettings.Development.json",
+              "RelativeToolTip": "Presantation\\PawMates.API\\appsettings.Development.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-23T13:21:19.714Z",
+              "EditorCaption": ""
             }
           ]
         }

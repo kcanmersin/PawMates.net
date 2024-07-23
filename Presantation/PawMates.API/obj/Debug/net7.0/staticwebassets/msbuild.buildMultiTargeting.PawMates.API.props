@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\PawMates.API.props" />
+</Project>
