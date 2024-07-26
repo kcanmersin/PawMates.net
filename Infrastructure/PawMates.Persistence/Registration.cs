@@ -7,6 +7,7 @@ using PawMates.Domain.Entities;
 using PawMates.Persistence.Context;
 using PawMates.Persistence.Repositories;
 using PawMates.Persistence.UnitOfWorks;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace PawMates.Persistence
 {
@@ -14,9 +15,9 @@ namespace PawMates.Persistence
     {
         public static void AddPersistence(this IServiceCollection services,IConfiguration configuration) 
         {
-            services.AddDbContext<AppDbContext>(opt => 
-            opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
-                  b => b.MigrationsAssembly("PawMates.Persistence")));
+        services.AddDbContext<AppDbContext>(options =>
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+
 
             services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
             services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));

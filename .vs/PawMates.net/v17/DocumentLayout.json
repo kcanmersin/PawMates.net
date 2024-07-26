@@ -3,12 +3,68 @@
   "WorkspaceRootPath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4B1370BB-BCEF-46A6-9E19-17072B755476}|Presantation\\PawMates.API\\PawMates.API.csproj|c:\\users\\kc\\desktop\\kod\\.nets\\pawmates.net\\presantation\\pawmates.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4B1370BB-BCEF-46A6-9E19-17072B755476}|Presantation\\PawMates.API\\PawMates.API.csproj|solutionrelative:presantation\\pawmates.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726153745_InitialMigrationForPostgreSQL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\PawMates.Persistence\\Migrations\\20240726153745_InitialMigrationForPostgreSQL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4558463-77E2-46A2-B96C-90E427590F91}|Infrastructure\\PawMates.Persistence\\PawMates.Persistence.csproj|c:\\users\\kc\\desktop\\kod\\.nets\\pawmates.net\\infrastructure\\pawmates.persistence\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4558463-77E2-46A2-B96C-90E427590F91}|Infrastructure\\PawMates.Persistence\\PawMates.Persistence.csproj|solutionrelative:infrastructure\\pawmates.persistence\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726143137_InitialMigrationForPostgreSQL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\PawMates.Persistence\\Migrations\\20240726143137_InitialMigrationForPostgreSQL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726142903_InitialMigrationForPostgreSQL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\PawMates.Persistence\\Migrations\\20240726142903_InitialMigrationForPostgreSQL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726142852_InitialMigrationForPostgreSQL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\PawMates.Persistence\\Migrations\\20240726142852_InitialMigrationForPostgreSQL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4B1370BB-BCEF-46A6-9E19-17072B755476}|Presantation\\PawMates.API\\PawMates.API.csproj|c:\\users\\kc\\desktop\\kod\\.nets\\pawmates.net\\presantation\\pawmates.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{4B1370BB-BCEF-46A6-9E19-17072B755476}|Presantation\\PawMates.API\\PawMates.API.csproj|solutionrelative:presantation\\pawmates.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B1370BB-BCEF-46A6-9E19-17072B755476}|Presantation\\PawMates.API\\PawMates.API.csproj|c:\\users\\kc\\desktop\\kod\\.nets\\pawmates.net\\presantation\\pawmates.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4B1370BB-BCEF-46A6-9E19-17072B755476}|Presantation\\PawMates.API\\PawMates.API.csproj|solutionrelative:presantation\\pawmates.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726140821_InitialMigrationForPostgreSQL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\PawMates.Persistence\\Migrations\\20240726140821_InitialMigrationForPostgreSQL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4558463-77E2-46A2-B96C-90E427590F91}|Infrastructure\\PawMates.Persistence\\PawMates.Persistence.csproj|c:\\users\\kc\\desktop\\kod\\.nets\\pawmates.net\\infrastructure\\pawmates.persistence\\configurations\\petconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4558463-77E2-46A2-B96C-90E427590F91}|Infrastructure\\PawMates.Persistence\\PawMates.Persistence.csproj|solutionrelative:infrastructure\\pawmates.persistence\\configurations\\petconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4558463-77E2-46A2-B96C-90E427590F91}|Infrastructure\\PawMates.Persistence\\PawMates.Persistence.csproj|c:\\users\\kc\\desktop\\kod\\.nets\\pawmates.net\\infrastructure\\pawmates.persistence\\configurations\\adbaseconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4558463-77E2-46A2-B96C-90E427590F91}|Infrastructure\\PawMates.Persistence\\PawMates.Persistence.csproj|solutionrelative:infrastructure\\pawmates.persistence\\configurations\\adbaseconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4558463-77E2-46A2-B96C-90E427590F91}|Infrastructure\\PawMates.Persistence\\PawMates.Persistence.csproj|c:\\users\\kc\\desktop\\kod\\.nets\\pawmates.net\\infrastructure\\pawmates.persistence\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4558463-77E2-46A2-B96C-90E427590F91}|Infrastructure\\PawMates.Persistence\\PawMates.Persistence.csproj|solutionrelative:infrastructure\\pawmates.persistence\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90F7BA84-A5EC-4D10-83DE-E5F4ACE485B1}|Core\\PawMates.Application\\PawMates.Application.csproj|c:\\users\\kc\\desktop\\kod\\.nets\\pawmates.net\\core\\pawmates.application\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90F7BA84-A5EC-4D10-83DE-E5F4ACE485B1}|Core\\PawMates.Application\\PawMates.Application.csproj|solutionrelative:core\\pawmates.application\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDA6A898-9201-429E-AAC1-6863CF86E8FA}|PawMates.Mapper\\PawMates.Mapper.csproj|c:\\users\\kc\\desktop\\kod\\.nets\\pawmates.net\\pawmates.mapper\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDA6A898-9201-429E-AAC1-6863CF86E8FA}|PawMates.Mapper\\PawMates.Mapper.csproj|solutionrelative:pawmates.mapper\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240725125812_InitialCreate1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\PawMates.Persistence\\Migrations\\20240725125812_InitialCreate1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{851E4322-3E48-44FF-AC8E-6B1289F50EA8}|Core\\PawMates.Domain\\PawMates.Domain.csproj|c:\\users\\kc\\desktop\\kod\\.nets\\pawmates.net\\core\\pawmates.domain\\entities\\adbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{851E4322-3E48-44FF-AC8E-6B1289F50EA8}|Core\\PawMates.Domain\\PawMates.Domain.csproj|solutionrelative:core\\pawmates.domain\\entities\\adbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240725125540_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\PawMates.Persistence\\Migrations\\20240725125540_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,28 +83,206 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Presantation\\PawMates.API\\Program.cs",
-              "RelativeDocumentMoniker": "Presantation\\PawMates.API\\Program.cs",
-              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Presantation\\PawMates.API\\Program.cs",
-              "RelativeToolTip": "Presantation\\PawMates.API\\Program.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "20240726153745_InitialMigrationForPostgreSQL.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726153745_InitialMigrationForPostgreSQL.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\PawMates.Persistence\\Migrations\\20240726153745_InitialMigrationForPostgreSQL.cs",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726153745_InitialMigrationForPostgreSQL.cs",
+              "RelativeToolTip": "Infrastructure\\PawMates.Persistence\\Migrations\\20240726153745_InitialMigrationForPostgreSQL.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-23T13:21:22.532Z",
+              "WhenOpened": "2024-07-26T15:37:45.31Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "20240726143137_InitialMigrationForPostgreSQL.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726143137_InitialMigrationForPostgreSQL.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\PawMates.Persistence\\Migrations\\20240726143137_InitialMigrationForPostgreSQL.cs",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726143137_InitialMigrationForPostgreSQL.cs",
+              "RelativeToolTip": "Infrastructure\\PawMates.Persistence\\Migrations\\20240726143137_InitialMigrationForPostgreSQL.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T14:31:38.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "20240726142903_InitialMigrationForPostgreSQL.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726142903_InitialMigrationForPostgreSQL.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\PawMates.Persistence\\Migrations\\20240726142903_InitialMigrationForPostgreSQL.cs",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726142903_InitialMigrationForPostgreSQL.cs",
+              "RelativeToolTip": "Infrastructure\\PawMates.Persistence\\Migrations\\20240726142903_InitialMigrationForPostgreSQL.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T14:29:03.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "20240726142852_InitialMigrationForPostgreSQL.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726142852_InitialMigrationForPostgreSQL.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\PawMates.Persistence\\Migrations\\20240726142852_InitialMigrationForPostgreSQL.cs",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726142852_InitialMigrationForPostgreSQL.cs",
+              "RelativeToolTip": "Infrastructure\\PawMates.Persistence\\Migrations\\20240726142852_InitialMigrationForPostgreSQL.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T14:28:52.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "20240726140821_InitialMigrationForPostgreSQL.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726140821_InitialMigrationForPostgreSQL.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\PawMates.Persistence\\Migrations\\20240726140821_InitialMigrationForPostgreSQL.cs",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726140821_InitialMigrationForPostgreSQL.cs",
+              "RelativeToolTip": "Infrastructure\\PawMates.Persistence\\Migrations\\20240726140821_InitialMigrationForPostgreSQL.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T14:08:21.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Registration.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Application\\Registration.cs",
+              "RelativeDocumentMoniker": "Core\\PawMates.Application\\Registration.cs",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Application\\Registration.cs",
+              "RelativeToolTip": "Core\\PawMates.Application\\Registration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T14:04:22.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Registration.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\PawMates.Mapper\\Registration.cs",
+              "RelativeDocumentMoniker": "PawMates.Mapper\\Registration.cs",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\PawMates.Mapper\\Registration.cs",
+              "RelativeToolTip": "PawMates.Mapper\\Registration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T14:04:20.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Presantation\\PawMates.API\\appsettings.json",
+              "RelativeDocumentMoniker": "Presantation\\PawMates.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Presantation\\PawMates.API\\appsettings.json",
+              "RelativeToolTip": "Presantation\\PawMates.API\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-26T14:04:08.289Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Presantation\\PawMates.API\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Presantation\\PawMates.API\\appsettings.Development.json",
               "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Presantation\\PawMates.API\\appsettings.Development.json",
               "RelativeToolTip": "Presantation\\PawMates.API\\appsettings.Development.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAABkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-23T13:21:19.714Z",
+              "WhenOpened": "2024-07-25T13:06:20.732Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Registration.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Registration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\PawMates.Persistence\\Registration.cs",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Registration.cs",
+              "RelativeToolTip": "Infrastructure\\PawMates.Persistence\\Registration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-25T13:05:02.263Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "20240725125812_InitialCreate1.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240725125812_InitialCreate1.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\PawMates.Persistence\\Migrations\\20240725125812_InitialCreate1.cs",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240725125812_InitialCreate1.cs",
+              "RelativeToolTip": "Infrastructure\\PawMates.Persistence\\Migrations\\20240725125812_InitialCreate1.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-25T12:58:12.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Context\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\PawMates.Persistence\\Context\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Context\\AppDbContext.cs",
+              "RelativeToolTip": "Infrastructure\\PawMates.Persistence\\Context\\AppDbContext.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAwwBMAAABKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-25T12:57:01.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PetConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Configurations\\PetConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\PawMates.Persistence\\Configurations\\PetConfiguration.cs",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Configurations\\PetConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\PawMates.Persistence\\Configurations\\PetConfiguration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-25T12:56:50.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AdBaseConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Configurations\\AdBaseConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\PawMates.Persistence\\Configurations\\AdBaseConfiguration.cs",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Configurations\\AdBaseConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\PawMates.Persistence\\Configurations\\AdBaseConfiguration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-25T12:56:46.649Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AdBase.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Domain\\Entities\\AdBase.cs",
+              "RelativeDocumentMoniker": "Core\\PawMates.Domain\\Entities\\AdBase.cs",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Domain\\Entities\\AdBase.cs",
+              "RelativeToolTip": "Core\\PawMates.Domain\\Entities\\AdBase.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-25T12:56:26.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "20240725125540_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240725125540_InitialCreate.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\PawMates.Persistence\\Migrations\\20240725125540_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240725125540_InitialCreate.cs",
+              "RelativeToolTip": "Infrastructure\\PawMates.Persistence\\Migrations\\20240725125540_InitialCreate.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-25T12:55:41.04Z"
             }
           ]
         }

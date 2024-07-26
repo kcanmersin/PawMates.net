@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PawMates.Persistence")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3514897419385783c92e133d92b735df21dbd4dc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+767af1baaef00b4ba50e3749d2abf0d7124de6a7")]
 [assembly: System.Reflection.AssemblyProductAttribute("PawMates.Persistence")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PawMates.Persistence")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

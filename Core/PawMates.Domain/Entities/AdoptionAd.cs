@@ -12,15 +12,7 @@ namespace PawMates.Domain.Entities
         {
         }
 
-        //public AdoptionAd(string title, string description, List<Pet> pets, List<string> imageUrls, bool isNeutered)
-        //{
-        //    Title = title;
-        //    Description = description;
-        //    Pets = pets;
-        //    ImageUrls = imageUrls;
-        //    IsNeutered = isNeutered;
-        //}
-        //use base class constructor
+
         public AdoptionAd(string title, string description, List<Pet> pets, List<string> imageUrls, bool isNeutered) : base(title, description, pets)//, imageUrls)
         {
             IsNeutered = isNeutered;

@@ -106,3 +106,7 @@ C:\Users\KC\Desktop\kod\.nets\PawMates.net\Presantation\PawMates.API\obj\Debug\n
 C:\Users\KC\Desktop\kod\.nets\PawMates.net\Presantation\PawMates.API\obj\Debug\net7.0\ref\PawMates.API.dll
 C:\Users\KC\Desktop\kod\.nets\PawMates.net\Presantation\PawMates.API\obj\Debug\net7.0\PawMates.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\KC\Desktop\kod\.nets\PawMates.net\Presantation\PawMates.API\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\KC\Desktop\kod\.nets\PawMates.net\Presantation\PawMates.API\bin\Debug\net7.0\MySqlConnector.dll
+C:\Users\KC\Desktop\kod\.nets\PawMates.net\Presantation\PawMates.API\bin\Debug\net7.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\KC\Desktop\kod\.nets\PawMates.net\Presantation\PawMates.API\bin\Debug\net7.0\Npgsql.dll
+C:\Users\KC\Desktop\kod\.nets\PawMates.net\Presantation\PawMates.API\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

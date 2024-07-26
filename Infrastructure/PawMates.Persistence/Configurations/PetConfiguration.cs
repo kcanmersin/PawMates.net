@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PawMates.Persistence.Configurations
 {
-    internal class PetConfiguration
+    public class PetConfiguration
     {
     }
 }
