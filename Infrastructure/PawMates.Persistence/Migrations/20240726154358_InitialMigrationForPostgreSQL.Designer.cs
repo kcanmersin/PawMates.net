@@ -12,7 +12,7 @@ using PawMates.Persistence.Context;
 namespace PawMates.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240726153745_InitialMigrationForPostgreSQL")]
+    [Migration("20240726154358_InitialMigrationForPostgreSQL")]
     partial class InitialMigrationForPostgreSQL
     {
         /// <inheritdoc />

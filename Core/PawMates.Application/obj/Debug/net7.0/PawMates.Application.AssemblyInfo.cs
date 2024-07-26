@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PawMates.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+767af1baaef00b4ba50e3749d2abf0d7124de6a7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+116beafc42215ad230f1feec7c4defe3466145b4")]
 [assembly: System.Reflection.AssemblyProductAttribute("PawMates.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PawMates.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
