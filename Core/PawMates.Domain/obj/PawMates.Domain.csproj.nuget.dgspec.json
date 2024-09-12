@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Domain\\PawMates.Domain.csproj": {}
+    "C:\\Users\\KC\\source\\repos\\PawMates.net\\Core\\PawMates.Domain\\PawMates.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Domain\\PawMates.Domain.csproj": {
+    "C:\\Users\\KC\\source\\repos\\PawMates.net\\Core\\PawMates.Domain\\PawMates.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Domain\\PawMates.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\KC\\source\\repos\\PawMates.net\\Core\\PawMates.Domain\\PawMates.Domain.csproj",
         "projectName": "PawMates.Domain",
-        "projectPath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Domain\\PawMates.Domain.csproj",
+        "projectPath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\Core\\PawMates.Domain\\PawMates.Domain.csproj",
         "packagesPath": "C:\\Users\\KC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Domain\\obj\\",
+        "outputPath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\Core\\PawMates.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\KC\\AppData\\Roaming\\NuGet\\NuGet.Config",

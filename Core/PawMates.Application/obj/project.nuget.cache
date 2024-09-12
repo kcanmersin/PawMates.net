@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WbP1lQaK4GE=",
+  "dgSpecHash": "v3WI+np6Ln4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Application\\PawMates.Application.csproj",
+  "projectFilePath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\Core\\PawMates.Application\\PawMates.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\KC\\.nuget\\packages\\bogus\\35.0.1\\bogus.35.0.1.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\fluentvalidation\\11.7.1\\fluentvalidation.11.7.1.nupkg.sha512",

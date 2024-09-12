@@ -1479,11 +1479,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\PawMates.Mapper\\PawMates.Mapper.csproj",
+      "projectUniqueName": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Mapper\\PawMates.Mapper.csproj",
       "projectName": "PawMates.Mapper",
-      "projectPath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\PawMates.Mapper\\PawMates.Mapper.csproj",
+      "projectPath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Mapper\\PawMates.Mapper.csproj",
       "packagesPath": "C:\\Users\\KC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\PawMates.Mapper\\obj\\",
+      "outputPath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Mapper\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\KC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1501,8 +1501,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Application\\PawMates.Application.csproj": {
-              "projectPath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Application\\PawMates.Application.csproj"
+            "C:\\Users\\KC\\source\\repos\\PawMates.net\\Core\\PawMates.Application\\PawMates.Application.csproj": {
+              "projectPath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\Core\\PawMates.Application\\PawMates.Application.csproj"
             }
           }
         }

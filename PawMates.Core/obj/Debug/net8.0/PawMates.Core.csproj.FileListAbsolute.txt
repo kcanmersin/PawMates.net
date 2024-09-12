@@ -1,0 +1,15 @@
+C:\Users\KC\source\repos\PawMates.net\PawMates.Core\obj\Debug\net8.0\PawMates.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\KC\source\repos\PawMates.net\PawMates.Core\obj\Debug\net8.0\PawMates.Core.AssemblyInfoInputs.cache
+C:\Users\KC\source\repos\PawMates.net\PawMates.Core\obj\Debug\net8.0\PawMates.Core.AssemblyInfo.cs
+C:\Users\KC\source\repos\PawMates.net\PawMates.Core\obj\Debug\net8.0\PawMates.Core.csproj.CoreCompileInputs.cache
+C:\Users\KC\source\repos\PawMates.net\PawMates.Core\obj\Debug\net8.0\PawMates.Core.sourcelink.json
+C:\Users\KC\source\repos\PawMates.net\PawMates.Core\obj\Debug\net8.0\PawMates.Core.csproj.AssemblyReference.cache
+C:\Users\KC\source\repos\PawMates.net\PawMates.Core\bin\Debug\net8.0\PawMates.Core.deps.json
+C:\Users\KC\source\repos\PawMates.net\PawMates.Core\bin\Debug\net8.0\PawMates.Core.runtimeconfig.json
+C:\Users\KC\source\repos\PawMates.net\PawMates.Core\bin\Debug\net8.0\PawMates.Core.dll
+C:\Users\KC\source\repos\PawMates.net\PawMates.Core\bin\Debug\net8.0\PawMates.Core.pdb
+C:\Users\KC\source\repos\PawMates.net\PawMates.Core\obj\Debug\net8.0\PawMates.Core.dll
+C:\Users\KC\source\repos\PawMates.net\PawMates.Core\obj\Debug\net8.0\refint\PawMates.Core.dll
+C:\Users\KC\source\repos\PawMates.net\PawMates.Core\obj\Debug\net8.0\PawMates.Core.pdb
+C:\Users\KC\source\repos\PawMates.net\PawMates.Core\obj\Debug\net8.0\PawMates.Core.genruntimeconfig.cache
+C:\Users\KC\source\repos\PawMates.net\PawMates.Core\obj\Debug\net8.0\ref\PawMates.Core.dll

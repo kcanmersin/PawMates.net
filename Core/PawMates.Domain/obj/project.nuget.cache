@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kZlLHEOc9go=",
+  "dgSpecHash": "g3HnyndmIo8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Domain\\PawMates.Domain.csproj",
+  "projectFilePath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\Core\\PawMates.Domain\\PawMates.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\KC\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.10\\microsoft.aspnetcore.cryptography.internal.7.0.10.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\7.0.10\\microsoft.aspnetcore.cryptography.keyderivation.7.0.10.nupkg.sha512",

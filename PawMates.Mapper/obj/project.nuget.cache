@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3giL0rxg0Y4=",
+  "dgSpecHash": "qFCPq6peDe0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\PawMates.Mapper\\PawMates.Mapper.csproj",
+  "projectFilePath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Mapper\\PawMates.Mapper.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\KC\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\bogus\\35.0.1\\bogus.35.0.1.nupkg.sha512",

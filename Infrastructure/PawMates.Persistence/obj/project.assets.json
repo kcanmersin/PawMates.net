@@ -4097,11 +4097,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\PawMates.Persistence.csproj",
+      "projectUniqueName": "C:\\Users\\KC\\source\\repos\\PawMates.net\\Infrastructure\\PawMates.Persistence\\PawMates.Persistence.csproj",
       "projectName": "PawMates.Persistence",
-      "projectPath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\PawMates.Persistence.csproj",
+      "projectPath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\Infrastructure\\PawMates.Persistence\\PawMates.Persistence.csproj",
       "packagesPath": "C:\\Users\\KC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\obj\\",
+      "outputPath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\Infrastructure\\PawMates.Persistence\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\KC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4119,11 +4119,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Application\\PawMates.Application.csproj": {
-              "projectPath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Application\\PawMates.Application.csproj"
+            "C:\\Users\\KC\\source\\repos\\PawMates.net\\Core\\PawMates.Application\\PawMates.Application.csproj": {
+              "projectPath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\Core\\PawMates.Application\\PawMates.Application.csproj"
             },
-            "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Domain\\PawMates.Domain.csproj": {
-              "projectPath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Core\\PawMates.Domain\\PawMates.Domain.csproj"
+            "C:\\Users\\KC\\source\\repos\\PawMates.net\\Core\\PawMates.Domain\\PawMates.Domain.csproj": {
+              "projectPath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\Core\\PawMates.Domain\\PawMates.Domain.csproj"
             }
           }
         }

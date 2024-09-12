@@ -1,0 +1,36 @@
+2024-09-12 14:44:29 [Warning] The WebRootPath was not found: "C:\Users\KC\source\repos\PawMates.net\PawMates.API\wwwroot". Static files may be unavailable.
+2024-09-12 14:44:31 [Information] No cached response available for this request.
+2024-09-12 14:44:31 [Information] The response could not be cached for this request.
+2024-09-12 14:44:31 [Information] HTTP "GET" "/swagger" responded 301 in 64.0123 ms
+2024-09-12 14:44:31 [Information] No cached response available for this request.
+2024-09-12 14:44:31 [Information] The response could not be cached for this request.
+2024-09-12 14:44:31 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 71.3599 ms
+2024-09-12 14:44:31 [Information] No cached response available for this request.
+2024-09-12 14:44:31 [Information] Sending file. Request path: '"/swagger-ui.css"'. Physical path: '"N/A"'
+2024-09-12 14:44:31 [Information] No cached response available for this request.
+2024-09-12 14:44:31 [Information] No cached response available for this request.
+2024-09-12 14:44:31 [Information] No cached response available for this request.
+2024-09-12 14:44:31 [Information] The response could not be cached for this request.
+2024-09-12 14:44:31 [Information] The response could not be cached for this request.
+2024-09-12 14:44:31 [Information] No cached response available for this request.
+2024-09-12 14:44:31 [Information] Sending file. Request path: '"/swagger-ui-standalone-preset.js"'. Physical path: '"N/A"'
+2024-09-12 14:44:31 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 27.0542 ms
+2024-09-12 14:44:31 [Information] Sending file. Request path: '"/index.css"'. Physical path: '"N/A"'
+2024-09-12 14:44:31 [Information] The response could not be cached for this request.
+2024-09-12 14:44:31 [Information] The response could not be cached for this request.
+2024-09-12 14:44:31 [Information] Sending file. Request path: '"/swagger-ui-bundle.js"'. Physical path: '"N/A"'
+2024-09-12 14:44:31 [Information] The response could not be cached for this request.
+2024-09-12 14:44:31 [Information] HTTP "GET" "/swagger/index.css" responded 200 in 119.9572 ms
+2024-09-12 14:44:31 [Information] HTTP "GET" "/swagger/swagger-ui.css" responded 200 in 201.8961 ms
+2024-09-12 14:44:31 [Information] HTTP "GET" "/swagger/swagger-ui-standalone-preset.js" responded 200 in 112.2150 ms
+2024-09-12 14:44:31 [Information] HTTP "GET" "/swagger/swagger-ui-bundle.js" responded 200 in 509.8086 ms
+2024-09-12 14:44:32 [Information] No cached response available for this request.
+2024-09-12 14:44:32 [Information] No cached response available for this request.
+2024-09-12 14:44:32 [Information] Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"'
+2024-09-12 14:44:32 [Information] The response could not be cached for this request.
+2024-09-12 14:44:32 [Information] HTTP "GET" "/swagger/favicon-32x32.png" responded 200 in 7.7634 ms
+2024-09-12 14:44:32 [Information] The response could not be cached for this request.
+2024-09-12 14:44:32 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 127.1601 ms
+2024-09-12 14:44:38 [Information] Executing endpoint '"API.Controllers.UserController.Register (PawMates.API)"'
+2024-09-12 14:44:45 [Information] Executed endpoint '"API.Controllers.UserController.Register (PawMates.API)"'
+2024-09-12 14:44:45 [Information] HTTP "POST" "/api/users/register" responded 200 in 6945.3376 ms

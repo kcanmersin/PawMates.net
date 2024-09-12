@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PawMates.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+116beafc42215ad230f1feec7c4defe3466145b4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75b6e9fd9176067fa257b62503d99d46e62b9f2c")]
 [assembly: System.Reflection.AssemblyProductAttribute("PawMates.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PawMates.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

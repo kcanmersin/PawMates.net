@@ -4966,11 +4966,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Presantation\\PawMates.API\\PawMates.API.csproj",
+      "projectUniqueName": "C:\\Users\\KC\\source\\repos\\PawMates.net\\Presantation\\PawMates.API\\PawMates.API.csproj",
       "projectName": "PawMates.API",
-      "projectPath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Presantation\\PawMates.API\\PawMates.API.csproj",
+      "projectPath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\Presantation\\PawMates.API\\PawMates.API.csproj",
       "packagesPath": "C:\\Users\\KC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Presantation\\PawMates.API\\obj\\",
+      "outputPath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\Presantation\\PawMates.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\KC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4988,14 +4988,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Infrastructure\\PawMates.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Infrastructure\\PawMates.Infrastructure.csproj"
+            "C:\\Users\\KC\\source\\repos\\PawMates.net\\Infrastructure\\PawMates.Infrastructure\\PawMates.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\Infrastructure\\PawMates.Infrastructure\\PawMates.Infrastructure.csproj"
             },
-            "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\PawMates.Persistence.csproj": {
-              "projectPath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\PawMates.Persistence.csproj"
+            "C:\\Users\\KC\\source\\repos\\PawMates.net\\Infrastructure\\PawMates.Persistence\\PawMates.Persistence.csproj": {
+              "projectPath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\Infrastructure\\PawMates.Persistence\\PawMates.Persistence.csproj"
             },
-            "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\PawMates.Mapper\\PawMates.Mapper.csproj": {
-              "projectPath": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\PawMates.Mapper\\PawMates.Mapper.csproj"
+            "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Mapper\\PawMates.Mapper.csproj": {
+              "projectPath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Mapper\\PawMates.Mapper.csproj"
             }
           }
         }
