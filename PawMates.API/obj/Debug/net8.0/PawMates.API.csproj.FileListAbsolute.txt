@@ -252,3 +252,4 @@ C:\Users\KC\source\repos\PawMates.net\PawMates.API\obj\Debug\net8.0\refint\PawMa
 C:\Users\KC\source\repos\PawMates.net\PawMates.API\obj\Debug\net8.0\PawMates.API.pdb
 C:\Users\KC\source\repos\PawMates.net\PawMates.API\obj\Debug\net8.0\PawMates.API.genruntimeconfig.cache
 C:\Users\KC\source\repos\PawMates.net\PawMates.API\obj\Debug\net8.0\ref\PawMates.API.dll
+C:\Users\KC\source\repos\PawMates.net\PawMates.API\bin\Debug\net8.0\PawMates.API.staticwebassets.runtime.json

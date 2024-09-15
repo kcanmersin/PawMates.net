@@ -1,0 +1,72 @@
+2024-09-13 11:35:32 [Information] No cached response available for this request.
+2024-09-13 11:35:32 [Information] The response could not be cached for this request.
+2024-09-13 11:35:32 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 146.5147 ms
+2024-09-13 11:35:32 [Information] No cached response available for this request.
+2024-09-13 11:35:32 [Information] The response could not be cached for this request.
+2024-09-13 11:35:32 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 54.0768 ms
+2024-09-13 11:35:33 [Information] No cached response available for this request.
+2024-09-13 11:35:33 [Information] The response could not be cached for this request.
+2024-09-13 11:35:33 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 195.4930 ms
+2024-09-13 11:35:36 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-13 11:35:40 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-13 11:35:40 [Information] HTTP "POST" "/api/Ads" responded 400 in 4120.3257 ms
+2024-09-13 11:36:47 [Information] No cached response available for this request.
+2024-09-13 11:36:47 [Information] The response could not be cached for this request.
+2024-09-13 11:36:47 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 126.0052 ms
+2024-09-13 11:36:47 [Information] No cached response available for this request.
+2024-09-13 11:36:47 [Information] The response could not be cached for this request.
+2024-09-13 11:36:47 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 11.9257 ms
+2024-09-13 11:36:48 [Information] No cached response available for this request.
+2024-09-13 11:36:48 [Information] The response could not be cached for this request.
+2024-09-13 11:36:48 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 157.8308 ms
+2024-09-13 11:36:51 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-13 11:36:54 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-13 11:36:54 [Information] HTTP "POST" "/api/Ads" responded 400 in 3274.4883 ms
+2024-09-13 11:38:42 [Information] No cached response available for this request.
+2024-09-13 11:38:42 [Information] The response could not be cached for this request.
+2024-09-13 11:38:42 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 130.9861 ms
+2024-09-13 11:38:42 [Information] No cached response available for this request.
+2024-09-13 11:38:42 [Information] The response could not be cached for this request.
+2024-09-13 11:38:42 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 11.6925 ms
+2024-09-13 11:38:43 [Information] No cached response available for this request.
+2024-09-13 11:38:43 [Information] The response could not be cached for this request.
+2024-09-13 11:38:43 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 183.7160 ms
+2024-09-13 11:38:46 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-13 11:38:50 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-13 11:38:50 [Information] HTTP "POST" "/api/Ads" responded 400 in 4639.2190 ms
+2024-09-13 11:39:56 [Information] No cached response available for this request.
+2024-09-13 11:39:56 [Information] The response could not be cached for this request.
+2024-09-13 11:39:56 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 123.0183 ms
+2024-09-13 11:39:56 [Information] No cached response available for this request.
+2024-09-13 11:39:56 [Information] The response could not be cached for this request.
+2024-09-13 11:39:56 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 15.9157 ms
+2024-09-13 11:39:56 [Information] No cached response available for this request.
+2024-09-13 11:39:56 [Information] The response could not be cached for this request.
+2024-09-13 11:39:56 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 141.2736 ms
+2024-09-13 11:40:00 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-13 11:40:03 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-13 11:40:03 [Information] HTTP "POST" "/api/Ads" responded 400 in 3811.9536 ms
+2024-09-13 11:40:41 [Information] No cached response available for this request.
+2024-09-13 11:40:42 [Information] The response could not be cached for this request.
+2024-09-13 11:40:42 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 116.5858 ms
+2024-09-13 11:40:42 [Information] No cached response available for this request.
+2024-09-13 11:40:42 [Information] The response could not be cached for this request.
+2024-09-13 11:40:42 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 26.9414 ms
+2024-09-13 11:40:42 [Information] No cached response available for this request.
+2024-09-13 11:40:42 [Information] The response could not be cached for this request.
+2024-09-13 11:40:42 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 150.0962 ms
+2024-09-13 11:40:45 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-13 11:40:48 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-13 11:40:48 [Information] HTTP "POST" "/api/Ads" responded 400 in 3503.8984 ms
+2024-09-13 11:44:41 [Information] No cached response available for this request.
+2024-09-13 11:44:41 [Information] The response could not be cached for this request.
+2024-09-13 11:44:41 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 123.9047 ms
+2024-09-13 11:44:41 [Information] No cached response available for this request.
+2024-09-13 11:44:41 [Information] The response could not be cached for this request.
+2024-09-13 11:44:41 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 16.3456 ms
+2024-09-13 11:44:42 [Information] No cached response available for this request.
+2024-09-13 11:44:42 [Information] The response could not be cached for this request.
+2024-09-13 11:44:42 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 157.9747 ms
+2024-09-13 11:44:50 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-13 11:44:54 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-13 11:44:54 [Information] HTTP "POST" "/api/Ads" responded 200 in 3603.7277 ms

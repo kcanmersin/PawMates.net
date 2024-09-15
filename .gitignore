@@ -9,3 +9,7 @@
 
 .fake
 .vs/PawMates.net/FileContentIndex/071bdd37-65f9-419c-9414-b3e50bdcc531.vsidx
+PawMates.API/bin/Debug/net8.0/runtimes/win-x64/native/tensorflow.dll
+PawMates.API/bin/Debug/net8.0/runtimes/osx-x64/native/libtensorflow.dylib
+PawMates.API/bin/Debug/net8.0/runtimes/linux-x64/native/libtensorflow.so
+*.vsidx

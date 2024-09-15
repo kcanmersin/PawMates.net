@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Builder;
 using RabbitMQ.Client;
 using HealthChecks.Kafka;
+using Pawmates.Core.Data;
 
 namespace Core.Extensions
 {
@@ -43,13 +44,11 @@ namespace Core.Extensions
 
             services.AddScoped<IEmailService, EmailService>();
 
-            // Connection string
-            var defaultConnectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection") ?? configuration["ConnectionStrings:DefaultConnection"];
+            var defaultConnectionString = Environment.GetEnvironmentVariable("PAWMATES_ConnectionStrings__DefaultConnection") ?? configuration["PAWMATES_ConnectionStrings__DefaultConnection"];
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(defaultConnectionString));
 
-            // JWT settings configuration
             var jwtSettings = new JwtSettings
             {
                 Secret = Environment.GetEnvironmentVariable("JWT_SECRET") ?? configuration["JwtSettings:Secret"],

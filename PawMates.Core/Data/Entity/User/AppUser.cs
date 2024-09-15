@@ -1,5 +1,6 @@
 ﻿using Core.Data.Entity.EntityBases;
 using Microsoft.AspNetCore.Identity;
+using PawMates.Core.Data.Entity.Ads;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,10 +25,9 @@ namespace Core.Data.Entity.User
 
 
         //navigation properties
+        public virtual ICollection<AdvertisementBase> Advertisements { get; set; }
 
-        //created date
-        
-  
+
 
 
 

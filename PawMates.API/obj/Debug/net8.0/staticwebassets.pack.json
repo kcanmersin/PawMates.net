@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\wwwroot\\a.png",
+      "PackagePath": "staticwebassets\\a.png"
+    },
+    {
+      "Id": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\wwwroot\\defaultlogo.jpg",
+      "PackagePath": "staticwebassets\\defaultlogo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\wwwroot\\welcome.html",
+      "PackagePath": "staticwebassets\\welcome.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.PawMates.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.PawMates.API.props",
+      "PackagePath": "build\\PawMates.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.PawMates.API.props",
+      "PackagePath": "buildMultiTargeting\\PawMates.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.PawMates.API.props",
+      "PackagePath": "buildTransitive\\PawMates.API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

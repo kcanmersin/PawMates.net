@@ -1,3 +1,4 @@
+using Core.Data;
 using Core.Data.Entity.User;
 using Core.Extensions;
 using Core.Service.JWT;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Hangfire;
 using Serilog;
+using API.Middlewares.ExceptionHandling;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -21,7 +23,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Serilog.Filters;
-using API.Middlewares.ExceptionHandling;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,32 +30,32 @@ builder.Host.UseSerilog((context, services, configuration) =>
 {
     configuration
         .Enrich.FromLogContext()
-        .WriteTo.Console()  
+        .WriteTo.Console()
         .WriteTo.Logger(lc => lc
             .Filter.ByIncludingOnly(Matching.WithProperty<string>("SourceContext", v => v.Contains("Middleware")))
-            .Enrich.WithProperty("LogType", "Middleware")  
-            .WriteTo.File("Logs/middleware.log", 
+            .Enrich.WithProperty("LogType", "Middleware")
+            .WriteTo.File("Logs/middleware.log",
                           rollingInterval: RollingInterval.Day,
                           outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}",
-                          fileSizeLimitBytes: 10485760, 
-                          retainedFileCountLimit: 7, 
+                          fileSizeLimitBytes: 10485760,
+                          retainedFileCountLimit: 7,
                           shared: true))
         .WriteTo.Logger(lc => lc
             .Filter.ByIncludingOnly(Matching.WithProperty<string>("SourceContext", v => v.Contains("ActionFilter")))
-            .Enrich.WithProperty("LogType", "ActionFilter") 
-            .WriteTo.File("Logs/action.log", 
+            .Enrich.WithProperty("LogType", "ActionFilter")
+            .WriteTo.File("Logs/action.log",
                           rollingInterval: RollingInterval.Day,
                           outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}",
-                          fileSizeLimitBytes: 10485760, 
-                          retainedFileCountLimit: 7, 
+                          fileSizeLimitBytes: 10485760,
+                          retainedFileCountLimit: 7,
                           shared: true))
         .WriteTo.Logger(lc => lc
-            .Enrich.WithProperty("LogType", "General") 
-            .WriteTo.File("Logs/logfile.log", 
+            .Enrich.WithProperty("LogType", "General")
+            .WriteTo.File("Logs/logfile.log",
                           rollingInterval: RollingInterval.Day,
                           outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}",
-                          fileSizeLimitBytes: 10485760, 
-                          retainedFileCountLimit: 7, 
+                          fileSizeLimitBytes: 10485760,
+                          retainedFileCountLimit: 7,
                           shared: true))
         .ReadFrom.Configuration(context.Configuration)
         .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName);
@@ -95,7 +96,6 @@ builder.Services.LoadCoreLayerExtension(builder.Configuration);
 
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
-builder.Services.AddSignalR();
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add<LoggingActionFilter>();
@@ -137,7 +137,7 @@ else
 }
 
 app.UseCors("AllowAllOrigins");
-app.UseCoreLayerRecurringJobs(); 
+app.UseCoreLayerRecurringJobs();
 
 app.UseRouting();
 
@@ -158,11 +158,6 @@ app.UseAuthorization();
 app.UseStaticFiles();
 
 
-var options = new BackgroundJobServerOptions
-{
-    Queues = new[] { "high-priority", "low-priority" },
-    WorkerCount = Environment.ProcessorCount * 5
-};
 
 
 app.MapControllers();

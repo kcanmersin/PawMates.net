@@ -1,3 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using PawMates.Core.Data.Configurations;
+using PawMates.Core.Data.Entity.Ads;
+using PawMates.Core.Data.Entity;
+using Core.Data.Entity.User;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +13,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Core.Data.Entity.User;
 using Core.Data.Entity;
-namespace Core.Data
+using Hangfire.Server;
+namespace Pawmates.Core.Data
 {
 
     public class ApplicationDbContext : IdentityDbContext<AppUser, AppRole, Guid, AppUserClaim, AppUserRole, AppUserLogin, AppRoleClaim, AppUserToken>
@@ -16,6 +23,11 @@ namespace Core.Data
         {
 
         }
+
+        public DbSet<AdoptionAd> AdoptionAds { get; set; }
+        public DbSet<JobAd> JobAds { get; set; }
+        public DbSet<LostAd> LostAds { get; set; }
+        public DbSet<Pet> Pets { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Core.Data.Entity.User;
 using Microsoft.AspNetCore.Identity;
 using System;
+using PawMates.Core.Data.Entity.Ads;
 
 namespace Core.Data.Configuration
 {
@@ -38,7 +39,11 @@ namespace Core.Data.Configuration
             builder.HasMany<AppUserLogin>().WithOne().HasForeignKey(ul => ul.UserId).IsRequired();
             builder.HasMany<AppUserToken>().WithOne().HasForeignKey(ut => ut.UserId).IsRequired();
             builder.HasMany<AppUserRole>().WithOne().HasForeignKey(ur => ur.UserId).IsRequired();
-
+            // New relationship: User can have many advertisements
+            builder.HasMany<AdvertisementBase>()
+                   .WithOne(ad => ad.User)
+                   .HasForeignKey(ad => ad.UserId)
+                   .OnDelete(DeleteBehavior.Cascade);
 
             var superadmin = new AppUser
             {
