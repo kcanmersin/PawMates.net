@@ -3,20 +3,148 @@
   "WorkspaceRootPath": "C:\\Users\\KC\\source\\repos\\PawMates.net\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.api\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|solutionrelative:pawmates.api\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\posts\\deletepost\\deletepostresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\posts\\deletepost\\deletepostresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\posts\\deletepost\\deleteposthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\posts\\deletepost\\deleteposthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\posts\\deletepost\\deletepostcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\posts\\deletepost\\deletepostcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.api\\contracts\\deletepostrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|solutionrelative:pawmates.api\\contracts\\deletepostrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\posts\\updatepost\\updatepostresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\posts\\updatepost\\updatepostresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\posts\\updatepost\\updateposthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\posts\\updatepost\\updateposthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\posts\\updatepost\\updatepostcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\posts\\updatepost\\updatepostcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.api\\contracts\\updatepostrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|solutionrelative:pawmates.api\\contracts\\updatepostrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\posts\\getallposts\\getallpostshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\posts\\getallposts\\getallpostshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\posts\\createpost\\createpostresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\posts\\createpost\\createpostresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\posts\\createpost\\createposthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\posts\\createpost\\createposthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\posts\\createpost\\createpostcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\posts\\createpost\\createpostcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\posts\\getallposts\\getallpostsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\posts\\getallposts\\getallpostsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\posts\\getallposts\\paginatedpostsresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\posts\\getallposts\\paginatedpostsresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.api\\controllers\\adscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|solutionrelative:pawmates.api\\controllers\\adscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.api\\contracts\\deleteadvertisementrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|solutionrelative:pawmates.api\\contracts\\deleteadvertisementrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\dtos\\postdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\dtos\\postdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\dtos\\petdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\dtos\\petdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.api\\contracts\\getallpostsrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|solutionrelative:pawmates.api\\contracts\\getallpostsrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\ads\\getallads\\getalladsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\ads\\getallads\\getalladsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.api\\contracts\\createpostrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|solutionrelative:pawmates.api\\contracts\\createpostrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.api\\contracts\\createadvertisementrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|solutionrelative:pawmates.api\\contracts\\createadvertisementrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\configuration\\commentconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\configuration\\commentconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\configuration\\likedislikeconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\configuration\\likedislikeconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\configuration\\adconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\configuration\\adconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\configuration\\postconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\configuration\\postconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\entity\\ads\\adoptionad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\entity\\ads\\adoptionad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\entity\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\entity\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\entity\\ads\\advertisementbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\entity\\ads\\advertisementbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\entity\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\entity\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\entity\\pettype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\entity\\pettype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\entity\\likedislike.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\entity\\likedislike.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\entity\\entitybases\\entitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\entity\\entitybases\\entitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\entity\\entitybases\\ientitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\entity\\entitybases\\ientitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\ads\\deleteadvertisement\\deleteadvertisementhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\ads\\deleteadvertisement\\deleteadvertisementhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.api\\contracts\\deleteadvertisementrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|solutionrelative:pawmates.api\\contracts\\deleteadvertisementrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\ads\\deleteadvertisement\\deleteadvertisementresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -55,14 +183,6 @@
       "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\ads\\createadvertisement\\createadvertisementcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\entity\\ads\\advertisementbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\entity\\ads\\advertisementbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\entity\\ads\\adoptionad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\entity\\ads\\adoptionad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\entity\\ads\\lostad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\entity\\ads\\lostad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -71,24 +191,12 @@
       "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\entity\\ads\\jobad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\entity\\entitybases\\entitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\entity\\entitybases\\entitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\dtos\\petdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\dtos\\petdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\dtos\\advertisementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\dtos\\advertisementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\ads\\getallads\\paginatedadsresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\ads\\getallads\\paginatedadsresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\ads\\getallads\\getalladsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\features\\ads\\getallads\\getalladsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\features\\ads\\getallads\\getalladshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -131,10 +239,6 @@
       "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\configuration\\appuserconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\configuration\\adconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\configuration\\adconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|solutionrelative:pawmates.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -170,20 +274,12 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KC\\AppData\\Local\\Temp\\.vsdbgsrc\\64d689b30e3657db427a5e9307b0cd72b59e7b95bd29339b8becb2a1a5d55aa4\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Migrations\\20240915101017_XXXs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PawMates.Core\\Migrations\\20240915101017_XXXs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Migrations\\20240915100229_XXX.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PawMates.Core\\Migrations\\20240915100229_XXX.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Migrations\\20240915095901_XXX.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PawMates.Core\\Migrations\\20240915095901_XXX.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\entity\\entitybases\\ientitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\entity\\entitybases\\ientitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Migrations\\20240915094134_XXX.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -230,10 +326,6 @@
       "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\entity\\user\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.core\\data\\entity\\pettype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:pawmates.core\\data\\entity\\pettype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|c:\\users\\kc\\source\\repos\\pawmates.net\\pawmates.api\\pawmates.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{01C3E822-93B5-43C2-8BA4-8431F63F2800}|PawMates.API\\PawMates.API.csproj|solutionrelative:pawmates.api\\pawmates.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
@@ -263,6 +355,14 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240725125540_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Migrations\\20240915121602_commentpostlike.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:PawMates.Core\\Migrations\\20240915121602_commentpostlike.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Migrations\\20240915101017_XXXs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEB8991-F540-4E14-A383-6EB4758A0D52}|PawMates.Core\\PawMates.Core.csproj|solutionrelative:PawMates.Core\\Migrations\\20240915101017_XXXs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -272,7 +372,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -280,85 +380,202 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DeleteAdvertisementResponse.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementResponse.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementResponse.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementResponse.cs",
-              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T11:29:02.066Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DeleteAdvertisementHandler.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementHandler.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementHandler.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementHandler.cs",
-              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T11:28:48.953Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DeleteAdvertisementCommand.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementCommand.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementCommand.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementCommand.cs",
-              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementCommand.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T11:28:38.379Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "DeleteAdvertisementRequest.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\DeleteAdvertisementRequest.cs",
-              "RelativeDocumentMoniker": "PawMates.API\\Contracts\\DeleteAdvertisementRequest.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\DeleteAdvertisementRequest.cs*",
-              "RelativeToolTip": "PawMates.API\\Contracts\\DeleteAdvertisementRequest.cs*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Title": "DeletePostResponse.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\DeletePost\\DeletePostResponse.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Posts\\DeletePost\\DeletePostResponse.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\DeletePost\\DeletePostResponse.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Posts\\DeletePost\\DeletePostResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T11:28:20.705Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UpdateAdvertisementRequest.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\UpdateAdvertisementRequest.cs",
-              "RelativeDocumentMoniker": "PawMates.API\\Contracts\\UpdateAdvertisementRequest.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\UpdateAdvertisementRequest.cs",
-              "RelativeToolTip": "PawMates.API\\Contracts\\UpdateAdvertisementRequest.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAA1wDkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T11:19:41.381Z",
+              "WhenOpened": "2024-09-17T12:41:43.677Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CreateAdvertisementRequest.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\CreateAdvertisementRequest.cs",
-              "RelativeDocumentMoniker": "PawMates.API\\Contracts\\CreateAdvertisementRequest.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\CreateAdvertisementRequest.cs",
-              "RelativeToolTip": "PawMates.API\\Contracts\\CreateAdvertisementRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Title": "DeletePostHandler.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\DeletePost\\DeletePostHandler.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Posts\\DeletePost\\DeletePostHandler.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\DeletePost\\DeletePostHandler.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Posts\\DeletePost\\DeletePostHandler.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAkwCsAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-13T07:04:38.533Z",
+              "WhenOpened": "2024-09-17T12:40:59.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DeletePostCommand.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\DeletePost\\DeletePostCommand.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Posts\\DeletePost\\DeletePostCommand.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\DeletePost\\DeletePostCommand.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Posts\\DeletePost\\DeletePostCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T12:40:42.817Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DeletePostRequest.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\DeletePostRequest.cs",
+              "RelativeDocumentMoniker": "PawMates.API\\Contracts\\DeletePostRequest.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\DeletePostRequest.cs",
+              "RelativeToolTip": "PawMates.API\\Contracts\\DeletePostRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T12:40:25.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UpdatePostResponse.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\UpdatePost\\UpdatePostResponse.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Posts\\UpdatePost\\UpdatePostResponse.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\UpdatePost\\UpdatePostResponse.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Posts\\UpdatePost\\UpdatePostResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T12:40:01.002Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "PostsController.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Controllers\\PostsController.cs",
+              "RelativeDocumentMoniker": "PawMates.API\\Controllers\\PostsController.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Controllers\\PostsController.cs",
+              "RelativeToolTip": "PawMates.API\\Controllers\\PostsController.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAcwEgAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:20:23.085Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UpdatePostHandler.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\UpdatePost\\UpdatePostHandler.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Posts\\UpdatePost\\UpdatePostHandler.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\UpdatePost\\UpdatePostHandler.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Posts\\UpdatePost\\UpdatePostHandler.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAkwDAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T12:39:48.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UpdatePostCommand.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\UpdatePost\\UpdatePostCommand.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Posts\\UpdatePost\\UpdatePostCommand.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\UpdatePost\\UpdatePostCommand.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Posts\\UpdatePost\\UpdatePostCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T12:36:45.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UpdatePostRequest.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\UpdatePostRequest.cs",
+              "RelativeDocumentMoniker": "PawMates.API\\Contracts\\UpdatePostRequest.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\UpdatePostRequest.cs",
+              "RelativeToolTip": "PawMates.API\\Contracts\\UpdatePostRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T12:36:22.415Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GetAllPostsHandler.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\GetAllPosts\\GetAllPostsHandler.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Posts\\GetAllPosts\\GetAllPostsHandler.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\GetAllPosts\\GetAllPostsHandler.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Posts\\GetAllPosts\\GetAllPostsHandler.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAkAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T12:13:01.86Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "GetAllPostsQuery.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\GetAllPosts\\GetAllPostsQuery.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Posts\\GetAllPosts\\GetAllPostsQuery.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\GetAllPosts\\GetAllPostsQuery.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Posts\\GetAllPosts\\GetAllPostsQuery.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T12:12:43.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CreatePostCommand.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\CreatePost\\CreatePostCommand.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Posts\\CreatePost\\CreatePostCommand.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\CreatePost\\CreatePostCommand.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Posts\\CreatePost\\CreatePostCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:19:39.793Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CreatePostHandler.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\CreatePost\\CreatePostHandler.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Posts\\CreatePost\\CreatePostHandler.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\CreatePost\\CreatePostHandler.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Posts\\CreatePost\\CreatePostHandler.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAABEAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:20:05.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CreatePostResponse.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\CreatePost\\CreatePostResponse.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Posts\\CreatePost\\CreatePostResponse.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\CreatePost\\CreatePostResponse.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Posts\\CreatePost\\CreatePostResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:19:57.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "PaginatedPostsResponse.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\GetAllPosts\\PaginatedPostsResponse.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Posts\\GetAllPosts\\PaginatedPostsResponse.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Posts\\GetAllPosts\\PaginatedPostsResponse.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Posts\\GetAllPosts\\PaginatedPostsResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T12:13:31.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "AdsController.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Controllers\\AdsController.cs",
               "RelativeDocumentMoniker": "PawMates.API\\Controllers\\AdsController.cs",
@@ -371,111 +588,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UpdateAdvertisementCommand.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementCommand.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementCommand.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementCommand.cs",
-              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementCommand.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABUAAABDAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T11:21:16.995Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UpdateAdvertisementResponse.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementResponse.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementResponse.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementResponse.cs",
-              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T11:19:25.489Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UpdateAdvertisementHandler.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementHandler.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementHandler.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementHandler.cs",
-              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementHandler.cs",
-              "ViewState": "AQIAAEsAAAAAAAAAAAAgwDsAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T11:19:09.501Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 16,
-              "Title": "JobAd.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\JobAd.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\Ads\\JobAd.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\JobAd.cs",
-              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\Ads\\JobAd.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Title": "PostDto.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\DTOs\\PostDto.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\DTOs\\PostDto.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\DTOs\\PostDto.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\DTOs\\PostDto.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T12:00:54.76Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "AdvertisementBase.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\AdvertisementBase.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\Ads\\AdvertisementBase.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\AdvertisementBase.cs",
-              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\Ads\\AdvertisementBase.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T12:00:26.718Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "LostAd.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\LostAd.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\Ads\\LostAd.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\LostAd.cs",
-              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\Ads\\LostAd.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T12:00:43.419Z",
+              "WhenOpened": "2024-09-17T12:13:52.209Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 17,
-              "Title": "EntityBase.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
-              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T09:56:40.168Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "AdoptionAd.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\AdoptionAd.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\Ads\\AdoptionAd.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\AdoptionAd.cs",
-              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\Ads\\AdoptionAd.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T12:02:11.71Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
               "Title": "PetDto.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\DTOs\\PetDto.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Features\\DTOs\\PetDto.cs",
@@ -488,72 +614,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CreateAdvertisementCommand.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementCommand.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementCommand.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementCommand.cs",
-              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementCommand.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAmwBoAAAAAAAAA",
+              "DocumentIndex": 18,
+              "Title": "GetAllPostsRequest.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\GetAllPostsRequest.cs",
+              "RelativeDocumentMoniker": "PawMates.API\\Contracts\\GetAllPostsRequest.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\GetAllPostsRequest.cs",
+              "RelativeToolTip": "PawMates.API\\Contracts\\GetAllPostsRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-13T06:47:13.323Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CreateAdvertisementHandler.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementHandler.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementHandler.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementHandler.cs",
-              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementHandler.cs",
-              "ViewState": "AQIAAE4AAAAAAAAAAAAgwHAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-13T06:47:26.812Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CreateAdvertisementResponse.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementResponse.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementResponse.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementResponse.cs",
-              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-13T06:47:03.342Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "AdvertisementDto.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\DTOs\\AdvertisementDto.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Features\\DTOs\\AdvertisementDto.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\DTOs\\AdvertisementDto.cs",
-              "RelativeToolTip": "PawMates.Core\\Features\\DTOs\\AdvertisementDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA4AAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-13T08:47:15.586Z",
+              "WhenOpened": "2024-09-17T12:12:06.564Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 20,
-              "Title": "PaginatedAdsResponse.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\GetAllAds\\PaginatedAdsResponse.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\GetAllAds\\PaginatedAdsResponse.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\GetAllAds\\PaginatedAdsResponse.cs",
-              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\GetAllAds\\PaginatedAdsResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "Title": "CreatePostRequest.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\CreatePostRequest.cs",
+              "RelativeDocumentMoniker": "PawMates.API\\Contracts\\CreatePostRequest.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\CreatePostRequest.cs",
+              "RelativeToolTip": "PawMates.API\\Contracts\\CreatePostRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-13T08:47:04.226Z",
+              "WhenOpened": "2024-09-15T12:19:02.315Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 90,
+              "Title": "20240915121602_commentpostlike.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Migrations\\20240915121602_commentpostlike.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Migrations\\20240915121602_commentpostlike.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Migrations\\20240915121602_commentpostlike.cs",
+              "RelativeToolTip": "PawMates.Core\\Migrations\\20240915121602_commentpostlike.cs",
+              "ViewState": "AQIAAB0BAAAAAAAAAAAowAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:16:02.71Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
               "Title": "GetAllAdsQuery.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\GetAllAds\\GetAllAdsQuery.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\GetAllAds\\GetAllAdsQuery.cs",
@@ -566,7 +665,343 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "LikeDislikeConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\LikeDislikeConfiguration.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Configuration\\LikeDislikeConfiguration.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\LikeDislikeConfiguration.cs",
+              "RelativeToolTip": "PawMates.Core\\Data\\Configuration\\LikeDislikeConfiguration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:13:24.654Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "CreateAdvertisementRequest.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\CreateAdvertisementRequest.cs",
+              "RelativeDocumentMoniker": "PawMates.API\\Contracts\\CreateAdvertisementRequest.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\CreateAdvertisementRequest.cs",
+              "RelativeToolTip": "PawMates.API\\Contracts\\CreateAdvertisementRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T07:04:38.533Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "PostConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\PostConfiguration.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Configuration\\PostConfiguration.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\PostConfiguration.cs",
+              "RelativeToolTip": "PawMates.Core\\Data\\Configuration\\PostConfiguration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:13:31.843Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 22,
+              "Title": "CommentConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\CommentConfiguration.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Configuration\\CommentConfiguration.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\CommentConfiguration.cs",
+              "RelativeToolTip": "PawMates.Core\\Data\\Configuration\\CommentConfiguration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:13:13.585Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Comment.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Comment.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\Comment.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Comment.cs",
+              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\Comment.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA0AAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:07:44.414Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Post.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Post.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\Post.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Post.cs",
+              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\Post.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAABfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:07:22.217Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "LikeDislike.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\LikeDislike.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\LikeDislike.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\LikeDislike.cs",
+              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\LikeDislike.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABkAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:10:32.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "IEntityBase.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\EntityBases\\IEntityBase.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\EntityBases\\IEntityBase.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\EntityBases\\IEntityBase.cs",
+              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\EntityBases\\IEntityBase.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T09:56:42.857Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "EntityBase.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
+              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T09:56:40.168Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "PetType.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\PetType.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\PetType.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\PetType.cs",
+              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\PetType.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T12:05:56.901Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "AdConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\AdConfiguration.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Configuration\\AdConfiguration.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\AdConfiguration.cs",
+              "RelativeToolTip": "PawMates.Core\\Data\\Configuration\\AdConfiguration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T12:08:09.785Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "DeleteAdvertisementHandler.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementHandler.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementHandler.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementHandler.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementHandler.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABkAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T11:28:48.953Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "AdvertisementBase.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\AdvertisementBase.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\Ads\\AdvertisementBase.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\AdvertisementBase.cs",
+              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\Ads\\AdvertisementBase.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T12:00:26.718Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "AdoptionAd.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\AdoptionAd.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\Ads\\AdoptionAd.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\AdoptionAd.cs",
+              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\Ads\\AdoptionAd.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T12:02:11.71Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "UpdateAdvertisementRequest.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\UpdateAdvertisementRequest.cs",
+              "RelativeDocumentMoniker": "PawMates.API\\Contracts\\UpdateAdvertisementRequest.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\UpdateAdvertisementRequest.cs",
+              "RelativeToolTip": "PawMates.API\\Contracts\\UpdateAdvertisementRequest.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAA1wDkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T11:19:41.381Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "DeleteAdvertisementRequest.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\DeleteAdvertisementRequest.cs",
+              "RelativeDocumentMoniker": "PawMates.API\\Contracts\\DeleteAdvertisementRequest.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\DeleteAdvertisementRequest.cs",
+              "RelativeToolTip": "PawMates.API\\Contracts\\DeleteAdvertisementRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T11:28:20.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "DeleteAdvertisementCommand.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementCommand.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementCommand.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementCommand.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T11:28:38.379Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "DeleteAdvertisementResponse.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementResponse.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementResponse.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementResponse.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\DeleteAdvertisement\\DeleteAdvertisementResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T11:29:02.066Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "UpdateAdvertisementCommand.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementCommand.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementCommand.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementCommand.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementCommand.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABUAAABDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T11:21:16.995Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "UpdateAdvertisementResponse.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementResponse.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementResponse.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementResponse.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T11:19:25.489Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "UpdateAdvertisementHandler.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementHandler.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementHandler.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementHandler.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\UpdateAdvertisement\\UpdateAdvertisementHandler.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAgwDsAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T11:19:09.501Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "JobAd.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\JobAd.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\Ads\\JobAd.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\JobAd.cs",
+              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\Ads\\JobAd.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T12:00:54.76Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "LostAd.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\LostAd.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\Ads\\LostAd.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\LostAd.cs",
+              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\Ads\\LostAd.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T12:00:43.419Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "CreateAdvertisementCommand.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementCommand.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementCommand.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementCommand.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementCommand.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAmwBoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T06:47:13.323Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "CreateAdvertisementHandler.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementHandler.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementHandler.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementHandler.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementHandler.cs",
+              "ViewState": "AQIAAE4AAAAAAAAAAAAgwHAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T06:47:26.812Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "CreateAdvertisementResponse.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementResponse.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementResponse.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementResponse.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\CreateAdvertisement\\CreateAdvertisementResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T06:47:03.342Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "AdvertisementDto.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\DTOs\\AdvertisementDto.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\DTOs\\AdvertisementDto.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\DTOs\\AdvertisementDto.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\DTOs\\AdvertisementDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA4AAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T08:47:15.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "PaginatedAdsResponse.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\GetAllAds\\PaginatedAdsResponse.cs",
+              "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\GetAllAds\\PaginatedAdsResponse.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\GetAllAds\\PaginatedAdsResponse.cs",
+              "RelativeToolTip": "PawMates.Core\\Features\\Ads\\GetAllAds\\PaginatedAdsResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T08:47:04.226Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
               "Title": "GetAllAdsHandler.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\Ads\\GetAllAds\\GetAllAdsHandler.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Features\\Ads\\GetAllAds\\GetAllAdsHandler.cs",
@@ -574,12 +1009,11 @@
               "RelativeToolTip": "PawMates.Core\\Features\\Ads\\GetAllAds\\GetAllAdsHandler.cs",
               "ViewState": "AQIAACQAAAAAAAAAAAAowDMAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-13T08:46:51.172Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-13T08:46:51.172Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 50,
               "Title": "AdvertisementType.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Ads\\AdvertisementType.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\Ads\\AdvertisementType.cs",
@@ -587,12 +1021,11 @@
               "RelativeToolTip": "PawMates.Core\\Data\\Entity\\Ads\\AdvertisementType.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-13T06:47:47.594Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-13T06:47:47.594Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 51,
               "Title": "UserLoginConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\UserLoginConfiguration.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Data\\Configuration\\UserLoginConfiguration.cs",
@@ -600,12 +1033,11 @@
               "RelativeToolTip": "PawMates.Core\\Data\\Configuration\\UserLoginConfiguration.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T12:10:19.174Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-12T12:10:19.174Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 52,
               "Title": "UserTokenConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\UserTokenConfiguration.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Data\\Configuration\\UserTokenConfiguration.cs",
@@ -613,12 +1045,11 @@
               "RelativeToolTip": "PawMates.Core\\Data\\Configuration\\UserTokenConfiguration.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T11:14:02.122Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-15T11:14:02.122Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 54,
               "Title": "UserClaimConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\UserClaimConfiguration.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Data\\Configuration\\UserClaimConfiguration.cs",
@@ -626,12 +1057,11 @@
               "RelativeToolTip": "PawMates.Core\\Data\\Configuration\\UserClaimConfiguration.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T12:09:16.266Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-12T12:09:16.266Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 55,
               "Title": "RoleConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\RoleConfiguration.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Data\\Configuration\\RoleConfiguration.cs",
@@ -639,12 +1069,11 @@
               "RelativeToolTip": "PawMates.Core\\Data\\Configuration\\RoleConfiguration.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T11:13:59.264Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-15T11:13:59.264Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 56,
               "Title": "RoleClaimConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\RoleClaimConfiguration.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Data\\Configuration\\RoleClaimConfiguration.cs",
@@ -652,25 +1081,11 @@
               "RelativeToolTip": "PawMates.Core\\Data\\Configuration\\RoleClaimConfiguration.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T11:13:58.352Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-15T11:13:58.352Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "AdConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\AdConfiguration.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Configuration\\AdConfiguration.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\AdConfiguration.cs",
-              "RelativeToolTip": "PawMates.Core\\Data\\Configuration\\AdConfiguration.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAAwAoAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T12:08:09.785Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 59,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Program.cs",
               "RelativeDocumentMoniker": "PawMates.API\\Program.cs",
@@ -678,12 +1093,11 @@
               "RelativeToolTip": "PawMates.API\\Program.cs",
               "ViewState": "AQIAAIcAAAAAAAAAAAAAAJ8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T10:12:06.732Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-12T10:12:06.732Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 60,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "PawMates.API\\Controllers\\UserController.cs",
@@ -691,12 +1105,11 @@
               "RelativeToolTip": "PawMates.API\\Controllers\\UserController.cs",
               "ViewState": "AQIAADIAAAAAAAAAAAAwwEcAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-13T07:01:38.942Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-13T07:01:38.942Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 53,
               "Title": "UserRoleConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\UserRoleConfiguration.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Data\\Configuration\\UserRoleConfiguration.cs",
@@ -704,12 +1117,11 @@
               "RelativeToolTip": "PawMates.Core\\Data\\Configuration\\UserRoleConfiguration.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T12:10:17.716Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-12T12:10:17.716Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 61,
               "Title": "UserUpdateRequest.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\UserUpdateRequest.cs",
               "RelativeDocumentMoniker": "PawMates.API\\Contracts\\UserUpdateRequest.cs",
@@ -717,12 +1129,11 @@
               "RelativeToolTip": "PawMates.API\\Contracts\\UserUpdateRequest.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-13T07:26:56.984Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-13T07:26:56.984Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 62,
               "Title": "RegisterRequest.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\RegisterRequest.cs",
               "RelativeDocumentMoniker": "PawMates.API\\Contracts\\RegisterRequest.cs",
@@ -730,12 +1141,11 @@
               "RelativeToolTip": "PawMates.API\\Contracts\\RegisterRequest.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-13T07:26:56.218Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-13T07:26:56.218Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 63,
               "Title": "LoginRequest.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\LoginRequest.cs",
               "RelativeDocumentMoniker": "PawMates.API\\Contracts\\LoginRequest.cs",
@@ -743,12 +1153,11 @@
               "RelativeToolTip": "PawMates.API\\Contracts\\LoginRequest.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-13T07:26:52.552Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-13T07:26:52.552Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 58,
               "Title": "AppUserConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\AppUserConfiguration.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Data\\Configuration\\AppUserConfiguration.cs",
@@ -756,12 +1165,11 @@
               "RelativeToolTip": "PawMates.Core\\Data\\Configuration\\AppUserConfiguration.cs",
               "ViewState": "AQIAAD4AAAAAAAAAAAAYwFcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T10:15:30.49Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-12T10:15:30.49Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 57,
               "Title": "PetConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\PetConfiguration.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Data\\Configuration\\PetConfiguration.cs",
@@ -769,12 +1177,11 @@
               "RelativeToolTip": "PawMates.Core\\Data\\Configuration\\PetConfiguration.cs",
               "ViewState": "AQIAABMAAAAAAAAAAAAgwBgAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T12:08:44.816Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-12T12:08:44.816Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 64,
               "Title": "GetAllAdsRequest.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\Contracts\\GetAllAdsRequest.cs",
               "RelativeDocumentMoniker": "PawMates.API\\Contracts\\GetAllAdsRequest.cs",
@@ -782,12 +1189,11 @@
               "RelativeToolTip": "PawMates.API\\Contracts\\GetAllAdsRequest.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T10:26:36.857Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-15T10:26:36.857Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 65,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\appsettings.json",
               "RelativeDocumentMoniker": "PawMates.API\\appsettings.json",
@@ -795,12 +1201,11 @@
               "RelativeToolTip": "PawMates.API\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAABIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-12T11:43:00.199Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-12T11:43:00.199Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 66,
               "Title": "CoreLayerExtensions.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Extensions\\CoreLayerExtensions.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Extensions\\CoreLayerExtensions.cs",
@@ -808,12 +1213,11 @@
               "RelativeToolTip": "PawMates.Core\\Extensions\\CoreLayerExtensions.cs",
               "ViewState": "AQIAAA8AAAAAAAAAAAAWwCkAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T10:15:09.326Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-12T10:15:09.326Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 67,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\KC\\AppData\\Local\\Temp\\.vsdbgsrc\\64d689b30e3657db427a5e9307b0cd72b59e7b95bd29339b8becb2a1a5d55aa4\\Program.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\64d689b30e3657db427a5e9307b0cd72b59e7b95bd29339b8becb2a1a5d55aa4\\Program.cs",
@@ -826,7 +1230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 91,
               "Title": "20240915101017_XXXs.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Migrations\\20240915101017_XXXs.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Migrations\\20240915101017_XXXs.cs",
@@ -834,12 +1238,11 @@
               "RelativeToolTip": "PawMates.Core\\Migrations\\20240915101017_XXXs.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T10:10:17.599Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-15T10:10:17.599Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 68,
               "Title": "20240915100229_XXX.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Migrations\\20240915100229_XXX.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Migrations\\20240915100229_XXX.cs",
@@ -847,12 +1250,11 @@
               "RelativeToolTip": "PawMates.Core\\Migrations\\20240915100229_XXX.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T10:02:29.367Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-15T10:02:29.367Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 69,
               "Title": "20240915095901_XXX.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Migrations\\20240915095901_XXX.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Migrations\\20240915095901_XXX.cs",
@@ -860,25 +1262,11 @@
               "RelativeToolTip": "PawMates.Core\\Migrations\\20240915095901_XXX.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T09:59:01.546Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-15T09:59:01.546Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "IEntityBase.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\EntityBases\\IEntityBase.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\EntityBases\\IEntityBase.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\EntityBases\\IEntityBase.cs",
-              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\EntityBases\\IEntityBase.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T09:56:42.857Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 70,
               "Title": "20240915094134_XXX.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Migrations\\20240915094134_XXX.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Migrations\\20240915094134_XXX.cs",
@@ -886,12 +1274,11 @@
               "RelativeToolTip": "PawMates.Core\\Migrations\\20240915094134_XXX.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T09:41:34.723Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-15T09:41:34.723Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 72,
               "Title": "PetTypeConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Configuration\\PetTypeConfiguration.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Data\\Configuration\\PetTypeConfiguration.cs",
@@ -903,7 +1290,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 71,
               "Title": "20240913084327_x.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Migrations\\20240913084327_x.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Migrations\\20240913084327_x.cs",
@@ -915,7 +1302,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 73,
               "Title": "Pet.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\Pet.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\Pet.cs",
@@ -927,7 +1314,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 74,
               "Title": "GlobalExceptionHandler.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Exception\\GlobalExceptionHandler.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Exception\\GlobalExceptionHandler.cs",
@@ -939,7 +1326,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 76,
               "Title": "RegisterHandler.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\User\\Register\\RegisterHandler.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Features\\User\\Register\\RegisterHandler.cs",
@@ -951,7 +1338,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 75,
               "Title": "RegisterCommand.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\User\\Register\\RegisterCommand.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Features\\User\\Register\\RegisterCommand.cs",
@@ -963,7 +1350,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 77,
               "Title": "20240913065110_x.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Migrations\\20240913065110_x.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Migrations\\20240913065110_x.cs",
@@ -975,7 +1362,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 79,
               "Title": "20240912124057_XX.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Migrations\\20240912124057_XX.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Migrations\\20240912124057_XX.cs",
@@ -987,7 +1374,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 78,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Data\\ApplicationDbContext.cs",
@@ -999,7 +1386,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 80,
               "Title": "AppUser.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\User\\AppUser.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\User\\AppUser.cs",
@@ -1011,19 +1398,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
-              "Title": "PetType.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\PetType.cs",
-              "RelativeDocumentMoniker": "PawMates.Core\\Data\\Entity\\PetType.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Data\\Entity\\PetType.cs",
-              "RelativeToolTip": "PawMates.Core\\Data\\Entity\\PetType.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T12:05:56.901Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 82,
               "Title": "PawMates.Core.csproj",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\PawMates.Core.csproj",
               "RelativeDocumentMoniker": "PawMates.Core\\PawMates.Core.csproj",
@@ -1035,7 +1410,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 83,
               "Title": "ConfirmEmailHandler.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Features\\User\\ConfirmEmail\\ConfirmEmailHandler.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Features\\User\\ConfirmEmail\\ConfirmEmailHandler.cs",
@@ -1047,7 +1422,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 81,
               "Title": "PawMates.API.csproj",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.API\\PawMates.API.csproj",
               "RelativeDocumentMoniker": "PawMates.API\\PawMates.API.csproj",
@@ -1059,7 +1434,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 84,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\PawMates.net\\PawMates.Core\\Class1.cs",
               "RelativeDocumentMoniker": "PawMates.Core\\Class1.cs",
@@ -1071,7 +1446,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 85,
               "Title": "20240726142903_InitialMigrationForPostgreSQL.cs",
               "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726142903_InitialMigrationForPostgreSQL.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726142903_InitialMigrationForPostgreSQL.cs",
@@ -1082,7 +1457,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 86,
               "Title": "20240726142852_InitialMigrationForPostgreSQL.cs",
               "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726142852_InitialMigrationForPostgreSQL.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726142852_InitialMigrationForPostgreSQL.cs",
@@ -1094,7 +1469,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 87,
               "Title": "20240726140821_InitialMigrationForPostgreSQL.cs",
               "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726140821_InitialMigrationForPostgreSQL.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240726140821_InitialMigrationForPostgreSQL.cs",
@@ -1106,7 +1481,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 88,
               "Title": "20240725125812_InitialCreate1.cs",
               "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240725125812_InitialCreate1.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240725125812_InitialCreate1.cs",
@@ -1117,7 +1492,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 89,
               "Title": "20240725125540_InitialCreate.cs",
               "DocumentMoniker": "C:\\Users\\KC\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240725125540_InitialCreate.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Desktop\\kod\\.nets\\PawMates.net\\Infrastructure\\PawMates.Persistence\\Migrations\\20240725125540_InitialCreate.cs",

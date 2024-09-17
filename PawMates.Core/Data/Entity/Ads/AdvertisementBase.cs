@@ -20,6 +20,9 @@ namespace PawMates.Core.Data.Entity.Ads
         public AdvertisementType AdvertisementType { get; set; }
 
         //   public virtual ICollection<AdvertisementImage> AdvertisementImages { get; set; } = new List<AdvertisementImage>();
+
+        public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>(); // Reklama yapılan yorumlar
+
     }
 
 }

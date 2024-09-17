@@ -1,0 +1,2705 @@
+2024-09-17 15:06:11 [Information] User profile is available. Using '"C:\Users\KC\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-17 15:06:11 [Information] Now listening on: "http://localhost:5053"
+2024-09-17 15:06:11 [Information] Application started. Press Ctrl+C to shut down.
+2024-09-17 15:06:11 [Information] Hosting environment: "Development"
+2024-09-17 15:06:11 [Information] Content root path: "C:\Users\KC\source\repos\PawMates.net\PawMates.API"
+2024-09-17 15:06:12 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/index.html""" - null null
+2024-09-17 15:06:12 [Information] ****Middleware**** Incoming request: "GET" "/swagger/index.html" with Body: ""
+2024-09-17 15:06:12 [Information] No cached response available for this request.
+2024-09-17 15:06:12 [Information] The response could not be cached for this request.
+2024-09-17 15:06:12 [Information] ****Middleware**** Outgoing response: 200 with Body: "<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <title>Swagger UI</title>
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"./swagger-ui.css\">
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"./index.css\">
+    <link rel=\"icon\" type=\"image/png\" href=\"./favicon-32x32.png\" sizes=\"32x32\" />
+    <link rel=\"icon\" type=\"image/png\" href=\"./favicon-16x16.png\" sizes=\"16x16\" />
+       
+</head>
+
+<body>
+    <div id=\"swagger-ui\"></div>
+
+    <script src=\"./swagger-ui-bundle.js\" charset=\"utf-8\"></script>
+    <script src=\"./swagger-ui-standalone-preset.js\" charset=\"utf-8\"></script>
+    <script src=\"index.js\" charset=\"utf-8\"></script>
+</body>
+</html>
+"
+2024-09-17 15:06:12 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 104.2029 ms
+2024-09-17 15:06:12 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 214.9469ms
+2024-09-17 15:06:12 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/_framework/aspnetcore-browser-refresh.js""" - null null
+2024-09-17 15:06:12 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/index.js""" - null null
+2024-09-17 15:06:12 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/_framework/aspnetcore-browser-refresh.js""" - 200 13760 "application/javascript; charset=utf-8" 9.4622ms
+2024-09-17 15:06:12 [Information] ****Middleware**** Incoming request: "GET" "/swagger/index.js" with Body: ""
+2024-09-17 15:06:12 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/_vs/browserLink""" - null null
+2024-09-17 15:06:12 [Information] No cached response available for this request.
+2024-09-17 15:06:12 [Information] The response could not be cached for this request.
+2024-09-17 15:06:12 [Information] ****Middleware**** Outgoing response: 200 with Body: "/* Source: https://gist.github.com/lamberta/3768814
+ * Parse a string function definition and return a function object. Does not use eval.
+ * @param {string} str
+ * @return {function}
+ *
+ * Example:
+ *  var f = function (x, y) { return x * y; };
+ *  var g = parseFunction(f.toString());
+ *  g(33, 3); //=> 99
+ */
+function parseFunction(str) {
+    if (!str) return void (0);
+
+    var fn_body_idx = str.indexOf('{'),
+        fn_body = str.substring(fn_body_idx + 1, str.lastIndexOf('}')),
+        fn_declare = str.substring(0, fn_body_idx),
+        fn_params = fn_declare.substring(fn_declare.indexOf('(') + 1, fn_declare.lastIndexOf(')')),
+        args = fn_params.split(',');
+
+    args.push(fn_body);
+
+    function Fn() {
+        return Function.apply(this, args);
+    }
+    Fn.prototype = Function.prototype;
+
+    return new Fn();
+}
+
+window.onload = function () {
+    var configObject = JSON.parse('{\"urls\":[{\"url\":\"v1/swagger.json\",\"name\":\"PawMates.API v1\"}],\"deepLinking\":false,\"persistAuthorization\":false,\"displayOperationId\":false,\"defaultModelsExpandDepth\":1,\"defaultModelExpandDepth\":1,\"defaultModelRendering\":\"example\",\"displayRequestDuration\":false,\"docExpansion\":\"list\",\"showExtensions\":false,\"showCommonExtensions\":false,\"supportedSubmitMethods\":[\"get\",\"put\",\"post\",\"delete\",\"options\",\"head\",\"patch\",\"trace\"],\"tryItOutEnabled\":false}');
+    var oauthConfigObject = JSON.parse('{\"scopeSeparator\":\" \",\"scopes\":[],\"useBasicAuthenticationWithAccessCodeGrant\":false,\"usePkceWithAuthorizationCodeGrant\":false}');
+
+    // Workaround for https://github.com/swagger-api/swagger-ui/issues/5945
+    configObject.urls.forEach(function (item) {
+        if (item.url.startsWith(\"http\") || item.url.startsWith(\"/\")) return;
+        item.url = window.location.href.replace(\"index.html\", item.url).split('#')[0];
+    });
+
+    // If validatorUrl is not explicitly provided, disable the feature by setting to null
+    if (!configObject.hasOwnProperty(\"validatorUrl\"))
+        configObject.validatorUrl = null
+
+    // If oauth2RedirectUrl isn't specified, use the built-in default
+    if (!configObject.hasOwnProperty(\"oauth2RedirectUrl\"))
+        configObject.oauth2RedirectUrl = (new URL(\"oauth2-redirect.html\", window.location.href)).href;
+
+    // Apply mandatory parameters
+    configObject.dom_id = \"#swagger-ui\";
+    configObject.presets = [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset];
+    configObject.layout = \"StandaloneLayout\";
+
+    // Parse and add interceptor functions
+    var interceptors = JSON.parse('{}');
+    if (interceptors.RequestInterceptorFunction)
+        configObject.requestInterceptor = parseFunction(interceptors.RequestInterceptorFunction);
+    if (interceptors.ResponseInterceptorFunction)
+        configObject.responseInterceptor = parseFunction(interceptors.ResponseInterceptorFunction);
+
+    // Begin Swagger UI call region
+
+    const ui = SwaggerUIBundle(configObject);
+
+    ui.initOAuth(oauthConfigObject);
+
+    // End Swagger UI call region
+
+    window.ui = ui
+}
+"
+2024-09-17 15:06:12 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 52.3134 ms
+2024-09-17 15:06:12 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/index.js""" - 200 null "application/javascript;charset=utf-8" 65.4602ms
+2024-09-17 15:06:12 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 73.2543ms
+2024-09-17 15:06:12 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/v1/swagger.json""" - null null
+2024-09-17 15:06:12 [Information] ****Middleware**** Incoming request: "GET" "/swagger/v1/swagger.json" with Body: ""
+2024-09-17 15:06:12 [Information] No cached response available for this request.
+2024-09-17 15:06:13 [Information] The response could not be cached for this request.
+2024-09-17 15:06:13 [Information] ****Middleware**** Outgoing response: 200 with Body: "{
+  \"openapi\": \"3.0.1\",
+  \"info\": {
+    \"title\": \"PawMates.API\",
+    \"version\": \"1.0\"
+  },
+  \"paths\": {
+    \"/api/Ads\": {
+      \"post\": {
+        \"tags\": [
+          \"Ads\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateAdvertisementRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateAdvertisementRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateAdvertisementRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"get\": {
+        \"tags\": [
+          \"Ads\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"PageNumber\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          },
+          {
+            \"name\": \"PageSize\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          },
+          {
+            \"name\": \"AdType\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"$ref\": \"#/components/schemas/AdvertisementType\"
+            }
+          },
+          {
+            \"name\": \"SearchTerm\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"delete\": {
+        \"tags\": [
+          \"Ads\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DeleteAdvertisementRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DeleteAdvertisementRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DeleteAdvertisementRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/Ads/{id}\": {
+      \"put\": {
+        \"tags\": [
+          \"Ads\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"id\",
+            \"in\": \"path\",
+            \"required\": true,
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\"
+            }
+          }
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdateAdvertisementRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdateAdvertisementRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdateAdvertisementRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/Posts\": {
+      \"post\": {
+        \"tags\": [
+          \"Posts\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreatePostRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreatePostRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreatePostRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/confirm-email\": {
+      \"get\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"email\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          },
+          {
+            \"name\": \"token\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/login\": {
+      \"post\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/register\": {
+      \"post\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/update\": {
+      \"put\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/WeatherForecast\": {
+      \"get\": {
+        \"tags\": [
+          \"WeatherForecast\"
+        ],
+        \"operationId\": \"GetWeatherForecast\",
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\",
+            \"content\": {
+              \"text/plain\": {
+                \"schema\": {
+                  \"type\": \"array\",
+                  \"items\": {
+                    \"$ref\": \"#/components/schemas/WeatherForecast\"
+                  }
+                }
+              },
+              \"application/json\": {
+                \"schema\": {
+                  \"type\": \"array\",
+                  \"items\": {
+                    \"$ref\": \"#/components/schemas/WeatherForecast\"
+                  }
+                }
+              },
+              \"text/json\": {
+                \"schema\": {
+                  \"type\": \"array\",
+                  \"items\": {
+                    \"$ref\": \"#/components/schemas/WeatherForecast\"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  \"components\": {
+    \"schemas\": {
+      \"AdvertisementType\": {
+        \"enum\": [
+          0,
+          1,
+          2
+        ],
+        \"type\": \"integer\",
+        \"format\": \"int32\"
+      },
+      \"CreateAdvertisementRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\",
+            \"nullable\": true
+          },
+          \"title\": {
+            \"type\": \"string\",
+            \"default\": \"Ad Title\",
+            \"nullable\": true
+          },
+          \"description\": {
+            \"type\": \"string\",
+            \"default\": \"This is the default description for the ad.\",
+            \"nullable\": true
+          },
+          \"location\": {
+            \"type\": \"string\",
+            \"default\": \"Default Location\",
+            \"nullable\": true
+          },
+          \"advertisementType\": {
+            \"$ref\": \"#/components/schemas/AdvertisementType\"
+          },
+          \"pets\": {
+            \"type\": \"array\",
+            \"items\": {
+              \"$ref\": \"#/components/schemas/PetDto\"
+            },
+            \"nullable\": true
+          },
+          \"isVaccinated\": {
+            \"type\": \"boolean\",
+            \"default\": false,
+            \"nullable\": true
+          },
+          \"requiredDays\": {
+            \"type\": \"string\",
+            \"default\": \"Mon, Wed, Fri\",
+            \"nullable\": true
+          },
+          \"salary\": {
+            \"type\": \"number\",
+            \"format\": \"double\",
+            \"default\": 0,
+            \"nullable\": true
+          },
+          \"lastSeenLocation\": {
+            \"type\": \"string\",
+            \"default\": \"Last seen at default location.\",
+            \"nullable\": true
+          },
+          \"lostDate\": {
+            \"type\": \"string\",
+            \"format\": \"date-time\",
+            \"default\": \"2024-01-01T03:00:00+03:00\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"CreatePostRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"title\": {
+            \"type\": \"string\",
+            \"default\": \"Post Title\",
+            \"nullable\": true
+          },
+          \"content\": {
+            \"type\": \"string\",
+            \"default\": \"This is the default content for the post.\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"DeleteAdvertisementRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"advertisementId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\"
+          },
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"LoginRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kerimcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"password\": {
+            \"type\": \"string\",
+            \"default\": \"19071907\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"PetDto\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"name\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          },
+          \"petTypeId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\"
+          },
+          \"breed\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          },
+          \"age\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\"
+          },
+          \"gender\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          },
+          \"description\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"RegisterRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"password\": {
+            \"type\": \"string\",
+            \"default\": \"19071907\",
+            \"nullable\": true
+          },
+          \"firstName\": {
+            \"type\": \"string\",
+            \"default\": \"Can\",
+            \"nullable\": true
+          },
+          \"lastName\": {
+            \"type\": \"string\",
+            \"default\": \"Mersin\",
+            \"nullable\": true
+          },
+          \"phoneNumber\": {
+            \"type\": \"string\",
+            \"default\": \"+1234567890\",
+            \"nullable\": true
+          },
+          \"roleName\": {
+            \"type\": \"string\",
+            \"default\": \"User\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"UpdateAdvertisementRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"advertisementId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"title\": {
+            \"type\": \"string\",
+            \"default\": \"Updated Ad Title\",
+            \"nullable\": true
+          },
+          \"description\": {
+            \"type\": \"string\",
+            \"default\": \"This is the updated description for the ad.\",
+            \"nullable\": true
+          },
+          \"location\": {
+            \"type\": \"string\",
+            \"default\": \"Updated Location\",
+            \"nullable\": true
+          },
+          \"pets\": {
+            \"type\": \"array\",
+            \"items\": {
+              \"$ref\": \"#/components/schemas/PetDto\"
+            },
+            \"nullable\": true
+          },
+          \"advertisementType\": {
+            \"$ref\": \"#/components/schemas/AdvertisementType\"
+          },
+          \"isVaccinated\": {
+            \"type\": \"boolean\",
+            \"default\": false,
+            \"nullable\": true
+          },
+          \"requiredDays\": {
+            \"type\": \"string\",
+            \"default\": \"Mon, Tue, Thu\",
+            \"nullable\": true
+          },
+          \"salary\": {
+            \"type\": \"number\",
+            \"format\": \"double\",
+            \"default\": 500,
+            \"nullable\": true
+          },
+          \"lastSeenLocation\": {
+            \"type\": \"string\",
+            \"default\": \"Updated last seen location.\",
+            \"nullable\": true
+          },
+          \"lostDate\": {
+            \"type\": \"string\",
+            \"format\": \"date-time\",
+            \"default\": \"2024-01-01T03:00:00+03:00\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"UserUpdateRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"657c6705-0728-4dfc-8019-ea59c42f984f\",
+            \"nullable\": true
+          },
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kerimcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"firstName\": {
+            \"type\": \"string\",
+            \"default\": \"Can\",
+            \"nullable\": true
+          },
+          \"lastName\": {
+            \"type\": \"string\",
+            \"default\": \"Mersin\",
+            \"nullable\": true
+          },
+          \"phoneNumber\": {
+            \"type\": \"string\",
+            \"default\": \"+1234567890\",
+            \"nullable\": true
+          },
+          \"imagePath\": {
+            \"type\": \"string\",
+            \"default\": \"/API/defaultlogo.jpg\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"WeatherForecast\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"date\": {
+            \"type\": \"string\",
+            \"format\": \"date\"
+          },
+          \"temperatureC\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\"
+          },
+          \"temperatureF\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\",
+            \"readOnly\": true
+          },
+          \"summary\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      }
+    }
+  }
+}"
+2024-09-17 15:06:13 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 212.1393 ms
+2024-09-17 15:06:13 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 221.4103ms
+2024-09-17 15:06:18 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:5053""""/api/Posts""" - "application/json" 137
+2024-09-17 15:06:18 [Information] ****Middleware**** Incoming request: "POST" "/api/Posts" with Body: "{
+  \"userId\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\",
+  \"title\": \"Post Title\",
+  \"content\": \"This is the default content for the post.\"
+}"
+2024-09-17 15:06:18 [Information] CORS policy execution successful.
+2024-09-17 15:06:18 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.CreatePost (PawMates.API)"'
+2024-09-17 15:06:18 [Information] Route matched with "{action = \"CreatePost\", controller = \"Posts\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePost(PawMates.API.Contracts.CreatePostRequest)" on controller "PawMates.API.Controllers.PostsController" ("PawMates.API").
+2024-09-17 15:06:18 [Information] ****ActionFilter**** Request for "POST" "/api/Posts" from "::1" with data [("request": CreatePostRequest { UserId: 3aa42229-1c0f-4630-8c1a-db879ecd0427, Title: "Post Title", Content: "This is the default content for the post." })]
+2024-09-17 15:06:21 [Information] Executed DbCommand ("144"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = DateTime), @p6='?' (DbType = Boolean), @p7='?', @p8='?' (DbType = DateTime), @p9='?', @p10='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Posts\" (\"Id\", \"Content\", \"CreatedBy\", \"CreatedDate\", \"DeletedBy\", \"DeletedDate\", \"IsDeleted\", \"ModifiedBy\", \"ModifiedDate\", \"Title\", \"UserId\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);"
+2024-09-17 15:06:21 [Information] ****ActionFilter**** Response from 200 with data OkObjectResult { Value: CreatePostResponse { PostId: c43c32d7-efcf-47c9-80c2-f541e7184ba9, Success: True, Message: "Post created successfully" }, Formatters: [], ContentTypes: [], DeclaredType: null, StatusCode: 200 }
+2024-09-17 15:06:21 [Information] Executing "OkObjectResult", writing value of type '"PawMates.Core.Features.Posts.CreatePostResponse"'.
+2024-09-17 15:06:21 [Information] Executed action "PawMates.API.Controllers.PostsController.CreatePost (PawMates.API)" in 3022.8806ms
+2024-09-17 15:06:21 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.CreatePost (PawMates.API)"'
+2024-09-17 15:06:21 [Information] ****Middleware**** Outgoing response: 200 with Body: "{\"postId\":\"c43c32d7-efcf-47c9-80c2-f541e7184ba9\",\"success\":true,\"message\":\"Post created successfully\"}"
+2024-09-17 15:06:21 [Information] HTTP "POST" "/api/Posts" responded 200 in 3083.8144 ms
+2024-09-17 15:06:21 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:5053""""/api/Posts""" - 200 null "application/json; charset=utf-8" 3095.9715ms
+2024-09-17 15:35:28 [Information] User profile is available. Using '"C:\Users\KC\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-17 15:35:28 [Information] Now listening on: "http://localhost:5053"
+2024-09-17 15:35:28 [Information] Application started. Press Ctrl+C to shut down.
+2024-09-17 15:35:28 [Information] Hosting environment: "Development"
+2024-09-17 15:35:28 [Information] Content root path: "C:\Users\KC\source\repos\PawMates.net\PawMates.API"
+2024-09-17 15:35:29 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/index.html""" - null null
+2024-09-17 15:35:29 [Information] ****Middleware**** Incoming request: "GET" "/swagger/index.html" with Body: ""
+2024-09-17 15:35:29 [Information] No cached response available for this request.
+2024-09-17 15:35:29 [Information] The response could not be cached for this request.
+2024-09-17 15:35:29 [Information] ****Middleware**** Outgoing response: 200 with Body: "<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <title>Swagger UI</title>
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"./swagger-ui.css\">
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"./index.css\">
+    <link rel=\"icon\" type=\"image/png\" href=\"./favicon-32x32.png\" sizes=\"32x32\" />
+    <link rel=\"icon\" type=\"image/png\" href=\"./favicon-16x16.png\" sizes=\"16x16\" />
+       
+</head>
+
+<body>
+    <div id=\"swagger-ui\"></div>
+
+    <script src=\"./swagger-ui-bundle.js\" charset=\"utf-8\"></script>
+    <script src=\"./swagger-ui-standalone-preset.js\" charset=\"utf-8\"></script>
+    <script src=\"index.js\" charset=\"utf-8\"></script>
+</body>
+</html>
+"
+2024-09-17 15:35:29 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 137.0053 ms
+2024-09-17 15:35:29 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 210.7999ms
+2024-09-17 15:35:29 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/_framework/aspnetcore-browser-refresh.js""" - null null
+2024-09-17 15:35:29 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/_vs/browserLink""" - null null
+2024-09-17 15:35:29 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/index.js""" - null null
+2024-09-17 15:35:29 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/_framework/aspnetcore-browser-refresh.js""" - 200 13760 "application/javascript; charset=utf-8" 18.8424ms
+2024-09-17 15:35:29 [Information] ****Middleware**** Incoming request: "GET" "/swagger/index.js" with Body: ""
+2024-09-17 15:35:29 [Information] No cached response available for this request.
+2024-09-17 15:35:29 [Information] The response could not be cached for this request.
+2024-09-17 15:35:29 [Information] ****Middleware**** Outgoing response: 200 with Body: "/* Source: https://gist.github.com/lamberta/3768814
+ * Parse a string function definition and return a function object. Does not use eval.
+ * @param {string} str
+ * @return {function}
+ *
+ * Example:
+ *  var f = function (x, y) { return x * y; };
+ *  var g = parseFunction(f.toString());
+ *  g(33, 3); //=> 99
+ */
+function parseFunction(str) {
+    if (!str) return void (0);
+
+    var fn_body_idx = str.indexOf('{'),
+        fn_body = str.substring(fn_body_idx + 1, str.lastIndexOf('}')),
+        fn_declare = str.substring(0, fn_body_idx),
+        fn_params = fn_declare.substring(fn_declare.indexOf('(') + 1, fn_declare.lastIndexOf(')')),
+        args = fn_params.split(',');
+
+    args.push(fn_body);
+
+    function Fn() {
+        return Function.apply(this, args);
+    }
+    Fn.prototype = Function.prototype;
+
+    return new Fn();
+}
+
+window.onload = function () {
+    var configObject = JSON.parse('{\"urls\":[{\"url\":\"v1/swagger.json\",\"name\":\"PawMates.API v1\"}],\"deepLinking\":false,\"persistAuthorization\":false,\"displayOperationId\":false,\"defaultModelsExpandDepth\":1,\"defaultModelExpandDepth\":1,\"defaultModelRendering\":\"example\",\"displayRequestDuration\":false,\"docExpansion\":\"list\",\"showExtensions\":false,\"showCommonExtensions\":false,\"supportedSubmitMethods\":[\"get\",\"put\",\"post\",\"delete\",\"options\",\"head\",\"patch\",\"trace\"],\"tryItOutEnabled\":false}');
+    var oauthConfigObject = JSON.parse('{\"scopeSeparator\":\" \",\"scopes\":[],\"useBasicAuthenticationWithAccessCodeGrant\":false,\"usePkceWithAuthorizationCodeGrant\":false}');
+
+    // Workaround for https://github.com/swagger-api/swagger-ui/issues/5945
+    configObject.urls.forEach(function (item) {
+        if (item.url.startsWith(\"http\") || item.url.startsWith(\"/\")) return;
+        item.url = window.location.href.replace(\"index.html\", item.url).split('#')[0];
+    });
+
+    // If validatorUrl is not explicitly provided, disable the feature by setting to null
+    if (!configObject.hasOwnProperty(\"validatorUrl\"))
+        configObject.validatorUrl = null
+
+    // If oauth2RedirectUrl isn't specified, use the built-in default
+    if (!configObject.hasOwnProperty(\"oauth2RedirectUrl\"))
+        configObject.oauth2RedirectUrl = (new URL(\"oauth2-redirect.html\", window.location.href)).href;
+
+    // Apply mandatory parameters
+    configObject.dom_id = \"#swagger-ui\";
+    configObject.presets = [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset];
+    configObject.layout = \"StandaloneLayout\";
+
+    // Parse and add interceptor functions
+    var interceptors = JSON.parse('{}');
+    if (interceptors.RequestInterceptorFunction)
+        configObject.requestInterceptor = parseFunction(interceptors.RequestInterceptorFunction);
+    if (interceptors.ResponseInterceptorFunction)
+        configObject.responseInterceptor = parseFunction(interceptors.ResponseInterceptorFunction);
+
+    // Begin Swagger UI call region
+
+    const ui = SwaggerUIBundle(configObject);
+
+    ui.initOAuth(oauthConfigObject);
+
+    // End Swagger UI call region
+
+    window.ui = ui
+}
+"
+2024-09-17 15:35:29 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 26.3815 ms
+2024-09-17 15:35:29 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/index.js""" - 200 null "application/javascript;charset=utf-8" 48.8267ms
+2024-09-17 15:35:29 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 64.9458ms
+2024-09-17 15:35:29 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/v1/swagger.json""" - null null
+2024-09-17 15:35:29 [Information] ****Middleware**** Incoming request: "GET" "/swagger/v1/swagger.json" with Body: ""
+2024-09-17 15:35:29 [Information] No cached response available for this request.
+2024-09-17 15:35:29 [Information] The response could not be cached for this request.
+2024-09-17 15:35:29 [Information] ****Middleware**** Outgoing response: 200 with Body: "{
+  \"openapi\": \"3.0.1\",
+  \"info\": {
+    \"title\": \"PawMates.API\",
+    \"version\": \"1.0\"
+  },
+  \"paths\": {
+    \"/api/Ads\": {
+      \"post\": {
+        \"tags\": [
+          \"Ads\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateAdvertisementRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateAdvertisementRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateAdvertisementRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"get\": {
+        \"tags\": [
+          \"Ads\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"PageNumber\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          },
+          {
+            \"name\": \"PageSize\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          },
+          {
+            \"name\": \"AdType\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"$ref\": \"#/components/schemas/AdvertisementType\"
+            }
+          },
+          {
+            \"name\": \"SearchTerm\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"delete\": {
+        \"tags\": [
+          \"Ads\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DeleteAdvertisementRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DeleteAdvertisementRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DeleteAdvertisementRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/Ads/{id}\": {
+      \"put\": {
+        \"tags\": [
+          \"Ads\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"id\",
+            \"in\": \"path\",
+            \"required\": true,
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\"
+            }
+          }
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdateAdvertisementRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdateAdvertisementRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdateAdvertisementRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/Posts\": {
+      \"post\": {
+        \"tags\": [
+          \"Posts\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreatePostRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreatePostRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreatePostRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"get\": {
+        \"tags\": [
+          \"Posts\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"PageNumber\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          },
+          {
+            \"name\": \"PageSize\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          },
+          {
+            \"name\": \"SearchTerm\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/confirm-email\": {
+      \"get\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"email\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          },
+          {
+            \"name\": \"token\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/login\": {
+      \"post\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/register\": {
+      \"post\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/update\": {
+      \"put\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/WeatherForecast\": {
+      \"get\": {
+        \"tags\": [
+          \"WeatherForecast\"
+        ],
+        \"operationId\": \"GetWeatherForecast\",
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\",
+            \"content\": {
+              \"text/plain\": {
+                \"schema\": {
+                  \"type\": \"array\",
+                  \"items\": {
+                    \"$ref\": \"#/components/schemas/WeatherForecast\"
+                  }
+                }
+              },
+              \"application/json\": {
+                \"schema\": {
+                  \"type\": \"array\",
+                  \"items\": {
+                    \"$ref\": \"#/components/schemas/WeatherForecast\"
+                  }
+                }
+              },
+              \"text/json\": {
+                \"schema\": {
+                  \"type\": \"array\",
+                  \"items\": {
+                    \"$ref\": \"#/components/schemas/WeatherForecast\"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  \"components\": {
+    \"schemas\": {
+      \"AdvertisementType\": {
+        \"enum\": [
+          0,
+          1,
+          2
+        ],
+        \"type\": \"integer\",
+        \"format\": \"int32\"
+      },
+      \"CreateAdvertisementRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\",
+            \"nullable\": true
+          },
+          \"title\": {
+            \"type\": \"string\",
+            \"default\": \"Ad Title\",
+            \"nullable\": true
+          },
+          \"description\": {
+            \"type\": \"string\",
+            \"default\": \"This is the default description for the ad.\",
+            \"nullable\": true
+          },
+          \"location\": {
+            \"type\": \"string\",
+            \"default\": \"Default Location\",
+            \"nullable\": true
+          },
+          \"advertisementType\": {
+            \"$ref\": \"#/components/schemas/AdvertisementType\"
+          },
+          \"pets\": {
+            \"type\": \"array\",
+            \"items\": {
+              \"$ref\": \"#/components/schemas/PetDto\"
+            },
+            \"nullable\": true
+          },
+          \"isVaccinated\": {
+            \"type\": \"boolean\",
+            \"default\": false,
+            \"nullable\": true
+          },
+          \"requiredDays\": {
+            \"type\": \"string\",
+            \"default\": \"Mon, Wed, Fri\",
+            \"nullable\": true
+          },
+          \"salary\": {
+            \"type\": \"number\",
+            \"format\": \"double\",
+            \"default\": 0,
+            \"nullable\": true
+          },
+          \"lastSeenLocation\": {
+            \"type\": \"string\",
+            \"default\": \"Last seen at default location.\",
+            \"nullable\": true
+          },
+          \"lostDate\": {
+            \"type\": \"string\",
+            \"format\": \"date-time\",
+            \"default\": \"2024-01-01T03:00:00+03:00\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"CreatePostRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"title\": {
+            \"type\": \"string\",
+            \"default\": \"Post Title\",
+            \"nullable\": true
+          },
+          \"content\": {
+            \"type\": \"string\",
+            \"default\": \"This is the default content for the post.\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"DeleteAdvertisementRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"advertisementId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\"
+          },
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"LoginRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kerimcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"password\": {
+            \"type\": \"string\",
+            \"default\": \"19071907\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"PetDto\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"name\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          },
+          \"petTypeId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\"
+          },
+          \"breed\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          },
+          \"age\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\"
+          },
+          \"gender\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          },
+          \"description\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"RegisterRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"password\": {
+            \"type\": \"string\",
+            \"default\": \"19071907\",
+            \"nullable\": true
+          },
+          \"firstName\": {
+            \"type\": \"string\",
+            \"default\": \"Can\",
+            \"nullable\": true
+          },
+          \"lastName\": {
+            \"type\": \"string\",
+            \"default\": \"Mersin\",
+            \"nullable\": true
+          },
+          \"phoneNumber\": {
+            \"type\": \"string\",
+            \"default\": \"+1234567890\",
+            \"nullable\": true
+          },
+          \"roleName\": {
+            \"type\": \"string\",
+            \"default\": \"User\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"UpdateAdvertisementRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"advertisementId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"title\": {
+            \"type\": \"string\",
+            \"default\": \"Updated Ad Title\",
+            \"nullable\": true
+          },
+          \"description\": {
+            \"type\": \"string\",
+            \"default\": \"This is the updated description for the ad.\",
+            \"nullable\": true
+          },
+          \"location\": {
+            \"type\": \"string\",
+            \"default\": \"Updated Location\",
+            \"nullable\": true
+          },
+          \"pets\": {
+            \"type\": \"array\",
+            \"items\": {
+              \"$ref\": \"#/components/schemas/PetDto\"
+            },
+            \"nullable\": true
+          },
+          \"advertisementType\": {
+            \"$ref\": \"#/components/schemas/AdvertisementType\"
+          },
+          \"isVaccinated\": {
+            \"type\": \"boolean\",
+            \"default\": false,
+            \"nullable\": true
+          },
+          \"requiredDays\": {
+            \"type\": \"string\",
+            \"default\": \"Mon, Tue, Thu\",
+            \"nullable\": true
+          },
+          \"salary\": {
+            \"type\": \"number\",
+            \"format\": \"double\",
+            \"default\": 500,
+            \"nullable\": true
+          },
+          \"lastSeenLocation\": {
+            \"type\": \"string\",
+            \"default\": \"Updated last seen location.\",
+            \"nullable\": true
+          },
+          \"lostDate\": {
+            \"type\": \"string\",
+            \"format\": \"date-time\",
+            \"default\": \"2024-01-01T03:00:00+03:00\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"UserUpdateRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"657c6705-0728-4dfc-8019-ea59c42f984f\",
+            \"nullable\": true
+          },
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kerimcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"firstName\": {
+            \"type\": \"string\",
+            \"default\": \"Can\",
+            \"nullable\": true
+          },
+          \"lastName\": {
+            \"type\": \"string\",
+            \"default\": \"Mersin\",
+            \"nullable\": true
+          },
+          \"phoneNumber\": {
+            \"type\": \"string\",
+            \"default\": \"+1234567890\",
+            \"nullable\": true
+          },
+          \"imagePath\": {
+            \"type\": \"string\",
+            \"default\": \"/API/defaultlogo.jpg\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"WeatherForecast\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"date\": {
+            \"type\": \"string\",
+            \"format\": \"date\"
+          },
+          \"temperatureC\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\"
+          },
+          \"temperatureF\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\",
+            \"readOnly\": true
+          },
+          \"summary\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      }
+    }
+  }
+}"
+2024-09-17 15:35:29 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 140.3929 ms
+2024-09-17 15:35:29 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 147.9822ms
+2024-09-17 15:35:35 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/api/Posts""" - null null
+2024-09-17 15:35:35 [Information] ****Middleware**** Incoming request: "GET" "/api/Posts" with Body: ""
+2024-09-17 15:35:35 [Information] No cached response available for this request.
+2024-09-17 15:35:35 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:35:35 [Information] Route matched with "{action = \"GetAllPosts\", controller = \"Posts\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllPosts(PawMates.API.Contracts.GetAllPostsRequest)" on controller "PawMates.API.Controllers.PostsController" ("PawMates.API").
+2024-09-17 15:35:35 [Information] ****ActionFilter**** Request for "GET" "/api/Posts" from "::1" with data [("request": GetAllPostsRequest { PageNumber: 1, PageSize: 10, SearchTerm: null })]
+2024-09-17 15:35:37 [Information] Executed DbCommand ("90"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT count(*)::int
+FROM \"Posts\" AS p"
+2024-09-17 15:35:37 [Information] Executed DbCommand ("106"ms) [Parameters=["@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT p.\"Id\", p.\"Title\", p.\"Content\", p.\"CreatedDate\", p.\"UserId\"
+FROM \"Posts\" AS p
+ORDER BY p.\"CreatedDate\" DESC
+LIMIT @__p_1 OFFSET @__p_0"
+2024-09-17 15:35:37 [Information] ****ActionFilter**** Response from 200 with data OkObjectResult { Value: PaginatedPostsResponse { Posts: [PostDto { Id: c43c32d7-efcf-47c9-80c2-f541e7184ba9, Title: "Post Title", Content: "This is the default content for the post.", CreatedDate: 09/17/2024 12:06:19, UserId: 3aa42229-1c0f-4630-8c1a-db879ecd0427 }], TotalCount: 1, CurrentPage: 1, PageSize: 10, TotalPages: 1 }, Formatters: [], ContentTypes: [], DeclaredType: null, StatusCode: 200 }
+2024-09-17 15:35:37 [Information] Executing "OkObjectResult", writing value of type '"PawMates.Core.Features.Posts.GetAllPosts.PaginatedPostsResponse"'.
+2024-09-17 15:35:37 [Information] Executed action "PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)" in 2418.2176ms
+2024-09-17 15:35:37 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:35:37 [Information] The response could not be cached for this request.
+2024-09-17 15:35:37 [Information] ****Middleware**** Outgoing response: 200 with Body: "{\"posts\":[{\"id\":\"c43c32d7-efcf-47c9-80c2-f541e7184ba9\",\"title\":\"Post Title\",\"content\":\"This is the default content for the post.\",\"createdDate\":\"2024-09-17T12:06:19.394148Z\",\"userId\":\"3aa42229-1c0f-4630-8c1a-db879ecd0427\"}],\"totalCount\":1,\"currentPage\":1,\"pageSize\":10,\"totalPages\":1}"
+2024-09-17 15:35:37 [Information] HTTP "GET" "/api/Posts" responded 200 in 2469.8626 ms
+2024-09-17 15:35:37 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/api/Posts""" - 200 null "application/json; charset=utf-8" 2482.493ms
+2024-09-17 15:35:46 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/api/Posts""?PageNumber=3&PageSize=1" - null null
+2024-09-17 15:35:46 [Information] ****Middleware**** Incoming request: "GET" "/api/Posts" with Body: ""
+2024-09-17 15:35:46 [Information] No cached response available for this request.
+2024-09-17 15:35:46 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:35:46 [Information] Route matched with "{action = \"GetAllPosts\", controller = \"Posts\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllPosts(PawMates.API.Contracts.GetAllPostsRequest)" on controller "PawMates.API.Controllers.PostsController" ("PawMates.API").
+2024-09-17 15:35:46 [Information] ****ActionFilter**** Request for "GET" "/api/Posts" from "::1" with data [("request": GetAllPostsRequest { PageNumber: 3, PageSize: 1, SearchTerm: null })]
+2024-09-17 15:35:46 [Information] Executed DbCommand ("68"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT count(*)::int
+FROM \"Posts\" AS p"
+2024-09-17 15:35:46 [Information] Executed DbCommand ("66"ms) [Parameters=["@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT p.\"Id\", p.\"Title\", p.\"Content\", p.\"CreatedDate\", p.\"UserId\"
+FROM \"Posts\" AS p
+ORDER BY p.\"CreatedDate\" DESC
+LIMIT @__p_1 OFFSET @__p_0"
+2024-09-17 15:35:46 [Information] ****ActionFilter**** Response from 200 with data OkObjectResult { Value: PaginatedPostsResponse { Posts: [], TotalCount: 1, CurrentPage: 3, PageSize: 1, TotalPages: 1 }, Formatters: [], ContentTypes: [], DeclaredType: null, StatusCode: 200 }
+2024-09-17 15:35:46 [Information] Executing "OkObjectResult", writing value of type '"PawMates.Core.Features.Posts.GetAllPosts.PaginatedPostsResponse"'.
+2024-09-17 15:35:46 [Information] Executed action "PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)" in 200.3439ms
+2024-09-17 15:35:46 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:35:46 [Information] The response could not be cached for this request.
+2024-09-17 15:35:46 [Information] ****Middleware**** Outgoing response: 200 with Body: "{\"posts\":[],\"totalCount\":1,\"currentPage\":3,\"pageSize\":1,\"totalPages\":1}"
+2024-09-17 15:35:46 [Information] HTTP "GET" "/api/Posts" responded 200 in 212.3848 ms
+2024-09-17 15:35:46 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/api/Posts""?PageNumber=3&PageSize=1" - 200 null "application/json; charset=utf-8" 217.485ms
+2024-09-17 15:42:17 [Information] User profile is available. Using '"C:\Users\KC\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-17 15:42:17 [Information] Now listening on: "http://localhost:5053"
+2024-09-17 15:42:17 [Information] Application started. Press Ctrl+C to shut down.
+2024-09-17 15:42:17 [Information] Hosting environment: "Development"
+2024-09-17 15:42:17 [Information] Content root path: "C:\Users\KC\source\repos\PawMates.net\PawMates.API"
+2024-09-17 15:42:18 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/index.html""" - null null
+2024-09-17 15:42:18 [Information] ****Middleware**** Incoming request: "GET" "/swagger/index.html" with Body: ""
+2024-09-17 15:42:18 [Information] No cached response available for this request.
+2024-09-17 15:42:18 [Information] The response could not be cached for this request.
+2024-09-17 15:42:18 [Information] ****Middleware**** Outgoing response: 200 with Body: "<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <title>Swagger UI</title>
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"./swagger-ui.css\">
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"./index.css\">
+    <link rel=\"icon\" type=\"image/png\" href=\"./favicon-32x32.png\" sizes=\"32x32\" />
+    <link rel=\"icon\" type=\"image/png\" href=\"./favicon-16x16.png\" sizes=\"16x16\" />
+       
+</head>
+
+<body>
+    <div id=\"swagger-ui\"></div>
+
+    <script src=\"./swagger-ui-bundle.js\" charset=\"utf-8\"></script>
+    <script src=\"./swagger-ui-standalone-preset.js\" charset=\"utf-8\"></script>
+    <script src=\"index.js\" charset=\"utf-8\"></script>
+</body>
+</html>
+"
+2024-09-17 15:42:18 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 99.3123 ms
+2024-09-17 15:42:18 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 158.4513ms
+2024-09-17 15:42:18 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/_framework/aspnetcore-browser-refresh.js""" - null null
+2024-09-17 15:42:18 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/index.js""" - null null
+2024-09-17 15:42:18 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/_vs/browserLink""" - null null
+2024-09-17 15:42:18 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/_framework/aspnetcore-browser-refresh.js""" - 200 13760 "application/javascript; charset=utf-8" 5.5005ms
+2024-09-17 15:42:18 [Information] ****Middleware**** Incoming request: "GET" "/swagger/index.js" with Body: ""
+2024-09-17 15:42:18 [Information] No cached response available for this request.
+2024-09-17 15:42:18 [Information] The response could not be cached for this request.
+2024-09-17 15:42:18 [Information] ****Middleware**** Outgoing response: 200 with Body: "/* Source: https://gist.github.com/lamberta/3768814
+ * Parse a string function definition and return a function object. Does not use eval.
+ * @param {string} str
+ * @return {function}
+ *
+ * Example:
+ *  var f = function (x, y) { return x * y; };
+ *  var g = parseFunction(f.toString());
+ *  g(33, 3); //=> 99
+ */
+function parseFunction(str) {
+    if (!str) return void (0);
+
+    var fn_body_idx = str.indexOf('{'),
+        fn_body = str.substring(fn_body_idx + 1, str.lastIndexOf('}')),
+        fn_declare = str.substring(0, fn_body_idx),
+        fn_params = fn_declare.substring(fn_declare.indexOf('(') + 1, fn_declare.lastIndexOf(')')),
+        args = fn_params.split(',');
+
+    args.push(fn_body);
+
+    function Fn() {
+        return Function.apply(this, args);
+    }
+    Fn.prototype = Function.prototype;
+
+    return new Fn();
+}
+
+window.onload = function () {
+    var configObject = JSON.parse('{\"urls\":[{\"url\":\"v1/swagger.json\",\"name\":\"PawMates.API v1\"}],\"deepLinking\":false,\"persistAuthorization\":false,\"displayOperationId\":false,\"defaultModelsExpandDepth\":1,\"defaultModelExpandDepth\":1,\"defaultModelRendering\":\"example\",\"displayRequestDuration\":false,\"docExpansion\":\"list\",\"showExtensions\":false,\"showCommonExtensions\":false,\"supportedSubmitMethods\":[\"get\",\"put\",\"post\",\"delete\",\"options\",\"head\",\"patch\",\"trace\"],\"tryItOutEnabled\":false}');
+    var oauthConfigObject = JSON.parse('{\"scopeSeparator\":\" \",\"scopes\":[],\"useBasicAuthenticationWithAccessCodeGrant\":false,\"usePkceWithAuthorizationCodeGrant\":false}');
+
+    // Workaround for https://github.com/swagger-api/swagger-ui/issues/5945
+    configObject.urls.forEach(function (item) {
+        if (item.url.startsWith(\"http\") || item.url.startsWith(\"/\")) return;
+        item.url = window.location.href.replace(\"index.html\", item.url).split('#')[0];
+    });
+
+    // If validatorUrl is not explicitly provided, disable the feature by setting to null
+    if (!configObject.hasOwnProperty(\"validatorUrl\"))
+        configObject.validatorUrl = null
+
+    // If oauth2RedirectUrl isn't specified, use the built-in default
+    if (!configObject.hasOwnProperty(\"oauth2RedirectUrl\"))
+        configObject.oauth2RedirectUrl = (new URL(\"oauth2-redirect.html\", window.location.href)).href;
+
+    // Apply mandatory parameters
+    configObject.dom_id = \"#swagger-ui\";
+    configObject.presets = [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset];
+    configObject.layout = \"StandaloneLayout\";
+
+    // Parse and add interceptor functions
+    var interceptors = JSON.parse('{}');
+    if (interceptors.RequestInterceptorFunction)
+        configObject.requestInterceptor = parseFunction(interceptors.RequestInterceptorFunction);
+    if (interceptors.ResponseInterceptorFunction)
+        configObject.responseInterceptor = parseFunction(interceptors.ResponseInterceptorFunction);
+
+    // Begin Swagger UI call region
+
+    const ui = SwaggerUIBundle(configObject);
+
+    ui.initOAuth(oauthConfigObject);
+
+    // End Swagger UI call region
+
+    window.ui = ui
+}
+"
+2024-09-17 15:42:18 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 25.4491 ms
+2024-09-17 15:42:18 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/index.js""" - 200 null "application/javascript;charset=utf-8" 34.8605ms
+2024-09-17 15:42:18 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 49.0448ms
+2024-09-17 15:42:18 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/v1/swagger.json""" - null null
+2024-09-17 15:42:18 [Information] ****Middleware**** Incoming request: "GET" "/swagger/v1/swagger.json" with Body: ""
+2024-09-17 15:42:18 [Information] No cached response available for this request.
+2024-09-17 15:42:18 [Information] The response could not be cached for this request.
+2024-09-17 15:42:18 [Information] ****Middleware**** Outgoing response: 200 with Body: "{
+  \"openapi\": \"3.0.1\",
+  \"info\": {
+    \"title\": \"PawMates.API\",
+    \"version\": \"1.0\"
+  },
+  \"paths\": {
+    \"/api/Ads\": {
+      \"post\": {
+        \"tags\": [
+          \"Ads\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateAdvertisementRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateAdvertisementRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateAdvertisementRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"get\": {
+        \"tags\": [
+          \"Ads\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"PageNumber\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          },
+          {
+            \"name\": \"PageSize\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          },
+          {
+            \"name\": \"AdType\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"$ref\": \"#/components/schemas/AdvertisementType\"
+            }
+          },
+          {
+            \"name\": \"SearchTerm\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"delete\": {
+        \"tags\": [
+          \"Ads\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DeleteAdvertisementRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DeleteAdvertisementRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DeleteAdvertisementRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/Ads/{id}\": {
+      \"put\": {
+        \"tags\": [
+          \"Ads\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"id\",
+            \"in\": \"path\",
+            \"required\": true,
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\"
+            }
+          }
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdateAdvertisementRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdateAdvertisementRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdateAdvertisementRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/Posts\": {
+      \"post\": {
+        \"tags\": [
+          \"Posts\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreatePostRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreatePostRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreatePostRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"get\": {
+        \"tags\": [
+          \"Posts\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"PageNumber\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          },
+          {
+            \"name\": \"PageSize\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          },
+          {
+            \"name\": \"SearchTerm\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/Posts/{id}\": {
+      \"put\": {
+        \"tags\": [
+          \"Posts\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"id\",
+            \"in\": \"path\",
+            \"required\": true,
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\"
+            }
+          }
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdatePostRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdatePostRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdatePostRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"delete\": {
+        \"tags\": [
+          \"Posts\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"id\",
+            \"in\": \"path\",
+            \"required\": true,
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/confirm-email\": {
+      \"get\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"email\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          },
+          {
+            \"name\": \"token\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/login\": {
+      \"post\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/register\": {
+      \"post\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/update\": {
+      \"put\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/WeatherForecast\": {
+      \"get\": {
+        \"tags\": [
+          \"WeatherForecast\"
+        ],
+        \"operationId\": \"GetWeatherForecast\",
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\",
+            \"content\": {
+              \"text/plain\": {
+                \"schema\": {
+                  \"type\": \"array\",
+                  \"items\": {
+                    \"$ref\": \"#/components/schemas/WeatherForecast\"
+                  }
+                }
+              },
+              \"application/json\": {
+                \"schema\": {
+                  \"type\": \"array\",
+                  \"items\": {
+                    \"$ref\": \"#/components/schemas/WeatherForecast\"
+                  }
+                }
+              },
+              \"text/json\": {
+                \"schema\": {
+                  \"type\": \"array\",
+                  \"items\": {
+                    \"$ref\": \"#/components/schemas/WeatherForecast\"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  \"components\": {
+    \"schemas\": {
+      \"AdvertisementType\": {
+        \"enum\": [
+          0,
+          1,
+          2
+        ],
+        \"type\": \"integer\",
+        \"format\": \"int32\"
+      },
+      \"CreateAdvertisementRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\",
+            \"nullable\": true
+          },
+          \"title\": {
+            \"type\": \"string\",
+            \"default\": \"Ad Title\",
+            \"nullable\": true
+          },
+          \"description\": {
+            \"type\": \"string\",
+            \"default\": \"This is the default description for the ad.\",
+            \"nullable\": true
+          },
+          \"location\": {
+            \"type\": \"string\",
+            \"default\": \"Default Location\",
+            \"nullable\": true
+          },
+          \"advertisementType\": {
+            \"$ref\": \"#/components/schemas/AdvertisementType\"
+          },
+          \"pets\": {
+            \"type\": \"array\",
+            \"items\": {
+              \"$ref\": \"#/components/schemas/PetDto\"
+            },
+            \"nullable\": true
+          },
+          \"isVaccinated\": {
+            \"type\": \"boolean\",
+            \"default\": false,
+            \"nullable\": true
+          },
+          \"requiredDays\": {
+            \"type\": \"string\",
+            \"default\": \"Mon, Wed, Fri\",
+            \"nullable\": true
+          },
+          \"salary\": {
+            \"type\": \"number\",
+            \"format\": \"double\",
+            \"default\": 0,
+            \"nullable\": true
+          },
+          \"lastSeenLocation\": {
+            \"type\": \"string\",
+            \"default\": \"Last seen at default location.\",
+            \"nullable\": true
+          },
+          \"lostDate\": {
+            \"type\": \"string\",
+            \"format\": \"date-time\",
+            \"default\": \"2024-01-01T03:00:00+03:00\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"CreatePostRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"title\": {
+            \"type\": \"string\",
+            \"default\": \"Post Title\",
+            \"nullable\": true
+          },
+          \"content\": {
+            \"type\": \"string\",
+            \"default\": \"This is the default content for the post.\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"DeleteAdvertisementRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"advertisementId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\"
+          },
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"LoginRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kerimcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"password\": {
+            \"type\": \"string\",
+            \"default\": \"19071907\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"PetDto\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"name\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          },
+          \"petTypeId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\"
+          },
+          \"breed\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          },
+          \"age\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\"
+          },
+          \"gender\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          },
+          \"description\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"RegisterRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"password\": {
+            \"type\": \"string\",
+            \"default\": \"19071907\",
+            \"nullable\": true
+          },
+          \"firstName\": {
+            \"type\": \"string\",
+            \"default\": \"Can\",
+            \"nullable\": true
+          },
+          \"lastName\": {
+            \"type\": \"string\",
+            \"default\": \"Mersin\",
+            \"nullable\": true
+          },
+          \"phoneNumber\": {
+            \"type\": \"string\",
+            \"default\": \"+1234567890\",
+            \"nullable\": true
+          },
+          \"roleName\": {
+            \"type\": \"string\",
+            \"default\": \"User\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"UpdateAdvertisementRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"advertisementId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"title\": {
+            \"type\": \"string\",
+            \"default\": \"Updated Ad Title\",
+            \"nullable\": true
+          },
+          \"description\": {
+            \"type\": \"string\",
+            \"default\": \"This is the updated description for the ad.\",
+            \"nullable\": true
+          },
+          \"location\": {
+            \"type\": \"string\",
+            \"default\": \"Updated Location\",
+            \"nullable\": true
+          },
+          \"pets\": {
+            \"type\": \"array\",
+            \"items\": {
+              \"$ref\": \"#/components/schemas/PetDto\"
+            },
+            \"nullable\": true
+          },
+          \"advertisementType\": {
+            \"$ref\": \"#/components/schemas/AdvertisementType\"
+          },
+          \"isVaccinated\": {
+            \"type\": \"boolean\",
+            \"default\": false,
+            \"nullable\": true
+          },
+          \"requiredDays\": {
+            \"type\": \"string\",
+            \"default\": \"Mon, Tue, Thu\",
+            \"nullable\": true
+          },
+          \"salary\": {
+            \"type\": \"number\",
+            \"format\": \"double\",
+            \"default\": 500,
+            \"nullable\": true
+          },
+          \"lastSeenLocation\": {
+            \"type\": \"string\",
+            \"default\": \"Updated last seen location.\",
+            \"nullable\": true
+          },
+          \"lostDate\": {
+            \"type\": \"string\",
+            \"format\": \"date-time\",
+            \"default\": \"2024-01-01T03:00:00+03:00\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"UpdatePostRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"postId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\"
+          },
+          \"title\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          },
+          \"content\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"UserUpdateRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"657c6705-0728-4dfc-8019-ea59c42f984f\",
+            \"nullable\": true
+          },
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kerimcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"firstName\": {
+            \"type\": \"string\",
+            \"default\": \"Can\",
+            \"nullable\": true
+          },
+          \"lastName\": {
+            \"type\": \"string\",
+            \"default\": \"Mersin\",
+            \"nullable\": true
+          },
+          \"phoneNumber\": {
+            \"type\": \"string\",
+            \"default\": \"+1234567890\",
+            \"nullable\": true
+          },
+          \"imagePath\": {
+            \"type\": \"string\",
+            \"default\": \"/API/defaultlogo.jpg\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"WeatherForecast\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"date\": {
+            \"type\": \"string\",
+            \"format\": \"date\"
+          },
+          \"temperatureC\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\"
+          },
+          \"temperatureF\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\",
+            \"readOnly\": true
+          },
+          \"summary\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      }
+    }
+  }
+}"
+2024-09-17 15:42:18 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 150.1194 ms
+2024-09-17 15:42:18 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 158.7521ms
+2024-09-17 15:42:24 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/api/Posts""" - null null
+2024-09-17 15:42:24 [Information] ****Middleware**** Incoming request: "GET" "/api/Posts" with Body: ""
+2024-09-17 15:42:24 [Information] No cached response available for this request.
+2024-09-17 15:42:24 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:42:24 [Information] Route matched with "{action = \"GetAllPosts\", controller = \"Posts\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllPosts(PawMates.API.Contracts.GetAllPostsRequest)" on controller "PawMates.API.Controllers.PostsController" ("PawMates.API").
+2024-09-17 15:42:24 [Information] ****ActionFilter**** Request for "GET" "/api/Posts" from "::1" with data [("request": GetAllPostsRequest { PageNumber: 1, PageSize: 10, SearchTerm: null })]
+2024-09-17 15:42:26 [Information] Executed DbCommand ("86"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT count(*)::int
+FROM \"Posts\" AS p"
+2024-09-17 15:42:26 [Information] Executed DbCommand ("76"ms) [Parameters=["@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT p.\"Id\", p.\"Title\", p.\"Content\", p.\"CreatedDate\", p.\"UserId\"
+FROM \"Posts\" AS p
+ORDER BY p.\"CreatedDate\" DESC
+LIMIT @__p_1 OFFSET @__p_0"
+2024-09-17 15:42:26 [Information] ****ActionFilter**** Response from 200 with data OkObjectResult { Value: PaginatedPostsResponse { Posts: [PostDto { Id: c43c32d7-efcf-47c9-80c2-f541e7184ba9, Title: "Post Title", Content: "This is the default content for the post.", CreatedDate: 09/17/2024 12:06:19, UserId: 3aa42229-1c0f-4630-8c1a-db879ecd0427 }], TotalCount: 1, CurrentPage: 1, PageSize: 10, TotalPages: 1 }, Formatters: [], ContentTypes: [], DeclaredType: null, StatusCode: 200 }
+2024-09-17 15:42:26 [Information] Executing "OkObjectResult", writing value of type '"PawMates.Core.Features.Posts.GetAllPosts.PaginatedPostsResponse"'.
+2024-09-17 15:42:26 [Information] Executed action "PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)" in 2207.3483ms
+2024-09-17 15:42:26 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:42:26 [Information] The response could not be cached for this request.
+2024-09-17 15:42:26 [Information] ****Middleware**** Outgoing response: 200 with Body: "{\"posts\":[{\"id\":\"c43c32d7-efcf-47c9-80c2-f541e7184ba9\",\"title\":\"Post Title\",\"content\":\"This is the default content for the post.\",\"createdDate\":\"2024-09-17T12:06:19.394148Z\",\"userId\":\"3aa42229-1c0f-4630-8c1a-db879ecd0427\"}],\"totalCount\":1,\"currentPage\":1,\"pageSize\":10,\"totalPages\":1}"
+2024-09-17 15:42:26 [Information] HTTP "GET" "/api/Posts" responded 200 in 2263.2058 ms
+2024-09-17 15:42:26 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/api/Posts""" - 200 null "application/json; charset=utf-8" 2276.0085ms
+2024-09-17 15:42:42 [Information] Request starting "HTTP/1.1" "PUT" "http"://"localhost:5053""""/api/Posts/c43c32d7-efcf-47c9-80c2-f541e7184ba9""" - "application/json" 102
+2024-09-17 15:42:42 [Information] ****Middleware**** Incoming request: "PUT" "/api/Posts/c43c32d7-efcf-47c9-80c2-f541e7184ba9" with Body: "{
+  \"postId\": \"c43c32d7-efcf-47c9-80c2-f541e7184ba9\",
+  \"title\": \"upfdated\",
+  \"content\": \"upfdated\"
+}"
+2024-09-17 15:42:42 [Information] CORS policy execution successful.
+2024-09-17 15:42:42 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.UpdatePost (PawMates.API)"'
+2024-09-17 15:42:42 [Information] Route matched with "{action = \"UpdatePost\", controller = \"Posts\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdatePost(System.Guid, PawMates.API.Contracts.UpdatePostRequest)" on controller "PawMates.API.Controllers.PostsController" ("PawMates.API").
+2024-09-17 15:42:42 [Information] ****ActionFilter**** Request for "PUT" "/api/Posts/c43c32d7-efcf-47c9-80c2-f541e7184ba9" from "::1" with data [("id": c43c32d7-efcf-47c9-80c2-f541e7184ba9), ("request": UpdatePostRequest { PostId: c43c32d7-efcf-47c9-80c2-f541e7184ba9, Title: "upfdated", Content: "upfdated" })]
+2024-09-17 15:42:42 [Information] Executed DbCommand ("70"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT p.\"Id\", p.\"Content\", p.\"CreatedBy\", p.\"CreatedDate\", p.\"DeletedBy\", p.\"DeletedDate\", p.\"IsDeleted\", p.\"ModifiedBy\", p.\"ModifiedDate\", p.\"Title\", p.\"UserId\"
+FROM \"Posts\" AS p
+WHERE p.\"Id\" = @__get_Item_0
+LIMIT 1"
+2024-09-17 15:42:42 [Information] Executed DbCommand ("73"ms) [Parameters=["@p2='?' (DbType = Guid), @p0='?', @p1='?'"], CommandType='Text', CommandTimeout='30']"
+""UPDATE \"Posts\" SET \"Content\" = @p0, \"Title\" = @p1
+WHERE \"Id\" = @p2;"
+2024-09-17 15:42:42 [Information] ****ActionFilter**** Response from 200 with data OkObjectResult { Value: UpdatePostResponse { Success: True, Message: "Post updated successfully." }, Formatters: [], ContentTypes: [], DeclaredType: null, StatusCode: 200 }
+2024-09-17 15:42:42 [Information] Executing "OkObjectResult", writing value of type '"PawMates.Core.Features.Posts.UpdatePost.UpdatePostResponse"'.
+2024-09-17 15:42:42 [Information] Executed action "PawMates.API.Controllers.PostsController.UpdatePost (PawMates.API)" in 409.2493ms
+2024-09-17 15:42:42 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.UpdatePost (PawMates.API)"'
+2024-09-17 15:42:42 [Information] ****Middleware**** Outgoing response: 200 with Body: "{\"success\":true,\"message\":\"Post updated successfully.\"}"
+2024-09-17 15:42:42 [Information] HTTP "PUT" "/api/Posts/c43c32d7-efcf-47c9-80c2-f541e7184ba9" responded 200 in 426.5168 ms
+2024-09-17 15:42:42 [Information] Request finished "HTTP/1.1" "PUT" "http"://"localhost:5053""""/api/Posts/c43c32d7-efcf-47c9-80c2-f541e7184ba9""" - 200 null "application/json; charset=utf-8" 431.0841ms
+2024-09-17 15:42:45 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/api/Posts""" - null null
+2024-09-17 15:42:45 [Information] ****Middleware**** Incoming request: "GET" "/api/Posts" with Body: ""
+2024-09-17 15:42:45 [Information] No cached response available for this request.
+2024-09-17 15:42:45 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:42:45 [Information] Route matched with "{action = \"GetAllPosts\", controller = \"Posts\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllPosts(PawMates.API.Contracts.GetAllPostsRequest)" on controller "PawMates.API.Controllers.PostsController" ("PawMates.API").
+2024-09-17 15:42:45 [Information] ****ActionFilter**** Request for "GET" "/api/Posts" from "::1" with data [("request": GetAllPostsRequest { PageNumber: 1, PageSize: 10, SearchTerm: null })]
+2024-09-17 15:42:45 [Information] Executed DbCommand ("66"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT count(*)::int
+FROM \"Posts\" AS p"
+2024-09-17 15:42:45 [Information] Executed DbCommand ("69"ms) [Parameters=["@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT p.\"Id\", p.\"Title\", p.\"Content\", p.\"CreatedDate\", p.\"UserId\"
+FROM \"Posts\" AS p
+ORDER BY p.\"CreatedDate\" DESC
+LIMIT @__p_1 OFFSET @__p_0"
+2024-09-17 15:42:45 [Information] ****ActionFilter**** Response from 200 with data OkObjectResult { Value: PaginatedPostsResponse { Posts: [PostDto { Id: c43c32d7-efcf-47c9-80c2-f541e7184ba9, Title: "upfdated", Content: "upfdated", CreatedDate: 09/17/2024 12:06:19, UserId: 3aa42229-1c0f-4630-8c1a-db879ecd0427 }], TotalCount: 1, CurrentPage: 1, PageSize: 10, TotalPages: 1 }, Formatters: [], ContentTypes: [], DeclaredType: null, StatusCode: 200 }
+2024-09-17 15:42:45 [Information] Executing "OkObjectResult", writing value of type '"PawMates.Core.Features.Posts.GetAllPosts.PaginatedPostsResponse"'.
+2024-09-17 15:42:45 [Information] Executed action "PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)" in 165.7841ms
+2024-09-17 15:42:45 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:42:45 [Information] The response could not be cached for this request.
+2024-09-17 15:42:45 [Information] ****Middleware**** Outgoing response: 200 with Body: "{\"posts\":[{\"id\":\"c43c32d7-efcf-47c9-80c2-f541e7184ba9\",\"title\":\"upfdated\",\"content\":\"upfdated\",\"createdDate\":\"2024-09-17T12:06:19.394148Z\",\"userId\":\"3aa42229-1c0f-4630-8c1a-db879ecd0427\"}],\"totalCount\":1,\"currentPage\":1,\"pageSize\":10,\"totalPages\":1}"
+2024-09-17 15:42:45 [Information] HTTP "GET" "/api/Posts" responded 200 in 178.3793 ms
+2024-09-17 15:42:45 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/api/Posts""" - 200 null "application/json; charset=utf-8" 183.1113ms
+2024-09-17 15:42:53 [Information] Request starting "HTTP/1.1" "DELETE" "http"://"localhost:5053""""/api/Posts/c43c32d7-efcf-47c9-80c2-f541e7184ba9""" - null null
+2024-09-17 15:42:53 [Information] ****Middleware**** Incoming request: "DELETE" "/api/Posts/c43c32d7-efcf-47c9-80c2-f541e7184ba9" with Body: ""
+2024-09-17 15:42:53 [Information] CORS policy execution successful.
+2024-09-17 15:42:53 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.DeletePost (PawMates.API)"'
+2024-09-17 15:42:53 [Information] Route matched with "{action = \"DeletePost\", controller = \"Posts\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeletePost(System.Guid)" on controller "PawMates.API.Controllers.PostsController" ("PawMates.API").
+2024-09-17 15:42:53 [Information] ****ActionFilter**** Request for "DELETE" "/api/Posts/c43c32d7-efcf-47c9-80c2-f541e7184ba9" from "::1" with data [("id": c43c32d7-efcf-47c9-80c2-f541e7184ba9)]
+2024-09-17 15:42:53 [Information] Executed DbCommand ("69"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT p.\"Id\", p.\"Content\", p.\"CreatedBy\", p.\"CreatedDate\", p.\"DeletedBy\", p.\"DeletedDate\", p.\"IsDeleted\", p.\"ModifiedBy\", p.\"ModifiedDate\", p.\"Title\", p.\"UserId\"
+FROM \"Posts\" AS p
+WHERE p.\"Id\" = @__get_Item_0
+LIMIT 1"
+2024-09-17 15:42:54 [Information] Executed DbCommand ("77"ms) [Parameters=["@p0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""DELETE FROM \"Posts\"
+WHERE \"Id\" = @p0;"
+2024-09-17 15:42:54 [Information] ****ActionFilter**** Response from 200 with data OkObjectResult { Value: DeletePostResponse { Success: True, Message: "Post deleted successfully." }, Formatters: [], ContentTypes: [], DeclaredType: null, StatusCode: 200 }
+2024-09-17 15:42:54 [Information] Executing "OkObjectResult", writing value of type '"PawMates.Core.Features.Posts.DeletePost.DeletePostResponse"'.
+2024-09-17 15:42:54 [Information] Executed action "PawMates.API.Controllers.PostsController.DeletePost (PawMates.API)" in 180.4809ms
+2024-09-17 15:42:54 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.DeletePost (PawMates.API)"'
+2024-09-17 15:42:54 [Information] ****Middleware**** Outgoing response: 200 with Body: "{\"success\":true,\"message\":\"Post deleted successfully.\"}"
+2024-09-17 15:42:54 [Information] HTTP "DELETE" "/api/Posts/c43c32d7-efcf-47c9-80c2-f541e7184ba9" responded 200 in 191.6368 ms
+2024-09-17 15:42:54 [Information] Request finished "HTTP/1.1" "DELETE" "http"://"localhost:5053""""/api/Posts/c43c32d7-efcf-47c9-80c2-f541e7184ba9""" - 200 null "application/json; charset=utf-8" 196.9615ms
+2024-09-17 15:42:57 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/api/Posts""" - null null
+2024-09-17 15:42:57 [Information] ****Middleware**** Incoming request: "GET" "/api/Posts" with Body: ""
+2024-09-17 15:42:57 [Information] No cached response available for this request.
+2024-09-17 15:42:57 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:42:57 [Information] Route matched with "{action = \"GetAllPosts\", controller = \"Posts\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllPosts(PawMates.API.Contracts.GetAllPostsRequest)" on controller "PawMates.API.Controllers.PostsController" ("PawMates.API").
+2024-09-17 15:42:57 [Information] ****ActionFilter**** Request for "GET" "/api/Posts" from "::1" with data [("request": GetAllPostsRequest { PageNumber: 1, PageSize: 10, SearchTerm: null })]
+2024-09-17 15:42:57 [Information] Executed DbCommand ("66"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT count(*)::int
+FROM \"Posts\" AS p"
+2024-09-17 15:42:57 [Information] Executed DbCommand ("69"ms) [Parameters=["@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT p.\"Id\", p.\"Title\", p.\"Content\", p.\"CreatedDate\", p.\"UserId\"
+FROM \"Posts\" AS p
+ORDER BY p.\"CreatedDate\" DESC
+LIMIT @__p_1 OFFSET @__p_0"
+2024-09-17 15:42:57 [Information] ****ActionFilter**** Response from 200 with data OkObjectResult { Value: PaginatedPostsResponse { Posts: [], TotalCount: 0, CurrentPage: 1, PageSize: 10, TotalPages: 0 }, Formatters: [], ContentTypes: [], DeclaredType: null, StatusCode: 200 }
+2024-09-17 15:42:57 [Information] Executing "OkObjectResult", writing value of type '"PawMates.Core.Features.Posts.GetAllPosts.PaginatedPostsResponse"'.
+2024-09-17 15:42:57 [Information] Executed action "PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)" in 153.7605ms
+2024-09-17 15:42:57 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:42:57 [Information] The response could not be cached for this request.
+2024-09-17 15:42:57 [Information] ****Middleware**** Outgoing response: 200 with Body: "{\"posts\":[],\"totalCount\":0,\"currentPage\":1,\"pageSize\":10,\"totalPages\":0}"
+2024-09-17 15:42:57 [Information] HTTP "GET" "/api/Posts" responded 200 in 161.9021 ms
+2024-09-17 15:42:57 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/api/Posts""" - 200 null "application/json; charset=utf-8" 167.1056ms
+2024-09-17 15:43:02 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:5053""""/api/Posts""" - "application/json" 137
+2024-09-17 15:43:02 [Information] ****Middleware**** Incoming request: "POST" "/api/Posts" with Body: "{
+  \"userId\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\",
+  \"title\": \"Post Title\",
+  \"content\": \"This is the default content for the post.\"
+}"
+2024-09-17 15:43:02 [Information] CORS policy execution successful.
+2024-09-17 15:43:02 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.CreatePost (PawMates.API)"'
+2024-09-17 15:43:02 [Information] Route matched with "{action = \"CreatePost\", controller = \"Posts\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePost(PawMates.API.Contracts.CreatePostRequest)" on controller "PawMates.API.Controllers.PostsController" ("PawMates.API").
+2024-09-17 15:43:02 [Information] ****ActionFilter**** Request for "POST" "/api/Posts" from "::1" with data [("request": CreatePostRequest { UserId: 3aa42229-1c0f-4630-8c1a-db879ecd0427, Title: "Post Title", Content: "This is the default content for the post." })]
+2024-09-17 15:43:02 [Information] Executed DbCommand ("68"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = DateTime), @p6='?' (DbType = Boolean), @p7='?', @p8='?' (DbType = DateTime), @p9='?', @p10='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Posts\" (\"Id\", \"Content\", \"CreatedBy\", \"CreatedDate\", \"DeletedBy\", \"DeletedDate\", \"IsDeleted\", \"ModifiedBy\", \"ModifiedDate\", \"Title\", \"UserId\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);"
+2024-09-17 15:43:02 [Information] ****ActionFilter**** Response from 200 with data OkObjectResult { Value: CreatePostResponse { PostId: 99d13ed3-5ac0-428a-b921-2c3df8628ea4, Success: True, Message: "Post created successfully" }, Formatters: [], ContentTypes: [], DeclaredType: null, StatusCode: 200 }
+2024-09-17 15:43:02 [Information] Executing "OkObjectResult", writing value of type '"PawMates.Core.Features.Posts.CreatePost.CreatePostResponse"'.
+2024-09-17 15:43:02 [Information] Executed action "PawMates.API.Controllers.PostsController.CreatePost (PawMates.API)" in 97.3105ms
+2024-09-17 15:43:02 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.CreatePost (PawMates.API)"'
+2024-09-17 15:43:02 [Information] ****Middleware**** Outgoing response: 200 with Body: "{\"postId\":\"99d13ed3-5ac0-428a-b921-2c3df8628ea4\",\"success\":true,\"message\":\"Post created successfully\"}"
+2024-09-17 15:43:02 [Information] HTTP "POST" "/api/Posts" responded 200 in 106.8181 ms
+2024-09-17 15:43:02 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:5053""""/api/Posts""" - 200 null "application/json; charset=utf-8" 110.4309ms

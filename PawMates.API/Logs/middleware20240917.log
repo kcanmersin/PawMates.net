@@ -1,0 +1,64 @@
+2024-09-17 15:06:12 [Information] No cached response available for this request.
+2024-09-17 15:06:12 [Information] The response could not be cached for this request.
+2024-09-17 15:06:12 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 104.2029 ms
+2024-09-17 15:06:12 [Information] No cached response available for this request.
+2024-09-17 15:06:12 [Information] The response could not be cached for this request.
+2024-09-17 15:06:12 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 52.3134 ms
+2024-09-17 15:06:12 [Information] No cached response available for this request.
+2024-09-17 15:06:13 [Information] The response could not be cached for this request.
+2024-09-17 15:06:13 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 212.1393 ms
+2024-09-17 15:06:18 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.CreatePost (PawMates.API)"'
+2024-09-17 15:06:21 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.CreatePost (PawMates.API)"'
+2024-09-17 15:06:21 [Information] HTTP "POST" "/api/Posts" responded 200 in 3083.8144 ms
+2024-09-17 15:35:29 [Information] No cached response available for this request.
+2024-09-17 15:35:29 [Information] The response could not be cached for this request.
+2024-09-17 15:35:29 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 137.0053 ms
+2024-09-17 15:35:29 [Information] No cached response available for this request.
+2024-09-17 15:35:29 [Information] The response could not be cached for this request.
+2024-09-17 15:35:29 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 26.3815 ms
+2024-09-17 15:35:29 [Information] No cached response available for this request.
+2024-09-17 15:35:29 [Information] The response could not be cached for this request.
+2024-09-17 15:35:29 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 140.3929 ms
+2024-09-17 15:35:35 [Information] No cached response available for this request.
+2024-09-17 15:35:35 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:35:37 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:35:37 [Information] The response could not be cached for this request.
+2024-09-17 15:35:37 [Information] HTTP "GET" "/api/Posts" responded 200 in 2469.8626 ms
+2024-09-17 15:35:46 [Information] No cached response available for this request.
+2024-09-17 15:35:46 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:35:46 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:35:46 [Information] The response could not be cached for this request.
+2024-09-17 15:35:46 [Information] HTTP "GET" "/api/Posts" responded 200 in 212.3848 ms
+2024-09-17 15:42:18 [Information] No cached response available for this request.
+2024-09-17 15:42:18 [Information] The response could not be cached for this request.
+2024-09-17 15:42:18 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 99.3123 ms
+2024-09-17 15:42:18 [Information] No cached response available for this request.
+2024-09-17 15:42:18 [Information] The response could not be cached for this request.
+2024-09-17 15:42:18 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 25.4491 ms
+2024-09-17 15:42:18 [Information] No cached response available for this request.
+2024-09-17 15:42:18 [Information] The response could not be cached for this request.
+2024-09-17 15:42:18 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 150.1194 ms
+2024-09-17 15:42:24 [Information] No cached response available for this request.
+2024-09-17 15:42:24 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:42:26 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:42:26 [Information] The response could not be cached for this request.
+2024-09-17 15:42:26 [Information] HTTP "GET" "/api/Posts" responded 200 in 2263.2058 ms
+2024-09-17 15:42:42 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.UpdatePost (PawMates.API)"'
+2024-09-17 15:42:42 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.UpdatePost (PawMates.API)"'
+2024-09-17 15:42:42 [Information] HTTP "PUT" "/api/Posts/c43c32d7-efcf-47c9-80c2-f541e7184ba9" responded 200 in 426.5168 ms
+2024-09-17 15:42:45 [Information] No cached response available for this request.
+2024-09-17 15:42:45 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:42:45 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:42:45 [Information] The response could not be cached for this request.
+2024-09-17 15:42:45 [Information] HTTP "GET" "/api/Posts" responded 200 in 178.3793 ms
+2024-09-17 15:42:53 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.DeletePost (PawMates.API)"'
+2024-09-17 15:42:54 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.DeletePost (PawMates.API)"'
+2024-09-17 15:42:54 [Information] HTTP "DELETE" "/api/Posts/c43c32d7-efcf-47c9-80c2-f541e7184ba9" responded 200 in 191.6368 ms
+2024-09-17 15:42:57 [Information] No cached response available for this request.
+2024-09-17 15:42:57 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:42:57 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 15:42:57 [Information] The response could not be cached for this request.
+2024-09-17 15:42:57 [Information] HTTP "GET" "/api/Posts" responded 200 in 161.9021 ms
+2024-09-17 15:43:02 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.CreatePost (PawMates.API)"'
+2024-09-17 15:43:02 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.CreatePost (PawMates.API)"'
+2024-09-17 15:43:02 [Information] HTTP "POST" "/api/Posts" responded 200 in 106.8181 ms

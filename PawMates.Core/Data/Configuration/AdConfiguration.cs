@@ -26,6 +26,11 @@ namespace PawMates.Core.Data.Configurations
                    .HasValue<JobAd>("Job")
                    .HasValue<LostAd>("Lost");
 
+            // Configure relationship with comments
+            builder.HasMany(ad => ad.Comments)
+                   .WithOne(c => c.Advertisement)
+                   .HasForeignKey(c => c.AdvertisementId)
+                   .OnDelete(DeleteBehavior.Cascade);
         }
     }
 
@@ -54,8 +59,8 @@ namespace PawMates.Core.Data.Configurations
 
             builder.Property(l => l.LostDate)
                    .IsRequired()
-                   .HasColumnType("timestamp with time zone") 
-                   .HasDefaultValueSql("CURRENT_TIMESTAMP AT TIME ZONE 'UTC'"); 
+                   .HasColumnType("timestamp with time zone")
+                   .HasDefaultValueSql("CURRENT_TIMESTAMP AT TIME ZONE 'UTC'");
         }
     }
 }
