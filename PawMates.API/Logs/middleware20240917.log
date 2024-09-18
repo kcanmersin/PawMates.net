@@ -62,3 +62,414 @@
 2024-09-17 15:43:02 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.CreatePost (PawMates.API)"'
 2024-09-17 15:43:02 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.CreatePost (PawMates.API)"'
 2024-09-17 15:43:02 [Information] HTTP "POST" "/api/Posts" responded 200 in 106.8181 ms
+2024-09-17 16:03:06 [Information] No cached response available for this request.
+2024-09-17 16:03:06 [Information] The response could not be cached for this request.
+2024-09-17 16:03:06 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 117.2520 ms
+2024-09-17 16:03:06 [Information] No cached response available for this request.
+2024-09-17 16:03:06 [Information] The response could not be cached for this request.
+2024-09-17 16:03:06 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 25.6604 ms
+2024-09-17 16:03:07 [Information] No cached response available for this request.
+2024-09-17 16:03:07 [Information] The response could not be cached for this request.
+2024-09-17 16:03:07 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 202.2428 ms
+2024-09-17 16:10:34 [Information] No cached response available for this request.
+2024-09-17 16:10:34 [Information] The response could not be cached for this request.
+2024-09-17 16:10:34 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 92.3921 ms
+2024-09-17 16:10:34 [Information] No cached response available for this request.
+2024-09-17 16:10:34 [Information] The response could not be cached for this request.
+2024-09-17 16:10:34 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 9.6566 ms
+2024-09-17 16:10:34 [Information] No cached response available for this request.
+2024-09-17 16:10:35 [Information] The response could not be cached for this request.
+2024-09-17 16:10:35 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 143.9507 ms
+2024-09-17 16:11:16 [Information] No cached response available for this request.
+2024-09-17 16:11:16 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-17 16:11:18 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-17 16:11:18 [Information] The response could not be cached for this request.
+2024-09-17 16:11:18 [Information] HTTP "GET" "/api/Ads" responded 200 in 2413.8608 ms
+2024-09-17 16:11:42 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:11:42 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:11:42 [Information] HTTP "POST" "/api/Comments" responded 400 in 49.2869 ms
+2024-09-17 16:11:52 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:11:52 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:11:52 [Information] HTTP "POST" "/api/Comments" responded 400 in 58.2362 ms
+2024-09-17 16:12:04 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:12:04 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:12:04 [Error] HTTP "POST" "/api/Comments" responded 500 in 518.5107 ms
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23503: insert or update on table "Comments" violates foreign key constraint "FK_Comments_Comments_ParentCommentId"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23503
+    MessageText: insert or update on table "Comments" violates foreign key constraint "FK_Comments_Comments_ParentCommentId"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Comments
+    ConstraintName: FK_Comments_Comments_ParentCommentId
+    File: ri_triggers.c
+    Line: 2608
+    Routine: ri_ReportViolation
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at PawMates.Core.Features.Comments.CreateComment.CreateCommentHandler.Handle(CreateCommentCommand request, CancellationToken cancellationToken) in C:\Users\KC\source\repos\PawMates.net\PawMates.Core\Features\Comments\CreateComment\CreateCommentHandler.cs:line 42
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at PawMates.API.Controllers.CommentsController.CreateComment(CreateCommentRequest request) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Controllers\CommentsController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Helper\Log\RequestResponseLoggingMiddleware.cs:line 32
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2024-09-17 16:12:04 [Error] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23503: insert or update on table "Comments" violates foreign key constraint "FK_Comments_Comments_ParentCommentId"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23503
+    MessageText: insert or update on table "Comments" violates foreign key constraint "FK_Comments_Comments_ParentCommentId"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Comments
+    ConstraintName: FK_Comments_Comments_ParentCommentId
+    File: ri_triggers.c
+    Line: 2608
+    Routine: ri_ReportViolation
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at PawMates.Core.Features.Comments.CreateComment.CreateCommentHandler.Handle(CreateCommentCommand request, CancellationToken cancellationToken) in C:\Users\KC\source\repos\PawMates.net\PawMates.Core\Features\Comments\CreateComment\CreateCommentHandler.cs:line 42
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at PawMates.API.Controllers.CommentsController.CreateComment(CreateCommentRequest request) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Controllers\CommentsController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Helper\Log\RequestResponseLoggingMiddleware.cs:line 32
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-09-17 16:12:04 [Error] An exception was thrown attempting to display the error page.
+System.ObjectDisposedException: Cannot access a closed Stream.
+   at System.IO.MemoryStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.MemoryStream.WriteAsync(ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at System.IO.Pipelines.StreamPipeWriter.FlushAsyncInternal(Boolean writeToStream, ReadOnlyMemory`1 data, CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask`1.GetTaskForValueTaskSource(IValueTaskSource`1 t)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.DisplayExceptionContent(ErrorContext errorContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-09-17 16:12:07 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:12:07 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:12:07 [Error] HTTP "POST" "/api/Comments" responded 500 in 251.6952 ms
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23503: insert or update on table "Comments" violates foreign key constraint "FK_Comments_Comments_ParentCommentId"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23503
+    MessageText: insert or update on table "Comments" violates foreign key constraint "FK_Comments_Comments_ParentCommentId"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Comments
+    ConstraintName: FK_Comments_Comments_ParentCommentId
+    File: ri_triggers.c
+    Line: 2608
+    Routine: ri_ReportViolation
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at PawMates.Core.Features.Comments.CreateComment.CreateCommentHandler.Handle(CreateCommentCommand request, CancellationToken cancellationToken) in C:\Users\KC\source\repos\PawMates.net\PawMates.Core\Features\Comments\CreateComment\CreateCommentHandler.cs:line 42
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at PawMates.API.Controllers.CommentsController.CreateComment(CreateCommentRequest request) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Controllers\CommentsController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Helper\Log\RequestResponseLoggingMiddleware.cs:line 32
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2024-09-17 16:12:07 [Error] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23503: insert or update on table "Comments" violates foreign key constraint "FK_Comments_Comments_ParentCommentId"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23503
+    MessageText: insert or update on table "Comments" violates foreign key constraint "FK_Comments_Comments_ParentCommentId"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Comments
+    ConstraintName: FK_Comments_Comments_ParentCommentId
+    File: ri_triggers.c
+    Line: 2608
+    Routine: ri_ReportViolation
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at PawMates.Core.Features.Comments.CreateComment.CreateCommentHandler.Handle(CreateCommentCommand request, CancellationToken cancellationToken) in C:\Users\KC\source\repos\PawMates.net\PawMates.Core\Features\Comments\CreateComment\CreateCommentHandler.cs:line 42
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at PawMates.API.Controllers.CommentsController.CreateComment(CreateCommentRequest request) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Controllers\CommentsController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Helper\Log\RequestResponseLoggingMiddleware.cs:line 32
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-09-17 16:12:08 [Error] An exception was thrown attempting to display the error page.
+System.ObjectDisposedException: Cannot access a closed Stream.
+   at System.IO.MemoryStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.MemoryStream.WriteAsync(ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at System.IO.Pipelines.StreamPipeWriter.FlushAsyncInternal(Boolean writeToStream, ReadOnlyMemory`1 data, CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask`1.GetTaskForValueTaskSource(IValueTaskSource`1 t)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.DisplayExceptionContent(ErrorContext errorContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-09-17 16:12:30 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:12:30 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:12:30 [Information] HTTP "POST" "/api/Comments" responded 400 in 15.6136 ms
+2024-09-17 16:12:34 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:12:34 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:12:34 [Information] HTTP "POST" "/api/Comments" responded 200 in 116.2444 ms
+2024-09-17 16:12:38 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:12:38 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:12:38 [Information] HTTP "POST" "/api/Comments" responded 400 in 21.4589 ms
+2024-09-17 16:12:41 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:12:41 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:12:41 [Information] HTTP "POST" "/api/Comments" responded 200 in 92.2888 ms
+2024-09-17 16:31:33 [Information] No cached response available for this request.
+2024-09-17 16:31:33 [Information] The response could not be cached for this request.
+2024-09-17 16:31:33 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 117.2595 ms
+2024-09-17 16:31:33 [Information] No cached response available for this request.
+2024-09-17 16:31:33 [Information] The response could not be cached for this request.
+2024-09-17 16:31:33 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 12.1808 ms
+2024-09-17 16:31:34 [Information] No cached response available for this request.
+2024-09-17 16:31:34 [Information] The response could not be cached for this request.
+2024-09-17 16:31:34 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 195.4779 ms
+2024-09-17 16:31:38 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:31:39 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-17 16:31:39 [Information] HTTP "POST" "/api/Comments" responded 400 in 423.3817 ms
+2024-09-17 16:34:21 [Information] No cached response available for this request.
+2024-09-17 16:34:21 [Information] The response could not be cached for this request.
+2024-09-17 16:34:21 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 190.3807 ms
+2024-09-17 16:34:21 [Information] No cached response available for this request.
+2024-09-17 16:34:21 [Information] The response could not be cached for this request.
+2024-09-17 16:34:21 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 28.5319 ms
+2024-09-17 16:34:22 [Information] No cached response available for this request.
+2024-09-17 16:34:22 [Information] The response could not be cached for this request.
+2024-09-17 16:34:22 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 151.8745 ms
+2024-09-17 16:34:28 [Information] No cached response available for this request.
+2024-09-17 16:34:28 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.GetAllComments (PawMates.API)"'
+2024-09-17 16:34:31 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.GetAllComments (PawMates.API)"'
+2024-09-17 16:34:31 [Information] The response could not be cached for this request.
+2024-09-17 16:34:31 [Information] HTTP "GET" "/api/Comments" responded 200 in 2752.3911 ms
+2024-09-17 16:37:45 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.CreatePost (PawMates.API)"'
+2024-09-17 16:37:46 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.CreatePost (PawMates.API)"'
+2024-09-17 16:37:46 [Information] HTTP "POST" "/api/Posts" responded 200 in 340.5652 ms
+2024-09-17 16:37:50 [Information] No cached response available for this request.
+2024-09-17 16:37:50 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 16:37:50 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 16:37:50 [Information] The response could not be cached for this request.
+2024-09-17 16:37:50 [Information] HTTP "GET" "/api/Posts" responded 200 in 269.2802 ms
+2024-09-17 16:38:06 [Information] No cached response available for this request.
+2024-09-17 16:38:06 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.GetAllComments (PawMates.API)"'
+2024-09-17 16:38:06 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.GetAllComments (PawMates.API)"'
+2024-09-17 16:38:06 [Information] The response could not be cached for this request.
+2024-09-17 16:38:06 [Information] HTTP "GET" "/api/Comments" responded 200 in 241.0368 ms
+2024-09-17 16:55:42 [Information] No cached response available for this request.
+2024-09-17 16:55:42 [Information] The response could not be cached for this request.
+2024-09-17 16:55:42 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 127.5638 ms
+2024-09-17 16:55:42 [Information] No cached response available for this request.
+2024-09-17 16:55:42 [Information] The response could not be cached for this request.
+2024-09-17 16:55:42 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 16.2734 ms
+2024-09-17 16:55:42 [Information] No cached response available for this request.
+2024-09-17 16:55:42 [Information] The response could not be cached for this request.
+2024-09-17 16:55:42 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 200.2552 ms
+2024-09-17 17:13:16 [Information] No cached response available for this request.
+2024-09-17 17:13:16 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 17:13:19 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-17 17:13:19 [Information] The response could not be cached for this request.
+2024-09-17 17:13:20 [Information] HTTP "GET" "/api/Posts" responded 200 in 3349.6479 ms
+2024-09-17 17:13:41 [Information] Executing endpoint '"PawMates.API.Controllers.LikesDislikesController.CreateLikeDislike (PawMates.API)"'
+2024-09-17 17:13:42 [Information] Executed endpoint '"PawMates.API.Controllers.LikesDislikesController.CreateLikeDislike (PawMates.API)"'
+2024-09-17 17:13:42 [Information] HTTP "POST" "/api/LikesDislikes" responded 200 in 498.5888 ms
+2024-09-17 17:13:48 [Information] No cached response available for this request.
+2024-09-17 17:13:48 [Information] Executing endpoint '"PawMates.API.Controllers.LikesDislikesController.GetAllLikesDislikes (PawMates.API)"'
+2024-09-17 17:13:48 [Information] Executed endpoint '"PawMates.API.Controllers.LikesDislikesController.GetAllLikesDislikes (PawMates.API)"'
+2024-09-17 17:13:48 [Information] The response could not be cached for this request.
+2024-09-17 17:13:48 [Information] HTTP "GET" "/api/LikesDislikes" responded 200 in 227.1471 ms
+2024-09-17 17:13:59 [Information] No cached response available for this request.
+2024-09-17 17:13:59 [Information] Executing endpoint '"PawMates.API.Controllers.LikesDislikesController.GetAllLikesDislikes (PawMates.API)"'
+2024-09-17 17:13:59 [Information] Executed endpoint '"PawMates.API.Controllers.LikesDislikesController.GetAllLikesDislikes (PawMates.API)"'
+2024-09-17 17:13:59 [Information] The response could not be cached for this request.
+2024-09-17 17:13:59 [Information] HTTP "GET" "/api/LikesDislikes" responded 200 in 197.9116 ms
+2024-09-17 17:14:11 [Information] No cached response available for this request.
+2024-09-17 17:14:11 [Information] Executing endpoint '"PawMates.API.Controllers.LikesDislikesController.GetAllLikesDislikes (PawMates.API)"'
+2024-09-17 17:14:11 [Information] Executed endpoint '"PawMates.API.Controllers.LikesDislikesController.GetAllLikesDislikes (PawMates.API)"'
+2024-09-17 17:14:11 [Information] The response could not be cached for this request.
+2024-09-17 17:14:11 [Information] HTTP "GET" "/api/LikesDislikes" responded 200 in 202.9080 ms
+2024-09-17 17:14:48 [Information] No cached response available for this request.
+2024-09-17 17:14:48 [Information] Executing endpoint '"PawMates.API.Controllers.LikesDislikesController.GetAllLikesDislikes (PawMates.API)"'
+2024-09-17 17:14:48 [Information] Executed endpoint '"PawMates.API.Controllers.LikesDislikesController.GetAllLikesDislikes (PawMates.API)"'
+2024-09-17 17:14:48 [Information] The response could not be cached for this request.
+2024-09-17 17:14:48 [Information] HTTP "GET" "/api/LikesDislikes" responded 200 in 203.0795 ms
+2024-09-17 17:14:54 [Information] Executing endpoint '"PawMates.API.Controllers.LikesDislikesController.CreateLikeDislike (PawMates.API)"'
+2024-09-17 17:14:54 [Information] Executed endpoint '"PawMates.API.Controllers.LikesDislikesController.CreateLikeDislike (PawMates.API)"'
+2024-09-17 17:14:54 [Information] HTTP "POST" "/api/LikesDislikes" responded 200 in 193.2498 ms
+2024-09-17 17:14:55 [Information] Executing endpoint '"PawMates.API.Controllers.LikesDislikesController.CreateLikeDislike (PawMates.API)"'
+2024-09-17 17:14:55 [Information] Executed endpoint '"PawMates.API.Controllers.LikesDislikesController.CreateLikeDislike (PawMates.API)"'
+2024-09-17 17:14:55 [Information] HTTP "POST" "/api/LikesDislikes" responded 200 in 203.2967 ms
+2024-09-17 17:14:57 [Information] No cached response available for this request.
+2024-09-17 17:14:57 [Information] Executing endpoint '"PawMates.API.Controllers.LikesDislikesController.GetAllLikesDislikes (PawMates.API)"'
+2024-09-17 17:14:57 [Information] Executed endpoint '"PawMates.API.Controllers.LikesDislikesController.GetAllLikesDislikes (PawMates.API)"'
+2024-09-17 17:14:57 [Information] The response could not be cached for this request.
+2024-09-17 17:14:57 [Information] HTTP "GET" "/api/LikesDislikes" responded 200 in 198.7583 ms
+2024-09-17 17:14:59 [Information] No cached response available for this request.
+2024-09-17 17:14:59 [Information] Executing endpoint '"PawMates.API.Controllers.LikesDislikesController.GetAllLikesDislikes (PawMates.API)"'
+2024-09-17 17:15:00 [Information] Executed endpoint '"PawMates.API.Controllers.LikesDislikesController.GetAllLikesDislikes (PawMates.API)"'
+2024-09-17 17:15:00 [Information] The response could not be cached for this request.
+2024-09-17 17:15:00 [Information] HTTP "GET" "/api/LikesDislikes" responded 200 in 340.8216 ms
+2024-09-17 17:15:07 [Information] Executing endpoint '"PawMates.API.Controllers.LikesDislikesController.CreateLikeDislike (PawMates.API)"'
+2024-09-17 17:15:07 [Information] Executed endpoint '"PawMates.API.Controllers.LikesDislikesController.CreateLikeDislike (PawMates.API)"'
+2024-09-17 17:15:07 [Information] HTTP "POST" "/api/LikesDislikes" responded 200 in 257.7278 ms
+2024-09-17 17:15:11 [Information] No cached response available for this request.
+2024-09-17 17:15:11 [Information] Executing endpoint '"PawMates.API.Controllers.LikesDislikesController.GetAllLikesDislikes (PawMates.API)"'
+2024-09-17 17:15:11 [Information] Executed endpoint '"PawMates.API.Controllers.LikesDislikesController.GetAllLikesDislikes (PawMates.API)"'
+2024-09-17 17:15:11 [Information] The response could not be cached for this request.
+2024-09-17 17:15:11 [Information] HTTP "GET" "/api/LikesDislikes" responded 200 in 212.4208 ms

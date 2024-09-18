@@ -27,5 +27,9 @@ namespace PawMates.Core.Data.Entity
 
         public ICollection<Comment> Replies { get; set; } = new List<Comment>();  
         public ICollection<LikeDislike> LikesDislikes { get; set; } = new List<LikeDislike>();  
+
+        public ICollection<CommentMedia> Media { get; set; } = new List<CommentMedia>();
+
+
     }
 }

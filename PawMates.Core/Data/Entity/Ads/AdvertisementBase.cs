@@ -19,7 +19,7 @@ namespace PawMates.Core.Data.Entity.Ads
         public virtual ICollection<Pet> Pets { get; set; } = new List<Pet>();
         public AdvertisementType AdvertisementType { get; set; }
 
-        //   public virtual ICollection<AdvertisementImage> AdvertisementImages { get; set; } = new List<AdvertisementImage>();
+        public virtual ICollection<AdvertisementMedia> Media { get; set; } = new List<AdvertisementMedia>();
 
         public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>(); // Reklama yapılan yorumlar
 

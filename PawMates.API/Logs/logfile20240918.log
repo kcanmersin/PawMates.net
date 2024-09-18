@@ -1,0 +1,1729 @@
+2024-09-18 09:13:30 [Information] User profile is available. Using '"C:\Users\KC\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-18 09:13:30 [Information] Now listening on: "http://localhost:5053"
+2024-09-18 09:13:30 [Information] Application started. Press Ctrl+C to shut down.
+2024-09-18 09:13:30 [Information] Hosting environment: "Development"
+2024-09-18 09:13:30 [Information] Content root path: "C:\Users\KC\source\repos\PawMates.net\PawMates.API"
+2024-09-18 09:13:31 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/index.html""" - null null
+2024-09-18 09:13:31 [Information] ****Middleware**** Incoming request: "GET" "/swagger/index.html" with Body: ""
+2024-09-18 09:13:31 [Information] No cached response available for this request.
+2024-09-18 09:13:31 [Information] The response could not be cached for this request.
+2024-09-18 09:13:31 [Information] ****Middleware**** Outgoing response: 200 with Body: "<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <title>Swagger UI</title>
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"./swagger-ui.css\">
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"./index.css\">
+    <link rel=\"icon\" type=\"image/png\" href=\"./favicon-32x32.png\" sizes=\"32x32\" />
+    <link rel=\"icon\" type=\"image/png\" href=\"./favicon-16x16.png\" sizes=\"16x16\" />
+       
+</head>
+
+<body>
+    <div id=\"swagger-ui\"></div>
+
+    <script src=\"./swagger-ui-bundle.js\" charset=\"utf-8\"></script>
+    <script src=\"./swagger-ui-standalone-preset.js\" charset=\"utf-8\"></script>
+    <script src=\"index.js\" charset=\"utf-8\"></script>
+</body>
+</html>
+"
+2024-09-18 09:13:31 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 106.3533 ms
+2024-09-18 09:13:31 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 223.1921ms
+2024-09-18 09:13:31 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/_framework/aspnetcore-browser-refresh.js""" - null null
+2024-09-18 09:13:31 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/index.js""" - null null
+2024-09-18 09:13:31 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/_vs/browserLink""" - null null
+2024-09-18 09:13:31 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/_framework/aspnetcore-browser-refresh.js""" - 200 13760 "application/javascript; charset=utf-8" 7.6873ms
+2024-09-18 09:13:31 [Information] ****Middleware**** Incoming request: "GET" "/swagger/index.js" with Body: ""
+2024-09-18 09:13:31 [Information] No cached response available for this request.
+2024-09-18 09:13:31 [Information] The response could not be cached for this request.
+2024-09-18 09:13:31 [Information] ****Middleware**** Outgoing response: 200 with Body: "/* Source: https://gist.github.com/lamberta/3768814
+ * Parse a string function definition and return a function object. Does not use eval.
+ * @param {string} str
+ * @return {function}
+ *
+ * Example:
+ *  var f = function (x, y) { return x * y; };
+ *  var g = parseFunction(f.toString());
+ *  g(33, 3); //=> 99
+ */
+function parseFunction(str) {
+    if (!str) return void (0);
+
+    var fn_body_idx = str.indexOf('{'),
+        fn_body = str.substring(fn_body_idx + 1, str.lastIndexOf('}')),
+        fn_declare = str.substring(0, fn_body_idx),
+        fn_params = fn_declare.substring(fn_declare.indexOf('(') + 1, fn_declare.lastIndexOf(')')),
+        args = fn_params.split(',');
+
+    args.push(fn_body);
+
+    function Fn() {
+        return Function.apply(this, args);
+    }
+    Fn.prototype = Function.prototype;
+
+    return new Fn();
+}
+
+window.onload = function () {
+    var configObject = JSON.parse('{\"urls\":[{\"url\":\"v1/swagger.json\",\"name\":\"PawMates.API v1\"}],\"deepLinking\":false,\"persistAuthorization\":false,\"displayOperationId\":false,\"defaultModelsExpandDepth\":1,\"defaultModelExpandDepth\":1,\"defaultModelRendering\":\"example\",\"displayRequestDuration\":false,\"docExpansion\":\"list\",\"showExtensions\":false,\"showCommonExtensions\":false,\"supportedSubmitMethods\":[\"get\",\"put\",\"post\",\"delete\",\"options\",\"head\",\"patch\",\"trace\"],\"tryItOutEnabled\":false}');
+    var oauthConfigObject = JSON.parse('{\"scopeSeparator\":\" \",\"scopes\":[],\"useBasicAuthenticationWithAccessCodeGrant\":false,\"usePkceWithAuthorizationCodeGrant\":false}');
+
+    // Workaround for https://github.com/swagger-api/swagger-ui/issues/5945
+    configObject.urls.forEach(function (item) {
+        if (item.url.startsWith(\"http\") || item.url.startsWith(\"/\")) return;
+        item.url = window.location.href.replace(\"index.html\", item.url).split('#')[0];
+    });
+
+    // If validatorUrl is not explicitly provided, disable the feature by setting to null
+    if (!configObject.hasOwnProperty(\"validatorUrl\"))
+        configObject.validatorUrl = null
+
+    // If oauth2RedirectUrl isn't specified, use the built-in default
+    if (!configObject.hasOwnProperty(\"oauth2RedirectUrl\"))
+        configObject.oauth2RedirectUrl = (new URL(\"oauth2-redirect.html\", window.location.href)).href;
+
+    // Apply mandatory parameters
+    configObject.dom_id = \"#swagger-ui\";
+    configObject.presets = [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset];
+    configObject.layout = \"StandaloneLayout\";
+
+    // Parse and add interceptor functions
+    var interceptors = JSON.parse('{}');
+    if (interceptors.RequestInterceptorFunction)
+        configObject.requestInterceptor = parseFunction(interceptors.RequestInterceptorFunction);
+    if (interceptors.ResponseInterceptorFunction)
+        configObject.responseInterceptor = parseFunction(interceptors.ResponseInterceptorFunction);
+
+    // Begin Swagger UI call region
+
+    const ui = SwaggerUIBundle(configObject);
+
+    ui.initOAuth(oauthConfigObject);
+
+    // End Swagger UI call region
+
+    window.ui = ui
+}
+"
+2024-09-18 09:13:31 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 18.7369 ms
+2024-09-18 09:13:31 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/index.js""" - 200 null "application/javascript;charset=utf-8" 43.4844ms
+2024-09-18 09:13:31 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 99.9028ms
+2024-09-18 09:13:31 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/v1/swagger.json""" - null null
+2024-09-18 09:13:31 [Information] ****Middleware**** Incoming request: "GET" "/swagger/v1/swagger.json" with Body: ""
+2024-09-18 09:13:31 [Information] No cached response available for this request.
+2024-09-18 09:13:31 [Information] The response could not be cached for this request.
+2024-09-18 09:13:31 [Information] ****Middleware**** Outgoing response: 200 with Body: "{
+  \"openapi\": \"3.0.1\",
+  \"info\": {
+    \"title\": \"PawMates.API\",
+    \"version\": \"1.0\"
+  },
+  \"paths\": {
+    \"/api/Ads\": {
+      \"post\": {
+        \"tags\": [
+          \"Ads\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateAdvertisementRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateAdvertisementRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateAdvertisementRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"get\": {
+        \"tags\": [
+          \"Ads\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"PageNumber\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          },
+          {
+            \"name\": \"PageSize\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          },
+          {
+            \"name\": \"AdType\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"$ref\": \"#/components/schemas/AdvertisementType\"
+            }
+          },
+          {
+            \"name\": \"SearchTerm\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"delete\": {
+        \"tags\": [
+          \"Ads\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DeleteAdvertisementRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DeleteAdvertisementRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DeleteAdvertisementRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/Ads/{id}\": {
+      \"put\": {
+        \"tags\": [
+          \"Ads\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"id\",
+            \"in\": \"path\",
+            \"required\": true,
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\"
+            }
+          }
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdateAdvertisementRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdateAdvertisementRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdateAdvertisementRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/Comments\": {
+      \"post\": {
+        \"tags\": [
+          \"Comments\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateCommentRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateCommentRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateCommentRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"get\": {
+        \"tags\": [
+          \"Comments\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"AdvertisementId\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\"
+            }
+          },
+          {
+            \"name\": \"PostId\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\"
+            }
+          },
+          {
+            \"name\": \"PageNumber\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          },
+          {
+            \"name\": \"PageSize\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/Comments/{id}\": {
+      \"delete\": {
+        \"tags\": [
+          \"Comments\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"id\",
+            \"in\": \"path\",
+            \"required\": true,
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"put\": {
+        \"tags\": [
+          \"Comments\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"id\",
+            \"in\": \"path\",
+            \"required\": true,
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\"
+            }
+          }
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdateCommentRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdateCommentRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdateCommentRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/LikesDislikes\": {
+      \"post\": {
+        \"tags\": [
+          \"LikesDislikes\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateLikeDislikeRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateLikeDislikeRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreateLikeDislikeRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"delete\": {
+        \"tags\": [
+          \"LikesDislikes\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DeleteLikeDislikeRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DeleteLikeDislikeRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DeleteLikeDislikeRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"get\": {
+        \"tags\": [
+          \"LikesDislikes\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"PostId\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\"
+            }
+          },
+          {
+            \"name\": \"CommentId\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\"
+            }
+          },
+          {
+            \"name\": \"AdvertisementId\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\"
+            }
+          },
+          {
+            \"name\": \"PageNumber\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          },
+          {
+            \"name\": \"PageSize\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/Posts\": {
+      \"post\": {
+        \"tags\": [
+          \"Posts\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreatePostRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreatePostRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CreatePostRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"get\": {
+        \"tags\": [
+          \"Posts\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"PageNumber\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          },
+          {
+            \"name\": \"PageSize\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\"
+            }
+          },
+          {
+            \"name\": \"SearchTerm\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/Posts/{id}\": {
+      \"put\": {
+        \"tags\": [
+          \"Posts\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"id\",
+            \"in\": \"path\",
+            \"required\": true,
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\"
+            }
+          }
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdatePostRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdatePostRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UpdatePostRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      },
+      \"delete\": {
+        \"tags\": [
+          \"Posts\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"id\",
+            \"in\": \"path\",
+            \"required\": true,
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/confirm-email\": {
+      \"get\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"email\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          },
+          {
+            \"name\": \"token\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/login\": {
+      \"post\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/register\": {
+      \"post\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/update\": {
+      \"put\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/WeatherForecast\": {
+      \"get\": {
+        \"tags\": [
+          \"WeatherForecast\"
+        ],
+        \"operationId\": \"GetWeatherForecast\",
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\",
+            \"content\": {
+              \"text/plain\": {
+                \"schema\": {
+                  \"type\": \"array\",
+                  \"items\": {
+                    \"$ref\": \"#/components/schemas/WeatherForecast\"
+                  }
+                }
+              },
+              \"application/json\": {
+                \"schema\": {
+                  \"type\": \"array\",
+                  \"items\": {
+                    \"$ref\": \"#/components/schemas/WeatherForecast\"
+                  }
+                }
+              },
+              \"text/json\": {
+                \"schema\": {
+                  \"type\": \"array\",
+                  \"items\": {
+                    \"$ref\": \"#/components/schemas/WeatherForecast\"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  \"components\": {
+    \"schemas\": {
+      \"AdvertisementType\": {
+        \"enum\": [
+          0,
+          1,
+          2
+        ],
+        \"type\": \"integer\",
+        \"format\": \"int32\"
+      },
+      \"CreateAdvertisementRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\",
+            \"nullable\": true
+          },
+          \"title\": {
+            \"type\": \"string\",
+            \"default\": \"Ad Title\",
+            \"nullable\": true
+          },
+          \"description\": {
+            \"type\": \"string\",
+            \"default\": \"This is the default description for the ad.\",
+            \"nullable\": true
+          },
+          \"location\": {
+            \"type\": \"string\",
+            \"default\": \"Default Location\",
+            \"nullable\": true
+          },
+          \"advertisementType\": {
+            \"$ref\": \"#/components/schemas/AdvertisementType\"
+          },
+          \"pets\": {
+            \"type\": \"array\",
+            \"items\": {
+              \"$ref\": \"#/components/schemas/PetDto\"
+            },
+            \"nullable\": true
+          },
+          \"isVaccinated\": {
+            \"type\": \"boolean\",
+            \"default\": false,
+            \"nullable\": true
+          },
+          \"requiredDays\": {
+            \"type\": \"string\",
+            \"default\": \"Mon, Wed, Fri\",
+            \"nullable\": true
+          },
+          \"salary\": {
+            \"type\": \"number\",
+            \"format\": \"double\",
+            \"default\": 0,
+            \"nullable\": true
+          },
+          \"lastSeenLocation\": {
+            \"type\": \"string\",
+            \"default\": \"Last seen at default location.\",
+            \"nullable\": true
+          },
+          \"lostDate\": {
+            \"type\": \"string\",
+            \"format\": \"date-time\",
+            \"default\": \"2024-01-01T03:00:00+03:00\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"CreateCommentRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"postId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"nullable\": true
+          },
+          \"advertisementId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"nullable\": true
+          },
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"content\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          },
+          \"parentCommentId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"CreateLikeDislikeRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"commentId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"nullable\": true
+          },
+          \"advertisementId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"nullable\": true
+          },
+          \"isLike\": {
+            \"type\": \"boolean\"
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"CreatePostRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"title\": {
+            \"type\": \"string\",
+            \"default\": \"Post Title\",
+            \"nullable\": true
+          },
+          \"content\": {
+            \"type\": \"string\",
+            \"default\": \"This is the default content for the post.\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"DeleteAdvertisementRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"advertisementId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\"
+          },
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"DeleteLikeDislikeRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\"
+          },
+          \"postId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"nullable\": true
+          },
+          \"commentId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"nullable\": true
+          },
+          \"advertisementId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"LoginRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kerimcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"password\": {
+            \"type\": \"string\",
+            \"default\": \"19071907\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"PetDto\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"name\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          },
+          \"petTypeId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\"
+          },
+          \"breed\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          },
+          \"age\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\"
+          },
+          \"gender\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          },
+          \"description\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"RegisterRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"password\": {
+            \"type\": \"string\",
+            \"default\": \"19071907\",
+            \"nullable\": true
+          },
+          \"firstName\": {
+            \"type\": \"string\",
+            \"default\": \"Can\",
+            \"nullable\": true
+          },
+          \"lastName\": {
+            \"type\": \"string\",
+            \"default\": \"Mersin\",
+            \"nullable\": true
+          },
+          \"phoneNumber\": {
+            \"type\": \"string\",
+            \"default\": \"+1234567890\",
+            \"nullable\": true
+          },
+          \"roleName\": {
+            \"type\": \"string\",
+            \"default\": \"User\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"UpdateAdvertisementRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"advertisementId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"title\": {
+            \"type\": \"string\",
+            \"default\": \"Updated Ad Title\",
+            \"nullable\": true
+          },
+          \"description\": {
+            \"type\": \"string\",
+            \"default\": \"This is the updated description for the ad.\",
+            \"nullable\": true
+          },
+          \"location\": {
+            \"type\": \"string\",
+            \"default\": \"Updated Location\",
+            \"nullable\": true
+          },
+          \"pets\": {
+            \"type\": \"array\",
+            \"items\": {
+              \"$ref\": \"#/components/schemas/PetDto\"
+            },
+            \"nullable\": true
+          },
+          \"advertisementType\": {
+            \"$ref\": \"#/components/schemas/AdvertisementType\"
+          },
+          \"isVaccinated\": {
+            \"type\": \"boolean\",
+            \"default\": false,
+            \"nullable\": true
+          },
+          \"requiredDays\": {
+            \"type\": \"string\",
+            \"default\": \"Mon, Tue, Thu\",
+            \"nullable\": true
+          },
+          \"salary\": {
+            \"type\": \"number\",
+            \"format\": \"double\",
+            \"default\": 500,
+            \"nullable\": true
+          },
+          \"lastSeenLocation\": {
+            \"type\": \"string\",
+            \"default\": \"Updated last seen location.\",
+            \"nullable\": true
+          },
+          \"lostDate\": {
+            \"type\": \"string\",
+            \"format\": \"date-time\",
+            \"default\": \"2024-01-01T03:00:00+03:00\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"UpdateCommentRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"commentId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\"
+          },
+          \"content\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"UpdatePostRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"postId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\"
+          },
+          \"title\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          },
+          \"content\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"UserUpdateRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"657c6705-0728-4dfc-8019-ea59c42f984f\",
+            \"nullable\": true
+          },
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kerimcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"firstName\": {
+            \"type\": \"string\",
+            \"default\": \"Can\",
+            \"nullable\": true
+          },
+          \"lastName\": {
+            \"type\": \"string\",
+            \"default\": \"Mersin\",
+            \"nullable\": true
+          },
+          \"phoneNumber\": {
+            \"type\": \"string\",
+            \"default\": \"+1234567890\",
+            \"nullable\": true
+          },
+          \"imagePath\": {
+            \"type\": \"string\",
+            \"default\": \"/API/defaultlogo.jpg\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"WeatherForecast\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"date\": {
+            \"type\": \"string\",
+            \"format\": \"date\"
+          },
+          \"temperatureC\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\"
+          },
+          \"temperatureF\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\",
+            \"readOnly\": true
+          },
+          \"summary\": {
+            \"type\": \"string\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      }
+    }
+  }
+}"
+2024-09-18 09:13:31 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 185.5908 ms
+2024-09-18 09:13:31 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 197.731ms
+2024-09-18 09:13:37 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/api/Comments""" - null null
+2024-09-18 09:13:37 [Information] ****Middleware**** Incoming request: "GET" "/api/Comments" with Body: ""
+2024-09-18 09:13:37 [Information] No cached response available for this request.
+2024-09-18 09:13:37 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.GetAllComments (PawMates.API)"'
+2024-09-18 09:13:37 [Information] Route matched with "{action = \"GetAllComments\", controller = \"Comments\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllComments(PawMates.API.Contracts.GetAllCommentsRequest)" on controller "PawMates.API.Controllers.CommentsController" ("PawMates.API").
+2024-09-18 09:13:37 [Information] ****ActionFilter**** Request for "GET" "/api/Comments" from "::1" with data [("request": GetAllCommentsRequest { AdvertisementId: null, PostId: null, PageNumber: 1, PageSize: 10 })]
+2024-09-18 09:13:40 [Information] Executed DbCommand ("88"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT count(*)::int
+FROM \"Comments\" AS c"
+2024-09-18 09:13:41 [Information] Executed DbCommand ("80"ms) [Parameters=["@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT c.\"Id\", c.\"UserId\", c.\"Content\", c.\"CreatedDate\", c.\"AdvertisementId\", c.\"PostId\", c.\"ParentCommentId\"
+FROM \"Comments\" AS c
+ORDER BY c.\"CreatedDate\" DESC
+LIMIT @__p_1 OFFSET @__p_0"
+2024-09-18 09:13:41 [Information] ****ActionFilter**** Response from 200 with data OkObjectResult { Value: PaginatedCommentsResponse { Comments: [CommentDto { Id: 71310db8-15dc-46e1-9cc3-72bcf972e953, UserId: 3aa42229-1c0f-4630-8c1a-db879ecd0427, Content: "xxxxxx", CreatedDate: 09/17/2024 13:12:41, AdvertisementId: 8763642e-ed34-4b6a-892c-7f6f98480c6e, PostId: null, ParentCommentId: null }, CommentDto { Id: 603816a5-4221-4614-a968-dd121a6bb724, UserId: 3aa42229-1c0f-4630-8c1a-db879ecd0427, Content: "string", CreatedDate: 09/17/2024 13:12:34, AdvertisementId: 8763642e-ed34-4b6a-892c-7f6f98480c6e, PostId: null, ParentCommentId: null }], TotalCount: 2, CurrentPage: 1, PageSize: 10, TotalPages: 1 }, Formatters: [], ContentTypes: [], DeclaredType: null, StatusCode: 200 }
+2024-09-18 09:13:41 [Information] Executing "OkObjectResult", writing value of type '"PawMates.Core.Features.Comments.GetAllComments.PaginatedCommentsResponse"'.
+2024-09-18 09:13:41 [Information] Executed action "PawMates.API.Controllers.CommentsController.GetAllComments (PawMates.API)" in 3743.1545ms
+2024-09-18 09:13:41 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.GetAllComments (PawMates.API)"'
+2024-09-18 09:13:41 [Information] The response could not be cached for this request.
+2024-09-18 09:13:41 [Information] ****Middleware**** Outgoing response: 200 with Body: "{\"comments\":[{\"id\":\"71310db8-15dc-46e1-9cc3-72bcf972e953\",\"userId\":\"3aa42229-1c0f-4630-8c1a-db879ecd0427\",\"content\":\"xxxxxx\",\"createdDate\":\"2024-09-17T13:12:41.612836Z\",\"advertisementId\":\"8763642e-ed34-4b6a-892c-7f6f98480c6e\",\"postId\":null,\"parentCommentId\":null},{\"id\":\"603816a5-4221-4614-a968-dd121a6bb724\",\"userId\":\"3aa42229-1c0f-4630-8c1a-db879ecd0427\",\"content\":\"string\",\"createdDate\":\"2024-09-17T13:12:34.490911Z\",\"advertisementId\":\"8763642e-ed34-4b6a-892c-7f6f98480c6e\",\"postId\":null,\"parentCommentId\":null}],\"totalCount\":2,\"currentPage\":1,\"pageSize\":10,\"totalPages\":1}"
+2024-09-18 09:13:41 [Information] HTTP "GET" "/api/Comments" responded 200 in 3823.5329 ms
+2024-09-18 09:13:41 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/api/Comments""" - 200 null "application/json; charset=utf-8" 3840.2838ms
+2024-09-18 09:15:01 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:5053""""/api/Comments""" - "application/json" 201
+2024-09-18 09:15:01 [Information] ****Middleware**** Incoming request: "POST" "/api/Comments" with Body: "{
+ 
+  \"advertisementId\": \"8763642e-ed34-4b6a-892c-7f6f98480c6e\",
+  \"userId\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\",
+  \"content\": \"deneme\",
+  \"parentCommentId\": \"71310db8-15dc-46e1-9cc3-72bcf972e953\"
+}"
+2024-09-18 09:15:01 [Information] CORS policy execution successful.
+2024-09-18 09:15:01 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-18 09:15:01 [Information] Route matched with "{action = \"CreateComment\", controller = \"Comments\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateComment(PawMates.API.Contracts.CreateCommentRequest)" on controller "PawMates.API.Controllers.CommentsController" ("PawMates.API").
+2024-09-18 09:15:01 [Information] ****ActionFilter**** Request for "POST" "/api/Comments" from "::1" with data [("request": CreateCommentRequest { PostId: null, AdvertisementId: 8763642e-ed34-4b6a-892c-7f6f98480c6e, UserId: 3aa42229-1c0f-4630-8c1a-db879ecd0427, Content: "deneme", ParentCommentId: 71310db8-15dc-46e1-9cc3-72bcf972e953 })]
+2024-09-18 09:15:01 [Information] Executed DbCommand ("76"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p2='?', @p3='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?' (DbType = DateTime), @p7='?' (DbType = Boolean), @p8='?', @p9='?' (DbType = DateTime), @p10='?' (DbType = Guid), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Comments\" (\"Id\", \"AdvertisementId\", \"Content\", \"CreatedBy\", \"CreatedDate\", \"DeletedBy\", \"DeletedDate\", \"IsDeleted\", \"ModifiedBy\", \"ModifiedDate\", \"ParentCommentId\", \"PostId\", \"UserId\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12);"
+2024-09-18 09:15:01 [Information] ****ActionFilter**** Response from 200 with data OkObjectResult { Value: CreateCommentResponse { Success: True, CommentId: ed817d78-deae-4b40-b08a-d02a2eda00d5, Message: "Comment created successfully." }, Formatters: [], ContentTypes: [], DeclaredType: null, StatusCode: 200 }
+2024-09-18 09:15:01 [Information] Executing "OkObjectResult", writing value of type '"PawMates.Core.Features.Comments.CreateComment.CreateCommentResponse"'.
+2024-09-18 09:15:01 [Information] Executed action "PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)" in 327.3088ms
+2024-09-18 09:15:01 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-18 09:15:01 [Information] ****Middleware**** Outgoing response: 200 with Body: "{\"success\":true,\"commentId\":\"ed817d78-deae-4b40-b08a-d02a2eda00d5\",\"message\":\"Comment created successfully.\"}"
+2024-09-18 09:15:01 [Information] HTTP "POST" "/api/Comments" responded 200 in 348.8949 ms
+2024-09-18 09:15:01 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:5053""""/api/Comments""" - 200 null "application/json; charset=utf-8" 356.3551ms
+2024-09-18 09:15:04 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5053""""/api/Comments""" - null null
+2024-09-18 09:15:04 [Information] ****Middleware**** Incoming request: "GET" "/api/Comments" with Body: ""
+2024-09-18 09:15:04 [Information] No cached response available for this request.
+2024-09-18 09:15:04 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.GetAllComments (PawMates.API)"'
+2024-09-18 09:15:04 [Information] Route matched with "{action = \"GetAllComments\", controller = \"Comments\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllComments(PawMates.API.Contracts.GetAllCommentsRequest)" on controller "PawMates.API.Controllers.CommentsController" ("PawMates.API").
+2024-09-18 09:15:04 [Information] ****ActionFilter**** Request for "GET" "/api/Comments" from "::1" with data [("request": GetAllCommentsRequest { AdvertisementId: null, PostId: null, PageNumber: 1, PageSize: 10 })]
+2024-09-18 09:15:04 [Information] Executed DbCommand ("77"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT count(*)::int
+FROM \"Comments\" AS c"
+2024-09-18 09:15:04 [Information] Executed DbCommand ("90"ms) [Parameters=["@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT c.\"Id\", c.\"UserId\", c.\"Content\", c.\"CreatedDate\", c.\"AdvertisementId\", c.\"PostId\", c.\"ParentCommentId\"
+FROM \"Comments\" AS c
+ORDER BY c.\"CreatedDate\" DESC
+LIMIT @__p_1 OFFSET @__p_0"
+2024-09-18 09:15:04 [Information] ****ActionFilter**** Response from 200 with data OkObjectResult { Value: PaginatedCommentsResponse { Comments: [CommentDto { Id: ed817d78-deae-4b40-b08a-d02a2eda00d5, UserId: 3aa42229-1c0f-4630-8c1a-db879ecd0427, Content: "deneme", CreatedDate: 09/18/2024 06:15:01, AdvertisementId: 8763642e-ed34-4b6a-892c-7f6f98480c6e, PostId: null, ParentCommentId: 71310db8-15dc-46e1-9cc3-72bcf972e953 }, CommentDto { Id: 71310db8-15dc-46e1-9cc3-72bcf972e953, UserId: 3aa42229-1c0f-4630-8c1a-db879ecd0427, Content: "xxxxxx", CreatedDate: 09/17/2024 13:12:41, AdvertisementId: 8763642e-ed34-4b6a-892c-7f6f98480c6e, PostId: null, ParentCommentId: null }, CommentDto { Id: 603816a5-4221-4614-a968-dd121a6bb724, UserId: 3aa42229-1c0f-4630-8c1a-db879ecd0427, Content: "string", CreatedDate: 09/17/2024 13:12:34, AdvertisementId: 8763642e-ed34-4b6a-892c-7f6f98480c6e, PostId: null, ParentCommentId: null }], TotalCount: 3, CurrentPage: 1, PageSize: 10, TotalPages: 1 }, Formatters: [], ContentTypes: [], DeclaredType: null, StatusCode: 200 }
+2024-09-18 09:15:04 [Information] Executing "OkObjectResult", writing value of type '"PawMates.Core.Features.Comments.GetAllComments.PaginatedCommentsResponse"'.
+2024-09-18 09:15:04 [Information] Executed action "PawMates.API.Controllers.CommentsController.GetAllComments (PawMates.API)" in 215.0108ms
+2024-09-18 09:15:04 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.GetAllComments (PawMates.API)"'
+2024-09-18 09:15:04 [Information] The response could not be cached for this request.
+2024-09-18 09:15:04 [Information] ****Middleware**** Outgoing response: 200 with Body: "{\"comments\":[{\"id\":\"ed817d78-deae-4b40-b08a-d02a2eda00d5\",\"userId\":\"3aa42229-1c0f-4630-8c1a-db879ecd0427\",\"content\":\"deneme\",\"createdDate\":\"2024-09-18T06:15:01.166091Z\",\"advertisementId\":\"8763642e-ed34-4b6a-892c-7f6f98480c6e\",\"postId\":null,\"parentCommentId\":\"71310db8-15dc-46e1-9cc3-72bcf972e953\"},{\"id\":\"71310db8-15dc-46e1-9cc3-72bcf972e953\",\"userId\":\"3aa42229-1c0f-4630-8c1a-db879ecd0427\",\"content\":\"xxxxxx\",\"createdDate\":\"2024-09-17T13:12:41.612836Z\",\"advertisementId\":\"8763642e-ed34-4b6a-892c-7f6f98480c6e\",\"postId\":null,\"parentCommentId\":null},{\"id\":\"603816a5-4221-4614-a968-dd121a6bb724\",\"userId\":\"3aa42229-1c0f-4630-8c1a-db879ecd0427\",\"content\":\"string\",\"createdDate\":\"2024-09-17T13:12:34.490911Z\",\"advertisementId\":\"8763642e-ed34-4b6a-892c-7f6f98480c6e\",\"postId\":null,\"parentCommentId\":null}],\"totalCount\":3,\"currentPage\":1,\"pageSize\":10,\"totalPages\":1}"
+2024-09-18 09:15:04 [Information] HTTP "GET" "/api/Comments" responded 200 in 225.3094 ms
+2024-09-18 09:15:04 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5053""""/api/Comments""" - 200 null "application/json; charset=utf-8" 230.7357ms
+2024-09-18 10:16:46 [Information] Executed DbCommand ("105"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)"
+2024-09-18 10:16:46 [Information] Executed DbCommand ("70"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";"
+2024-09-18 10:16:47 [Information] Executed DbCommand ("77"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)"
+2024-09-18 10:16:49 [Information] Executed DbCommand ("67"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)"
+2024-09-18 10:16:49 [Information] Executed DbCommand ("67"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";"
+2024-09-18 10:16:49 [Information] Applying migration '"20240918071259_media"'.
+2024-09-18 10:16:49 [Error] Failed executing DbCommand ("94"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AspNetRoles\" (
+    \"Id\" uuid NOT NULL,
+    \"Name\" character varying(256),
+    \"NormalizedName\" character varying(256),
+    \"ConcurrencyStamp\" text,
+    CONSTRAINT \"PK_AspNetRoles\" PRIMARY KEY (\"Id\")
+);"
+2024-09-18 10:17:35 [Information] Executed DbCommand ("107"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)"
+2024-09-18 10:17:35 [Information] Executed DbCommand ("71"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";"
+2024-09-18 10:17:35 [Information] Executed DbCommand ("66"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)"
+2024-09-18 10:17:36 [Information] Executed DbCommand ("68"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)"
+2024-09-18 10:17:36 [Information] Executed DbCommand ("67"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";"
+2024-09-18 10:17:36 [Information] Applying migration '"20240918071259_media"'.
+2024-09-18 10:17:36 [Error] Failed executing DbCommand ("80"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AspNetUsers\" (
+    \"Id\" uuid NOT NULL,
+    \"UserName\" character varying(100) NOT NULL,
+    \"FirstName\" character varying(50) NOT NULL,
+    \"LastName\" character varying(50) NOT NULL,
+    \"Email\" character varying(100) NOT NULL,
+    \"ImagePath\" text NOT NULL,
+    \"IsEmailConfirmed\" boolean NOT NULL,
+    \"EmailConfirmationToken\" text,
+    \"EmailConfirmationSentAt\" timestamp with time zone,
+    \"NormalizedUserName\" character varying(100),
+    \"NormalizedEmail\" character varying(100),
+    \"EmailConfirmed\" boolean NOT NULL,
+    \"PasswordHash\" text,
+    \"SecurityStamp\" text,
+    \"ConcurrencyStamp\" text,
+    \"PhoneNumber\" text,
+    \"PhoneNumberConfirmed\" boolean NOT NULL,
+    \"TwoFactorEnabled\" boolean NOT NULL,
+    \"LockoutEnd\" timestamp with time zone,
+    \"LockoutEnabled\" boolean NOT NULL,
+    \"AccessFailedCount\" integer NOT NULL,
+    CONSTRAINT \"PK_AspNetUsers\" PRIMARY KEY (\"Id\")
+);"
+2024-09-18 10:18:27 [Information] Executed DbCommand ("106"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)"
+2024-09-18 10:18:27 [Information] Executed DbCommand ("68"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";"
+2024-09-18 10:18:28 [Information] Executed DbCommand ("66"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)"
+2024-09-18 10:18:28 [Information] Executed DbCommand ("67"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)"
+2024-09-18 10:18:28 [Information] Executed DbCommand ("70"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";"
+2024-09-18 10:18:28 [Information] Applying migration '"20240918071814_media"'.
+2024-09-18 10:18:28 [Information] Executed DbCommand ("102"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AspNetRoles\" (
+    \"Id\" uuid NOT NULL,
+    \"Name\" character varying(256),
+    \"NormalizedName\" character varying(256),
+    \"ConcurrencyStamp\" text,
+    CONSTRAINT \"PK_AspNetRoles\" PRIMARY KEY (\"Id\")
+);"
+2024-09-18 10:18:29 [Information] Executed DbCommand ("72"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AspNetUsers\" (
+    \"Id\" uuid NOT NULL,
+    \"UserName\" character varying(100) NOT NULL,
+    \"FirstName\" character varying(50) NOT NULL,
+    \"LastName\" character varying(50) NOT NULL,
+    \"Email\" character varying(100) NOT NULL,
+    \"ImagePath\" text NOT NULL,
+    \"IsEmailConfirmed\" boolean NOT NULL,
+    \"EmailConfirmationToken\" text,
+    \"EmailConfirmationSentAt\" timestamp with time zone,
+    \"NormalizedUserName\" character varying(100),
+    \"NormalizedEmail\" character varying(100),
+    \"EmailConfirmed\" boolean NOT NULL,
+    \"PasswordHash\" text,
+    \"SecurityStamp\" text,
+    \"ConcurrencyStamp\" text,
+    \"PhoneNumber\" text,
+    \"PhoneNumberConfirmed\" boolean NOT NULL,
+    \"TwoFactorEnabled\" boolean NOT NULL,
+    \"LockoutEnd\" timestamp with time zone,
+    \"LockoutEnabled\" boolean NOT NULL,
+    \"AccessFailedCount\" integer NOT NULL,
+    CONSTRAINT \"PK_AspNetUsers\" PRIMARY KEY (\"Id\")
+);"
+2024-09-18 10:18:29 [Information] Executed DbCommand ("73"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"PetTypes\" (
+    \"Id\" uuid NOT NULL,
+    \"Species\" character varying(100) NOT NULL,
+    \"Description\" character varying(500) NOT NULL,
+    \"CreatedBy\" text,
+    \"ModifiedBy\" text,
+    \"DeletedBy\" text,
+    \"CreatedDate\" timestamp with time zone NOT NULL,
+    \"ModifiedDate\" timestamp with time zone,
+    \"DeletedDate\" timestamp with time zone,
+    \"IsDeleted\" boolean NOT NULL,
+    CONSTRAINT \"PK_PetTypes\" PRIMARY KEY (\"Id\")
+);"
+2024-09-18 10:18:29 [Information] Executed DbCommand ("82"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AspNetRoleClaims\" (
+    \"Id\" integer GENERATED BY DEFAULT AS IDENTITY,
+    \"RoleId\" uuid NOT NULL,
+    \"ClaimType\" text,
+    \"ClaimValue\" text,
+    CONSTRAINT \"PK_AspNetRoleClaims\" PRIMARY KEY (\"Id\"),
+    CONSTRAINT \"FK_AspNetRoleClaims_AspNetRoles_RoleId\" FOREIGN KEY (\"RoleId\") REFERENCES \"AspNetRoles\" (\"Id\") ON DELETE CASCADE
+);"
+2024-09-18 10:18:29 [Information] Executed DbCommand ("81"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"Advertisements\" (
+    \"Id\" uuid NOT NULL,
+    \"UserId\" uuid NOT NULL,
+    \"Title\" character varying(200) NOT NULL,
+    \"Description\" character varying(1000) NOT NULL,
+    \"Location\" character varying(200) NOT NULL,
+    \"AdvertisementType\" integer NOT NULL,
+    \"AdType\" character varying(21) NOT NULL,
+    \"IsVaccinated\" boolean DEFAULT FALSE,
+    \"RequiredDays\" character varying(50),
+    \"Salary\" numeric(18,2),
+    \"LastSeenLocation\" character varying(200),
+    \"LostDate\" timestamp with time zone DEFAULT (CURRENT_TIMESTAMP AT TIME ZONE 'UTC'),
+    \"CreatedBy\" text,
+    \"ModifiedBy\" text,
+    \"DeletedBy\" text,
+    \"CreatedDate\" timestamp with time zone NOT NULL,
+    \"ModifiedDate\" timestamp with time zone,
+    \"DeletedDate\" timestamp with time zone,
+    \"IsDeleted\" boolean NOT NULL,
+    CONSTRAINT \"PK_Advertisements\" PRIMARY KEY (\"Id\"),
+    CONSTRAINT \"FK_Advertisements_AspNetUsers_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"AspNetUsers\" (\"Id\") ON DELETE CASCADE
+);"
+2024-09-18 10:18:29 [Information] Executed DbCommand ("92"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AspNetUserClaims\" (
+    \"Id\" integer GENERATED BY DEFAULT AS IDENTITY,
+    \"UserId\" uuid NOT NULL,
+    \"ClaimType\" text,
+    \"ClaimValue\" text,
+    CONSTRAINT \"PK_AspNetUserClaims\" PRIMARY KEY (\"Id\"),
+    CONSTRAINT \"FK_AspNetUserClaims_AspNetUsers_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"AspNetUsers\" (\"Id\") ON DELETE CASCADE
+);"
+2024-09-18 10:18:29 [Information] Executed DbCommand ("82"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AspNetUserLogins\" (
+    \"LoginProvider\" character varying(128) NOT NULL,
+    \"ProviderKey\" character varying(128) NOT NULL,
+    \"ProviderDisplayName\" text,
+    \"UserId\" uuid NOT NULL,
+    CONSTRAINT \"PK_AspNetUserLogins\" PRIMARY KEY (\"LoginProvider\", \"ProviderKey\"),
+    CONSTRAINT \"FK_AspNetUserLogins_AspNetUsers_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"AspNetUsers\" (\"Id\") ON DELETE CASCADE
+);"
+2024-09-18 10:18:29 [Information] Executed DbCommand ("86"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AspNetUserRoles\" (
+    \"UserId\" uuid NOT NULL,
+    \"RoleId\" uuid NOT NULL,
+    CONSTRAINT \"PK_AspNetUserRoles\" PRIMARY KEY (\"UserId\", \"RoleId\"),
+    CONSTRAINT \"FK_AspNetUserRoles_AspNetRoles_RoleId\" FOREIGN KEY (\"RoleId\") REFERENCES \"AspNetRoles\" (\"Id\") ON DELETE CASCADE,
+    CONSTRAINT \"FK_AspNetUserRoles_AspNetUsers_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"AspNetUsers\" (\"Id\") ON DELETE CASCADE
+);"
+2024-09-18 10:18:29 [Information] Executed DbCommand ("73"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AspNetUserTokens\" (
+    \"UserId\" uuid NOT NULL,
+    \"LoginProvider\" text NOT NULL,
+    \"Name\" text NOT NULL,
+    \"Value\" text,
+    CONSTRAINT \"PK_AspNetUserTokens\" PRIMARY KEY (\"UserId\", \"LoginProvider\", \"Name\"),
+    CONSTRAINT \"FK_AspNetUserTokens_AspNetUsers_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"AspNetUsers\" (\"Id\") ON DELETE CASCADE
+);"
+2024-09-18 10:18:29 [Information] Executed DbCommand ("86"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"Posts\" (
+    \"Id\" uuid NOT NULL,
+    \"UserId\" uuid NOT NULL,
+    \"Title\" character varying(200) NOT NULL,
+    \"Content\" text NOT NULL,
+    \"CreatedBy\" text,
+    \"ModifiedBy\" text,
+    \"DeletedBy\" text,
+    \"CreatedDate\" timestamp with time zone NOT NULL,
+    \"ModifiedDate\" timestamp with time zone,
+    \"DeletedDate\" timestamp with time zone,
+    \"IsDeleted\" boolean NOT NULL,
+    CONSTRAINT \"PK_Posts\" PRIMARY KEY (\"Id\"),
+    CONSTRAINT \"FK_Posts_AspNetUsers_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"AspNetUsers\" (\"Id\") ON DELETE CASCADE
+);"
+2024-09-18 10:18:31 [Information] Executed DbCommand ("77"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AdvertisementMedias\" (
+    \"Id\" uuid NOT NULL,
+    \"AdvertisementId\" uuid NOT NULL,
+    \"FilePath\" character varying(500) NOT NULL,
+    \"MediaType\" integer NOT NULL,
+    \"UploadedAt\" timestamp with time zone NOT NULL,
+    CONSTRAINT \"PK_AdvertisementMedias\" PRIMARY KEY (\"Id\"),
+    CONSTRAINT \"FK_AdvertisementMedias_Advertisements_AdvertisementId\" FOREIGN KEY (\"AdvertisementId\") REFERENCES \"Advertisements\" (\"Id\") ON DELETE CASCADE
+);"
+2024-09-18 10:18:31 [Information] Executed DbCommand ("76"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"Pets\" (
+    \"Id\" uuid NOT NULL,
+    \"Name\" character varying(100) NOT NULL,
+    \"PetTypeId\" uuid NOT NULL,
+    \"Breed\" character varying(100) NOT NULL,
+    \"Age\" integer NOT NULL,
+    \"Gender\" character varying(20) NOT NULL,
+    \"Description\" character varying(500) NOT NULL,
+    \"AdvertisementId\" uuid NOT NULL,
+    \"CreatedBy\" text,
+    \"ModifiedBy\" text,
+    \"DeletedBy\" text,
+    \"CreatedDate\" timestamp with time zone NOT NULL,
+    \"ModifiedDate\" timestamp with time zone,
+    \"DeletedDate\" timestamp with time zone,
+    \"IsDeleted\" boolean NOT NULL,
+    CONSTRAINT \"PK_Pets\" PRIMARY KEY (\"Id\"),
+    CONSTRAINT \"FK_Pets_Advertisements_AdvertisementId\" FOREIGN KEY (\"AdvertisementId\") REFERENCES \"Advertisements\" (\"Id\") ON DELETE CASCADE,
+    CONSTRAINT \"FK_Pets_PetTypes_PetTypeId\" FOREIGN KEY (\"PetTypeId\") REFERENCES \"PetTypes\" (\"Id\") ON DELETE CASCADE
+);"
+2024-09-18 10:18:31 [Information] Executed DbCommand ("76"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"Comments\" (
+    \"Id\" uuid NOT NULL,
+    \"UserId\" uuid NOT NULL,
+    \"PostId\" uuid,
+    \"AdvertisementId\" uuid,
+    \"Content\" character varying(1000) NOT NULL,
+    \"ParentCommentId\" uuid,
+    \"CreatedBy\" text,
+    \"ModifiedBy\" text,
+    \"DeletedBy\" text,
+    \"CreatedDate\" timestamp with time zone NOT NULL,
+    \"ModifiedDate\" timestamp with time zone,
+    \"DeletedDate\" timestamp with time zone,
+    \"IsDeleted\" boolean NOT NULL,
+    CONSTRAINT \"PK_Comments\" PRIMARY KEY (\"Id\"),
+    CONSTRAINT \"FK_Comments_Advertisements_AdvertisementId\" FOREIGN KEY (\"AdvertisementId\") REFERENCES \"Advertisements\" (\"Id\") ON DELETE CASCADE,
+    CONSTRAINT \"FK_Comments_AspNetUsers_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"AspNetUsers\" (\"Id\") ON DELETE RESTRICT,
+    CONSTRAINT \"FK_Comments_Comments_ParentCommentId\" FOREIGN KEY (\"ParentCommentId\") REFERENCES \"Comments\" (\"Id\") ON DELETE RESTRICT,
+    CONSTRAINT \"FK_Comments_Posts_PostId\" FOREIGN KEY (\"PostId\") REFERENCES \"Posts\" (\"Id\") ON DELETE CASCADE
+);"
+2024-09-18 10:18:31 [Information] Executed DbCommand ("96"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"PostMedias\" (
+    \"Id\" uuid NOT NULL,
+    \"PostId\" uuid NOT NULL,
+    \"FilePath\" character varying(500) NOT NULL,
+    \"MediaType\" integer NOT NULL,
+    \"UploadedAt\" timestamp with time zone NOT NULL,
+    CONSTRAINT \"PK_PostMedias\" PRIMARY KEY (\"Id\"),
+    CONSTRAINT \"FK_PostMedias_Posts_PostId\" FOREIGN KEY (\"PostId\") REFERENCES \"Posts\" (\"Id\") ON DELETE CASCADE
+);"
+2024-09-18 10:18:31 [Information] Executed DbCommand ("79"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"CommentMedias\" (
+    \"Id\" uuid NOT NULL,
+    \"CommentId\" uuid NOT NULL,
+    \"FilePath\" character varying(500) NOT NULL,
+    \"MediaType\" integer NOT NULL,
+    \"UploadedAt\" timestamp with time zone NOT NULL,
+    CONSTRAINT \"PK_CommentMedias\" PRIMARY KEY (\"Id\"),
+    CONSTRAINT \"FK_CommentMedias_Comments_CommentId\" FOREIGN KEY (\"CommentId\") REFERENCES \"Comments\" (\"Id\") ON DELETE CASCADE
+);"
+2024-09-18 10:18:31 [Information] Executed DbCommand ("80"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"LikesDislikes\" (
+    \"Id\" uuid NOT NULL,
+    \"UserId\" uuid NOT NULL,
+    \"PostId\" uuid,
+    \"AdvertisementId\" uuid,
+    \"CommentId\" uuid,
+    \"IsLike\" boolean NOT NULL,
+    \"CreatedBy\" text,
+    \"ModifiedBy\" text,
+    \"DeletedBy\" text,
+    \"CreatedDate\" timestamp with time zone NOT NULL,
+    \"ModifiedDate\" timestamp with time zone,
+    \"DeletedDate\" timestamp with time zone,
+    \"IsDeleted\" boolean NOT NULL,
+    CONSTRAINT \"PK_LikesDislikes\" PRIMARY KEY (\"Id\"),
+    CONSTRAINT \"FK_LikesDislikes_Advertisements_AdvertisementId\" FOREIGN KEY (\"AdvertisementId\") REFERENCES \"Advertisements\" (\"Id\") ON DELETE CASCADE,
+    CONSTRAINT \"FK_LikesDislikes_AspNetUsers_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"AspNetUsers\" (\"Id\") ON DELETE RESTRICT,
+    CONSTRAINT \"FK_LikesDislikes_Comments_CommentId\" FOREIGN KEY (\"CommentId\") REFERENCES \"Comments\" (\"Id\") ON DELETE CASCADE,
+    CONSTRAINT \"FK_LikesDislikes_Posts_PostId\" FOREIGN KEY (\"PostId\") REFERENCES \"Posts\" (\"Id\") ON DELETE CASCADE
+);"
+2024-09-18 10:18:34 [Information] Executed DbCommand ("75"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"AspNetRoles\" (\"Id\", \"ConcurrencyStamp\", \"Name\", \"NormalizedName\")
+VALUES ('16ea936c-7a28-4c30-86a2-9a9704b6115e', 'ce1ee4c9-7a41-4dfe-a9b4-17dc800008e7', 'Superadmin', 'SUPERADMIN');
+INSERT INTO \"AspNetRoles\" (\"Id\", \"ConcurrencyStamp\", \"Name\", \"NormalizedName\")
+VALUES ('7cb750cf-3612-4fb4-9f7d-a38ba8f16bf4', 'c0524312-3a0f-4cc7-b064-40919c1fac91', 'Admin', 'ADMIN');
+INSERT INTO \"AspNetRoles\" (\"Id\", \"ConcurrencyStamp\", \"Name\", \"NormalizedName\")
+VALUES ('edf6c246-41d8-475f-8d92-41dddac3aefb', 'ad8b7737-82f3-4c67-995d-0c27aba30eb4', 'User', 'USER');"
+2024-09-18 10:18:34 [Information] Executed DbCommand ("72"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"AspNetUsers\" (\"Id\", \"AccessFailedCount\", \"ConcurrencyStamp\", \"Email\", \"EmailConfirmationSentAt\", \"EmailConfirmationToken\", \"EmailConfirmed\", \"FirstName\", \"ImagePath\", \"IsEmailConfirmed\", \"LastName\", \"LockoutEnabled\", \"LockoutEnd\", \"NormalizedEmail\", \"NormalizedUserName\", \"PasswordHash\", \"PhoneNumber\", \"PhoneNumberConfirmed\", \"SecurityStamp\", \"TwoFactorEnabled\", \"UserName\")
+VALUES ('3aa42229-1c0f-4630-8c1a-db879ecd0427', 0, 'b6abf82b-f1b5-48ac-ba6f-cb46c213a8c7', 'admin@gmail.com', TIMESTAMPTZ '2024-09-18T07:18:14.367017Z', '3be75c05-b672-43e8-ac76-3344921ea69e', FALSE, 'Admin', 'API\deflogo.jpg', FALSE, 'User', FALSE, NULL, 'ADMIN@GMAIL.COM', 'ADMIN@GMAIL.COM', 'AQAAAAIAAYagAAAAEN0Mo3I/Agq5t9YsM95nNB9tI6hjO0s8RaIYNe6FYdckxBU2GAu7tC5JlBlnnNj5ow==', '+905439999988', FALSE, 'd37a2f2b-36d3-4a21-9052-b52cff8696a8', FALSE, 'admin@gmail.com');
+INSERT INTO \"AspNetUsers\" (\"Id\", \"AccessFailedCount\", \"ConcurrencyStamp\", \"Email\", \"EmailConfirmationSentAt\", \"EmailConfirmationToken\", \"EmailConfirmed\", \"FirstName\", \"ImagePath\", \"IsEmailConfirmed\", \"LastName\", \"LockoutEnabled\", \"LockoutEnd\", \"NormalizedEmail\", \"NormalizedUserName\", \"PasswordHash\", \"PhoneNumber\", \"PhoneNumberConfirmed\", \"SecurityStamp\", \"TwoFactorEnabled\", \"UserName\")
+VALUES ('cb94223b-ccb8-4f2f-93d7-0df96a7f065c', 0, 'a7cd8ae9-f27d-4930-ba72-55a64c2fc1d9', 'superadmin@gmail.com', TIMESTAMPTZ '2024-09-18T07:18:14.298021Z', '4fb912cf-1d74-4229-9f8d-9ac57d0c6f83', TRUE, 'Can', 'API\deflogo.jpg', FALSE, 'Mersin', FALSE, NULL, 'SUPERADMIN@GMAIL.COM', 'SUPERADMIN@GMAIL.COM', 'AQAAAAIAAYagAAAAEJPJkFX7Oghu2a4O2FeMtkeEtQgdP94QObdvPc8p2PRcvzjvxjphnEDWavFIW7+JYg==', '+905439999999', TRUE, '48d0d525-5c2a-4882-bb94-d204055d799f', FALSE, 'superadmin@gmail.com');"
+2024-09-18 10:18:34 [Information] Executed DbCommand ("69"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"PetTypes\" (\"Id\", \"CreatedBy\", \"CreatedDate\", \"DeletedBy\", \"DeletedDate\", \"Description\", \"IsDeleted\", \"ModifiedBy\", \"ModifiedDate\", \"Species\")
+VALUES ('3fa85f64-5717-4562-b3fc-2c963f66afa6', NULL, TIMESTAMPTZ '2024-09-18T07:18:14.445444Z', NULL, NULL, 'Common domestic dog', FALSE, NULL, NULL, 'Dog');
+INSERT INTO \"PetTypes\" (\"Id\", \"CreatedBy\", \"CreatedDate\", \"DeletedBy\", \"DeletedDate\", \"Description\", \"IsDeleted\", \"ModifiedBy\", \"ModifiedDate\", \"Species\")
+VALUES ('4fa85f64-5717-4562-b3fc-2c963f66afa7', NULL, TIMESTAMPTZ '2024-09-18T07:18:14.445445Z', NULL, NULL, 'Common domestic cat', FALSE, NULL, NULL, 'Cat');
+INSERT INTO \"PetTypes\" (\"Id\", \"CreatedBy\", \"CreatedDate\", \"DeletedBy\", \"DeletedDate\", \"Description\", \"IsDeleted\", \"ModifiedBy\", \"ModifiedDate\", \"Species\")
+VALUES ('5fa85f64-5717-4562-b3fc-2c963f66afa8', NULL, TIMESTAMPTZ '2024-09-18T07:18:14.445445Z', NULL, NULL, 'Common domestic bird', FALSE, NULL, NULL, 'Bird');"
+2024-09-18 10:18:36 [Information] Executed DbCommand ("72"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"AspNetUserRoles\" (\"RoleId\", \"UserId\")
+VALUES ('7cb750cf-3612-4fb4-9f7d-a38ba8f16bf4', '3aa42229-1c0f-4630-8c1a-db879ecd0427');
+INSERT INTO \"AspNetUserRoles\" (\"RoleId\", \"UserId\")
+VALUES ('16ea936c-7a28-4c30-86a2-9a9704b6115e', 'cb94223b-ccb8-4f2f-93d7-0df96a7f065c');"
+2024-09-18 10:18:37 [Information] Executed DbCommand ("74"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_AdvertisementMedias_AdvertisementId\" ON \"AdvertisementMedias\" (\"AdvertisementId\");"
+2024-09-18 10:18:37 [Information] Executed DbCommand ("70"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_Advertisements_UserId\" ON \"Advertisements\" (\"UserId\");"
+2024-09-18 10:18:37 [Information] Executed DbCommand ("76"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_AspNetRoleClaims_RoleId\" ON \"AspNetRoleClaims\" (\"RoleId\");"
+2024-09-18 10:18:37 [Information] Executed DbCommand ("72"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX \"RoleNameIndex\" ON \"AspNetRoles\" (\"NormalizedName\");"
+2024-09-18 10:18:37 [Information] Executed DbCommand ("73"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_AspNetUserClaims_UserId\" ON \"AspNetUserClaims\" (\"UserId\");"
+2024-09-18 10:18:37 [Information] Executed DbCommand ("75"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_AspNetUserLogins_UserId\" ON \"AspNetUserLogins\" (\"UserId\");"
+2024-09-18 10:18:37 [Information] Executed DbCommand ("71"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_AspNetUserRoles_RoleId\" ON \"AspNetUserRoles\" (\"RoleId\");"
+2024-09-18 10:18:37 [Information] Executed DbCommand ("70"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"EmailIndex\" ON \"AspNetUsers\" (\"NormalizedEmail\");"
+2024-09-18 10:18:37 [Information] Executed DbCommand ("71"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX \"UserNameIndex\" ON \"AspNetUsers\" (\"NormalizedUserName\");"
+2024-09-18 10:18:37 [Information] Executed DbCommand ("70"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_CommentMedias_CommentId\" ON \"CommentMedias\" (\"CommentId\");"
+2024-09-18 10:18:37 [Information] Executed DbCommand ("70"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_Comments_AdvertisementId\" ON \"Comments\" (\"AdvertisementId\");"
+2024-09-18 10:18:37 [Information] Executed DbCommand ("76"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_Comments_ParentCommentId\" ON \"Comments\" (\"ParentCommentId\");"
+2024-09-18 10:18:37 [Information] Executed DbCommand ("71"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_Comments_PostId\" ON \"Comments\" (\"PostId\");"
+2024-09-18 10:18:38 [Information] Executed DbCommand ("75"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_Comments_UserId\" ON \"Comments\" (\"UserId\");"
+2024-09-18 10:18:38 [Information] Executed DbCommand ("70"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_LikesDislikes_AdvertisementId\" ON \"LikesDislikes\" (\"AdvertisementId\");"
+2024-09-18 10:18:38 [Information] Executed DbCommand ("75"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_LikesDislikes_CommentId\" ON \"LikesDislikes\" (\"CommentId\");"
+2024-09-18 10:18:38 [Information] Executed DbCommand ("72"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_LikesDislikes_PostId\" ON \"LikesDislikes\" (\"PostId\");"
+2024-09-18 10:18:38 [Information] Executed DbCommand ("70"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_LikesDislikes_UserId\" ON \"LikesDislikes\" (\"UserId\");"
+2024-09-18 10:18:38 [Information] Executed DbCommand ("72"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_Pets_AdvertisementId\" ON \"Pets\" (\"AdvertisementId\");"
+2024-09-18 10:18:38 [Information] Executed DbCommand ("69"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_Pets_PetTypeId\" ON \"Pets\" (\"PetTypeId\");"
+2024-09-18 10:18:38 [Information] Executed DbCommand ("69"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_PostMedias_PostId\" ON \"PostMedias\" (\"PostId\");"
+2024-09-18 10:18:38 [Information] Executed DbCommand ("74"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_Posts_UserId\" ON \"Posts\" (\"UserId\");"
+2024-09-18 10:18:38 [Information] Executed DbCommand ("67"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"__EFMigrationsHistory\" (\"MigrationId\", \"ProductVersion\")
+VALUES ('20240918071814_media', '8.0.8');"

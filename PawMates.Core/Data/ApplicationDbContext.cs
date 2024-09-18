@@ -28,6 +28,15 @@ namespace Pawmates.Core.Data
         public DbSet<JobAd> JobAds { get; set; }
         public DbSet<LostAd> LostAds { get; set; }
         public DbSet<Pet> Pets { get; set; }
+
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<LikeDislike> LikesDislikes { get; set; }
+
+        public DbSet<AdvertisementMedia> AdvertisementMedias { get; set; }
+        public DbSet<PostMedia> PostMedias { get; set; }
+        public DbSet<CommentMedia> CommentMedias { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }

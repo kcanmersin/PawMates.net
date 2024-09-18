@@ -40,6 +40,12 @@ namespace PawMates.Core.Data.Configurations
                    .WithOne(ld => ld.Comment)
                    .HasForeignKey(ld => ld.CommentId)
                    .OnDelete(DeleteBehavior.Cascade);
+
+            // Configure relationship with media
+            builder.HasMany(c => c.Media)
+                   .WithOne(m => m.Comment)
+                   .HasForeignKey(m => m.CommentId)
+                   .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

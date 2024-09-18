@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PawMates.Core.Data.Entity.Ads;
+using PawMates.Core.Data.Entity;
 
 namespace PawMates.Core.Data.Configurations
 {
@@ -30,6 +31,12 @@ namespace PawMates.Core.Data.Configurations
             builder.HasMany(ad => ad.Comments)
                    .WithOne(c => c.Advertisement)
                    .HasForeignKey(c => c.AdvertisementId)
+                   .OnDelete(DeleteBehavior.Cascade);
+
+            // Configure relationship with media
+            builder.HasMany(ad => ad.Media)
+                   .WithOne(m => m.Advertisement)
+                   .HasForeignKey(m => m.AdvertisementId)
                    .OnDelete(DeleteBehavior.Cascade);
         }
     }
