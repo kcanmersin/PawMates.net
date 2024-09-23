@@ -15,5 +15,7 @@ namespace PawMates.Core.Features.DTOs
         public AdvertisementType AdvertisementType { get; set; }
         public DateTime CreatedDate { get; set; }
         public string Location { get; set; }
+
+        public List<string> MediaUrls { get; set; } = new List<string>();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace PawMates.Core.Features.Comments.CreateComment
         public Guid? AdvertisementId { get; set; }  
         public Guid UserId { get; set; }  
         public string Content { get; set; } = string.Empty; 
-        public Guid? ParentCommentId { get; set; } 
+        public Guid? ParentCommentId { get; set; }
+        public List<IFormFile> CommentMedia { get; set; }
     }
 }

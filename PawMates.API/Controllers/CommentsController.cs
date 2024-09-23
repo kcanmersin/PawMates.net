@@ -6,6 +6,10 @@ using PawMates.Core.Features.Comments.CreateComment;
 using PawMates.Core.Features.Comments.DeleteComment;
 using PawMates.Core.Features.Comments.UpdateComment;
 using PawMates.Core.Features.Comments.GetAllComments;
+using Microsoft.AspNetCore.Http; // For handling IFormFile
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System;
 
 namespace PawMates.API.Controllers
 {
@@ -20,10 +24,30 @@ namespace PawMates.API.Controllers
             _sender = sender;
         }
 
+        // Create a new comment with media support (images/videos)
         [HttpPost]
-        public async Task<IActionResult> CreateComment([FromBody] CreateCommentRequest request)
+        [Consumes("multipart/form-data")] // Ensure Swagger understands this is a form-data request
+        public async Task<IActionResult> CreateComment([FromForm] CreateCommentRequest request, [FromForm] List<IFormFile> commentMedia)
         {
             var command = request.Adapt<CreateCommentCommand>();
+            command.CommentMedia = commentMedia; // Add media to the command
+            var result = await _sender.Send(command);
+
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+
+            return Ok(result);
+        }
+
+        [HttpPut("{id}")]
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> UpdateComment(Guid id, [FromForm] UpdateCommentRequest request, [FromForm] List<IFormFile> commentMedia)
+        {
+            var command = request.Adapt<UpdateCommentCommand>();
+            command.CommentId = id;
+            command.CommentMedia = commentMedia; 
             var result = await _sender.Send(command);
 
             if (!result.Success)
@@ -38,21 +62,6 @@ namespace PawMates.API.Controllers
         public async Task<IActionResult> DeleteComment(Guid id)
         {
             var command = new DeleteCommentCommand { CommentId = id };
-            var result = await _sender.Send(command);
-
-            if (!result.Success)
-            {
-                return BadRequest(result.Message);
-            }
-
-            return Ok(result);
-        }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateComment(Guid id, [FromBody] UpdateCommentRequest request)
-        {
-            var command = request.Adapt<UpdateCommentCommand>();
-            command.CommentId = id;
             var result = await _sender.Send(command);
 
             if (!result.Success)

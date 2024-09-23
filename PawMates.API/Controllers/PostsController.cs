@@ -7,6 +7,9 @@ using PawMates.Core.Features.Posts.DeletePost;
 using PawMates.Core.Features.Posts.GetAllPosts;
 using PawMates.Core.Features.Posts.UpdatePost;
 using System.Threading.Tasks;
+using System;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 
 namespace PawMates.API.Controllers
 {
@@ -22,9 +25,13 @@ namespace PawMates.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreatePost([FromBody] CreatePostRequest request)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> CreatePost([FromForm] CreatePostRequest request, [FromForm] List<IFormFile> postMedia)
         {
             var command = request.Adapt<CreatePostCommand>();
+
+            command.PostMedias = postMedia;
+
             var result = await _sender.Send(command);
 
             if (!result.Success)
@@ -38,17 +45,21 @@ namespace PawMates.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllPosts([FromQuery] GetAllPostsRequest request)
         {
-            var query = request.Adapt<GetAllPostsQuery>();  
-            var result = await _sender.Send(query);  
+            var query = request.Adapt<GetAllPostsQuery>();
+            var result = await _sender.Send(query);
 
-            return Ok(result);  
+            return Ok(result);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePost(Guid id, [FromBody] UpdatePostRequest request)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> UpdatePost(Guid id, [FromForm] UpdatePostRequest request, [FromForm] List<IFormFile> postMedia)
         {
             var command = request.Adapt<UpdatePostCommand>();
-            command.PostId = id;  // Set the PostId from the URL
+            command.PostId = id; 
+
+            command.PostMedias = postMedia;
+
             var result = await _sender.Send(command);
 
             if (!result.Success)
@@ -58,6 +69,7 @@ namespace PawMates.API.Controllers
 
             return Ok(result);
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePost(Guid id)
         {

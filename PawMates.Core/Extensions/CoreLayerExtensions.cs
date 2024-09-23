@@ -64,7 +64,8 @@ namespace Core.Extensions
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
-
+            //add file upload service
+            services.AddScoped<IFileUploadService, FileUploadService>();
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             return services;

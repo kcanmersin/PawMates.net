@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace PawMates.Core.Features.Posts.UpdatePost
     {
         public Guid PostId { get; set; }
         public string Title { get; set; } = string.Empty;  
-        public string Content { get; set; } = string.Empty;  
+        public string Content { get; set; } = string.Empty;
+
+        public List<IFormFile> PostMedias { get; set; }
     }
 }

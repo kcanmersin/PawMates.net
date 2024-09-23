@@ -7,6 +7,7 @@ using PawMates.Core.Features.Ads.DeleteAdvertisement;
 using PawMates.Core.Features.Ads.GetAllAds;
 using PawMates.Core.Features.Ads.UpdateAdvertisement;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace PawMates.API.Controllers
 {
@@ -22,19 +23,24 @@ namespace PawMates.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAd([FromBody] CreateAdvertisementRequest request)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> CreateAd([FromForm] CreateAdvertisementRequest request, [FromForm] List<IFormFile> advertisementImages)
         {
             var command = request.Adapt<CreateAdvertisementCommand>();
+
+            command.AdvertisementImages = advertisementImages;
 
             var result = await _sender.Send(command);
 
             if (!result.Success)
             {
-            return BadRequest(new { message = result.Message }); 
+                return BadRequest(new { message = result.Message });
             }
 
-                return Ok(result); 
+            return Ok(result);
         }
+
+
 
         [HttpGet]
         public async Task<IActionResult> GetAllAds([FromQuery] GetAllAdsRequest request)
@@ -44,17 +50,25 @@ namespace PawMates.API.Controllers
             return Ok(result);
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAd(Guid id, [FromBody] UpdateAdvertisementRequest request)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> UpdateAd(Guid id, [FromForm] UpdateAdvertisementRequest request, [FromForm] List<IFormFile> advertisementImages)
         {
             var command = request.Adapt<UpdateAdvertisementCommand>();
+
+            command.AdvertisementImages = advertisementImages;
             command.AdvertisementId = id;
+
+            // Send the command to the handler
             var result = await _sender.Send(command);
+
             if (!result.Success)
             {
                 return BadRequest(new { message = result.Message });
             }
+
             return Ok(result);
         }
+
         [HttpDelete]
         public async Task<IActionResult> DeleteAd([FromBody] DeleteAdvertisementRequest request)
         {

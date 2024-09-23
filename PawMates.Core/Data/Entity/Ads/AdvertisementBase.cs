@@ -21,7 +21,7 @@ namespace PawMates.Core.Data.Entity.Ads
 
         public virtual ICollection<AdvertisementMedia> Media { get; set; } = new List<AdvertisementMedia>();
 
-        public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>(); // Reklama yapılan yorumlar
+        public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>(); 
 
     }
 

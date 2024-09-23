@@ -5,9 +5,9 @@ using PawMates.Core.Features.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+
 namespace PawMates.Core.Features.Posts.GetAllPosts
 {
     public class GetAllPostsHandler : IRequestHandler<GetAllPostsQuery, PaginatedPostsResponse>
@@ -21,7 +21,10 @@ namespace PawMates.Core.Features.Posts.GetAllPosts
 
         public async Task<PaginatedPostsResponse> Handle(GetAllPostsQuery request, CancellationToken cancellationToken)
         {
-            var query = _context.Set<Post>().AsNoTracking().AsQueryable();
+            var query = _context.Set<Post>()
+                .AsNoTracking()
+                .Include(post => post.Media) 
+                .AsQueryable();
 
             if (!string.IsNullOrEmpty(request.SearchTerm))
             {
@@ -31,16 +34,17 @@ namespace PawMates.Core.Features.Posts.GetAllPosts
             var totalCount = await query.CountAsync(cancellationToken);
 
             var posts = await query
-                .OrderByDescending(post => post.CreatedDate) 
-                .Skip((request.PageNumber - 1) * request.PageSize) 
-                .Take(request.PageSize)  
+                .OrderByDescending(post => post.CreatedDate)
+                .Skip((request.PageNumber - 1) * request.PageSize)
+                .Take(request.PageSize)
                 .Select(post => new PostDto
                 {
                     Id = post.Id,
                     Title = post.Title,
                     Content = post.Content,
                     CreatedDate = post.CreatedDate,
-                    UserId = post.UserId
+                    UserId = post.UserId,
+                    MediaUrls = post.Media.Select(m => m.FilePath).ToList() 
                 })
                 .ToListAsync(cancellationToken);
 

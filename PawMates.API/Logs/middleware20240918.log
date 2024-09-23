@@ -20,3 +20,1176 @@
 2024-09-18 09:15:04 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.GetAllComments (PawMates.API)"'
 2024-09-18 09:15:04 [Information] The response could not be cached for this request.
 2024-09-18 09:15:04 [Information] HTTP "GET" "/api/Comments" responded 200 in 225.3094 ms
+2024-09-18 10:24:54 [Information] No cached response available for this request.
+2024-09-18 10:24:54 [Information] The response could not be cached for this request.
+2024-09-18 10:24:54 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 142.6029 ms
+2024-09-18 10:24:54 [Information] No cached response available for this request.
+2024-09-18 10:24:54 [Information] The response could not be cached for this request.
+2024-09-18 10:24:54 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 29.8789 ms
+2024-09-18 10:24:54 [Information] No cached response available for this request.
+2024-09-18 10:24:54 [Information] The response could not be cached for this request.
+2024-09-18 10:24:54 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 184.2951 ms
+2024-09-18 10:28:14 [Information] No cached response available for this request.
+2024-09-18 10:28:14 [Information] The response could not be cached for this request.
+2024-09-18 10:28:14 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 105.4985 ms
+2024-09-18 10:28:14 [Information] No cached response available for this request.
+2024-09-18 10:28:14 [Information] The response could not be cached for this request.
+2024-09-18 10:28:14 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 30.0276 ms
+2024-09-18 10:28:14 [Information] No cached response available for this request.
+2024-09-18 10:28:14 [Information] The response could not be cached for this request.
+2024-09-18 10:28:14 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 171.5639 ms
+2024-09-18 10:28:58 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:28:59 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:28:59 [Error] HTTP "POST" "/api/Ads" responded 500 in 495.6253 ms
+System.TypeInitializationException: The type initializer for 'Mapster.TypeAdapter`2' threw an exception.
+ ---> Mapster.CompileException: Error while compiling
+source=Microsoft.AspNetCore.Http.IHeaderDictionary
+destination=Microsoft.AspNetCore.Http.IHeaderDictionary
+type=Map
+ ---> System.ArgumentException: Expression of type 'System.Collections.Generic.Dictionary`2[System.String,Microsoft.Extensions.Primitives.StringValues]' cannot be used for assignment to type 'Microsoft.AspNetCore.Http.IHeaderDictionary'
+   at System.Linq.Expressions.Expression.Assign(Expression left, Expression right)
+   at Mapster.Adapters.BaseAdapter.CreateBlockExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateAdaptFunc(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   --- End of inner exception stack trace ---
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(TypeTuple tuple, MapType mapType)
+   at Mapster.TypeAdapterConfig.<GetMapFunction>b__59_0(TypeTuple tuple)
+   at Mapster.TypeAdapterConfig.<>c__DisplayClass56_0`1.<AddToHash>b__0(TypeTuple types)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Mapster.TypeAdapterConfig.AddToHash[T](ConcurrentDictionary`2 hash, TypeTuple key, Func`2 func)
+   at Mapster.TypeAdapterConfig.GetMapFunction(Type sourceType, Type destinationType)
+   at Mapster.TypeAdapterConfig.GetMapFunction[TSource,TDestination]()
+   at Mapster.TypeAdapter`2..cctor()
+   --- End of inner exception stack trace ---
+   at lambda_method17(Closure, List`1)
+   at lambda_method15(Closure, Object)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source, TypeAdapterConfig config)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source)
+   at PawMates.API.Controllers.AdsController.CreateAd(CreateAdvertisementRequest request, List`1 advertisementImages) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Controllers\AdsController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Helper\Log\RequestResponseLoggingMiddleware.cs:line 32
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2024-09-18 10:28:59 [Error] An unhandled exception has occurred while executing the request.
+System.TypeInitializationException: The type initializer for 'Mapster.TypeAdapter`2' threw an exception.
+ ---> Mapster.CompileException: Error while compiling
+source=Microsoft.AspNetCore.Http.IHeaderDictionary
+destination=Microsoft.AspNetCore.Http.IHeaderDictionary
+type=Map
+ ---> System.ArgumentException: Expression of type 'System.Collections.Generic.Dictionary`2[System.String,Microsoft.Extensions.Primitives.StringValues]' cannot be used for assignment to type 'Microsoft.AspNetCore.Http.IHeaderDictionary'
+   at System.Linq.Expressions.Expression.Assign(Expression left, Expression right)
+   at Mapster.Adapters.BaseAdapter.CreateBlockExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateAdaptFunc(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   --- End of inner exception stack trace ---
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(TypeTuple tuple, MapType mapType)
+   at Mapster.TypeAdapterConfig.<GetMapFunction>b__59_0(TypeTuple tuple)
+   at Mapster.TypeAdapterConfig.<>c__DisplayClass56_0`1.<AddToHash>b__0(TypeTuple types)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Mapster.TypeAdapterConfig.AddToHash[T](ConcurrentDictionary`2 hash, TypeTuple key, Func`2 func)
+   at Mapster.TypeAdapterConfig.GetMapFunction(Type sourceType, Type destinationType)
+   at Mapster.TypeAdapterConfig.GetMapFunction[TSource,TDestination]()
+   at Mapster.TypeAdapter`2..cctor()
+   --- End of inner exception stack trace ---
+   at lambda_method17(Closure, List`1)
+   at lambda_method15(Closure, Object)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source, TypeAdapterConfig config)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source)
+   at PawMates.API.Controllers.AdsController.CreateAd(CreateAdvertisementRequest request, List`1 advertisementImages) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Controllers\AdsController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Helper\Log\RequestResponseLoggingMiddleware.cs:line 32
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-09-18 10:28:59 [Error] An exception was thrown attempting to display the error page.
+System.ObjectDisposedException: Cannot access a closed Stream.
+   at System.IO.MemoryStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.MemoryStream.WriteAsync(ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at System.IO.Pipelines.StreamPipeWriter.FlushAsyncInternal(Boolean writeToStream, ReadOnlyMemory`1 data, CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask`1.GetTaskForValueTaskSource(IValueTaskSource`1 t)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.DisplayExceptionContent(ErrorContext errorContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-09-18 10:29:24 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:29:37 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:29:38 [Error] HTTP "POST" "/api/Ads" responded 500 in 14319.9835 ms
+System.TypeInitializationException: The type initializer for 'Mapster.TypeAdapter`2' threw an exception.
+ ---> Mapster.CompileException: Error while compiling
+source=Microsoft.AspNetCore.Http.IHeaderDictionary
+destination=Microsoft.AspNetCore.Http.IHeaderDictionary
+type=Map
+ ---> System.ArgumentException: Expression of type 'System.Collections.Generic.Dictionary`2[System.String,Microsoft.Extensions.Primitives.StringValues]' cannot be used for assignment to type 'Microsoft.AspNetCore.Http.IHeaderDictionary'
+   at System.Linq.Expressions.Expression.Assign(Expression left, Expression right)
+   at Mapster.Adapters.BaseAdapter.CreateBlockExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateAdaptFunc(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   --- End of inner exception stack trace ---
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(TypeTuple tuple, MapType mapType)
+   at Mapster.TypeAdapterConfig.<GetMapFunction>b__59_0(TypeTuple tuple)
+   at Mapster.TypeAdapterConfig.<>c__DisplayClass56_0`1.<AddToHash>b__0(TypeTuple types)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Mapster.TypeAdapterConfig.AddToHash[T](ConcurrentDictionary`2 hash, TypeTuple key, Func`2 func)
+   at Mapster.TypeAdapterConfig.GetMapFunction(Type sourceType, Type destinationType)
+   at Mapster.TypeAdapterConfig.GetMapFunction[TSource,TDestination]()
+   at Mapster.TypeAdapter`2..cctor()
+   --- End of inner exception stack trace ---
+   at lambda_method17(Closure, List`1)
+   at lambda_method15(Closure, Object)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source, TypeAdapterConfig config)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source)
+   at PawMates.API.Controllers.AdsController.CreateAd(CreateAdvertisementRequest request, List`1 advertisementImages) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Controllers\AdsController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Helper\Log\RequestResponseLoggingMiddleware.cs:line 32
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2024-09-18 10:29:38 [Error] An unhandled exception has occurred while executing the request.
+System.TypeInitializationException: The type initializer for 'Mapster.TypeAdapter`2' threw an exception.
+ ---> Mapster.CompileException: Error while compiling
+source=Microsoft.AspNetCore.Http.IHeaderDictionary
+destination=Microsoft.AspNetCore.Http.IHeaderDictionary
+type=Map
+ ---> System.ArgumentException: Expression of type 'System.Collections.Generic.Dictionary`2[System.String,Microsoft.Extensions.Primitives.StringValues]' cannot be used for assignment to type 'Microsoft.AspNetCore.Http.IHeaderDictionary'
+   at System.Linq.Expressions.Expression.Assign(Expression left, Expression right)
+   at Mapster.Adapters.BaseAdapter.CreateBlockExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateAdaptFunc(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   --- End of inner exception stack trace ---
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(TypeTuple tuple, MapType mapType)
+   at Mapster.TypeAdapterConfig.<GetMapFunction>b__59_0(TypeTuple tuple)
+   at Mapster.TypeAdapterConfig.<>c__DisplayClass56_0`1.<AddToHash>b__0(TypeTuple types)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Mapster.TypeAdapterConfig.AddToHash[T](ConcurrentDictionary`2 hash, TypeTuple key, Func`2 func)
+   at Mapster.TypeAdapterConfig.GetMapFunction(Type sourceType, Type destinationType)
+   at Mapster.TypeAdapterConfig.GetMapFunction[TSource,TDestination]()
+   at Mapster.TypeAdapter`2..cctor()
+   --- End of inner exception stack trace ---
+   at lambda_method17(Closure, List`1)
+   at lambda_method15(Closure, Object)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source, TypeAdapterConfig config)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source)
+   at PawMates.API.Controllers.AdsController.CreateAd(CreateAdvertisementRequest request, List`1 advertisementImages) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Controllers\AdsController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Helper\Log\RequestResponseLoggingMiddleware.cs:line 32
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-09-18 10:29:38 [Error] An exception was thrown attempting to display the error page.
+System.ObjectDisposedException: Cannot access a closed Stream.
+   at System.IO.MemoryStream.WriteAsync(ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at System.IO.Pipelines.StreamPipeWriter.FlushAsyncInternal(Boolean writeToStream, ReadOnlyMemory`1 data, CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask`1.GetTaskForValueTaskSource(IValueTaskSource`1 t)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.DisplayExceptionContent(ErrorContext errorContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-09-18 10:29:51 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:29:56 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:29:57 [Error] HTTP "POST" "/api/Ads" responded 500 in 6415.8650 ms
+System.TypeInitializationException: The type initializer for 'Mapster.TypeAdapter`2' threw an exception.
+ ---> Mapster.CompileException: Error while compiling
+source=Microsoft.AspNetCore.Http.IHeaderDictionary
+destination=Microsoft.AspNetCore.Http.IHeaderDictionary
+type=Map
+ ---> System.ArgumentException: Expression of type 'System.Collections.Generic.Dictionary`2[System.String,Microsoft.Extensions.Primitives.StringValues]' cannot be used for assignment to type 'Microsoft.AspNetCore.Http.IHeaderDictionary'
+   at System.Linq.Expressions.Expression.Assign(Expression left, Expression right)
+   at Mapster.Adapters.BaseAdapter.CreateBlockExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateAdaptFunc(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   --- End of inner exception stack trace ---
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(TypeTuple tuple, MapType mapType)
+   at Mapster.TypeAdapterConfig.<GetMapFunction>b__59_0(TypeTuple tuple)
+   at Mapster.TypeAdapterConfig.<>c__DisplayClass56_0`1.<AddToHash>b__0(TypeTuple types)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Mapster.TypeAdapterConfig.AddToHash[T](ConcurrentDictionary`2 hash, TypeTuple key, Func`2 func)
+   at Mapster.TypeAdapterConfig.GetMapFunction(Type sourceType, Type destinationType)
+   at Mapster.TypeAdapterConfig.GetMapFunction[TSource,TDestination]()
+   at Mapster.TypeAdapter`2..cctor()
+   --- End of inner exception stack trace ---
+   at lambda_method17(Closure, List`1)
+   at lambda_method15(Closure, Object)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source, TypeAdapterConfig config)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source)
+   at PawMates.API.Controllers.AdsController.CreateAd(CreateAdvertisementRequest request, List`1 advertisementImages) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Controllers\AdsController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Helper\Log\RequestResponseLoggingMiddleware.cs:line 32
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2024-09-18 10:29:57 [Error] An unhandled exception has occurred while executing the request.
+System.TypeInitializationException: The type initializer for 'Mapster.TypeAdapter`2' threw an exception.
+ ---> Mapster.CompileException: Error while compiling
+source=Microsoft.AspNetCore.Http.IHeaderDictionary
+destination=Microsoft.AspNetCore.Http.IHeaderDictionary
+type=Map
+ ---> System.ArgumentException: Expression of type 'System.Collections.Generic.Dictionary`2[System.String,Microsoft.Extensions.Primitives.StringValues]' cannot be used for assignment to type 'Microsoft.AspNetCore.Http.IHeaderDictionary'
+   at System.Linq.Expressions.Expression.Assign(Expression left, Expression right)
+   at Mapster.Adapters.BaseAdapter.CreateBlockExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateAdaptFunc(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   --- End of inner exception stack trace ---
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(TypeTuple tuple, MapType mapType)
+   at Mapster.TypeAdapterConfig.<GetMapFunction>b__59_0(TypeTuple tuple)
+   at Mapster.TypeAdapterConfig.<>c__DisplayClass56_0`1.<AddToHash>b__0(TypeTuple types)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Mapster.TypeAdapterConfig.AddToHash[T](ConcurrentDictionary`2 hash, TypeTuple key, Func`2 func)
+   at Mapster.TypeAdapterConfig.GetMapFunction(Type sourceType, Type destinationType)
+   at Mapster.TypeAdapterConfig.GetMapFunction[TSource,TDestination]()
+   at Mapster.TypeAdapter`2..cctor()
+   --- End of inner exception stack trace ---
+   at lambda_method17(Closure, List`1)
+   at lambda_method15(Closure, Object)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source, TypeAdapterConfig config)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source)
+   at PawMates.API.Controllers.AdsController.CreateAd(CreateAdvertisementRequest request, List`1 advertisementImages) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Controllers\AdsController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Helper\Log\RequestResponseLoggingMiddleware.cs:line 32
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-09-18 10:29:57 [Error] An exception was thrown attempting to display the error page.
+System.ObjectDisposedException: Cannot access a closed Stream.
+   at System.IO.MemoryStream.WriteAsync(ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at System.IO.Pipelines.StreamPipeWriter.FlushAsyncInternal(Boolean writeToStream, ReadOnlyMemory`1 data, CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask`1.GetTaskForValueTaskSource(IValueTaskSource`1 t)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.DisplayExceptionContent(ErrorContext errorContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-09-18 10:32:39 [Information] No cached response available for this request.
+2024-09-18 10:32:39 [Information] The response could not be cached for this request.
+2024-09-18 10:32:39 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 114.5608 ms
+2024-09-18 10:32:39 [Information] No cached response available for this request.
+2024-09-18 10:32:39 [Information] The response could not be cached for this request.
+2024-09-18 10:32:39 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 18.0362 ms
+2024-09-18 10:32:39 [Information] No cached response available for this request.
+2024-09-18 10:32:39 [Information] The response could not be cached for this request.
+2024-09-18 10:32:39 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 178.0417 ms
+2024-09-18 10:32:45 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:32:45 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:32:45 [Information] HTTP "POST" "/api/Ads" responded 400 in 126.8608 ms
+2024-09-18 10:32:56 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:32:58 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:32:58 [Information] HTTP "POST" "/api/Ads" responded 200 in 2537.4630 ms
+2024-09-18 10:33:32 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:33:33 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:33:33 [Information] HTTP "POST" "/api/Ads" responded 200 in 933.4770 ms
+2024-09-18 10:37:16 [Information] No cached response available for this request.
+2024-09-18 10:37:16 [Information] The response could not be cached for this request.
+2024-09-18 10:37:16 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 107.7233 ms
+2024-09-18 10:37:16 [Information] No cached response available for this request.
+2024-09-18 10:37:16 [Information] The response could not be cached for this request.
+2024-09-18 10:37:16 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 18.7303 ms
+2024-09-18 10:37:16 [Information] No cached response available for this request.
+2024-09-18 10:37:16 [Information] The response could not be cached for this request.
+2024-09-18 10:37:16 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 169.3184 ms
+2024-09-18 10:37:36 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:37:36 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:37:36 [Error] HTTP "POST" "/api/Ads" responded 500 in 323.1893 ms
+System.TypeInitializationException: The type initializer for 'Mapster.TypeAdapter`2' threw an exception.
+ ---> Mapster.CompileException: Error while compiling
+source=Microsoft.AspNetCore.Http.IHeaderDictionary
+destination=Microsoft.AspNetCore.Http.IHeaderDictionary
+type=Map
+ ---> System.ArgumentException: Expression of type 'System.Collections.Generic.Dictionary`2[System.String,Microsoft.Extensions.Primitives.StringValues]' cannot be used for assignment to type 'Microsoft.AspNetCore.Http.IHeaderDictionary'
+   at System.Linq.Expressions.Expression.Assign(Expression left, Expression right)
+   at Mapster.Adapters.BaseAdapter.CreateBlockExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateAdaptFunc(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   --- End of inner exception stack trace ---
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(TypeTuple tuple, MapType mapType)
+   at Mapster.TypeAdapterConfig.<GetMapFunction>b__59_0(TypeTuple tuple)
+   at Mapster.TypeAdapterConfig.<>c__DisplayClass56_0`1.<AddToHash>b__0(TypeTuple types)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Mapster.TypeAdapterConfig.AddToHash[T](ConcurrentDictionary`2 hash, TypeTuple key, Func`2 func)
+   at Mapster.TypeAdapterConfig.GetMapFunction(Type sourceType, Type destinationType)
+   at Mapster.TypeAdapterConfig.GetMapFunction[TSource,TDestination]()
+   at Mapster.TypeAdapter`2..cctor()
+   --- End of inner exception stack trace ---
+   at lambda_method17(Closure, List`1)
+   at lambda_method15(Closure, Object)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source, TypeAdapterConfig config)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source)
+   at PawMates.API.Controllers.AdsController.CreateAd(CreateAdvertisementRequest request, List`1 advertisementImages) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Controllers\AdsController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Helper\Log\RequestResponseLoggingMiddleware.cs:line 32
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2024-09-18 10:37:37 [Error] An unhandled exception has occurred while executing the request.
+System.TypeInitializationException: The type initializer for 'Mapster.TypeAdapter`2' threw an exception.
+ ---> Mapster.CompileException: Error while compiling
+source=Microsoft.AspNetCore.Http.IHeaderDictionary
+destination=Microsoft.AspNetCore.Http.IHeaderDictionary
+type=Map
+ ---> System.ArgumentException: Expression of type 'System.Collections.Generic.Dictionary`2[System.String,Microsoft.Extensions.Primitives.StringValues]' cannot be used for assignment to type 'Microsoft.AspNetCore.Http.IHeaderDictionary'
+   at System.Linq.Expressions.Expression.Assign(Expression left, Expression right)
+   at Mapster.Adapters.BaseAdapter.CreateBlockExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateAdaptFunc(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   --- End of inner exception stack trace ---
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(TypeTuple tuple, MapType mapType)
+   at Mapster.TypeAdapterConfig.<GetMapFunction>b__59_0(TypeTuple tuple)
+   at Mapster.TypeAdapterConfig.<>c__DisplayClass56_0`1.<AddToHash>b__0(TypeTuple types)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Mapster.TypeAdapterConfig.AddToHash[T](ConcurrentDictionary`2 hash, TypeTuple key, Func`2 func)
+   at Mapster.TypeAdapterConfig.GetMapFunction(Type sourceType, Type destinationType)
+   at Mapster.TypeAdapterConfig.GetMapFunction[TSource,TDestination]()
+   at Mapster.TypeAdapter`2..cctor()
+   --- End of inner exception stack trace ---
+   at lambda_method17(Closure, List`1)
+   at lambda_method15(Closure, Object)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source, TypeAdapterConfig config)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source)
+   at PawMates.API.Controllers.AdsController.CreateAd(CreateAdvertisementRequest request, List`1 advertisementImages) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Controllers\AdsController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Helper\Log\RequestResponseLoggingMiddleware.cs:line 32
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-09-18 10:37:37 [Error] An exception was thrown attempting to display the error page.
+System.ObjectDisposedException: Cannot access a closed Stream.
+   at System.IO.MemoryStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.MemoryStream.WriteAsync(ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at System.IO.Pipelines.StreamPipeWriter.FlushAsyncInternal(Boolean writeToStream, ReadOnlyMemory`1 data, CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask`1.GetTaskForValueTaskSource(IValueTaskSource`1 t)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.DisplayExceptionContent(ErrorContext errorContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-09-18 10:39:08 [Information] No cached response available for this request.
+2024-09-18 10:39:08 [Information] The response could not be cached for this request.
+2024-09-18 10:39:08 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 109.7896 ms
+2024-09-18 10:39:08 [Information] No cached response available for this request.
+2024-09-18 10:39:08 [Information] The response could not be cached for this request.
+2024-09-18 10:39:08 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 21.9983 ms
+2024-09-18 10:39:08 [Information] No cached response available for this request.
+2024-09-18 10:39:08 [Information] The response could not be cached for this request.
+2024-09-18 10:39:08 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 167.3377 ms
+2024-09-18 10:39:17 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:39:18 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:39:18 [Error] HTTP "POST" "/api/Ads" responded 500 in 648.8881 ms
+System.TypeInitializationException: The type initializer for 'Mapster.TypeAdapter`2' threw an exception.
+ ---> Mapster.CompileException: Error while compiling
+source=Microsoft.AspNetCore.Http.IHeaderDictionary
+destination=Microsoft.AspNetCore.Http.IHeaderDictionary
+type=Map
+ ---> System.ArgumentException: Expression of type 'System.Collections.Generic.Dictionary`2[System.String,Microsoft.Extensions.Primitives.StringValues]' cannot be used for assignment to type 'Microsoft.AspNetCore.Http.IHeaderDictionary'
+   at System.Linq.Expressions.Expression.Assign(Expression left, Expression right)
+   at Mapster.Adapters.BaseAdapter.CreateBlockExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateAdaptFunc(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   --- End of inner exception stack trace ---
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(TypeTuple tuple, MapType mapType)
+   at Mapster.TypeAdapterConfig.<GetMapFunction>b__59_0(TypeTuple tuple)
+   at Mapster.TypeAdapterConfig.<>c__DisplayClass56_0`1.<AddToHash>b__0(TypeTuple types)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Mapster.TypeAdapterConfig.AddToHash[T](ConcurrentDictionary`2 hash, TypeTuple key, Func`2 func)
+   at Mapster.TypeAdapterConfig.GetMapFunction(Type sourceType, Type destinationType)
+   at Mapster.TypeAdapterConfig.GetMapFunction[TSource,TDestination]()
+   at Mapster.TypeAdapter`2..cctor()
+   --- End of inner exception stack trace ---
+   at lambda_method17(Closure, List`1)
+   at lambda_method15(Closure, Object)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source, TypeAdapterConfig config)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source)
+   at PawMates.API.Controllers.AdsController.CreateAd(CreateAdvertisementRequest request, List`1 advertisementImages) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Controllers\AdsController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Helper\Log\RequestResponseLoggingMiddleware.cs:line 32
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2024-09-18 10:39:18 [Error] An unhandled exception has occurred while executing the request.
+System.TypeInitializationException: The type initializer for 'Mapster.TypeAdapter`2' threw an exception.
+ ---> Mapster.CompileException: Error while compiling
+source=Microsoft.AspNetCore.Http.IHeaderDictionary
+destination=Microsoft.AspNetCore.Http.IHeaderDictionary
+type=Map
+ ---> System.ArgumentException: Expression of type 'System.Collections.Generic.Dictionary`2[System.String,Microsoft.Extensions.Primitives.StringValues]' cannot be used for assignment to type 'Microsoft.AspNetCore.Http.IHeaderDictionary'
+   at System.Linq.Expressions.Expression.Assign(Expression left, Expression right)
+   at Mapster.Adapters.BaseAdapter.CreateBlockExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateExpressionBody(Expression source, Expression destination, CompileArgument arg)
+   at Mapster.Adapters.BaseAdapter.CreateAdaptFunc(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   --- End of inner exception stack trace ---
+   at Mapster.TypeAdapterConfig.CreateMapExpression(CompileArgument arg)
+   at Mapster.TypeAdapterConfig.CreateMapExpression(TypeTuple tuple, MapType mapType)
+   at Mapster.TypeAdapterConfig.<GetMapFunction>b__59_0(TypeTuple tuple)
+   at Mapster.TypeAdapterConfig.<>c__DisplayClass56_0`1.<AddToHash>b__0(TypeTuple types)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Mapster.TypeAdapterConfig.AddToHash[T](ConcurrentDictionary`2 hash, TypeTuple key, Func`2 func)
+   at Mapster.TypeAdapterConfig.GetMapFunction(Type sourceType, Type destinationType)
+   at Mapster.TypeAdapterConfig.GetMapFunction[TSource,TDestination]()
+   at Mapster.TypeAdapter`2..cctor()
+   --- End of inner exception stack trace ---
+   at lambda_method17(Closure, List`1)
+   at lambda_method15(Closure, Object)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source, TypeAdapterConfig config)
+   at Mapster.TypeAdapter.Adapt[TDestination](Object source)
+   at PawMates.API.Controllers.AdsController.CreateAd(CreateAdvertisementRequest request, List`1 advertisementImages) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Controllers\AdsController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\KC\source\repos\PawMates.net\PawMates.API\Helper\Log\RequestResponseLoggingMiddleware.cs:line 32
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-09-18 10:39:18 [Error] An exception was thrown attempting to display the error page.
+System.ObjectDisposedException: Cannot access a closed Stream.
+   at System.IO.MemoryStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.MemoryStream.WriteAsync(ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at System.IO.Pipelines.StreamPipeWriter.FlushAsyncInternal(Boolean writeToStream, ReadOnlyMemory`1 data, CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask`1.GetTaskForValueTaskSource(IValueTaskSource`1 t)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.DisplayExceptionContent(ErrorContext errorContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-09-18 10:39:37 [Information] No cached response available for this request.
+2024-09-18 10:39:38 [Information] The response could not be cached for this request.
+2024-09-18 10:39:38 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 111.9787 ms
+2024-09-18 10:39:38 [Information] No cached response available for this request.
+2024-09-18 10:39:38 [Information] The response could not be cached for this request.
+2024-09-18 10:39:38 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 17.1471 ms
+2024-09-18 10:39:38 [Information] No cached response available for this request.
+2024-09-18 10:39:38 [Information] The response could not be cached for this request.
+2024-09-18 10:39:38 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 186.3568 ms
+2024-09-18 10:39:44 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:39:48 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.CreateAd (PawMates.API)"'
+2024-09-18 10:39:48 [Information] HTTP "POST" "/api/Ads" responded 200 in 3728.2118 ms
+2024-09-18 10:49:38 [Information] No cached response available for this request.
+2024-09-18 10:49:38 [Information] The response could not be cached for this request.
+2024-09-18 10:49:38 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 118.8133 ms
+2024-09-18 10:49:38 [Information] No cached response available for this request.
+2024-09-18 10:49:38 [Information] The response could not be cached for this request.
+2024-09-18 10:49:38 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 26.0324 ms
+2024-09-18 10:49:38 [Information] No cached response available for this request.
+2024-09-18 10:49:38 [Information] The response could not be cached for this request.
+2024-09-18 10:49:38 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 203.2236 ms
+2024-09-18 10:49:58 [Information] No cached response available for this request.
+2024-09-18 10:49:58 [Information] Sending file. Request path: '"/advertisements/1a3b4eb8-5751-4e55-a67e-f9087cc2193c.png"'. Physical path: '"C:\Users\KC\source\repos\PawMates.net\PawMates.API\wwwroot\advertisements\1a3b4eb8-5751-4e55-a67e-f9087cc2193c.png"'
+2024-09-18 10:49:58 [Information] The response could not be cached for this request.
+2024-09-18 10:49:58 [Information] HTTP "GET" "/advertisements/1a3b4eb8-5751-4e55-a67e-f9087cc2193c.png" responded 200 in 264.8041 ms
+2024-09-18 10:49:58 [Information] No cached response available for this request.
+2024-09-18 10:49:58 [Information] The response could not be cached for this request.
+2024-09-18 10:49:58 [Information] HTTP "GET" "/favicon.ico" responded 404 in 6.3841 ms
+2024-09-18 10:54:18 [Information] No cached response available for this request.
+2024-09-18 10:54:18 [Information] The response could not be cached for this request.
+2024-09-18 10:54:18 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 128.1683 ms
+2024-09-18 10:54:18 [Information] No cached response available for this request.
+2024-09-18 10:54:18 [Information] The response could not be cached for this request.
+2024-09-18 10:54:18 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 29.1072 ms
+2024-09-18 10:54:18 [Information] No cached response available for this request.
+2024-09-18 10:54:18 [Information] The response could not be cached for this request.
+2024-09-18 10:54:18 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 170.6314 ms
+2024-09-18 10:54:22 [Information] No cached response available for this request.
+2024-09-18 10:54:22 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 10:54:24 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 10:54:24 [Information] The response could not be cached for this request.
+2024-09-18 10:54:24 [Information] HTTP "GET" "/api/Ads" responded 200 in 2654.6602 ms
+2024-09-18 10:54:59 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.UpdateAd (PawMates.API)"'
+2024-09-18 10:54:59 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.UpdateAd (PawMates.API)"'
+2024-09-18 10:54:59 [Information] HTTP "PUT" "/api/Ads/9f66bc2a-8d9a-414b-8ae7-0c3407f003e8" responded 200 in 530.9231 ms
+2024-09-18 10:55:05 [Information] No cached response available for this request.
+2024-09-18 10:55:05 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 10:55:05 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 10:55:05 [Information] The response could not be cached for this request.
+2024-09-18 10:55:05 [Information] HTTP "GET" "/api/Ads" responded 200 in 186.2472 ms
+2024-09-18 10:55:40 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.UpdateAd (PawMates.API)"'
+2024-09-18 10:55:40 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.UpdateAd (PawMates.API)"'
+2024-09-18 10:55:40 [Information] HTTP "PUT" "/api/Ads/9f66bc2a-8d9a-414b-8ae7-0c3407f003e8" responded 200 in 431.1445 ms
+2024-09-18 10:55:49 [Information] No cached response available for this request.
+2024-09-18 10:55:49 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 10:55:49 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 10:55:49 [Information] The response could not be cached for this request.
+2024-09-18 10:55:49 [Information] HTTP "GET" "/api/Ads" responded 200 in 183.2929 ms
+2024-09-18 11:21:37 [Information] No cached response available for this request.
+2024-09-18 11:21:37 [Information] The response could not be cached for this request.
+2024-09-18 11:21:37 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 164.3597 ms
+2024-09-18 11:21:37 [Information] No cached response available for this request.
+2024-09-18 11:21:37 [Information] The response could not be cached for this request.
+2024-09-18 11:21:37 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 18.9742 ms
+2024-09-18 11:21:37 [Information] No cached response available for this request.
+2024-09-18 11:21:38 [Information] The response could not be cached for this request.
+2024-09-18 11:21:38 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 220.4866 ms
+2024-09-18 11:21:58 [Information] No cached response available for this request.
+2024-09-18 11:21:59 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 11:22:01 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 11:22:01 [Information] The response could not be cached for this request.
+2024-09-18 11:22:01 [Information] HTTP "GET" "/api/Ads" responded 200 in 2669.8711 ms
+2024-09-18 11:22:23 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-18 11:22:24 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.CreateComment (PawMates.API)"'
+2024-09-18 11:22:24 [Information] HTTP "POST" "/api/Comments" responded 200 in 975.1598 ms
+2024-09-18 11:22:28 [Information] No cached response available for this request.
+2024-09-18 11:22:28 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.GetAllComments (PawMates.API)"'
+2024-09-18 11:22:29 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.GetAllComments (PawMates.API)"'
+2024-09-18 11:22:29 [Information] The response could not be cached for this request.
+2024-09-18 11:22:29 [Information] HTTP "GET" "/api/Comments" responded 200 in 227.6756 ms
+2024-09-18 11:22:34 [Information] No cached response available for this request.
+2024-09-18 11:22:34 [Information] The response could not be cached for this request.
+2024-09-18 11:22:34 [Information] HTTP "GET" "/comments//comments/16a7f0b5-c727-4ee0-820d-116f52edb19e.png" responded 404 in 24.0077 ms
+2024-09-18 11:22:39 [Information] No cached response available for this request.
+2024-09-18 11:22:39 [Information] The response could not be cached for this request.
+2024-09-18 11:22:39 [Information] HTTP "GET" "/comments//comments/16a7f0b5-c727-4ee0-820d-116f52edb19e.png" responded 404 in 5.3349 ms
+2024-09-18 11:23:09 [Information] No cached response available for this request.
+2024-09-18 11:23:09 [Information] The response could not be cached for this request.
+2024-09-18 11:23:09 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 4.0912 ms
+2024-09-18 11:23:09 [Information] No cached response available for this request.
+2024-09-18 11:23:09 [Information] The response could not be cached for this request.
+2024-09-18 11:23:09 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 18.0687 ms
+2024-09-18 11:23:09 [Information] No cached response available for this request.
+2024-09-18 11:23:09 [Information] No cached response available for this request.
+2024-09-18 11:23:09 [Information] Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"'
+2024-09-18 11:23:09 [Information] The response could not be cached for this request.
+2024-09-18 11:23:09 [Information] HTTP "GET" "/swagger/favicon-32x32.png" responded 200 in 20.9078 ms
+2024-09-18 11:23:09 [Information] The response could not be cached for this request.
+2024-09-18 11:23:09 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 63.2994 ms
+2024-09-18 11:23:16 [Information] No cached response available for this request.
+2024-09-18 11:23:16 [Information] Executing endpoint '"PawMates.API.Controllers.CommentsController.GetAllComments (PawMates.API)"'
+2024-09-18 11:23:16 [Information] Executed endpoint '"PawMates.API.Controllers.CommentsController.GetAllComments (PawMates.API)"'
+2024-09-18 11:23:16 [Information] The response could not be cached for this request.
+2024-09-18 11:23:16 [Information] HTTP "GET" "/api/Comments" responded 200 in 225.2725 ms
+2024-09-18 11:28:06 [Information] No cached response available for this request.
+2024-09-18 11:28:06 [Information] The response could not be cached for this request.
+2024-09-18 11:28:06 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 115.8894 ms
+2024-09-18 11:28:06 [Information] No cached response available for this request.
+2024-09-18 11:28:06 [Information] The response could not be cached for this request.
+2024-09-18 11:28:06 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 25.4993 ms
+2024-09-18 11:28:06 [Information] No cached response available for this request.
+2024-09-18 11:28:06 [Information] The response could not be cached for this request.
+2024-09-18 11:28:06 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 193.4589 ms
+2024-09-18 11:28:21 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.CreatePost (PawMates.API)"'
+2024-09-18 11:28:25 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.CreatePost (PawMates.API)"'
+2024-09-18 11:28:25 [Information] HTTP "POST" "/api/Posts" responded 200 in 3767.4046 ms
+2024-09-18 11:28:29 [Information] No cached response available for this request.
+2024-09-18 11:28:29 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 11:28:30 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 11:28:30 [Information] The response could not be cached for this request.
+2024-09-18 11:28:30 [Information] HTTP "GET" "/api/Posts" responded 200 in 618.2582 ms
+2024-09-18 13:40:41 [Information] No cached response available for this request.
+2024-09-18 13:40:41 [Information] The response could not be cached for this request.
+2024-09-18 13:40:41 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 93.3010 ms
+2024-09-18 13:40:41 [Information] No cached response available for this request.
+2024-09-18 13:40:41 [Information] The response could not be cached for this request.
+2024-09-18 13:40:41 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 22.3606 ms
+2024-09-18 13:40:41 [Information] No cached response available for this request.
+2024-09-18 13:40:41 [Information] The response could not be cached for this request.
+2024-09-18 13:40:41 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 150.0493 ms
+2024-09-18 13:43:12 [Information] No cached response available for this request.
+2024-09-18 13:43:12 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:43:15 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:43:15 [Information] The response could not be cached for this request.
+2024-09-18 13:43:15 [Information] HTTP "GET" "/api/Posts" responded 200 in 3001.4263 ms
+2024-09-18 13:43:39 [Information] No cached response available for this request.
+2024-09-18 13:43:39 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:43:39 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:43:39 [Information] The response could not be cached for this request.
+2024-09-18 13:43:39 [Information] HTTP "GET" "/api/Ads" responded 200 in 254.1232 ms
+2024-09-18 13:45:04 [Information] No cached response available for this request.
+2024-09-18 13:45:04 [Information] No cached response available for this request.
+2024-09-18 13:45:04 [Information] No cached response available for this request.
+2024-09-18 13:45:04 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:04 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:04 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:45:04 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:04 [Information] The response could not be cached for this request.
+2024-09-18 13:45:04 [Information] HTTP "GET" "/api/Ads" responded 200 in 216.6762 ms
+2024-09-18 13:45:04 [Information] No cached response available for this request.
+2024-09-18 13:45:04 [Information] No cached response available for this request.
+2024-09-18 13:45:04 [Information] No cached response available for this request.
+2024-09-18 13:45:04 [Information] Sending file. Request path: '"/advertisements/f9c38a3f-016d-4eb7-aaa3-fed232b5d4d4.png"'. Physical path: '"C:\Users\KC\source\repos\PawMates.net\PawMates.API\wwwroot\advertisements\f9c38a3f-016d-4eb7-aaa3-fed232b5d4d4.png"'
+2024-09-18 13:45:04 [Information] Sending file. Request path: '"/advertisements/6b9f9ce0-4fde-4a99-997a-0ecd2548aabd.jpg"'. Physical path: '"C:\Users\KC\source\repos\PawMates.net\PawMates.API\wwwroot\advertisements\6b9f9ce0-4fde-4a99-997a-0ecd2548aabd.jpg"'
+2024-09-18 13:45:04 [Information] Sending file. Request path: '"/advertisement-images/18047893-946a-4cc3-baf7-3647c4bee713.png"'. Physical path: '"C:\Users\KC\source\repos\PawMates.net\PawMates.API\wwwroot\advertisement-images\18047893-946a-4cc3-baf7-3647c4bee713.png"'
+2024-09-18 13:45:04 [Information] The response could not be cached for this request.
+2024-09-18 13:45:04 [Information] The response could not be cached for this request.
+2024-09-18 13:45:04 [Information] The response could not be cached for this request.
+2024-09-18 13:45:04 [Information] HTTP "GET" "/advertisement-images/18047893-946a-4cc3-baf7-3647c4bee713.png" responded 200 in 137.4758 ms
+2024-09-18 13:45:04 [Information] HTTP "GET" "/advertisements/6b9f9ce0-4fde-4a99-997a-0ecd2548aabd.jpg" responded 200 in 211.7979 ms
+2024-09-18 13:45:04 [Information] HTTP "GET" "/advertisements/f9c38a3f-016d-4eb7-aaa3-fed232b5d4d4.png" responded 200 in 331.0228 ms
+2024-09-18 13:45:05 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:45:05 [Information] The response could not be cached for this request.
+2024-09-18 13:45:05 [Information] HTTP "GET" "/api/Posts" responded 200 in 726.9266 ms
+2024-09-18 13:45:05 [Information] No cached response available for this request.
+2024-09-18 13:45:05 [Information] Sending file. Request path: '"/posts/99abb9ce-1f7a-46e5-bc61-98cbb3b44ab6.png"'. Physical path: '"C:\Users\KC\source\repos\PawMates.net\PawMates.API\wwwroot\posts\99abb9ce-1f7a-46e5-bc61-98cbb3b44ab6.png"'
+2024-09-18 13:45:05 [Information] The response could not be cached for this request.
+2024-09-18 13:45:05 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:05 [Information] The response could not be cached for this request.
+2024-09-18 13:45:05 [Information] HTTP "GET" "/api/Ads" responded 200 in 776.2112 ms
+2024-09-18 13:45:05 [Information] HTTP "GET" "/posts/99abb9ce-1f7a-46e5-bc61-98cbb3b44ab6.png" responded 200 in 160.1184 ms
+2024-09-18 13:45:07 [Information] No cached response available for this request.
+2024-09-18 13:45:07 [Information] No cached response available for this request.
+2024-09-18 13:45:07 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:07 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:45:08 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:08 [Information] The response could not be cached for this request.
+2024-09-18 13:45:08 [Information] HTTP "GET" "/api/Ads" responded 200 in 240.8654 ms
+2024-09-18 13:45:08 [Information] No cached response available for this request.
+2024-09-18 13:45:08 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:08 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:45:08 [Information] The response could not be cached for this request.
+2024-09-18 13:45:08 [Information] HTTP "GET" "/api/Posts" responded 200 in 336.9850 ms
+2024-09-18 13:45:08 [Information] No cached response available for this request.
+2024-09-18 13:45:08 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:45:08 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:08 [Information] The response could not be cached for this request.
+2024-09-18 13:45:08 [Information] HTTP "GET" "/api/Ads" responded 200 in 431.0195 ms
+2024-09-18 13:45:08 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:45:08 [Information] The response could not be cached for this request.
+2024-09-18 13:45:08 [Information] HTTP "GET" "/api/Posts" responded 200 in 373.1723 ms
+2024-09-18 13:45:13 [Information] No cached response available for this request.
+2024-09-18 13:45:13 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:14 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:14 [Information] The response could not be cached for this request.
+2024-09-18 13:45:14 [Information] HTTP "GET" "/api/Ads" responded 200 in 179.4649 ms
+2024-09-18 13:45:14 [Information] No cached response available for this request.
+2024-09-18 13:45:14 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:14 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:14 [Information] The response could not be cached for this request.
+2024-09-18 13:45:14 [Information] HTTP "GET" "/api/Ads" responded 200 in 181.8301 ms
+2024-09-18 13:45:14 [Information] No cached response available for this request.
+2024-09-18 13:45:14 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:14 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:15 [Information] The response could not be cached for this request.
+2024-09-18 13:45:15 [Information] HTTP "GET" "/api/Ads" responded 200 in 169.8011 ms
+2024-09-18 13:45:19 [Information] No cached response available for this request.
+2024-09-18 13:45:19 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:19 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:19 [Information] The response could not be cached for this request.
+2024-09-18 13:45:19 [Information] HTTP "GET" "/api/Ads" responded 200 in 167.0531 ms
+2024-09-18 13:45:20 [Information] No cached response available for this request.
+2024-09-18 13:45:20 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:20 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:20 [Information] The response could not be cached for this request.
+2024-09-18 13:45:20 [Information] HTTP "GET" "/api/Ads" responded 200 in 170.5703 ms
+2024-09-18 13:45:50 [Information] No cached response available for this request.
+2024-09-18 13:45:50 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:50 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:50 [Information] The response could not be cached for this request.
+2024-09-18 13:45:50 [Information] HTTP "GET" "/api/Ads" responded 200 in 204.4110 ms
+2024-09-18 13:45:50 [Information] No cached response available for this request.
+2024-09-18 13:45:50 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:50 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:50 [Information] The response could not be cached for this request.
+2024-09-18 13:45:50 [Information] HTTP "GET" "/api/Ads" responded 200 in 183.4867 ms
+2024-09-18 13:45:57 [Information] No cached response available for this request.
+2024-09-18 13:45:57 [Information] No cached response available for this request.
+2024-09-18 13:45:57 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:57 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:45:57 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:57 [Information] The response could not be cached for this request.
+2024-09-18 13:45:57 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:45:57 [Information] The response could not be cached for this request.
+2024-09-18 13:45:57 [Information] HTTP "GET" "/api/Ads" responded 200 in 195.4703 ms
+2024-09-18 13:45:57 [Information] HTTP "GET" "/api/Posts" responded 200 in 196.6116 ms
+2024-09-18 13:45:57 [Information] No cached response available for this request.
+2024-09-18 13:45:57 [Information] No cached response available for this request.
+2024-09-18 13:45:57 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:57 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:45:57 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:57 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:45:57 [Information] The response could not be cached for this request.
+2024-09-18 13:45:57 [Information] The response could not be cached for this request.
+2024-09-18 13:45:57 [Information] HTTP "GET" "/api/Ads" responded 200 in 206.6185 ms
+2024-09-18 13:45:57 [Information] HTTP "GET" "/api/Posts" responded 200 in 201.1753 ms
+2024-09-18 13:45:58 [Information] No cached response available for this request.
+2024-09-18 13:45:58 [Information] No cached response available for this request.
+2024-09-18 13:45:58 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:58 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:45:58 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:58 [Information] The response could not be cached for this request.
+2024-09-18 13:45:58 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:45:58 [Information] The response could not be cached for this request.
+2024-09-18 13:45:58 [Information] HTTP "GET" "/api/Ads" responded 200 in 192.9921 ms
+2024-09-18 13:45:58 [Information] HTTP "GET" "/api/Posts" responded 200 in 194.3442 ms
+2024-09-18 13:45:58 [Information] No cached response available for this request.
+2024-09-18 13:45:58 [Information] No cached response available for this request.
+2024-09-18 13:45:58 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:58 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:45:59 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:45:59 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:45:59 [Information] The response could not be cached for this request.
+2024-09-18 13:45:59 [Information] The response could not be cached for this request.
+2024-09-18 13:45:59 [Information] HTTP "GET" "/api/Posts" responded 200 in 204.5575 ms
+2024-09-18 13:45:59 [Information] HTTP "GET" "/api/Ads" responded 200 in 212.0938 ms
+2024-09-18 13:46:00 [Information] No cached response available for this request.
+2024-09-18 13:46:00 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:01 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:01 [Information] The response could not be cached for this request.
+2024-09-18 13:46:01 [Information] HTTP "GET" "/api/Ads" responded 200 in 185.9166 ms
+2024-09-18 13:46:01 [Information] No cached response available for this request.
+2024-09-18 13:46:01 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:01 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:01 [Information] The response could not be cached for this request.
+2024-09-18 13:46:01 [Information] HTTP "GET" "/api/Ads" responded 200 in 179.1837 ms
+2024-09-18 13:46:01 [Information] No cached response available for this request.
+2024-09-18 13:46:01 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:01 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:01 [Information] The response could not be cached for this request.
+2024-09-18 13:46:01 [Information] HTTP "GET" "/api/Ads" responded 200 in 178.7796 ms
+2024-09-18 13:46:02 [Information] No cached response available for this request.
+2024-09-18 13:46:02 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:02 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:02 [Information] The response could not be cached for this request.
+2024-09-18 13:46:02 [Information] HTTP "GET" "/api/Ads" responded 200 in 162.2096 ms
+2024-09-18 13:46:02 [Information] No cached response available for this request.
+2024-09-18 13:46:02 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:03 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:03 [Information] The response could not be cached for this request.
+2024-09-18 13:46:03 [Information] HTTP "GET" "/api/Ads" responded 200 in 158.7072 ms
+2024-09-18 13:46:04 [Information] No cached response available for this request.
+2024-09-18 13:46:04 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:04 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:04 [Information] The response could not be cached for this request.
+2024-09-18 13:46:04 [Information] HTTP "GET" "/api/Ads" responded 200 in 168.6854 ms
+2024-09-18 13:46:04 [Information] No cached response available for this request.
+2024-09-18 13:46:04 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:04 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:04 [Information] The response could not be cached for this request.
+2024-09-18 13:46:04 [Information] HTTP "GET" "/api/Ads" responded 200 in 175.6212 ms
+2024-09-18 13:46:09 [Information] No cached response available for this request.
+2024-09-18 13:46:09 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:09 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:09 [Information] The response could not be cached for this request.
+2024-09-18 13:46:09 [Information] HTTP "GET" "/api/ads" responded 200 in 170.3437 ms
+2024-09-18 13:46:09 [Information] No cached response available for this request.
+2024-09-18 13:46:09 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:09 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:09 [Information] The response could not be cached for this request.
+2024-09-18 13:46:09 [Information] HTTP "GET" "/api/ads" responded 200 in 184.4399 ms
+2024-09-18 13:46:09 [Information] No cached response available for this request.
+2024-09-18 13:46:09 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:09 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:09 [Information] The response could not be cached for this request.
+2024-09-18 13:46:09 [Information] HTTP "GET" "/api/ads" responded 200 in 174.7299 ms
+2024-09-18 13:46:09 [Information] No cached response available for this request.
+2024-09-18 13:46:09 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:09 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:09 [Information] The response could not be cached for this request.
+2024-09-18 13:46:09 [Information] HTTP "GET" "/api/ads" responded 200 in 176.5574 ms
+2024-09-18 13:46:11 [Information] No cached response available for this request.
+2024-09-18 13:46:11 [Information] No cached response available for this request.
+2024-09-18 13:46:11 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:11 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:46:11 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:11 [Information] The response could not be cached for this request.
+2024-09-18 13:46:11 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:46:11 [Information] The response could not be cached for this request.
+2024-09-18 13:46:11 [Information] HTTP "GET" "/api/ads" responded 200 in 190.7496 ms
+2024-09-18 13:46:11 [Information] HTTP "GET" "/api/Posts" responded 200 in 191.9014 ms
+2024-09-18 13:46:11 [Information] No cached response available for this request.
+2024-09-18 13:46:11 [Information] No cached response available for this request.
+2024-09-18 13:46:11 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:11 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:46:12 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:12 [Information] The response could not be cached for this request.
+2024-09-18 13:46:12 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:46:12 [Information] The response could not be cached for this request.
+2024-09-18 13:46:12 [Information] HTTP "GET" "/api/ads" responded 200 in 195.6488 ms
+2024-09-18 13:46:12 [Information] HTTP "GET" "/api/Posts" responded 200 in 192.7502 ms
+2024-09-18 13:46:14 [Information] No cached response available for this request.
+2024-09-18 13:46:14 [Information] No cached response available for this request.
+2024-09-18 13:46:14 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:46:14 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:14 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:46:14 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:14 [Information] The response could not be cached for this request.
+2024-09-18 13:46:14 [Information] The response could not be cached for this request.
+2024-09-18 13:46:14 [Information] HTTP "GET" "/api/Posts" responded 200 in 193.8115 ms
+2024-09-18 13:46:14 [Information] HTTP "GET" "/api/ads" responded 200 in 192.7126 ms
+2024-09-18 13:46:14 [Information] No cached response available for this request.
+2024-09-18 13:46:14 [Information] No cached response available for this request.
+2024-09-18 13:46:14 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:46:14 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:14 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:46:14 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:14 [Information] The response could not be cached for this request.
+2024-09-18 13:46:14 [Information] The response could not be cached for this request.
+2024-09-18 13:46:14 [Information] HTTP "GET" "/api/Posts" responded 200 in 201.8839 ms
+2024-09-18 13:46:14 [Information] HTTP "GET" "/api/ads" responded 200 in 201.4390 ms
+2024-09-18 13:46:16 [Information] No cached response available for this request.
+2024-09-18 13:46:16 [Information] No cached response available for this request.
+2024-09-18 13:46:16 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:46:16 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:16 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:46:16 [Information] The response could not be cached for this request.
+2024-09-18 13:46:16 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:16 [Information] The response could not be cached for this request.
+2024-09-18 13:46:16 [Information] HTTP "GET" "/api/Posts" responded 200 in 201.5544 ms
+2024-09-18 13:46:16 [Information] HTTP "GET" "/api/Ads" responded 200 in 200.5460 ms
+2024-09-18 13:46:16 [Information] No cached response available for this request.
+2024-09-18 13:46:16 [Information] No cached response available for this request.
+2024-09-18 13:46:16 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:46:16 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:16 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:46:16 [Information] The response could not be cached for this request.
+2024-09-18 13:46:16 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:16 [Information] The response could not be cached for this request.
+2024-09-18 13:46:16 [Information] HTTP "GET" "/api/Posts" responded 200 in 202.5647 ms
+2024-09-18 13:46:16 [Information] HTTP "GET" "/api/Ads" responded 200 in 198.8854 ms
+2024-09-18 13:46:17 [Information] No cached response available for this request.
+2024-09-18 13:46:17 [Information] No cached response available for this request.
+2024-09-18 13:46:17 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:17 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:46:17 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:46:17 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:17 [Information] The response could not be cached for this request.
+2024-09-18 13:46:17 [Information] The response could not be cached for this request.
+2024-09-18 13:46:17 [Information] HTTP "GET" "/api/Posts" responded 200 in 201.4910 ms
+2024-09-18 13:46:17 [Information] HTTP "GET" "/api/Ads" responded 200 in 206.1517 ms
+2024-09-18 13:46:17 [Information] No cached response available for this request.
+2024-09-18 13:46:17 [Information] No cached response available for this request.
+2024-09-18 13:46:17 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:46:17 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:18 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:46:18 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:18 [Information] The response could not be cached for this request.
+2024-09-18 13:46:18 [Information] The response could not be cached for this request.
+2024-09-18 13:46:18 [Information] HTTP "GET" "/api/Posts" responded 200 in 194.0741 ms
+2024-09-18 13:46:18 [Information] HTTP "GET" "/api/Ads" responded 200 in 191.5769 ms
+2024-09-18 13:46:18 [Information] No cached response available for this request.
+2024-09-18 13:46:18 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:19 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:19 [Information] The response could not be cached for this request.
+2024-09-18 13:46:19 [Information] HTTP "GET" "/api/Ads" responded 200 in 180.6587 ms
+2024-09-18 13:46:19 [Information] No cached response available for this request.
+2024-09-18 13:46:19 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:19 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:19 [Information] The response could not be cached for this request.
+2024-09-18 13:46:19 [Information] HTTP "GET" "/api/Ads" responded 200 in 176.3213 ms
+2024-09-18 13:46:19 [Information] No cached response available for this request.
+2024-09-18 13:46:19 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:19 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:46:19 [Information] The response could not be cached for this request.
+2024-09-18 13:46:19 [Information] HTTP "GET" "/api/Ads" responded 200 in 186.6826 ms
+2024-09-18 13:47:53 [Information] No cached response available for this request.
+2024-09-18 13:47:53 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:47:53 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:47:53 [Information] The response could not be cached for this request.
+2024-09-18 13:47:53 [Information] HTTP "GET" "/api/Ads" responded 200 in 194.5341 ms
+2024-09-18 13:47:53 [Information] No cached response available for this request.
+2024-09-18 13:47:53 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:47:53 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:47:53 [Information] The response could not be cached for this request.
+2024-09-18 13:47:53 [Information] HTTP "GET" "/api/Ads" responded 200 in 193.2645 ms
+2024-09-18 13:47:53 [Information] No cached response available for this request.
+2024-09-18 13:47:53 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:47:53 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:47:53 [Information] The response could not be cached for this request.
+2024-09-18 13:47:53 [Information] HTTP "GET" "/api/Ads" responded 200 in 183.9887 ms
+2024-09-18 13:47:53 [Information] No cached response available for this request.
+2024-09-18 13:47:53 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:47:54 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:47:54 [Information] The response could not be cached for this request.
+2024-09-18 13:47:54 [Information] HTTP "GET" "/api/Ads" responded 200 in 184.6063 ms
+2024-09-18 13:47:57 [Information] No cached response available for this request.
+2024-09-18 13:47:57 [Information] No cached response available for this request.
+2024-09-18 13:47:57 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:47:57 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:47:57 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:47:57 [Information] The response could not be cached for this request.
+2024-09-18 13:47:57 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:47:57 [Information] The response could not be cached for this request.
+2024-09-18 13:47:57 [Information] HTTP "GET" "/api/Ads" responded 200 in 198.8419 ms
+2024-09-18 13:47:57 [Information] HTTP "GET" "/api/Posts" responded 200 in 200.4568 ms
+2024-09-18 13:47:57 [Information] No cached response available for this request.
+2024-09-18 13:47:57 [Information] No cached response available for this request.
+2024-09-18 13:47:57 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:47:57 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:47:58 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:47:58 [Information] The response could not be cached for this request.
+2024-09-18 13:47:58 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:47:58 [Information] The response could not be cached for this request.
+2024-09-18 13:47:58 [Information] HTTP "GET" "/api/Ads" responded 200 in 197.7286 ms
+2024-09-18 13:47:58 [Information] HTTP "GET" "/api/Posts" responded 200 in 192.6100 ms
+2024-09-18 13:48:01 [Information] No cached response available for this request.
+2024-09-18 13:48:01 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:01 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:01 [Information] The response could not be cached for this request.
+2024-09-18 13:48:01 [Information] HTTP "GET" "/api/Ads" responded 200 in 182.8652 ms
+2024-09-18 13:48:01 [Information] No cached response available for this request.
+2024-09-18 13:48:01 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:01 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:01 [Information] The response could not be cached for this request.
+2024-09-18 13:48:01 [Information] HTTP "GET" "/api/Ads" responded 200 in 182.6859 ms
+2024-09-18 13:48:03 [Information] No cached response available for this request.
+2024-09-18 13:48:03 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:03 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:03 [Information] The response could not be cached for this request.
+2024-09-18 13:48:03 [Information] HTTP "GET" "/api/Ads" responded 200 in 172.8005 ms
+2024-09-18 13:48:05 [Information] No cached response available for this request.
+2024-09-18 13:48:05 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:06 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:06 [Information] The response could not be cached for this request.
+2024-09-18 13:48:06 [Information] HTTP "GET" "/api/Ads" responded 200 in 170.4292 ms
+2024-09-18 13:48:06 [Information] No cached response available for this request.
+2024-09-18 13:48:06 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:06 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:06 [Information] The response could not be cached for this request.
+2024-09-18 13:48:06 [Information] HTTP "GET" "/api/Ads" responded 200 in 189.4025 ms
+2024-09-18 13:48:07 [Information] No cached response available for this request.
+2024-09-18 13:48:07 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:07 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:07 [Information] The response could not be cached for this request.
+2024-09-18 13:48:07 [Information] HTTP "GET" "/api/Ads" responded 200 in 173.7736 ms
+2024-09-18 13:48:11 [Information] No cached response available for this request.
+2024-09-18 13:48:11 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:11 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:11 [Information] The response could not be cached for this request.
+2024-09-18 13:48:11 [Information] HTTP "GET" "/api/Ads" responded 200 in 180.4385 ms
+2024-09-18 13:48:12 [Information] No cached response available for this request.
+2024-09-18 13:48:12 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:12 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:12 [Information] The response could not be cached for this request.
+2024-09-18 13:48:12 [Information] HTTP "GET" "/api/Ads" responded 200 in 163.9745 ms
+2024-09-18 13:48:14 [Information] No cached response available for this request.
+2024-09-18 13:48:14 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:14 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:14 [Information] The response could not be cached for this request.
+2024-09-18 13:48:14 [Information] HTTP "GET" "/api/Ads" responded 200 in 167.8504 ms
+2024-09-18 13:48:15 [Information] No cached response available for this request.
+2024-09-18 13:48:15 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:16 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:16 [Information] The response could not be cached for this request.
+2024-09-18 13:48:16 [Information] HTTP "GET" "/api/Ads" responded 200 in 652.9676 ms
+2024-09-18 13:48:17 [Information] No cached response available for this request.
+2024-09-18 13:48:17 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:17 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:17 [Information] The response could not be cached for this request.
+2024-09-18 13:48:17 [Information] HTTP "GET" "/api/Ads" responded 200 in 164.6146 ms
+2024-09-18 13:48:19 [Information] No cached response available for this request.
+2024-09-18 13:48:19 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:19 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:19 [Information] The response could not be cached for this request.
+2024-09-18 13:48:19 [Information] HTTP "GET" "/api/Ads" responded 200 in 189.8658 ms
+2024-09-18 13:48:27 [Information] No cached response available for this request.
+2024-09-18 13:48:27 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:48:28 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:48:28 [Information] The response could not be cached for this request.
+2024-09-18 13:48:28 [Information] HTTP "GET" "/api/Posts" responded 200 in 168.8239 ms
+2024-09-18 13:48:28 [Information] No cached response available for this request.
+2024-09-18 13:48:28 [Information] Executing endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:48:28 [Information] Executed endpoint '"PawMates.API.Controllers.PostsController.GetAllPosts (PawMates.API)"'
+2024-09-18 13:48:28 [Information] The response could not be cached for this request.
+2024-09-18 13:48:28 [Information] HTTP "GET" "/api/Posts" responded 200 in 175.8368 ms
+2024-09-18 13:48:29 [Information] No cached response available for this request.
+2024-09-18 13:48:29 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:30 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:30 [Information] The response could not be cached for this request.
+2024-09-18 13:48:30 [Information] HTTP "GET" "/api/Ads" responded 200 in 176.7576 ms
+2024-09-18 13:48:30 [Information] No cached response available for this request.
+2024-09-18 13:48:30 [Information] Executing endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:30 [Information] Executed endpoint '"PawMates.API.Controllers.AdsController.GetAllAds (PawMates.API)"'
+2024-09-18 13:48:30 [Information] The response could not be cached for this request.
+2024-09-18 13:48:30 [Information] HTTP "GET" "/api/Ads" responded 200 in 176.4465 ms
+2024-09-18 14:09:28 [Information] No cached response available for this request.
+2024-09-18 14:09:28 [Information] The response could not be cached for this request.
+2024-09-18 14:09:28 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 100.3781 ms
+2024-09-18 14:09:29 [Information] No cached response available for this request.
+2024-09-18 14:09:29 [Information] The response could not be cached for this request.
+2024-09-18 14:09:29 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 31.2420 ms
+2024-09-18 14:09:29 [Information] No cached response available for this request.
+2024-09-18 14:09:29 [Information] The response could not be cached for this request.
+2024-09-18 14:09:29 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 163.1637 ms
+2024-09-18 14:10:50 [Information] Executing endpoint '"API.Controllers.UserController.Login (PawMates.API)"'
+2024-09-18 14:10:53 [Information] Executed endpoint '"API.Controllers.UserController.Login (PawMates.API)"'
+2024-09-18 14:10:53 [Information] HTTP "POST" "/api/users/login" responded 400 in 2497.8432 ms
+2024-09-18 14:10:59 [Information] Executing endpoint '"API.Controllers.UserController.Register (PawMates.API)"'
+2024-09-18 14:11:03 [Information] Executed endpoint '"API.Controllers.UserController.Register (PawMates.API)"'
+2024-09-18 14:11:03 [Information] HTTP "POST" "/api/users/register" responded 200 in 3962.7123 ms
+2024-09-18 14:11:33 [Information] Executing endpoint '"API.Controllers.UserController.Login (PawMates.API)"'
+2024-09-18 14:11:33 [Information] Executed endpoint '"API.Controllers.UserController.Login (PawMates.API)"'
+2024-09-18 14:11:33 [Information] HTTP "POST" "/api/users/login" responded 400 in 108.2423 ms
+2024-09-18 14:11:34 [Information] Executing endpoint '"API.Controllers.UserController.Login (PawMates.API)"'
+2024-09-18 14:11:34 [Information] Executed endpoint '"API.Controllers.UserController.Login (PawMates.API)"'
+2024-09-18 14:11:34 [Information] HTTP "POST" "/api/users/login" responded 400 in 99.4045 ms
+2024-09-18 14:12:34 [Information] Executing endpoint '"API.Controllers.UserController.Login (PawMates.API)"'
+2024-09-18 14:12:34 [Information] Executed endpoint '"API.Controllers.UserController.Login (PawMates.API)"'
+2024-09-18 14:12:34 [Information] HTTP "POST" "/api/users/login" responded 400 in 113.8230 ms
+2024-09-18 14:13:04 [Information] Executing endpoint '"API.Controllers.UserController.Login (PawMates.API)"'
+2024-09-18 14:13:05 [Information] Executed endpoint '"API.Controllers.UserController.Login (PawMates.API)"'
+2024-09-18 14:13:05 [Information] HTTP "POST" "/api/users/login" responded 200 in 570.5033 ms
+2024-09-18 14:14:15 [Information] No cached response available for this request.
+2024-09-18 14:14:15 [Information] The response could not be cached for this request.
+2024-09-18 14:14:15 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 4.5401 ms
+2024-09-18 14:14:15 [Information] No cached response available for this request.
+2024-09-18 14:14:15 [Information] The response could not be cached for this request.
+2024-09-18 14:14:15 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 16.4212 ms
+2024-09-18 14:14:15 [Information] No cached response available for this request.
+2024-09-18 14:14:15 [Information] The response could not be cached for this request.
+2024-09-18 14:14:15 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 39.0695 ms

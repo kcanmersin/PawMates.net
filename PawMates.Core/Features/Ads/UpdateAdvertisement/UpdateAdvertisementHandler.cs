@@ -7,16 +7,19 @@ using System.Threading;
 using System.Threading.Tasks;
 using System;
 using PawMates.Core.Data.Entity;
+using System.Collections.Generic;
 
 namespace PawMates.Core.Features.Ads.UpdateAdvertisement
 {
     public class UpdateAdvertisementHandler : IRequestHandler<UpdateAdvertisementCommand, UpdateAdvertisementResponse>
     {
         private readonly ApplicationDbContext _context;
+        private readonly IFileUploadService _fileUploadService;
 
-        public UpdateAdvertisementHandler(ApplicationDbContext context)
+        public UpdateAdvertisementHandler(ApplicationDbContext context, IFileUploadService fileUploadService)
         {
             _context = context;
+            _fileUploadService = fileUploadService;
         }
 
         public async Task<UpdateAdvertisementResponse> Handle(UpdateAdvertisementCommand request, CancellationToken cancellationToken)
@@ -25,6 +28,7 @@ namespace PawMates.Core.Features.Ads.UpdateAdvertisement
             {
                 var advertisement = await _context.Set<AdvertisementBase>()
                                                   .Include(a => a.Pets)
+                                                  .Include(a => a.Media) 
                                                   .FirstOrDefaultAsync(a => a.Id == request.AdvertisementId && a.UserId == request.UserId, cancellationToken);
 
                 if (advertisement == null)
@@ -80,6 +84,28 @@ namespace PawMates.Core.Features.Ads.UpdateAdvertisement
                             Description = petDto.Description
                         };
                         advertisement.Pets.Add(newPet);
+                    }
+                }
+
+                if (request.AdvertisementImages != null && request.AdvertisementImages.Any())
+                {
+                    if (advertisement.Media.Any())
+                    {
+                        _context.AdvertisementMedias.RemoveRange(advertisement.Media);
+                    }
+
+                    foreach (var image in request.AdvertisementImages)
+                    {
+                        var filePath = await _fileUploadService.UploadFileAsync(image, "advertisements");
+
+                        var media = new AdvertisementMedia
+                        {
+                            AdvertisementId = advertisement.Id,
+                            FilePath = filePath,
+                            MediaType = MediaType.Image
+                        };
+
+                        _context.AdvertisementMedias.Add(media);
                     }
                 }
 

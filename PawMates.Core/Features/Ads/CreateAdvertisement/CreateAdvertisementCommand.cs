@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using PawMates.Core.Data.Entity.Ads;
 using PawMates.Core.Features.DTOs;
 using System.ComponentModel;
+using Microsoft.AspNetCore.Http;
 
 namespace PawMates.Core.Features.Ads.CreateAdvertisement
 {
@@ -20,7 +21,7 @@ namespace PawMates.Core.Features.Ads.CreateAdvertisement
         public decimal? Salary { get; set; }
         public string LastSeenLocation { get; set; }
         //[DefaultValue(typeof(DateTime), "2024-01-01T00:00:00Z")]  
-        public DateTime? LostDate { get; set; } = DateTime.UtcNow; 
-
+        public DateTime? LostDate { get; set; } = DateTime.UtcNow;
+        public List<IFormFile> AdvertisementImages { get; set; }
     }
 }

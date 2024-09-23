@@ -15,5 +15,7 @@ namespace PawMates.Core.Features.DTOs
         public Guid? AdvertisementId { get; set; }
         public Guid? PostId { get; set; }
         public Guid? ParentCommentId { get; set; }
+        public List<string> MediaUrls { get; set; } = new List<string>(); 
+
     }
 }

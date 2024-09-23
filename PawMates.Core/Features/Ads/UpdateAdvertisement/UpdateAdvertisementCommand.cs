@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using PawMates.Core.Data.Entity.Ads;
 using PawMates.Core.Features.DTOs;
 using System;
@@ -19,6 +20,8 @@ namespace PawMates.Core.Features.Ads.UpdateAdvertisement
         public string RequiredDays { get; set; } 
         public decimal? Salary { get; set; } 
         public string LastSeenLocation { get; set; } 
-        public DateTime? LostDate { get; set; } = DateTime.UtcNow; 
+        public DateTime? LostDate { get; set; } = DateTime.UtcNow;
+        public List<IFormFile> AdvertisementImages { get; set; }
+
     }
 }

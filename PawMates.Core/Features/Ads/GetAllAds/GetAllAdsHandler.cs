@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using PawMates.Core.Features.DTOs;
+using System.Collections.Generic;
 
 namespace PawMates.Core.Features.Ads.GetAllAds
 {
@@ -21,7 +22,10 @@ namespace PawMates.Core.Features.Ads.GetAllAds
 
         public async Task<PaginatedAdsResponse> Handle(GetAllAdsQuery request, CancellationToken cancellationToken)
         {
-            var query = _context.Set<AdvertisementBase>().AsNoTracking().AsQueryable();
+            var query = _context.Set<AdvertisementBase>()
+                .AsNoTracking()
+                .Include(ad => ad.Media)  
+                .AsQueryable();
 
             if (request.AdType.HasValue)
             {
@@ -32,10 +36,11 @@ namespace PawMates.Core.Features.Ads.GetAllAds
             {
                 query = query.Where(ad => ad.Title.Contains(request.SearchTerm) || ad.Description.Contains(request.SearchTerm));
             }
+
             var totalCount = await query.CountAsync(cancellationToken);
 
             var ads = await query
-                .OrderByDescending(ad => ad.CreatedDate) 
+                .OrderByDescending(ad => ad.CreatedDate)
                 .Skip((request.PageNumber - 1) * request.PageSize)
                 .Take(request.PageSize)
                 .Select(ad => new AdvertisementDto
@@ -45,7 +50,8 @@ namespace PawMates.Core.Features.Ads.GetAllAds
                     Description = ad.Description,
                     AdvertisementType = ad.AdvertisementType,
                     CreatedDate = ad.CreatedDate,
-                    Location = ad.Location
+                    Location = ad.Location,
+                    MediaUrls = ad.Media.Select(m => m.FilePath).ToList()
                 })
                 .ToListAsync(cancellationToken);
 
